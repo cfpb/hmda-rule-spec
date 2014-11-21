@@ -3,9 +3,9 @@
         "id": "S100",
         "description": "Activity year must = year being processed (= 2013).",
         "rule": {
-            "property":"activityYear",
-            "condition":"equal",
-            "value":"2013"
+            "property": "activityYear",
+            "condition": "equal",
+            "value": "2013"
         }
     },
     {
@@ -14,12 +14,40 @@
         "rule": {
             "and": [
                 {
-                    "property":"timestamp",
-                    "condition":"is_integer"
+                    "property": "timestamp",
+                    "condition": "is_integer"
                 },
                 {
-                    "property":"timestamp",
-                    "condition":"yyyy_mm_dd_hh_mm"
+                    "property": "timestamp",
+                    "condition": "yyyy_mm_dd_hh_mm"
+                }
+            ]
+        }
+    },
+    {
+        "id": "V105",
+        "description": "Respondent name, address, city, state, and zip code must not = blank.",
+        "rule": {
+            "or": [
+                {
+                    "property": "institutionName",
+                    "condition": "not_empty"
+                },
+                {
+                    "property": "respondentAddress",
+                    "condition": "not_empty"
+                },
+                {
+                    "property": "respondentCity",
+                    "condition": "not_empty"
+                },
+                {
+                    "property": "respondentState",
+                    "condition": "not_empty"
+                },
+                {
+                    "property": "respondentZip",
+                    "condition": "not_empty"
                 }
             ]
         }

@@ -3,7 +3,7 @@
         "id": "V105",
         "description": "Respondent name, address, city, state, and zip code must not = blank.",
         "rule": {
-            "or": [
+            "and": [
                 {
                     "property": "institutionName",
                     "condition": "not_empty"

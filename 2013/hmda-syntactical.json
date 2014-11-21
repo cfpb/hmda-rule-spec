@@ -3,7 +3,7 @@
         "id": "S010",
         "description": "The first record identifier in the file must = 1 (TS). The second and all subsequent record identifiers must = 2 (LAR).",
         "rule": {
-            "property": "",
+            "property": "hmdaFile",
             "condition": "call",
             "function": "checkRecordIdentifiersForEachRow"
         }
@@ -12,7 +12,7 @@
         "id": "S011",
         "description": "The HMDA file must contain at least one loan/application record (record identifier = 2).",
         "rule": {
-            "property": "",
+            "property": "hmdaFile",
             "condition": "call",
             "function": "checkAtLeastOneLAR"
         }
@@ -21,26 +21,25 @@
         "id": "S020",
         "description": "Agency code must = 1, 2, 3, 5, 7, 9. The agency that submits the data must be the same as the reported agency code.",
         "rule": {
-            "property": "agencyCode",
-            "condition": "in",
-            "values": ["1", "2", "3", "5", "7", "9"]
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "checkAgencyCode"
         }
     },
     {
         "id": "S025",
         "description": "Control number must = a valid respondent identifier/agency code combination for date processed.",
         "rule": {
-            "property": "",
+            "property": "hmdaFile",
             "condition": "call",
             "function": "checkControlNumber",
-            "args": ["respondentId", "agencyCode"]
         }
     },
     {
         "id": "S040",
         "description": "Application/loan number must be unique.",
         "rule": {
-            "property": "loanNumber",
+            "property": "hmdaFile",
             "condition": "call",
             "function": "checkLoanNumberUnique"
         }

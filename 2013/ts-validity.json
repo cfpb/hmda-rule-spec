@@ -26,5 +26,88 @@
                 }
             ]
         }
+    },
+    {
+        "id": "V140",
+        "description": "Respondent state code must equal a valid postal code abbreviation (i.e., AL for Alabama).",
+        "rule": {
+            "property": "respondentState",
+            "condition": "in",
+            "values": [
+                "AL", "AK", "AZ", "AR",
+                "CA", "CO", "CT", "DE",
+                "FL", "GA", "HI", "ID",
+                "IL", "IN", "IA", "KS",
+                "KY", "LA", "ME", "MD",
+                "MA", "MI", "MN", "MS",
+                "MO", "MT", "NE", "NV",
+                "NH", "NJ", "NM", "NY",
+                "NC", "ND", "OH", "OK",
+                "OR", "PA", "RI", "SC",
+                "SD", "TN", "TX", "UT",
+                "VT", "VA", "WA", "WV",
+                "WI", "WY", "AS", "DC",
+                "FM", "GU", "MH", "MP",
+                "PW", "PR", "UM", "VI"
+            ]
+        }
+    },
+    {
+        "id": "V145",
+        "description": "Respondent zip code format must be NNNNN or NNNNN-NNNN and left justified.",
+        "rule": {
+            "property": "respondentZip",
+            "condition": "zipcode"
+        }
+    },
+    {
+        "id": "V155",
+        "description": "A valid e-mail address for the institution must be provided and must be in the format of username@exampledomain.topleveldomain. The e-mail address shall not contain any spaces and must contain only one @ symbol. The e-mail address shall not contain \"@.\", \".@\", and \"..\" character strings.",
+        "rule": {
+            "property": "respondentEmail",
+            "condition": "email_address"
+        }
+    },
+    {
+        "id": "V108",
+        "description": "If parent name is reported, then parent name cannot equal institution name.",
+        "rule": {
+            "property": "parentName",
+            "condition": "not_equal_property",
+            "value": "institutionName"
+        }
+    },
+    {
+        "id": "V110",
+        "description": "If respondent is a mortgage banking subsidiary (MBS) or a nondepository institution that has an affiliation with a depository institution, then parent name of the MBS or the depository institution that the nondepository institution is affiliated with along with the address, city, state and zip code must not = blank.",
+        "rule": {
+            "and": [
+                {
+                    "property": "respondentID",
+                    "condition": "call",
+                    "function": "isRespondentMBS"
+                },
+                {
+                    "property": "parentName",
+                    "condition": "not_empty"
+                },
+                {
+                    "property": "parentAddress",
+                    "condition": "not_empty"
+                },
+                {
+                    "property": "parentCity",
+                    "condition": "not_empty"
+                },
+                {
+                    "property": "parentState",
+                    "condition": "not_empty"
+                },
+                {
+                    "property": "parentZip",
+                    "condition": "not_empty"
+                }
+            ]
+        }
     }
 ]

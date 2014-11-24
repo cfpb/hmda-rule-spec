@@ -87,33 +87,35 @@
         "id": "V110",
         "description": "If respondent is a mortgage banking subsidiary (MBS) or a nondepository institution that has an affiliation with a depository institution, then parent name of the MBS or the depository institution that the nondepository institution is affiliated with along with the address, city, state and zip code must not = blank.",
         "rule": {
-            "and": [
-                {
-                    "property": "respondentID",
-                    "condition": "call",
-                    "function": "isRespondentMBS"
-                },
-                {
-                    "property": "parentName",
-                    "condition": "not_empty"
-                },
-                {
-                    "property": "parentAddress",
-                    "condition": "not_empty"
-                },
-                {
-                    "property": "parentCity",
-                    "condition": "not_empty"
-                },
-                {
-                    "property": "parentState",
-                    "condition": "not_empty"
-                },
-                {
-                    "property": "parentZip",
-                    "condition": "not_empty"
-                }
-            ]
+            "if": {
+                "property": "respondentID",
+                "condition": "call",
+                "function": "isRespondentMBS"
+            },
+            "then": {
+                "and": [
+                    {
+                        "property": "parentName",
+                        "condition": "not_empty"
+                    },
+                    {
+                        "property": "parentAddress",
+                        "condition": "not_empty"
+                    },
+                    {
+                        "property": "parentCity",
+                        "condition": "not_empty"
+                    },
+                    {
+                        "property": "parentState",
+                        "condition": "not_empty"
+                    },
+                    {
+                        "property": "parentZip",
+                        "condition": "not_empty"
+                    }
+                ]
+            }
         }
     }
 ]

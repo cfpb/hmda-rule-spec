@@ -72,9 +72,15 @@
         "id": "V108",
         "description": "If parent name is reported, then parent name cannot equal institution name.",
         "rule": {
-            "property": "parentName",
-            "condition": "not_equal_property",
-            "value": "institutionName"
+            "if": {
+                "property": "parentName",
+                "condition": "not_empty"
+            },
+            "then": {
+                "property": "parentName",
+                "condition": "not_equal_property",
+                "value": "institutionName"
+            }
         }
     },
     {

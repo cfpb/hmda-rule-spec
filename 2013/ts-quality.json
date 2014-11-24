@@ -33,5 +33,34 @@
                 ]
             }
         }
+    },
+    {
+        "id": "Q020",
+        "description": "Institution address should not = parent address.",
+        "rule": {
+            "property": "respondentAddress",
+            "condition": "not_equal_property",
+            "value": "parentAddress"
+        },
+        "question": "Is this edit lazily written? Based on previous uses of 'mailing address', this rule should check if the parent name is not blank and then check each part of the address: address, zip, city, state."
+    },
+    {
+        "id": "Q012",
+        "description": "The reported Tax ID number on the transmittal sheet of your HMDA data file does not match the Tax ID number reported in the previous calendar year submission.",
+        "rule": {
+            "property": "taxID",
+            "condition": "call",
+            "function": "isTaxIDTheSameAsLastYear",
+            "args": ["respondentID", "taxID"]
+        }
+    },
+    {
+        "id": "Q130",
+        "description": "The number of loan/application records received in this transmission file per respondent does not = the total number of loan/application records reported in this respondent’s transmission or the total number of loan/application records in this submission is missing from the transmittal sheet.",
+        "rule": {
+            "property": "totalLineEntries",
+            "condition": "call",
+            "function": "checkTotalLARCount"
+        }
     }
 ]

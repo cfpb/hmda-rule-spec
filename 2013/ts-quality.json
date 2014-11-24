@@ -1,0 +1,37 @@
+[
+    {
+        "id": "Q033",
+        "description": "If respondent is a bank, savings association, or independent mortgage company, and if any parent company exists, then parent name, address, city, state and zip code should not = blank.",
+        "rule": {
+            "if": {
+                "property": "respondentID",
+                "condition": "call",
+                "function": "isBankOrSavingsAssociationOrIndependentMortgageCompanyWithParentCompany"
+            },
+            "then": {
+                "and": [
+                    {
+                        "property": "parentName",
+                        "condition": "not_empty"
+                    },
+                    {
+                        "property": "parentAddress",
+                        "condition": "not_empty"
+                    },
+                    {
+                        "property": "parentCity",
+                        "condition": "not_empty"
+                    },
+                    {
+                        "property": "parentState",
+                        "condition": "not_empty"
+                    },
+                    {
+                        "property": "parentZip",
+                        "condition": "not_empty"
+                    }
+                ]
+            }
+        }
+    }
+]

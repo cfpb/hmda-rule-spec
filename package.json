@@ -13,6 +13,6 @@
   },
   "homepage": "https://github.com/cfpb/hmda-rule-spec",
   "devDependencies": {
-    "brij-spec": "0.0.1"
+    "brij-spec": "0.0.2"
   }
 }

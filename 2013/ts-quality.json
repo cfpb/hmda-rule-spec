@@ -6,7 +6,7 @@
             "if": {
                 "property": "respondentID",
                 "condition": "call",
-                "function": "isBankOrSavingsAssociationOrIndependentMortgageCompanyWithParentCompany"
+                "function": "isChildFI"
             },
             "then": {
                 "and": [

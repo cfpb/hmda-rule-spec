@@ -38,11 +38,16 @@
         "id": "Q020",
         "description": "Institution address should not = parent address.",
         "rule": {
-            "property": "respondentAddress",
-            "condition": "not_equal_property",
-            "value": "parentAddress"
+            "if": {
+                "property": "parentAddress",
+                "condition": "not_empty"
+            },
+            "then": {
+                "property": "respondentAddress",
+                "condition": "not_equal_property",
+                "value": "parentAddress"
+            }
         },
-        "question": "Is this edit lazily written? Based on previous uses of 'mailing address', this rule should check if the parent name is not blank and then check each part of the address: address, zip, city, state."
     },
     {
         "id": "Q012",

@@ -5,7 +5,7 @@
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
-            "function": "checkRecordIdentifiersForEachRow"
+            "function": "hasRecordIdentifiersForEachRow"
         }
     },
     {
@@ -14,7 +14,7 @@
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
-            "function": "checkAtLeastOneLAR"
+            "function": "hasAtLeastOneLAR"
         }
     },
     {
@@ -23,7 +23,7 @@
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
-            "function": "checkAgencyCode"
+            "function": "isValidAgencyCode"
         }
     },
     {
@@ -32,7 +32,7 @@
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
-            "function": "checkControlNumber",
+            "function": "isValidControlNumber",
         }
     },
     {
@@ -41,7 +41,7 @@
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
-            "function": "checkLoanNumberUnique"
+            "function": "hasUniqueLoanNumbers"
         }
     }
 ]

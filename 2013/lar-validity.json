@@ -1,0 +1,325 @@
+[
+    {
+        "id": "V210",
+        "description": "Date application received must be in CCYYMMDD format; month and day must be in the range 01-12 and 01-31, respectively or equal NA. CCYY must be numeric and CC (century) must equal 19 or 20.",
+        "rule": {
+            "property": "applicationReceivedDate",
+            "condition": "yyyy_mm_dd_hh_mm"
+        }
+    },
+    {
+        "id": "V215",
+        "description": "If Action taken type = 6, then date application received must = NA.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "equal",
+                "value": "6"
+            },
+            "then": {
+                "property": "applicationReceivedDate",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "V220",
+        "description": "Loan type must = 1, 2, 3, or 4.",
+        "rule": {
+            "property": "loanType",
+            "condition": "in",
+            "values": ["1", "2", "3", "4"]
+        }
+    },
+    {
+        "id": "V400",
+        "description": "Property type must = 1, 2, or 3.",
+        "rule": {
+            "property": "propertyType",
+            "condition": "in",
+            "values": ["1", "2", "3"]
+        }
+    },
+    {
+        "id": "V225",
+        "description": "Loan purpose must = 1, 2, or 3.",
+        "rule": {
+            "property": "loanPurpose",
+            "condition": "in",
+            "values": ["1", "2", "3"]
+        }
+    },
+    {
+        "id": "V410",
+        "description": "If lien status = 3, then loan purpose must = 2.",
+        "rule": {
+            "if": {
+                "property": "leinStatus",
+                "condition": "equal",
+                "value": "3"
+            },
+            "then": {
+                "property": "loanPurpose",
+                "condition": "equal",
+                "value": "2"
+            }
+        }
+    },
+    {
+        "id": "V230",
+        "description": "Occupancy must = 1, 2, or 3.",
+        "rule": {
+            "property": "ownerOccupancy",
+            "condition": "in",
+            "values": ["1", "2", "3"]
+        }
+    },
+    {
+        "id": "V250",
+        "description": "Loan amount must be numeric and > zero.",
+        "rule": {
+            "and": [
+                {
+                    "property": "loanAmount",
+                    "condition": "is_integer"
+                },
+                {
+                    "property": "loanAmount",
+                    "condition": "greater_than",
+                    "value": "0"
+                }
+            ]
+        }
+    },
+    {
+        "id": "V415",
+        "description": "Preapproval must = 1, 2, or 3.",
+        "rule": {
+            "property": "preapprovals",
+            "condition": "in",
+            "values": ["1", "2", "3"]
+        }
+    },
+    {
+        "id": "V425",
+        "description": "If loan purpose = 1 and action taken type = 6, then preapproval must = 3.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "loanPurpose",
+                        "condition": "equal",
+                        "value": "1"
+                    },
+                    {
+                        "property": "actionTaken",
+                        "condition": "equal",
+                        "value": "6"
+                    }
+                ]
+            },
+            "then": {
+                "property": "preapprovals",
+                "condition": "equal",
+                "value": "3"
+            }
+        }
+    },
+    {
+        "id": "V430",
+        "description": "If loan purpose = 2 or 3, then preapproval must = 3.",
+        "rule": {
+            "if": {
+                "property": "loanPurpose",
+                "condition": "in",
+                "values": ["2", "3"]
+            },
+            "then": {
+                "property": "preapprovals",
+                "condition": "equal",
+                "value": "3"
+            }
+        }
+    },
+    {
+        "id": "V435",
+        "description": "If action taken type = 7 or 8, then preapproval must = 1.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "in",
+                "values": ["7", "8"]
+            },
+            "then": {
+                "property": "preapprovals",
+                "condition": "equal",
+                "value": "1"
+            }
+        }
+    },
+    {
+        "id": "V255",
+        "description": "Action taken type must = 1, 2, 3, 4, 5, 6, 7, or 8.",
+        "rule": {
+            "property": "actionTaken",
+            "condition": "in",
+            "values": ["1", "2", "3", "4", "5", "6", "7", "8"]
+        }
+    },
+    {
+        "id": "V260",
+        "description": "If reasons for denial are in the range 1-9, then action taken type must = 3 or 7.",
+        "rule": {
+            "if": {
+                "or": [
+                    {
+                        "property": "denialReason1",
+                        "condition": "between",
+                        "start": 0,
+                        "end": 10
+                    },
+                    {
+                        "property": "denialReason2",
+                        "condition": "between",
+                        "start": 0,
+                        "end": 10
+                    },
+                    {
+                        "property": "denialReason3",
+                        "condition": "between",
+                        "start": 0,
+                        "end": 10
+                    }
+                ]
+            },
+            "then": {
+                "property": "actionTaken",
+                "condition": "in",
+                "values": ["3", "7"]
+            }
+        }
+    },
+    {
+        "id": "V262",
+        "description": "If date application received = NA, then action taken type must = 6.",
+        "rule": {
+            "if": {
+                "property": "applicationReceivedDate",
+                "condition": "equal",
+                "value": "NA"
+            },
+            "then": {
+                "property": "actionTaken",
+                "condition": "equal",
+                "value": "6"
+            }
+        }
+    },
+    {
+        "id": "V440",
+        "description": "If preapproval = 1, then action taken type must = 1-5, 7 or 8.",
+        "rule": {
+            "if": {
+                "property": "preapprovals",
+                "condition": "equal",
+                "value": "1"
+            },
+            "then": {
+                "property": "actionTaken",
+                "condition": "in",
+                "values": ["1", "2", "3", "4", "5", "7", "8"]
+            }
+        }
+    },
+    {
+        "id": "V445",
+        "description": "If preapproval = 2, then action taken type must = 1-5.",
+        "rule": {
+            "if": {
+                "property": "preapprovals",
+                "condition": "equal",
+                "value": "2"
+            },
+            "then": {
+                "property": "actionTaken",
+                "condition": "in",
+                "values": ["1", "2", "3", "4", "5"]
+            }
+        }
+    },
+    {
+        "id": "V447",
+        "description": "If preapproval = 3, then action taken type must = 1-6.",
+        "rule": {
+            "if": {
+                "property": "preapprovals",
+                "condition": "equal",
+                "value": "3"
+            },
+            "then": {
+                "property": "actionTaken",
+                "condition": "in",
+                "values": ["1", "2", "3", "4", "5", "6"]
+            }
+        }
+    },
+    {
+        "id": "V265",
+        "description": "Action taken date must be in CCYYMMDD format; month and day must be in the range 01-12 and 01-31, respectively. CCYY must be numeric.",
+        "rule": {
+            "property": "preapprovals",
+            "condition": "yyyy_mm_dd"
+        }
+    },
+    {
+        "id": "V275",
+        "description": "If date application received does not = NA, then action taken date must be ≥ date application received.",
+        "rule": {
+            "if": {
+                "property": "applicationReceivedDate",
+                "condition": "not_equal",
+                "value": "NA"
+            },
+            "then": {
+                "property": "actionTaken",
+                "condition": "greater_than_or_equal_property",
+                "value": "applicationReceivedDate"
+            }
+        }
+    },
+    {
+        "id": "V280",
+        "description": "MSA/MD must = a valid Metropolitan Statistical Area or Metropolitan Division (if appropriate) code for period being processed or NA.",
+        "rule": {
+            "property": "metroArea",
+            "condition": "call",
+            "function": "isValidMetroArea"
+        }
+    },
+    {
+        "id": "V285",
+        "description": "State must = a valid FIPS code or (NA where MSA/MD = NA).",
+        "rule": {
+            "or": [
+                {
+                    "if": {
+                        "property": "metroArea",
+                        "condition": "equal",
+                        "value": "NA"
+                    },
+                    "then": {
+                        "property": "fipsState",
+                        "condition": "equal",
+                        "value": "NA"
+                    }
+                },
+                {
+                    "property": "fipsState",
+                    "condition": "call",
+                    "function": "isValidFipsState"
+                }
+            ]
+        }
+    }
+]

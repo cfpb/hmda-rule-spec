@@ -4,7 +4,7 @@
         "description": "Date application received must be in CCYYMMDD format; month and day must be in the range 01-12 and 01-31, respectively or equal NA. CCYY must be numeric and CC (century) must equal 19 or 20.",
         "rule": {
             "property": "applicationReceivedDate",
-            "condition": "yyyy_mm_dd_hh_mm"
+            "condition": "yyyy_mm_dd"
         }
     },
     {
@@ -55,7 +55,7 @@
         "description": "If lien status = 3, then loan purpose must = 2.",
         "rule": {
             "if": {
-                "property": "leinStatus",
+                "property": "lienStatus",
                 "condition": "equal",
                 "value": "3"
             },
@@ -268,7 +268,7 @@
         "id": "V265",
         "description": "Action taken date must be in CCYYMMDD format; month and day must be in the range 01-12 and 01-31, respectively. CCYY must be numeric.",
         "rule": {
-            "property": "preapprovals",
+            "property": "actionDate",
             "condition": "yyyy_mm_dd"
         }
     },
@@ -282,7 +282,7 @@
                 "value": "NA"
             },
             "then": {
-                "property": "actionTaken",
+                "property": "actionDate",
                 "condition": "greater_than_or_equal_property",
                 "value": "applicationReceivedDate"
             }
@@ -937,18 +937,18 @@
                 {
                     "and": [
                         {
-                            "property": "income",
+                            "property": "applicantIncome",
                             "condition": "is_integer"
                         },
                         {
-                            "property": "income",
+                            "property": "applicantIncome",
                             "condition": "greater_than",
                             "value": "0"
                         }
                     ]
                 },
                 {
-                    "property": "income",
+                    "property": "applicantIncome",
                     "condition": "equal",
                     "value": "NA"
                 }
@@ -965,7 +965,7 @@
                 "value": "3"
             },
             "then": {
-                "property": "income",
+                "property": "applicantIncome",
                 "condition": "equal",
                 "value": "NA"
             }
@@ -1227,7 +1227,7 @@
             "if": {
                 "property": "lienStatus",
                 "condition": "equal",
-                "value": "2"
+                "value": "3"
             },
             "then": {
                 "property": "rateSpread",

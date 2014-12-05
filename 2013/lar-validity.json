@@ -426,19 +426,19 @@
                 "or": [
                     {
                         "property": "coapplicantRace1",
-                        "condition": "not_equal",
+                        "condition": "equal",
                         "value": "8"
                     },
                     {
                         "property": "coapplicantSex",
-                        "condition": "not_equal",
+                        "condition": "equal",
                         "value": "5"
                     }
                 ]
             },
             "then": {
                 "property": "coapplicantEthnicity",
-                "condition": "not_equal",
+                "condition": "equal",
                 "value": "5"
             }
         }
@@ -693,19 +693,19 @@
                 "or": [
                     {
                         "property": "coapplicantEthnicity",
-                        "condition": "not_equal",
+                        "condition": "equal",
                         "value": "5"
                     },
                     {
                         "property": "coapplicantSex",
-                        "condition": "not_equal",
+                        "condition": "equal",
                         "value": "5"
                     }
                 ]
             },
             "then": {
                 "property": "coapplicantRace1",
-                "condition": "not_equal",
+                "condition": "equal",
                 "value": "8"
             }
         }
@@ -928,19 +928,19 @@
                 "or": [
                     {
                         "property": "coapplicantEthnicity",
-                        "condition": "not_equal",
+                        "condition": "equal",
                         "value": "5"
                     },
                     {
                         "property": "coapplicantRace1",
-                        "condition": "not_equal",
+                        "condition": "equal",
                         "value": "8"
                     }
                 ]
             },
             "then": {
                 "property": "coapplicantSex",
-                "condition": "not_equal",
+                "condition": "equal",
                 "value": "5"
             }
         }

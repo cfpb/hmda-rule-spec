@@ -9,6 +9,15 @@
         }
     },
     {
+        "id": "S013",
+        "description": "Timestamp must be later than timestamp on database.",
+        "rule": {
+            "property": "timestamp",
+            "condition": "call",
+            "function": "isTimestampLaterThanDatabase"
+        }
+    },
+    {
         "id": "S028",
         "description": "Timestamp must be numeric and in ccyymmddhhmm format.",
         "rule": {

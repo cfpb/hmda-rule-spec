@@ -270,8 +270,7 @@
         "description": "Action taken date must be in CCYYMMDD format; month and day must be in the range 01-12 and 01-31, respectively. CCYY must be numeric.",
         "rule": {
             "property": "actionDate",
-            "condition": "call",
-            "function": "isValidActionDate"
+            "condition": "yyyy_mm_dd"
         }
     },
     {

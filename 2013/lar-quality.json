@@ -1,5 +1,4 @@
 [
-<<<<<<< HEAD
 	{
 		"id": "Q022",
 		"description": "Date application received should = activity year or (activity year minus 1 or activity year minus 2)."
@@ -490,9 +489,7 @@
 				"value": "NA"
 			}
 		}
-	}
-]
-=======
+	},
     {
         "id": "Q039",
         "description": "If HOEPA status = 1 and action taken type = 1, then rate spread should not = NA.",
@@ -857,4 +854,3 @@
         }
     }
 ]
->>>>>>> upstream/milestone1

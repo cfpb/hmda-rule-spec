@@ -5,7 +5,7 @@
 		"rule": {
 			"property": "applicationReceivedDate",
 			"condition": "between",
-			"start": "20109999"
+			"start": "20109999",
 			"end": "20140000"
 		}
 	},

@@ -299,7 +299,7 @@
                     {
                         "property": "applicationReceivedDate",
                         "condition": "greater_than_or_equal",
-                        "value": "20140101"
+                        "value": "20040101"
                     },
                     {
                         "property": "applicationReceivedDate",

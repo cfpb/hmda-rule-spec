@@ -381,7 +381,7 @@
                     {
                         "property": "loanAmount",
                         "condition": "call",
-                        "function": "loanAmountIsFiveTimesIncome",
+                        "function": "isLoanAmountFiveTimesIncome",
                         "args": ["loanAmount", "applicantIncome"]
                     }
                 ]

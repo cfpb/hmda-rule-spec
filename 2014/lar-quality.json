@@ -243,26 +243,12 @@
     },
     {
         "id": "Q026",
-        "description": "If action taken type = 1-5, 7, or 8, and (application date ≥ 20040101 and not = NA), then applicant ethnicity, race and/or sex should not = 4, 7, or 4, respectively.",
+        "description": "If action taken type = 1-5, 7, or 8, then applicant ethnicity, race and/or sex should not = 4, 7, or 4, respectively.",
         "rule": {
             "if": {
-                "and": [
-                    {
-                        "property": "actionTaken",
-                        "condition": "in",
-                        "values": ["1", "2", "3", "4", "5", "7", "8"]
-                    },
-                    {
-                        "property": "applicationReceivedDate",
-                        "condition": "greater_than_or_equal",
-                        "value": "20040101"
-                    },
-                    {
-                        "property": "applicationReceivedDate",
-                        "condition": "not_equal",
-                        "value": "NA"
-                    }
-                ]
+                "property": "actionTaken",
+                "condition": "in",
+                "values": ["1", "2", "3", "4", "5", "7", "8"]
             },
             "then": {
                 "and": [
@@ -287,7 +273,7 @@
     },
     {
         "id": "Q068",
-        "description": "If action taken type = 1-5, 7 or 8 (application date ≥ 20040101 and not = NA), and applicant ethnicity, race and sex = 4,7,4, respectively, and co-applicant ethnicity, race and sex = 4,7,4, respectively, and there is no co-applicant, then co-applicant ethnicity, race, and sex should = 5,8,5, respectively.",
+        "description": "If action taken type = 1-5, 7 or 8, and applicant ethnicity, race and sex = 4,7,4, respectively, and co-applicant ethnicity, race and sex = 4,7,4, respectively, and there is no co-applicant, then co-applicant ethnicity, race, and sex should = 5,8,5, respectively.",
         "rule": {
             "if": {
                 "and": [
@@ -295,16 +281,6 @@
                         "property": "actionTaken",
                         "condition": "in",
                         "values": ["1", "2", "3", "4", "5", "7", "8"]
-                    },
-                    {
-                        "property": "applicationReceivedDate",
-                        "condition": "greater_than_or_equal",
-                        "value": "20040101"
-                    },
-                    {
-                        "property": "applicationReceivedDate",
-                        "condition": "not_equal",
-                        "value": "NA"
                     },
                     {
                         "property": "applicantEthnicity",
@@ -584,7 +560,7 @@
     },
     {
         "id": "Q044",
-        "description": "If agency = 1, 2, 3, 7 or 9, action taken type = 1, loan purpose = 2 or 3, lien status = 1, and rate spread > 6.5%, then HOEPA status should = 1.",
+        "description": "If agency = 1, 2, 3, 7 or 9, action taken type = 1, lien status = 1, and rate spread > 6.5%, then HOEPA status should = 1.",
         "rule": {
             "if": {
                 "and": [
@@ -597,11 +573,6 @@
                         "property": "actionTaken",
                         "condition": "equal",
                         "value": "1"
-                    },
-                    {
-                        "property": "loanPurpose",
-                        "condition": "in",
-                        "values": ["2", "3"]
                     },
                     {
                         "property": "lienStatus",
@@ -625,7 +596,7 @@
     },
     {
         "id": "Q045",
-        "description": "If agency = 1, 2, 3, 7 or 9, action taken type = 1, loan purpose = 2 or 3, lien status = 2, and rate spread > 8.5%, then HOEPA status should = 1.",
+        "description": "If agency = 1, 2, 3, 7 or 9, action taken type = 1, lien status = 2, and rate spread > 8.5%, then HOEPA status should = 1.",
         "rule": {
             "if": {
                 "and": [
@@ -638,11 +609,6 @@
                         "property": "actionTaken",
                         "condition": "equal",
                         "value": "1"
-                    },
-                    {
-                        "property": "loanPurpose",
-                        "condition": "in",
-                        "values": ["2", "3"]
                     },
                     {
                         "property": "lienStatus",

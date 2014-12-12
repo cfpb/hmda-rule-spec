@@ -1,0 +1,36 @@
+[
+    {
+        "id": "S100",
+        "description": "Activity year must = year being processed (= 2014).",
+        "rule": {
+            "property": "activityYear",
+            "condition": "equal",
+            "value": "2014"
+        }
+    },
+    {
+        "id": "S013",
+        "description": "Timestamp must be later than timestamp on database.",
+        "rule": {
+            "property": "timestamp",
+            "condition": "call",
+            "function": "isTimestampLaterThanDatabase"
+        }
+    },
+    {
+        "id": "S028",
+        "description": "Timestamp must be numeric and in ccyymmddhhmm format.",
+        "rule": {
+            "and": [
+                {
+                    "property": "timestamp",
+                    "condition": "is_integer"
+                },
+                {
+                    "property": "timestamp",
+                    "condition": "yyyy_mm_dd_hh_mm"
+                }
+            ]
+        }
+    }
+]

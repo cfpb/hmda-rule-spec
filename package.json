@@ -1,0 +1,18 @@
+{
+  "name": "hmda-rule-spec",
+  "version": "0.0.1",
+  "description": "HMDA edit checks written in BRIJ",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cfpb/hmda-rule-spec.git"
+  },
+  "author": "Consumer Financial Protection Bureau",
+  "license": "Public Domain",
+  "bugs": {
+    "url": "https://github.com/cfpb/hmda-rule-spec/issues"
+  },
+  "homepage": "https://github.com/cfpb/hmda-rule-spec",
+  "devDependencies": {
+    "brij-spec": "0.0.2"
+  }
+}

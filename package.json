@@ -1,6 +1,10 @@
 {
   "name": "hmda-rule-spec",
   "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
   "description": "HMDA edit checks written in BRIJ",
   "repository": {
     "type": "git",
@@ -13,6 +17,19 @@
   },
   "homepage": "https://github.com/cfpb/hmda-rule-spec",
   "devDependencies": {
-    "brij-spec": "0.0.2"
+    "brij-spec": "0.0.4",
+    "grunt": "^0.4.5",
+    "grunt-config-dir": "^0.3.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-develop": "^0.4.0",
+    "grunt-env": "~0.4.1",
+    "grunt-mocha-istanbul": "^1.4.1",
+    "grunt-mocha-test": "^0.10.2",
+    "grunt-release": "^0.7.0",
+    "istanbul": "^0.2.10",
+    "mocha": "^1.18.0",
+    "must": "^0.12.0",
+    "spec-xunit-file": "0.0.1-2"
   }
 }

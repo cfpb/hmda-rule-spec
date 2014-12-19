@@ -6,7 +6,7 @@
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
-            "function": "temp"
+            "function": "isValidNumMultifamilyLoans"
         }
     },
     {
@@ -278,7 +278,7 @@
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
-            "function": "temp",
+            "function": "isValidNumLoans",
         }
     },
     {
@@ -700,7 +700,7 @@
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
-            "function": "temp"
+            "function": "isValidNumFannieMaeLoans"
         }
     },
     {
@@ -710,7 +710,7 @@
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
-            "function": "temp"
+            "function": "isValidNumGinnieMaeFHALoans"
         }
     },
     {
@@ -720,7 +720,7 @@
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
-            "function": "temp"
+            "function": "isValidNumGinnieMaeVALoans"
         }
     },
     {
@@ -953,7 +953,7 @@
             "then": {
                 "property": "hmdaFile",
                 "condition": "call",
-                "function": "temp"
+                "function": "isValidNumHomePurchaseLoans"
             }
         }
     },
@@ -993,7 +993,7 @@
             "then": {
                 "property": "hmdaFile",
                 "condition": "call",
-                "function": "temp"
+                "function": "isValidNumRefinanceLoans"
             }
         }
     },
@@ -1166,7 +1166,7 @@
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
-            "function": "temp"
+            "function": "isValidMsaMdCountyCensusForNonDepository"
         }
     }
 ]

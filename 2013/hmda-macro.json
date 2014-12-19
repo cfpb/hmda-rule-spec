@@ -36,7 +36,7 @@
             "if": {
                 "property": "hmdaFile",
                 "condition": "call",
-                "function": "compareNumLoans",
+                "function": "compareNumLoansSingle",
                 "args": [
                     {
                         "and": [
@@ -292,7 +292,7 @@
             "args": [
                 {
                     "property": "applicantIncome",
-                    "condition": "less_than_or_equal",
+                    "condition": "less_than",
                     "value": "10"
                 },
                 {

@@ -22,7 +22,7 @@ var SpecAPI = function() {
         }
     };
 
-    api.getEdits = function(editType, year, objectType) {
+    api.getEdits = function(year, objectType, editType) {
         try {
             return require('./' + year + '/' + objectType + '-' + editType + '.json');
         } catch (e) {

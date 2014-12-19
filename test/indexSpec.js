@@ -33,13 +33,13 @@ describe('getFileSpec', function() {
 
 describe('getEdits', function() {
     it('should return the edits for a year, editType, objectType combo', function(done) {
-        var edits = specAPI.getEdits('validity', '2013', 'ts');
+        var edits = specAPI.getEdits('2013', 'ts', 'validity');
         expect(edits.length).to.be.at.least(1);
         done();
     });
 
     it('should return an empty list for an invalid year, editType, objectType combo', function(done) {
-        var edits = specAPI.getEdits('validity', '2013', 'hmda');
+        var edits = specAPI.getEdits('2013', 'hmda', 'validity');
         expect(edits).to.be.empty();
         done();
     });

@@ -269,7 +269,8 @@
                 "loanApplicationRegisters",
                 {
                     "property": "metroArea",
-                    "condition": "not_empty"
+                    "condition": "not_equal",
+                    "value": "NA"
                 },
                 {
                     "property": "recordID",
@@ -528,7 +529,8 @@
                             "and": [
                                 {
                                     "property": "rateSpread",
-                                    "condition": "not_empty"
+                                    "condition": "not_equal",
+                                    "value": "NA"
                                 },
                                 {
                                     "property": "rateSpread",
@@ -580,7 +582,8 @@
                             "and": [
                                 {
                                     "property": "rateSpread",
-                                    "condition": "not_empty"
+                                    "condition": "not_equal",
+                                    "value": "NA"
                                 },
                                 {
                                     "property": "rateSpread",
@@ -613,9 +616,18 @@
                 "args": [
                     "loanApplicationRegisters",
                     {
-                        "property": "loanPurpose",
-                        "condition": "equal",
-                        "value": "1"
+                        "and": [
+                            {
+                                "property": "loanPurpose",
+                                "condition": "equal",
+                                "value": "1"
+                            },
+                            {
+                                "property": "loanType",
+                                "condition": "equal",
+                                "value": "1"
+                            }
+                        ]
                     },
                     "greater_than_or_equal",
                     "50"
@@ -628,14 +640,37 @@
                 "args": [
                     "loanApplicationRegisters",
                     {
-                        "property": "loanPurpose",
-                        "condition": "equal",
-                        "value": "1"
+                        "and": [
+                            {
+                                "property": "loanPurpose",
+                                "condition": "equal",
+                                "value": "1"
+                            },
+                            {
+                                "property": "loanType",
+                                "condition": "equal",
+                                "value": "1"
+                            }
+                        ]
                     },
                     {
-                        "property": "recordID",
-                        "condition": "equal",
-                        "value": "2"
+                        "and": [
+                            {
+                                "property": "loanPurpose",
+                                "condition": "equal",
+                                "value": "1"
+                            },
+                            {
+                                "property": "loanType",
+                                "condition": "equal",
+                                "value": "1"
+                            },
+                            {
+                                "property": "actionTaken",
+                                "condition": "equal",
+                                "value": "3"
+                            }
+                        ]
                     },
                     "less_than_or_equal",
                     ".70"
@@ -738,7 +773,7 @@
         }
     },
     {
-        "id": "Q072"
+        "id": "Q072",
         "description": "If action taken type = 1 or 6, purpose of loan = 1 or 3, property type = 1 or 2, loan type = 3; and if the percentage of these loans that are sold to Ginnie Mae in the current year is less than the percentage of the same type of loans sold to Ginnie Mae in the prior year, then the percentage difference between the two years should be less than 10%; or if the number of these loans for the current year is >= 2,000, then the percentage of these loans sold to Ginnie Mae for the current year should be > 30%.",
         "explanation": "Action taken type = 1 or 6, loan purpose = 1 or 3, property type = 1 or 2, loan type = 3. If the percentage of these loans that are sold to Ginnie Mae in the current year is less than the percentage of the same category of loans sold to Ginnie Mae in the prior year, then the percentage difference between the two years should be less than 10%; or if the number of these loans for the current year is >= 2,000, then the percentage of these loans sold to Ginnie Mae for the current year should be > 30%. Please verify type of purchaser field is correct.",
         "rule": {
@@ -802,7 +837,7 @@
                             {
                                 "property": "actionTaken",
                                 "condition": "equal",
-                                "values": "6"
+                                "value": "6"
                             },
                             {
                                 "property": "propertyType",
@@ -901,7 +936,7 @@
                             {
                                 "property": "actionTaken",
                                 "condition": "equal",
-                                "values": "6"
+                                "value": "6"
                             },
                             {
                                 "property": "propertyType",

@@ -2,6 +2,7 @@
     {
         "id": "V210",
         "description": "Date application received must be in CCYYMMDD format; month and day must be in the range 01-12 and 01-31, respectively or equal NA. CCYY must be numeric and CC (century) must equal 20.",
+        "explanation": "Application Month, day, year and/or century not valid.",
         "rule": {
             "property": "applicationReceivedDate",
             "condition": "call",
@@ -11,6 +12,7 @@
     {
         "id": "V215",
         "description": "If Action taken type = 6, then date application received must = NA.",
+        "explanation": "Loan was purchased; therefore application date must equal NA.",
         "rule": {
             "if": {
                 "property": "actionTaken",
@@ -27,6 +29,7 @@
     {
         "id": "V220",
         "description": "Loan type must = 1, 2, 3, or 4.",
+        "explanation": "Loan type is missing or is not in range 1-4.",
         "rule": {
             "property": "loanType",
             "condition": "in",
@@ -36,6 +39,7 @@
     {
         "id": "V400",
         "description": "Property type must = 1, 2, or 3.",
+        "explanation": "Property type is missing or is not in range 1-3.",
         "rule": {
             "property": "propertyType",
             "condition": "in",
@@ -45,6 +49,7 @@
     {
         "id": "V225",
         "description": "Loan purpose must = 1, 2, or 3.",
+        "explanation": "Loan purpose is missing or is not in range 1-3.",
         "rule": {
             "property": "loanPurpose",
             "condition": "in",
@@ -54,6 +59,7 @@
     {
         "id": "V410",
         "description": "If lien status = 3, then loan purpose must = 2.",
+        "explanation": "Lien status = 3; therefore loan purpose must = 2.",
         "rule": {
             "if": {
                 "property": "lienStatus",
@@ -70,6 +76,7 @@
     {
         "id": "V230",
         "description": "Occupancy must = 1, 2, or 3.",
+        "explanation": "Occupancy is missing or does not equal 1, 2, or 3.",
         "rule": {
             "property": "ownerOccupancy",
             "condition": "in",
@@ -79,6 +86,7 @@
     {
         "id": "V250",
         "description": "Loan amount must be numeric and > zero.",
+        "explanation": "Loan amount is not numeric or not > 0.",
         "rule": {
             "and": [
                 {
@@ -96,6 +104,7 @@
     {
         "id": "V415",
         "description": "Preapproval must = 1, 2, or 3.",
+        "explanation": "Preapproval is missing or is not in range 1-3.",
         "rule": {
             "property": "preapprovals",
             "condition": "in",
@@ -105,6 +114,7 @@
     {
         "id": "V425",
         "description": "If loan purpose = 1 and action taken type = 6, then preapproval must = 3.",
+        "explanation": "Loan purpose = 1 and action taken type = 6; therefore preapproval must = 3.",
         "rule": {
             "if": {
                 "and": [
@@ -130,6 +140,7 @@
     {
         "id": "V430",
         "description": "If loan purpose = 2 or 3, then preapproval must = 3.",
+        "explanation": "Loan purpose = 2 or 3 and preapproval is missing or does not = 3.",
         "rule": {
             "if": {
                 "property": "loanPurpose",
@@ -146,6 +157,7 @@
     {
         "id": "V435",
         "description": "If action taken type = 7 or 8, then preapproval must = 1.",
+        "explanation": "Action taken type = 7 or 8 and preapproval is missing or does not = 1.",
         "rule": {
             "if": {
                 "property": "actionTaken",
@@ -162,6 +174,7 @@
     {
         "id": "V255",
         "description": "Action taken type must = 1, 2, 3, 4, 5, 6, 7, or 8.",
+        "explanation": "Action taken type is missing or not in range 1-8.",
         "rule": {
             "property": "actionTaken",
             "condition": "in",
@@ -171,6 +184,7 @@
     {
         "id": "V260",
         "description": "If reasons for denial are in the range 1-9, then action taken type must = 3 or 7.",
+        "explanation": "Application or preapproval not denied, but denial reasons given.",
         "rule": {
             "if": {
                 "or": [
@@ -204,6 +218,7 @@
     {
         "id": "V262",
         "description": "If date application received = NA, then action taken type must = 6.",
+        "explanation": "Date application received = NA; therefore action taken type must = 6.",
         "rule": {
             "if": {
                 "property": "applicationReceivedDate",
@@ -220,6 +235,7 @@
     {
         "id": "V440",
         "description": "If preapproval = 1, then action taken type must = 1-5, 7 or 8.",
+        "explanation": "Preapproval = 1 and action taken type is missing or does not = 1-5, 7 or 8.",
         "rule": {
             "if": {
                 "property": "preapprovals",
@@ -236,6 +252,7 @@
     {
         "id": "V445",
         "description": "If preapproval = 2, then action taken type must = 1-5.",
+        "explanation": "Preapproval = 2 and action taken type is missing or does not = 1-5.",
         "rule": {
             "if": {
                 "property": "preapprovals",
@@ -252,6 +269,7 @@
     {
         "id": "V447",
         "description": "If preapproval = 3, then action taken type must = 1-6.",
+        "explanation": "Preapproval = 3 and action taken type is missing or does not = 1-6.",
         "rule": {
             "if": {
                 "property": "preapprovals",
@@ -268,6 +286,7 @@
     {
         "id": "V265",
         "description": "Action taken date must be in CCYYMMDD format; month and day must be in the range 01-12 and 01-31, respectively. CCYY must be numeric.",
+        "explanation": "Action taken date is invalid format and/or date.",
         "rule": {
             "property": "actionDate",
             "condition": "yyyy_mm_dd"
@@ -276,6 +295,7 @@
     {
         "id": "V275",
         "description": "If date application received does not = NA, then action taken date must be ≥ date application received.",
+        "explanation": "Action taken date is earlier than application date.",
         "rule": {
             "if": {
                 "property": "applicationReceivedDate",
@@ -292,6 +312,7 @@
     {
         "id": "V280",
         "description": "MSA/MD must = a valid Metropolitan Statistical Area or Metropolitan Division (if appropriate) code for period being processed or NA.",
+        "explanation": "MSA/MD number does not = a valid Metropolitan Statistical Area/Metropolitan Division code or NA, or is missing.",
         "rule": {
             "property": "metroArea",
             "condition": "call",
@@ -301,6 +322,7 @@
     {
         "id": "V285",
         "description": "State must = a valid FIPS code or (NA where MSA/MD = NA).",
+        "explanation": "State does not = a valid state code or (state equals NA and MSA/MD not NA).",
         "rule": {
             "or": [
                 {
@@ -342,6 +364,7 @@
     {
         "id": "V290",
         "description": "If MSA/MD does not = NA, then MSA/MD, state, and county codes must = a valid combination.",
+        "explanation": "MSA/MD, state, and county codes do not = a valid combination.",
         "rule": {
             "if": {
                 "property": "metroArea",
@@ -359,6 +382,7 @@
     {
         "id": "V295",
         "description": "State and county must = a valid combination or (county = NA where MSA/MD = NA).",
+        "explanation": "State/county does not equal a valid combination or (county equals NA and MSA/MD not NA).",
         "rule": {
             "or": [
                 {
@@ -385,6 +409,7 @@
     {
         "id": "V300",
         "description": "Census tract must = a valid census tract number for the MSA/MD, state, county combination or (NA if county is classified as small) or (where MSA/MD = NA the census tract must = a valid census tract for the state/county combination or NA). Valid census tract format must be NNNN.NN or NA, left justified.",
+        "explanation": "Census tract not in valid format or is missing, does not equal NA, or does not equal a valid census tract number.",
         "rule": {
             "and": [
                 {
@@ -404,6 +429,7 @@
     {
         "id": "V450",
         "description": "Applicant ethnicity must = 1, 2, 3, or 4.",
+        "explanation": "Applicant ethnicity is missing or not in range 1-4.",
         "rule": {
             "property": "applicantEthnicity",
             "condition": "in",
@@ -413,6 +439,7 @@
     {
         "id": "V460",
         "description": "Co-Applicant ethnicity must = 1, 2, 3, 4, or 5.",
+        "explanation": "Co-Applicant ethnicity is missing or not in range 1-5.",
         "rule": {
             "property": "coapplicantEthnicity",
             "condition": "in",
@@ -422,6 +449,7 @@
     {
         "id": "V463",
         "description": "Co-Applicant ethnicity does not = 5; however, co-applicant race field 1 = 8 and/or co-applicant sex = 5.",
+        "explanation": "If no co-applicant, co-applicant ethnicity/race/sex combination invalid.",
         "rule": {
             "if": {
                 "or": [
@@ -447,6 +475,7 @@
     {
         "id": "V455",
         "description": "If applicant ethnicity = 1, 2 or 3 then the first applicant race field must not = 7.",
+        "explanation": "Applicant ethnicity = 1, 2 or 3; therefore first applicant race invalid.",
         "rule": {
             "if": {
                 "property": "applicantEthnicity",
@@ -463,6 +492,7 @@
     {
         "id": "V465",
         "description": "If co-applicant ethnicity = 1, 2 or 3 then the first co-applicant race field must not = 7 or 8.",
+        "explanation": "Applicant ethnicity = 1, 2 or 3; therefore first applicant race invalid.",
         "rule": {
             "if": {
                 "property": "coapplicantEthnicity",
@@ -479,6 +509,7 @@
     {
         "id": "V310",
         "description": "Applicant race field 1 must = 1, 2, 3, 4, 5, 6, or 7.",
+        "explanation": "Applicant race field 1 is missing or is not in range 1-7.",
         "rule": {
             "property": "applicantRace1",
             "condition": "in",
@@ -488,6 +519,7 @@
     {
         "id": "V470",
         "description": "If applicant race = 1-5 in applicant race field 1, then all other applicant race fields must = blank or 1-5.",
+        "explanation": "Applicant race fields 2 - 5 are not blank or in range 1-5.",
         "rule": {
             "if": {
                 "property": "applicantRace1",
@@ -555,6 +587,7 @@
     {
         "id": "V475",
         "description": "If applicant race = 6 or 7 in applicant race field 1, then all other applicant race fields must = blank.",
+        "explanation": "Applicant race field 1= 6 or 7; therefore all other applicant race fields must = blank.",
         "rule": {
             "if": {
                 "property": "applicantRace1",
@@ -586,6 +619,7 @@
     {
         "id": "V480",
         "description": "Applicant race must not be the same (i.e. 1,1; 1,1,2; 1,2,3,4,1), when more than one applicant race is designated.",
+        "explanation": "Applicant race is the same.",
         "rule": {
             "and": [
                 {
@@ -680,6 +714,7 @@
     {
         "id": "V315",
         "description": "Co-Applicant race field 1 must = 1, 2, 3, 4, 5, 6, 7, or 8.",
+        "explanation": "Co-Applicant race field 1 is missing or is not in range 1-8.",
         "rule": {
             "property": "coapplicantRace1",
             "condition": "in",
@@ -689,6 +724,7 @@
     {
         "id": "V317",
         "description": "Co-Applicant race field 1 does not = 8; however, co-applicant ethnicity and/or co-applicant sex = 5.",
+        "explanation": "If no co-applicant, co-applicant race/sex/ethnicity combination invalid.",
         "rule": {
             "if": {
                 "or": [
@@ -714,6 +750,7 @@
     {
         "id": "V485",
         "description": "If co-applicant race = 1-5 in co-applicant race field 1, then all other co-applicant race fields must = blank or 1-5.",
+        "explanation": "Co-Applicant race fields 2-5 are not blank or in range 1-5.",
         "rule": {
             "if": {
                 "property": "coapplicantRace1",
@@ -781,6 +818,7 @@
     {
         "id": "V490",
         "description": "If co-applicant race = 6, 7, or 8 in co-applicant race field 1, then all other co-applicant race fields must = blank.",
+        "explanation": "Co-Applicant race field 1 = 6, 7, or 8; therefore all other co-applicant race fields must = blank.",
         "rule": {
             "if": {
                 "property": "coapplicantRace1",
@@ -812,6 +850,7 @@
     {
         "id": "V495",
         "description": "Co-Applicant race must not be the same (i.e. 1,1; 1,1,2; 1,2,3,4,1), when more than one co-applicant race is designated.",
+        "explanation": "Co-Applicant race is the same.",
         "rule": {
             "and": [
                 {
@@ -906,6 +945,7 @@
     {
         "id": "V320",
         "description": "Applicant sex must = 1, 2, 3, or 4.",
+        "explanation": "Applicant sex is missing or is not in range 1-4.",
         "rule": {
             "property": "applicantSex",
             "condition": "in",
@@ -915,6 +955,7 @@
     {
         "id": "V325",
         "description": "Co-Applicant sex must = 1, 2, 3, 4, or 5.",
+        "explanation": "Co-Applicant sex is missing or not in range 1-5.",
         "rule": {
             "property": "coapplicantSex",
             "condition": "in",
@@ -924,6 +965,7 @@
     {
         "id": "V326",
         "description": "Co-Applicant sex does not = 5; however, co-applicant ethnicity = 5 and/or co-applicant race field 1 = 8.",
+        "explanation": "If no co-applicant, co-applicant sex/ethnicity/race combination invalid.",
         "rule": {
             "if": {
                 "or": [
@@ -949,6 +991,7 @@
     {
         "id": "V330",
         "description": "Income must be numeric and > 0, or equal NA.",
+        "explanation": "Income is zero, missing, negative or, if non-numeric, does not equal NA.",
         "rule": {
             "or": [
                 {
@@ -975,6 +1018,7 @@
     {
         "id": "V335",
         "description": "If property type = 3, then income must = NA.",
+        "explanation": "Property type = 3; therefore income must = NA.",
         "rule": {
             "if": {
                 "property": "propertyType",
@@ -991,6 +1035,7 @@
     {
         "id": "V338",
         "description": "If applicant ethnicity, race, and sex = 4, 7, and 4, respectively, and co-applicant ethnicity, race, and sex = 5, 8, and 5, respectively, and action taken = 1-5 or 7-8 then applicant income must = NA.",
+        "explanation": "Applicant ethnicity, race, and sex = 4, 7, and 4, and co-applicant ethnicity, race, and sex = 5, 8, and 5, and action taken = 1-5, or 7-8, therefore income must = NA.",
         "rule": {
             "if": {
                 "and": [
@@ -1041,6 +1086,7 @@
     {
         "id": "V340",
         "description": "Type of purchaser must = 0, 1, 2, 3, 4, 5, 6, 7, 8, or 9.",
+        "explanation": "Type of purchaser must be in range 0-9.",
         "rule": {
             "property": "purchaserType",
             "condition": "in",
@@ -1050,6 +1096,7 @@
     {
         "id": "V347",
         "description": "If type of purchaser = 1, 2, 3, 4, 5, 6, 7, 8, or 9, then action taken type must be 1 or 6.",
+        "explanation": "Type of purchaser in range 1-9; therefore action taken should equal 1 or 6.",
         "rule": {
             "if": {
                 "property": "purchaserType",
@@ -1066,6 +1113,7 @@
     {
         "id": "V375",
         "description": "If type of purchaser = 2, then loan type must = 2, 3, or 4.",
+        "explanation": "Purchaser type = 2 and loan type does not equal 2, 3, or 4.",
         "rule": {
             "if": {
                 "property": "purchaserType",
@@ -1082,6 +1130,7 @@
     {
         "id": "V355",
         "description": "If (agency code = 2, 3, 5, 7, or 9) or (agency code = 1 and action taken not = 3 or 7), then reasons for denial must = 1, 2, 3, 4, 5, 6, 7, 8, 9, or blank.",
+        "explanation": "Reasons for denial are not blank or in range 1-9.",
         "rule": {
             "if": {
                 "or": [
@@ -1130,6 +1179,7 @@
     {
         "id": "V360",
         "description": "Responses for reasons for denial must not be the same (i.e. 1,1; 1,1,2; 1,2,2;...........).",
+        "explanation": "Reasons for denial are the same.",
         "rule": {
             "and": [
                 {
@@ -1169,6 +1219,7 @@
     {
         "id": "V385",
         "description": "If agency code = 1 and action taken = 3 or 7, then at least one reason for denial must be provided and must = 1, 2, 3, 4, 5, 6, 7, 8, or 9. Other reasons for denial must = 1, 2, 3, 4, 5, 6, 7, 8, 9 or blank.",
+        "explanation": "For action taken = 3 or 7, at least one reason for denial not given, or reason for denial given not in range 1-9.",
         "rule": {
             "if": {
                 "and": [
@@ -1208,6 +1259,7 @@
     {
         "id": "V500",
         "description": "Rate spread must be in the NN.NN format, must not = blank, and if NA, left justified.",
+        "explanation": "Rate spread is not in valid format or is missing.",
         "rule": {
             "and": [
                 {
@@ -1221,6 +1273,7 @@
     {
         "id": "V505",
         "description": "If action taken type = 2-8, then rate spread must = NA.",
+        "explanation": "Action taken type = 2-8; therefore rate spread must = NA.",
         "rule": {
             "if": {
                 "property": "actionTaken",
@@ -1238,6 +1291,7 @@
     {
         "id": "V570",
         "description": "If lien status = 1, then rate spread must be ≥ 1.5% and ≤ 99.99% or NA.",
+        "explanation": "Lien status = 1; therefore rate spread must be in range ≥ 1.5% and ≤ 99.99% or NA.",
         "rule": {
             "if": {
                 "property": "lienStatus",
@@ -1264,6 +1318,7 @@
     {
         "id": "V575",
         "description": "If lien status = 2, then rate spread must be ≥ 3.5% and ≤ 99.99% or NA.",
+        "explanation": "Lien status = 2; therefore rate spread must be in range ≥ 3.5% and ≤ 99.99% or NA.",
         "rule": {
             "if": {
                 "property": "lienStatus",
@@ -1290,6 +1345,7 @@
     {
         "id": "V520",
         "description": "If lien status = 3, then rate spread must = NA.",
+        "explanation": "Lien status = 3; therefore rate spread must = NA.",
         "rule": {
             "if": {
                 "property": "lienStatus",
@@ -1306,6 +1362,7 @@
     {
         "id": "V540",
         "description": "If action taken type = 2-5, 7, or 8, HOEPA status must = 2.",
+        "explanation": "Action taken type = 2-5, 7, or 8; therefore HOEPA status must = 2.",
         "rule": {
             "if": {
                 "property": "actionTaken",
@@ -1322,6 +1379,7 @@
     {
         "id": "V525",
         "description": "HOEPA status must = 1 or 2.",
+        "explanation": "HOEPA status is missing or does not = 1 or 2.",
         "rule": {
             "property": "hoepaStatus",
             "condition": "in",
@@ -1331,6 +1389,7 @@
     {
         "id": "V545",
         "description": "If lien status = 3, then HOEPA status must = 2.",
+        "explanation": "Lien status = 3; therefore HOEPA status must = 2.",
         "rule": {
             "if": {
                 "property": "lienStatus",
@@ -1347,6 +1406,7 @@
     {
         "id": "V550",
         "description": "Lien status must = 1, 2, 3, or 4.",
+        "explanation": "Lien status is missing or not in range 1-4.",
         "rule": {
             "property": "lienStatus",
             "condition": "in",
@@ -1356,6 +1416,7 @@
     {
         "id": "V555",
         "description": "If loan purpose = 1 or 3, then lien status must = 1, 2, or 4.",
+        "explanation": "Loan purpose = 1 or 3; therefore lien status must = 1, 2, or 4.",
         "rule": {
             "if": {
                 "property": "loanPurpose",
@@ -1372,6 +1433,7 @@
     {
         "id": "V560",
         "description": "If action taken type = 1-5, 7 or 8, then lien status must = 1, 2, or 3.",
+        "explanation": "Action taken type = 1-5, 7 or 8; therefore lien status must = 1, 2, or 3.",
         "rule": {
             "if": {
                 "property": "actionTaken",
@@ -1388,6 +1450,7 @@
     {
         "id": "V565",
         "description": "If action taken type = 6, then lien status must = 4.",
+        "explanation": "Action taken type = 6; therefore lien status must = 4.",
         "rule": {
             "if": {
                 "property": "actionTaken",

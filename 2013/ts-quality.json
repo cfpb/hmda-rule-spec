@@ -2,6 +2,7 @@
     {
         "id": "Q033",
         "description": "If respondent is a bank, savings association, or independent mortgage company, and if any parent company exists, then parent name, address, city, state and zip code should not = blank.",
+        "explanation": "Parent name, address, city, state, or zip code is missing.",
         "rule": {
             "if": {
                 "property": "respondentID",
@@ -37,6 +38,7 @@
     {
         "id": "Q020",
         "description": "Institution address should not = parent address.",
+        "explanation": "Institution address equals parent address.",
         "rule": {
             "if": {
                 "property": "parentAddress",
@@ -52,6 +54,7 @@
     {
         "id": "Q012",
         "description": "The reported Tax ID number on the transmittal sheet of your HMDA data file does not match the Tax ID number reported in the previous calendar year submission.",
+        "explanation": "Tax ID number on TS does not match the Tax ID number reported in the previous calendar year submission.",
         "rule": {
             "property": "taxID",
             "condition": "call",
@@ -62,6 +65,7 @@
     {
         "id": "Q130",
         "description": "The number of loan/application records received in this transmission file per respondent does not = the total number of loan/application records reported in this respondent’s transmission or the total number of loan/application records in this submission is missing from the transmittal sheet.",
+        "explanation": "Loan/application records received in this transmission are missing or not = to the total number of loan/application records reported in this transmission.",
         "rule": {
             "property": "totalLineEntries",
             "condition": "call",

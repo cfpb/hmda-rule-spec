@@ -269,7 +269,7 @@
                 "loanApplicationRegisters",
                 {
                     "property": "metroArea",
-                    "condition": "not_equal",
+                    "condition": "equal",
                     "value": "NA"
                 },
                 {

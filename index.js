@@ -2,6 +2,7 @@
 
 var VALID_YEARS = ['2013', '2014'];
 var VALID_OBJECT_TYPES = ['hmda', 'ts', 'lar'];
+var VALID_EDIT_TYPES = ['validity', 'syntactical', 'quality', 'macro'];
 
 var SpecAPI = function() {
     var api = {};
@@ -12,6 +13,10 @@ var SpecAPI = function() {
 
     api.getValidObjectTypes = function() {
         return VALID_OBJECT_TYPES;
+    };
+
+    api.getValidEditTypes = function() {
+        return VALID_EDIT_TYPES;
     };
 
     api.getFileSpec = function(year) {

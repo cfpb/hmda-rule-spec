@@ -289,7 +289,7 @@
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
-            "function": "isValidNumLoans",
+            "function": "isValidNumLoans"
         }
     },
     {

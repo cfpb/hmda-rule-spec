@@ -667,6 +667,11 @@
                                 "property": "loanType",
                                 "condition": "equal",
                                 "value": "1"
+                            },
+                            {
+                                "property": "actionTaken",
+                                "condition": "equal",
+                                "value": "3"
                             }
                         ]
                     },
@@ -681,11 +686,6 @@
                                 "property": "loanType",
                                 "condition": "equal",
                                 "value": "1"
-                            },
-                            {
-                                "property": "actionTaken",
-                                "condition": "equal",
-                                "value": "3"
                             }
                         ]
                     },

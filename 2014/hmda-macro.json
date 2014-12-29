@@ -11,22 +11,39 @@
     },
     {
         "id": "Q031",
-        "description": "If property type = 3, then the total number of multifamily applications should be < 200.",
+        "description": "If property type = 3, and total number of all loan applications < 2,000, then the total number of multifamily applications should be < 200.",
         "explanation": "Number of reported multifamily applications is ≥ 200; Verify.",
         "rule": {
-            "property": "hmdaFile",
-            "condition": "call",
-            "function": "compareNumEntriesSingle",
-            "args": [
-                "loanApplicationRegisters",
-                {
-                    "property": "propertyType",
-                    "condition": "equal",
-                    "value": "3"
-                },
-                "less_than",
-                "200"
-            ]
+            "if": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "compareNumEntriesSingle",
+                "args": [
+                    "loanApplicationRegisters",
+                    {
+                        "property": "recordID",
+                        "condition": "equal",
+                        "value": "2"
+                    },
+                    "less_than",
+                    "2000"
+                ]
+            },
+            "then": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "compareNumEntriesSingle",
+                "args": [
+                    "loanApplicationRegisters",
+                    {
+                        "property": "propertyType",
+                        "condition": "equal",
+                        "value": "3"
+                    },
+                    "less_than",
+                    "200"
+                ]
+            }
         }
     },
     {

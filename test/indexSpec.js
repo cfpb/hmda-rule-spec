@@ -17,6 +17,14 @@ describe('getValidObjectTypes', function() {
     });
 });
 
+describe('getValidEditTypes', function() {
+    it('should return valid edit types', function(done) {
+        var result = specAPI.getValidEditTypes();
+        expect(result[0]).to.be('validity');
+        done();
+    });
+});
+
 describe('getFileSpec', function() {
     it('should return the spec for a given year', function(done) {
         var spec = specAPI.getFileSpec('2013');

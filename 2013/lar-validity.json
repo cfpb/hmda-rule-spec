@@ -4,9 +4,24 @@
         "description": "Date application received must be in CCYYMMDD format; month and day must be in the range 01-12 and 01-31, respectively or equal NA. CCYY must be numeric and CC (century) must equal 19 or 20.",
         "explanation": "Application Month, day, year and/or century not valid.",
         "rule": {
-            "property": "applicationReceivedDate",
-            "condition": "call",
-            "function": "isValidApplicationReceivedDate"
+            "if": {
+                "property": "applicationReceivedDate",
+                "condition": "not_equal",
+                "value": "NA"
+            },
+            "then": {
+                "and": [
+                    {
+                        "property": "applicationReceivedDate",
+                        "condition": "yyyy_mm_dd"
+                    },
+                    {
+                        "property": "applicationReceivedDate",
+                        "condition": "matches_regex",
+                        "value": "^19|^20"
+                    }
+                ]
+            }
         }
     },
     {

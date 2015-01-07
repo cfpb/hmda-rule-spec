@@ -2,6 +2,7 @@
     {
         "id": "S100",
         "description": "Activity year must = year being processed (= 2013).",
+        "explanation": "Invalid activity year.",
         "rule": {
             "property": "activityYear",
             "condition": "equal",
@@ -11,6 +12,7 @@
     {
         "id": "S013",
         "description": "Timestamp must be later than timestamp on database.",
+        "explanation": "Record timestamp is earlier than, or equal to, timestamp on database (format = ccyymmddhhmm).",
         "rule": {
             "property": "timestamp",
             "condition": "call",
@@ -20,6 +22,7 @@
     {
         "id": "S028",
         "description": "Timestamp must be numeric and in ccyymmddhhmm format.",
+        "explanation": "Timestamp is missing or nonnumeric (format = ccyymmddhhmm).",
         "rule": {
             "and": [
                 {

@@ -1,0 +1,1258 @@
+[
+    {
+        "id": "Q015",
+        "description": "If property type = 3, then the total number of these loan applications should be < 10% of all loan applications or < 10% of the total dollar amount of all loan applications reported.",
+        "explanation": "Multifamily loan applications is ≥ 10% of total loan applications and/or ≥ 10% of the total dollar amount of the loan applications.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "isValidNumMultifamilyLoans"
+        }
+    },
+    {
+        "id": "Q031",
+        "description": "If property type = 3, and total number of all loan applications < 2,000, then the total number of multifamily applications should be < 200.",
+        "explanation": "Number of reported multifamily applications is ≥ 200; Verify.",
+        "rule": {
+            "if": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "compareNumEntriesSingle",
+                "args": [
+                    "loanApplicationRegisters",
+                    {
+                        "property": "recordID",
+                        "condition": "equal",
+                        "value": "2"
+                    },
+                    "less_than",
+                    "2000"
+                ]
+            },
+            "then": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "compareNumEntriesSingle",
+                "args": [
+                    "loanApplicationRegisters",
+                    {
+                        "property": "propertyType",
+                        "condition": "equal",
+                        "value": "3"
+                    },
+                    "less_than",
+                    "200"
+                ]
+            }
+        }
+    },
+    {
+        "id": "Q006",
+        "description": "If the total number of loan applications with loan purpose = 1 and action taken type = 1 is > 25, then the total number of these loan applications should be ≤ 95% of the total number of home purchase loan applications.",
+        "explanation": "Total number of home purchase loan applications with an action code of 1 is > 95% of the total number of home purchase loan applications.",
+        "rule": {
+            "if": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "compareNumEntriesSingle",
+                "args": [
+                    "loanApplicationRegisters",
+                    {
+                        "and": [
+                            {
+                                "property": "loanPurpose",
+                                "condition": "equal",
+                                "value": "1"
+                            },
+                            {
+                                "property": "actionTaken",
+                                "condition": "equal",
+                                "value": "1"
+                            }
+                        ]
+                    },
+                    "greater_than",
+                    "25"
+                ]
+            },
+            "then": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "compareNumEntries",
+                "args": [
+                    "loanApplicationRegisters",
+                    {
+                        "and": [
+                            {
+                                "property": "loanPurpose",
+                                "condition": "equal",
+                                "value": "1"
+                            },
+                            {
+                                "property": "actionTaken",
+                                "condition": "equal",
+                                "value": "1"
+                            }
+                        ]
+                    },
+                    {
+                        "property": "loanPurpose",
+                        "condition": "equal",
+                        "value": "1"
+                    },
+                    "less_than_or_equal",
+                    ".95"
+                ]
+            }
+        }
+    },
+    {
+        "id": "Q047",
+        "description": "If preapproval = 1, and action taken type = 4, then the total number of these loans should be ≤ 10% of the total number of loan applications.",
+        "explanation": "Total number of loan applications with a preapproval = 1 and action taken type = 4 is > 10% of the total number of loan applications.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "compareNumEntries",
+            "args": [
+                "loanApplicationRegisters",
+                {
+                    "and": [
+                        {
+                            "property": "preapprovals",
+                            "condition": "equal",
+                            "value": "1"
+                        },
+                        {
+                            "property": "actionTaken",
+                            "condition": "equal",
+                            "value": "4"
+                        }
+                    ]
+                },
+                {
+                    "property": "recordID",
+                    "condition": "equal",
+                    "value": "2"
+                },
+                "less_than_or_equal",
+                ".1"
+            ]
+        }
+    },
+    {
+        "id": "Q048",
+        "description": "If preapproval = 1, and action taken type = 5, then the total number of these loans should be ≤ 5% of the total number of loan applications.",
+        "explanation": "Total number of loan applications with a preapproval = 1 and action taken type = 5 is > 5% of the total number of loan applications.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "compareNumEntries",
+            "args": [
+                "loanApplicationRegisters",
+                {
+                    "and": [
+                        {
+                            "property": "preapprovals",
+                            "condition": "equal",
+                            "value": "1"
+                        },
+                        {
+                            "property": "actionTaken",
+                            "condition": "equal",
+                            "value": "5"
+                        }
+                    ]
+                },
+                {
+                    "property": "recordID",
+                    "condition": "equal",
+                    "value": "2"
+                },
+                "less_than_or_equal",
+                ".05"
+            ]
+        }
+    },
+    {
+        "id": "Q007",
+        "description": "If action taken type = 2, then the total number of these loans should be ≤ 15% of the total number of loan applications.",
+        "explanation": "Total number of loan applications with an action code of 2 is > 15% of the total number of loan applications.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "compareNumEntries",
+            "args": [
+                "loanApplicationRegisters",
+                {
+                    "property": "actionTaken",
+                    "condition": "equal",
+                    "value": "2"
+                },
+                {
+                    "property": "recordID",
+                    "condition": "equal",
+                    "value": "2"
+                },
+                "less_than_or_equal",
+                ".15"
+            ]
+        }
+    },
+    {
+        "id": "Q008",
+        "description": "If action taken type = 4, then the total number of these loans should be ≤ 30% of the total number of loan applications.",
+        "explanation": "Total number of loan applications with an action code of 4 is > 30% of the total number of loan applications.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "compareNumEntries",
+            "args": [
+                "loanApplicationRegisters",
+                {
+                    "property": "actionTaken",
+                    "condition": "equal",
+                    "value": "4"
+                },
+                {
+                    "property": "recordID",
+                    "condition": "equal",
+                    "value": "2"
+                },
+                "less_than_or_equal",
+                ".30"
+            ]
+        }
+    },
+    {
+        "id": "Q009",
+        "description": "If action taken type = 5, then the total number of these loans should be ≤ 15% of the total number of loan applications.",
+        "explanation": "Total number of loan applications with an action code of 5 is > 15% of the total number of loan applications.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "compareNumEntries",
+            "args": [
+                "loanApplicationRegisters",
+                {
+                    "property": "actionTaken",
+                    "condition": "equal",
+                    "value": "5"
+                },
+                {
+                    "property": "recordID",
+                    "condition": "equal",
+                    "value": "2"
+                },
+                "less_than_or_equal",
+                ".15"
+            ]
+        }
+    },
+    {
+        "id": "Q010",
+        "description": "The number of loan applications that report action taken type = 1 should be ≥ 20% of the total number of loan applications where action taken type = 1-6.",
+        "explanation": "Total number of loan applications with an action code of 1 is < 20% of the total number of loan applications where action taken type = 1-6.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "compareNumEntries",
+            "args": [
+                "loanApplicationRegisters",
+                {
+                    "property": "actionTaken",
+                    "condition": "equal",
+                    "value": "1"
+                },
+                {
+                    "property": "actionTaken",
+                    "condition": "in",
+                    "values": ["1", "2", "3", "4", "5", "6"]
+                },
+                "greater_than_or_equal",
+                ".20"
+            ]
+        }
+    },
+    {
+        "id": "Q023",
+        "description": "The number of loan applications that report MSA/MD = NA should be ≤ 30% of the total number of loan applications.",
+        "explanation": "The number of applications reporting MSA/MD = NA are > 30% of the total number of loan applications.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "compareNumEntries",
+            "args": [
+                "loanApplicationRegisters",
+                {
+                    "property": "metroArea",
+                    "condition": "equal",
+                    "value": "NA"
+                },
+                {
+                    "property": "recordID",
+                    "condition": "equal",
+                    "value": "2"
+                },
+                "less_than_or_equal",
+                ".30"
+            ]
+        }
+    },
+    {
+        "id": "Q011",
+        "description": "If current or previous year’s total number of applications is ≥ 500, then the current year should be within (+ or -) 20% of the previous year’s total.",
+        "explanation": "Total number of loan applications for current year not within (+ or -) 20% of the previous year's total.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "isValidNumLoans"
+        }
+    },
+    {
+        "id": "Q016",
+        "description": "The number of loan applications that report income < $10,000 should be ≤ 20% of total loan applications.",
+        "explanation": "Total number of loan applications that reported income < $10,000 is > 20% of total loan applications.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "compareNumEntries",
+            "args": [
+                "loanApplicationRegisters",
+                {
+                    "property": "applicantIncome",
+                    "condition": "less_than",
+                    "value": "10"
+                },
+                {
+                    "property": "recordID",
+                    "condition": "equal",
+                    "value": "2"
+                },
+                "less_than_or_equal",
+                ".20"
+            ]
+        }
+    },
+    {
+        "id": "Q053",
+        "description": "If agency = 5, action taken type = 1 and HOEPA status = 1, then the total number of these loans should be ≤ 1% of the total number of originated loans.",
+        "explanation": "The number of loans where agency = 5, action taken type = 1 and HOEPA status = 1 is > 1% of the total number of originated loans.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "compareNumEntries",
+            "args": [
+                "loanApplicationRegisters",
+                {
+                    "and": [
+                        {
+                            "property": "agencyCode",
+                            "condition": "equal",
+                            "value": "5"
+                        },
+                        {
+                            "property": "actionTaken",
+                            "condition": "equal",
+                            "value": "1"
+                        },
+                        {
+                            "property": "hoepaStatus",
+                            "condition": "equal",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "property": "actionTaken",
+                    "condition": "equal",
+                    "value": "1"
+                },
+                "less_than_or_equal",
+                ".01"
+            ]
+        }
+    },
+    {
+        "id": "Q054",
+        "description": "If agency = 5, action taken type = 6 and HOEPA status = 1, then the total number of these loans should be ≤ 1% of the total number of purchased loans.",
+        "explanation": "The number of loans where agency = 5, action taken type = 6 and HOEPA status = 1 is > 1% of the total number of purchased loans.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "compareNumEntries",
+            "args": [
+                "loanApplicationRegisters",
+                {
+                    "and": [
+                        {
+                            "property": "agencyCode",
+                            "condition": "equal",
+                            "value": "5"
+                        },
+                        {
+                            "property": "actionTaken",
+                            "condition": "equal",
+                            "value": "6"
+                        },
+                        {
+                            "property": "hoepaStatus",
+                            "condition": "equal",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "property": "actionTaken",
+                    "condition": "equal",
+                    "value": "6"
+                },
+                "less_than_or_equal",
+                ".01"
+            ]
+        }
+    },
+    {
+        "id": "Q062",
+        "description": "If action taken type = 1, HOEPA status = 1, lien status = 1 and type of purchaser = 1, then the total number of these loans should be ≤ 1% of the total number of originated loans.",
+        "explanation": "The number of loans where action taken type = 1, HOEPA status = 1, lien status = 1, and type of purchaser = 1 is > 1% of the total number of originated loans.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "compareNumEntries",
+            "args": [
+                "loanApplicationRegisters",
+                {
+                    "and": [
+                        {
+                            "property": "actionTaken",
+                            "condition": "equal",
+                            "value": "1"
+                        },
+                        {
+                            "property": "hoepaStatus",
+                            "condition": "equal",
+                            "value": "1"
+                        },
+                        {
+                            "property": "lienStatus",
+                            "condition": "equal",
+                            "value": "1"
+                        },
+                        {
+                            "property": "purchaserType",
+                            "condition": "equal",
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "property": "actionTaken",
+                    "condition": "equal",
+                    "value": "1"
+                },
+                "less_than_or_equal",
+               ".01"
+            ]
+        }
+    },
+    {
+        "id": "Q063",
+        "description": "If action taken type = 1, HOEPA status = 1, lien status = 1 and type of purchaser = 3, then the total number of these loans should be ≤ 1% of the total number of originated loans.",
+        "explanation": "The number of loans where action taken type = 1, HOEPA status = 1, lien status = 1, and type of purchaser = 3 is > 1% of the total number of originated loans.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "compareNumEntries",
+            "args": [
+                "loanApplicationRegisters",
+                {
+                    "and": [
+                        {
+                            "property": "actionTaken",
+                            "condition": "equal",
+                            "value": "1"
+                        },
+                        {
+                            "property": "hoepaStatus",
+                            "condition": "equal",
+                            "value": "1"
+                        },
+                        {
+                            "property": "lienStatus",
+                            "condition": "equal",
+                            "value": "1"
+                        },
+                        {
+                            "property": "purchaserType",
+                            "condition": "equal",
+                            "value": "3"
+                        }
+                    ]
+                },
+                {
+                    "property": "actionTaken",
+                    "condition": "equal",
+                    "value": "1"
+                },
+                "less_than_or_equal",
+                ".01"
+            ]
+        }
+    },
+    {
+        "id": "Q065",
+        "description": "If HOEPA status = 1, then the total number of HOEPA loans should be < 200.",
+        "explanation": "The number of loans where HOEPA = 1 is ≥ 200.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "compareNumEntriesSingle",
+            "args": [
+                "loanApplicationRegisters",
+                {
+                    "property": "hoepaStatus",
+                    "condition": "equal",
+                    "value": "1"
+                },
+                "less_than",
+                "200"
+            ]
+        }
+    },
+    {
+        "id": "Q055",
+        "description": "If HOEPA status = 1, action taken = 1 and rate spread ≥ 5% and not = NA, then the total number of these loans should be ≤ 5% of the total number of originated loans.",
+        "explanation": "The number of loans where HOEPA status = 1, action taken = 1 and rate spread ≥ 5% and not = NA is > 5% of the total number of originated loans.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "compareNumEntries",
+            "args": [
+                "loanApplicationRegisters",
+                {
+                    "and": [
+                        {
+                            "property": "hoepaStatus",
+                            "condition": "equal",
+                            "value": "1"
+                        },
+                        {
+                            "property": "actionTaken",
+                            "condition": "equal",
+                            "value": "1"
+                        },
+                        {
+                            "and": [
+                                {
+                                    "property": "rateSpread",
+                                    "condition": "not_equal",
+                                    "value": "NA"
+                                },
+                                {
+                                    "property": "rateSpread",
+                                    "condition": "greater_than_or_equal",
+                                    "value": "5.0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "property": "actionTaken",
+                    "condition": "equal",
+                    "value": "1"
+                },
+                "less_than_or_equal",
+                ".05"
+            ]
+        }
+    },
+    {
+        "id": "Q061",
+        "description": "If property type = 1, lien status = 1, action taken type = 1 and rate spread > 5% and not = NA, then the total number of these loans should be ≤ 1% of the total number of originated loans.",
+        "explanation": "The number of loans where property type = 1, lien status = 1, action taken type = 1 and rate spread > 5% and not = NA is > 1% of the total number of originated loans.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "compareNumEntries",
+            "args": [
+                "loanApplicationRegisters",
+                {
+                    "and": [
+                        {
+                            "property": "propertyType",
+                            "condition": "equal",
+                            "value": "1"
+                        },
+                        {
+                            "property": "lienStatus",
+                            "condition": "equal",
+                            "value": "1"
+                        },
+                        {
+                            "property": "actionTaken",
+                            "condition": "equal",
+                            "value": "1"
+                        },
+                        {
+                            "and": [
+                                {
+                                    "property": "rateSpread",
+                                    "condition": "not_equal",
+                                    "value": "NA"
+                                },
+                                {
+                                    "property": "rateSpread",
+                                    "condition": "greater_than",
+                                    "value": "5.0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "property": "actionTaken",
+                    "condition": "equal",
+                    "value": "1"
+                },
+                "less_than_or_equal",
+                ".01"
+            ]
+        }
+    },
+    {
+        "id": "Q056",
+        "description": "If the total number of conventional home purchase loan applications is ≥ 50, then the total number of denied conventional home purchase loans should be ≤ 70%.",
+        "explanation": "The total number of conventional home purchase loan applications is ≥ 50 and the total number of denied conventional home purchase loans is > 70%.",
+        "rule": {
+            "if": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "compareNumEntriesSingle",
+                "args": [
+                    "loanApplicationRegisters",
+                    {
+                        "and": [
+                            {
+                                "property": "loanPurpose",
+                                "condition": "equal",
+                                "value": "1"
+                            },
+                            {
+                                "property": "loanType",
+                                "condition": "equal",
+                                "value": "1"
+                            }
+                        ]
+                    },
+                    "greater_than_or_equal",
+                    "50"
+                ]
+            },
+            "then": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "compareNumEntries",
+                "args": [
+                    "loanApplicationRegisters",
+                    {
+                        "and": [
+                            {
+                                "property": "loanPurpose",
+                                "condition": "equal",
+                                "value": "1"
+                            },
+                            {
+                                "property": "loanType",
+                                "condition": "equal",
+                                "value": "1"
+                            },
+                            {
+                                "property": "actionTaken",
+                                "condition": "equal",
+                                "value": "3"
+                            }
+                        ]
+                    },
+                    {
+                        "and": [
+                            {
+                                "property": "loanPurpose",
+                                "condition": "equal",
+                                "value": "1"
+                            },
+                            {
+                                "property": "loanType",
+                                "condition": "equal",
+                                "value": "1"
+                            }
+                        ]
+                    },
+                    "less_than_or_equal",
+                    ".70"
+                ]
+            }
+        }
+    },
+    {
+        "id": "Q057",
+        "description": "If the total number of loan applications is ≥ 50, then the total number of denied loan applications should be > zero.",
+        "explanation": "The total number of loan applications is ≥ 50 and the total number of denied loans = zero.",
+        "rule": {
+            "if": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "compareNumEntriesSingle",
+                "args": [
+                    "loanApplicationRegisters",
+                    {
+                        "property": "recordID",
+                        "condition": "equal",
+                        "value": "2"
+                    },
+                    "greater_than_or_equal",
+                    "50"
+                ]
+            },
+            "then": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "compareNumEntriesSingle",
+                "args": [
+                    "loanApplicationRegisters",
+                    {
+                        "property": "actionTaken",
+                        "condition": "equal",
+                        "value": "3"
+                    },
+                    "greater_than",
+                    "0"
+                ]
+            }
+        }
+    },
+    {
+        "id": "Q058",
+        "description": "If the total number of loan applications where preapproval = 1 is ≥ 1000, then the total number of preapproval requests denied (action taken = 7) should be > zero.",
+        "explanation": "The total number of loan applications where preapproval = 1 is ≥ 1000 and the total number of preapproval requests denied = zero.",
+        "rule": {
+            "if": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "compareNumEntriesSingle",
+                "args": [
+                    "loanApplicationRegisters",
+                    {
+                        "property": "preapprovals",
+                        "condition": "equal",
+                        "value": "1"
+                    },
+                    "greater_than_or_equal",
+                    "1000"
+                ]
+            },
+            "then": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "compareNumEntriesSingle",
+                "args": [
+                    "loanApplicationRegisters",
+                    {
+                        "property": "actionTaken",
+                        "condition": "equal",
+                        "value": "7"
+                    },
+                    "greater_than",
+                    "0"
+                ]
+            }
+        }
+    },
+    {
+        "id": "Q070",
+        "description": "If action taken type = 1 or 6, purpose of loan = 1 or 3, property type = 1 or 2, loan type = 1; and if the percentage of these loans that are sold to Fannie Mae or Freddie Mac in the current year is less than the percentage of the same type of loans sold to Fannie Mae or Freddie Mac in the prior year, then the percentage difference between the two years should be less than 10%; or if the number of these loans for the current year is >= 10,000, then the percentage of these loans sold to Fannie Mae or Freddie Mac for the current year should be > 20%.",
+        "explanation": "Action taken type = 1 or 6, loan purpose = 1 or 3, property type = 1 or 2, loan type = 1. If the percentage of these loans that are sold to Fannie Mae or Freddie Mac in the current year is less than the percentage of the same category of loans sold to Fannie Mae or Freddie Mac in the prior year, then the percentage difference between the two years should be less than 10%; or if the number of these loans for the current year is >= 10,000, then the percentage of these loans sold to Fannie Mae or Freddie Mac for the current year should be > 20%. Please verify type of purchaser field is correct.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "isValidNumFannieMaeLoans"
+        }
+    },
+    {
+        "id": "Q071",
+        "description": "If action taken type = 1 or 6, purpose of loan = 1 or 3, property type = 1 or 2, loan type = 2; and if the percentage of these loans that are sold to Ginnie Mae in the current year is less than the percentage of the same type of loans sold to Ginnie Mae in the prior year, then the percentage difference between the two years should be less than 10%; or if the number of these loans for the current year is >= 2,500, then the percentage of these loans sold to Ginnie Mae for the current year should be > 30%.",
+        "explanation": "Action taken type = 1 or 6, loan purpose = 1 or 3, property type = 1 or 2, loan type = 2. If the percentage of these loans that are sold to Ginnie Mae in the current year is less than the percentage of the same category of loans sold to Ginnie Mae in the prior year, then the percentage difference between the two years should be less than 10%; or if the number of these loans for the current year is >= 2,500, then the percentage of these loans sold to Ginnie Mae for the current year should be > 30%. Please verify type of purchaser field is correct.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "isValidNumGinnieMaeFHALoans"
+        }
+    },
+    {
+        "id": "Q072",
+        "description": "If action taken type = 1 or 6, purpose of loan = 1 or 3, property type = 1 or 2, loan type = 3; and if the percentage of these loans that are sold to Ginnie Mae in the current year is less than the percentage of the same type of loans sold to Ginnie Mae in the prior year, then the percentage difference between the two years should be less than 10%; or if the number of these loans for the current year is >= 2,000, then the percentage of these loans sold to Ginnie Mae for the current year should be > 30%.",
+        "explanation": "Action taken type = 1 or 6, loan purpose = 1 or 3, property type = 1 or 2, loan type = 3. If the percentage of these loans that are sold to Ginnie Mae in the current year is less than the percentage of the same category of loans sold to Ginnie Mae in the prior year, then the percentage difference between the two years should be less than 10%; or if the number of these loans for the current year is >= 2,000, then the percentage of these loans sold to Ginnie Mae for the current year should be > 30%. Please verify type of purchaser field is correct.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "isValidNumGinnieMaeVALoans"
+        }
+    },
+    {
+        "id": "Q073",
+        "description": "If 250 or greater loans are reported with purpose of loan = 1, action taken type = 1 or 6, property type = 1 or 2, and loan type = 2 or 3, then of these loans, the percentage of loans sold should be > 20%.",
+        "explanation": "Action taken type = 1 or 6, loan purpose = 1, property type = 1 or 2, loan type = 2 or 3. If 250 or greater of these loans are reported in the current year, then of these loans, the percentage sold should be > 20%.",
+        "rule": {
+            "if": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "compareNumEntriesSingle",
+                "args": [
+                    "loanApplicationRegisters",
+                    {
+                        "and": [
+                            {
+                                "property": "loanPurpose",
+                                "condition": "equal",
+                                "value": "1"
+                            },
+                            {
+                                "property": "actionTaken",
+                                "condition": "in",
+                                "values": ["1", "6"]
+                            },
+                            {
+                                "property": "propertyType",
+                                "condition": "in",
+                                "values": ["1", "2"]
+                            },
+                            {
+                                "property": "loanType",
+                                "condition": "in",
+                                "values": ["2", "3"]
+                            }
+                        ]
+                    },
+                    "greater_than_or_equal",
+                    "250"
+                ]
+            },
+            "then": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "compareNumEntries",
+                "args": [
+                    "loanApplicationRegisters",
+                    {
+                        "and": [
+                            {
+                                "property": "loanPurpose",
+                                "condition": "equal",
+                                "value": "1"
+                            },
+                            {
+                                "property": "actionTaken",
+                                "condition": "equal",
+                                "value": "6"
+                            },
+                            {
+                                "property": "propertyType",
+                                "condition": "in",
+                                "values": ["1", "2"]
+                            },
+                            {
+                                "property": "loanType",
+                                "condition": "in",
+                                "values": ["2", "3"]
+                            }
+                        ]
+                    },
+                    {
+                        "and": [
+                            {
+                                "property": "loanPurpose",
+                                "condition": "equal",
+                                "value": "1"
+                            },
+                            {
+                                "property": "actionTaken",
+                                "condition": "in",
+                                "values": ["1", "6"]
+                            },
+                            {
+                                "property": "propertyType",
+                                "condition": "in",
+                                "values": ["1", "2"]
+                            },
+                            {
+                                "property": "loanType",
+                                "condition": "in",
+                                "values": ["2", "3"]
+                            }
+                        ]
+                    },
+                    "greater_than",
+                    ".20"
+                ]
+            }
+        }
+    },
+    {
+        "id": "Q074",
+        "description": "If 250 or greater loans are reported with purpose of loan = 3, action taken type = 1 or 6, property type = 1 or 2, and loan type = 2 or 3, then of these loans, the percentage of loans sold should be > 20%.",
+        "explanation": "Action taken type = 1 or 6, loan purpose = 3, property type = 1 or 2, loan type = 2 or 3. If 250 or greater of these loans are reported in the current year, then of these loans, the percentage sold should be > 20%.",
+        "rule": {
+            "if": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "compareNumEntriesSingle",
+                "args": [
+                    "loanApplicationRegisters",
+                    {
+                        "and": [
+                            {
+                                "property": "loanPurpose",
+                                "condition": "equal",
+                                "value": "3"
+                            },
+                            {
+                                "property": "actionTaken",
+                                "condition": "in",
+                                "values": ["1", "6"]
+                            },
+                            {
+                                "property": "propertyType",
+                                "condition": "in",
+                                "values": ["1", "2"]
+                            },
+                            {
+                                "property": "loanType",
+                                "condition": "in",
+                                "values": ["2", "3"]
+                            }
+                        ]
+                    },
+                    "greater_than_or_equal",
+                    "250"
+                ]
+            },
+            "then": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "compareNumEntries",
+                "args": [
+                    "loanApplicationRegisters",
+                    {
+                        "and": [
+                            {
+                                "property": "loanPurpose",
+                                "condition": "equal",
+                                "value": "3"
+                            },
+                            {
+                                "property": "actionTaken",
+                                "condition": "equal",
+                                "value": "6"
+                            },
+                            {
+                                "property": "propertyType",
+                                "condition": "in",
+                                "values": ["1", "2"]
+                            },
+                            {
+                                "property": "loanType",
+                                "condition": "in",
+                                "values": ["2", "3"]
+                            }
+                        ]
+                    },
+                    {
+                        "and": [
+                            {
+                                "property": "loanPurpose",
+                                "condition": "equal",
+                                "value": "3"
+                            },
+                            {
+                                "property": "actionTaken",
+                                "condition": "in",
+                                "values": ["1", "6"]
+                            },
+                            {
+                                "property": "propertyType",
+                                "condition": "in",
+                                "values": ["1", "2"]
+                            },
+                            {
+                                "property": "loanType",
+                                "condition": "in",
+                                "values": ["2", "3"]
+                            }
+                        ]
+                    },
+                    "greater_than",
+                    ".20"
+                ]
+            }
+        }
+    },
+    {
+        "id": "Q075",
+        "description": "If 750 or greater loans are reported with purpose of loan = 1, action taken type = 1 or 6, property type = 1 or 2, then of these loans, the difference between the percentage of loans that are sold in the current year and the percentage of the same type of loans sold in the prior year should be less than (+ or -) 20%.",
+        "explanation": "Action taken type = 1 or 6, loan purpose = 1, property type = 1 or 2. If 750 or greater loans of these loans are reported in the current year, then of these loans, the difference in the percentage of loans that are sold in the current year and the percentage of loans sold in the prior year should be less than (+ or -) 20%. Percent of government backed home purchases = # home purchase loans where loan type = 2 or 3 / # home purchase loans for the current year or previous year.",
+        "rule": {
+            "if": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "compareNumEntriesSingle",
+                "args": [
+                    "loanApplicationRegisters",
+                    {
+                        "and": [
+                            {
+                                "property": "loanPurpose",
+                                "condition": "equal",
+                                "value": "1"
+                            },
+                            {
+                                "property": "actionTaken",
+                                "condition": "in",
+                                "values": ["1", "6"]
+                            },
+                            {
+                                "property": "propertyType",
+                                "condition": "in",
+                                "values": ["1", "2"]
+                            }
+                        ]
+                    },
+                    "greater_than_or_equal",
+                    "750"
+                ]
+            },
+            "then": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "isValidNumHomePurchaseLoans"
+            }
+        }
+    },
+    {
+        "id": "Q076",
+        "description": "If 750 or greater loans are reported with purpose of loan = 3, action taken type = 1 or 6, property type = 1 or 2, then of these loans, the difference between the percentage of loans that are sold in the current year and the percentage of the same type of loans sold in the prior year should be less than (+ or -) 20%.",
+        "explanation": "Action taken type = 1 or 6, loan purpose = 3, property type = 1 or 2. If 750 or greater loans of these loans are reported in the current year, then of these loans, the difference in the percentage of loans that are sold in the current year and the percentage of loans sold in the prior year should be less than (+ or -) 20%. Percent of government backed home refinancings = # refinancing loans where loan type = 2 or 3 / # refinancing loans for the current year or previous year.",
+        "rule": {
+            "if": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "compareNumEntriesSingle",
+                "args": [
+                    "loanApplicationRegisters",
+                    {
+                        "and": [
+                            {
+                                "property": "loanPurpose",
+                                "condition": "equal",
+                                "value": "3"
+                            },
+                            {
+                                "property": "actionTaken",
+                                "condition": "in",
+                                "values": ["1", "6"]
+                            },
+                            {
+                                "property": "propertyType",
+                                "condition": "in",
+                                "values": ["1", "2"]
+                            }
+                        ]
+                    },
+                    "greater_than_or_equal",
+                    "750"
+                ]
+            },
+            "then": {
+                "property": "hmdaFile",
+                "condition": "call",
+                "function": "isValidNumRefinanceLoans"
+            }
+        }
+    },
+    {
+        "id": "Q080",
+        "description": "If action taken = 1, 2 or 3, property type = 1 or 2, and applicant ethnicity = 3 or 4, then the total number of these loans should be ≤ 50% of the total number of loans where action taken = 1-5.",
+        "explanation": "The total number of loans where action taken = 1, 2 or 3, property type = 1 or 2, and applicant ethnicity = 3 or 4 is > 50% of the total number of loans where action taken = 1-5.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "compareNumEntries",
+            "args": [
+                "loanApplicationRegisters",
+                {
+                    "and": [
+                        {
+                            "property": "actionTaken",
+                            "condition": "in",
+                            "values": ["1", "2", "3"]
+                        },
+                        {
+                            "property": "propertyType",
+                            "condition": "in",
+                            "values": ["1", "2"]
+                        },
+                        {
+                            "property": "applicantEthnicity",
+                            "condition": "in",
+                            "values": ["3", "4"]
+                        }
+                    ]
+                },
+                {
+                    "property": "actionTaken",
+                    "condition": "in",
+                    "values": ["1", "2", "3", "4", "5"]
+                },
+                "less_than_or_equal",
+                ".50"
+            ]
+        }
+    },
+    {
+        "id": "Q081",
+        "description": "If action taken = 1, 2 or 3, property type = 1 or 2, and first applicant race field = 6 or 7, then the total number of these loans should be ≤ 50% of the total number of loans where action taken = 1-5.",
+        "explanation": "The total number of loans where action taken = 1, 2 or 3, property type = 1 or 2, and first applicant race field = 6 or 7 is > 50% of the total number of loans where action taken = 1-5.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "compareNumEntries",
+            "args": [
+                "loanApplicationRegisters",
+                {
+                    "and": [
+                        {
+                            "property": "actionTaken",
+                            "condition": "in",
+                            "values": ["1", "2", "3"]
+                        },
+                        {
+                            "property": "propertyType",
+                            "condition": "in",
+                            "values": ["1", "2"]
+                        },
+                        {
+                            "property": "applicantRace1",
+                            "condition": "in",
+                            "values": ["6", "7"]
+                        }
+                    ]
+                },
+                {
+                    "property": "actionTaken",
+                    "condition": "in",
+                    "values": ["1", "2", "3", "4", "5"]
+                },
+                "less_than_or_equal",
+                ".50"
+            ]
+        }
+    },
+    {
+        "id": "Q082",
+        "description": "If action taken = 1, 2 or 3, property type = 1 or 2, and applicant sex = 3 or 4, then the total number of these loans should be ≤ 50% of the total number of loans where action taken = 1-5.",
+        "explanation": "The total number of loans where action taken = 1, 2 or 3, property type = 1 or 2, and applicant sex = 3 or 4 is > 50% of the total number of loans where action taken = 1-5.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "compareNumEntries",
+            "args": [
+                "loanApplicationRegisters",
+                {
+                    "and": [
+                        {
+                            "property": "actionTaken",
+                            "condition": "in",
+                            "values": ["1", "2", "3"]
+                        },
+                        {
+                            "property": "propertyType",
+                            "condition": "in",
+                            "values": ["1", "2"]
+                        },
+                        {
+                            "property": "applicantSex",
+                            "condition": "in",
+                            "values": ["3", "4"]
+                        }
+                    ]
+                },
+                {
+                    "property": "actionTaken",
+                    "condition": "in",
+                    "values": ["1", "2", "3", "4", "5"]
+                },
+                "less_than_or_equal",
+                ".50"
+            ]
+        }
+    },
+    {
+        "id": "Q083",
+        "description": "If action taken = 1, 2 or 3, property type = 1 or 2, and (applicant ethnicity = 3 or 4) and (first applicant race field = 6 or 7) and (applicant sex = 3 or 4), then the total number of these loans should be ≤ 20% of the total number of loans where action taken = 1-5.",
+        "explanation": "The total number of loans where action taken = 1, 2 or 3, property type = 1 or 2, and (applicant ethnicity = 3 or 4) and (first applicant race field = 6 or 7) and (applicant sex = 3 or 4) is > 20% of the total number of loans where action taken = 1-5.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "compareNumEntries",
+            "args": [
+                "loanApplicationRegisters",
+                {
+                    "and": [
+                        {
+                            "property": "actionTaken",
+                            "condition": "in",
+                            "values": ["1", "2", "3"]
+                        },
+                        {
+                            "property": "propertyType",
+                            "condition": "in",
+                            "values": ["1", "2"]
+                        },
+                        {
+                            "property": "applicantEthnicity",
+                            "condition": "in",
+                            "values": ["3", "4"]
+                        },
+                        {
+                            "property": "applicantRace1",
+                            "condition": "in",
+                            "values": ["6", "7"]
+                        },
+                        {
+                            "property": "applicantSex",
+                            "condition": "in",
+                            "values": ["3", "4"]
+                        }
+                    ]
+                },
+                {
+                    "property": "actionTaken",
+                    "condition": "in",
+                    "values": ["1", "2", "3", "4", "5"]
+                },
+                "less_than_or_equal",
+                ".20"
+            ]
+        }
+    },
+    {
+        "id": "Q030",
+        "description": "If action taken type = 1, 2, 3, 4, 5, or 6; and if the HMDA respondent is a nondepository institution (a for-profit entity), or is a bank or savings institution who reports CRA data, then MSA/MD, state, county, census tract should equal a valid combination and not NA.",
+        "explanation": "MSA/MD, state, county, census tract should not = NA.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "isValidMsaMdCountyCensusForNonDepository"
+        }
+    }
+]

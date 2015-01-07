@@ -2,6 +2,7 @@
     {
         "id": "V105",
         "description": "Respondent name, address, city, state, and zip code must not = blank.",
+        "explanation": "Respondent name, address, city, state or zip code is missing.",
         "rule": {
             "and": [
                 {
@@ -30,6 +31,7 @@
     {
         "id": "V140",
         "description": "Respondent state code must equal a valid postal code abbreviation (i.e., AL for Alabama).",
+        "explanation": "Respondent state code is an invalid postal code.",
         "rule": {
             "property": "respondentState",
             "condition": "in",
@@ -55,6 +57,7 @@
     {
         "id": "V145",
         "description": "Respondent zip code format must be NNNNN or NNNNN-NNNN and left justified.",
+        "explanation": "Respondent zip code is an invalid format.",
         "rule": {
             "property": "respondentZip",
             "condition": "zipcode"
@@ -63,6 +66,7 @@
     {
         "id": "V155",
         "description": "A valid e-mail address for the institution must be provided and must be in the format of username@exampledomain.topleveldomain. The e-mail address shall not contain any spaces and must contain only one @ symbol. The e-mail address shall not contain \"@.\", \".@\", and \"..\" character strings.",
+        "explanation": "E-mail address for institution is missing or is an invalid format. The e-mail address can only contain one @ symbol and must be in a format such as username@institutionname.topleveldomain. The e-mail address cannot contain “@.”, “.@” or “..”. For formatting purposes, institutionname represents the institution's domain and .topleveldomain represents .com, .org, .tv, .net, .info, .name, etc. For example, hmdasubmitter@axbyczbank.com.",
         "rule": {
             "property": "respondentEmail",
             "condition": "email_address"
@@ -71,6 +75,7 @@
     {
         "id": "V108",
         "description": "If parent name is reported, then parent name cannot equal institution name.",
+        "explanation": "Parent name = institution name.",
         "rule": {
             "if": {
                 "property": "parentName",
@@ -86,6 +91,7 @@
     {
         "id": "V110",
         "description": "If respondent is a mortgage banking subsidiary (MBS) or a nondepository institution that has an affiliation with a depository institution, then parent name of the MBS or the depository institution that the nondepository institution is affiliated with along with the address, city, state and zip code must not = blank.",
+        "explanation": "Parent name, address, city, state, or zip code is missing.",
         "rule": {
             "if": {
                 "property": "respondentID",
@@ -121,6 +127,7 @@
     {
         "id": "V111",
         "description": "If parent state code is reported, then the postal code abbreviation must be valid (i.e., AL for Alabama).",
+        "explanation": "Parent state code is an invalid postal code.",
         "rule": {
             "if": {
                 "property": "parentState",
@@ -152,6 +159,7 @@
     {
         "id": "V112",
         "description": "If parent zip code is reported, then the format must be NNNNN or NNNNN-NNNN and left justified.",
+        "explanation": "Parent zip code is an invalid format.",
         "rule": {
             "if": {
                 "property": "parentZip",
@@ -166,6 +174,7 @@
     {
         "id": "V150",
         "description": "Institution Name cannot equal Contact Name.",
+        "explanation": "Institution name = Contact Name.",
         "rule": {
             "property": "institutionName",
             "condition": "not_equal_property",
@@ -175,6 +184,7 @@
     {
         "id": "V115",
         "description": "Name of contact person must not = blank",
+        "explanation": "Name of contact person is missing.",
         "rule": {
             "property": "contactName",
             "condition": "not_empty"
@@ -183,6 +193,7 @@
     {
         "id": "V120",
         "description": "Contact person telephone number must be in NNN-NNN-NNNN format and not blank.",
+        "explanation": "Telephone number for contact person not in valid format or is missing.",
         "rule": {
             "and": [
                 {
@@ -200,6 +211,7 @@
     {
         "id": "V135",
         "description": "Fax Number must be in NNN-NNN-NNNN format and not = blank.",
+        "explanation": "Fax Number not in valid format or is missing.",
         "rule": {
             "and": [
                 {
@@ -217,6 +229,7 @@
     {
         "id": "V125",
         "description": "Tax ID number must be in NN-NNNNNNN format and not = (99-9999999 or 00-0000000 or blank).",
+        "explanation": "Tax ID number not in valid format or is missing.",
         "rule": {
             "and": [
                 {

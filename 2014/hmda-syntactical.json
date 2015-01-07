@@ -2,6 +2,7 @@
     {
         "id": "S010",
         "description": "The first record identifier in the file must = 1 (TS). The second and all subsequent record identifiers must = 2 (LAR).",
+        "explanation": "First record identifier does not = 1 (TS) or at least one subsequent record identifier after the first record does not = 2 (LAR).",
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
@@ -11,6 +12,7 @@
     {
         "id": "S011",
         "description": "The HMDA file must contain at least one loan/application record (record identifier = 2).",
+        "explanation": "File does not contain at least one loan/application record (record identifier = 2).",
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
@@ -20,6 +22,7 @@
     {
         "id": "S020",
         "description": "Agency code must = 1, 2, 3, 5, 7, 9. The agency that submits the data must be the same as the reported agency code.",
+        "explanation": "Agency code not valid for agency sending data.",
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
@@ -29,6 +32,7 @@
     {
         "id": "S025",
         "description": "Control number must = a valid respondent identifier/agency code combination for date processed.",
+        "explanation": "Invalid respondent identifier/agency code combination or ID not on panel.",
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
@@ -38,6 +42,7 @@
     {
         "id": "S040",
         "description": "Application/loan number must be unique.",
+        "explanation": "Duplicate loan numbers reported; data already in file.",
         "rule": {
             "property": "hmdaFile",
             "condition": "call",

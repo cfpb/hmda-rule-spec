@@ -2,16 +2,7 @@ All notable changes to this project will be documented in this file.
 We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
 
-## x.y.z - YYYY-MM-DD
+## 0.0.1 - 2015-01-07
 
 ### Added
-- Lorem ipsum dolor sit amet
-
-### Deprecated
-- Nothing.
-
-### Removed
-- Nothing.
-
-### Fixed
-- Nothing.
+- Initial rule set for 2013 and 2014

@@ -3,3 +3,10 @@ node_js:
   - "0.10"
 before_install: npm install -g grunt-cli
 install: npm install
+deploy:
+  provider: npm
+  email: doelleri@gmail.com
+  api_key:
+    secure: Ak2S5d8cVk52gG5KRgqG/7mANuhMPAvFogP6VMgYrjxFZh+lg7zBvH1d+O3BDAXrMUySPvtetb6UfWKcsM83GmdzJyryotnSjLy6SsipDdLLZ6H1UX4t30O1jGVjeTfeG9nKNFEDamCYGm+9WgsREOmGswmnyPmC9uLfDSRmEU8=
+  on:
+    tags: true

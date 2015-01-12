@@ -49,7 +49,7 @@
                 "condition": "not_equal_property",
                 "value": "parentAddress"
             }
-        },
+        }
     },
     {
         "id": "Q012",

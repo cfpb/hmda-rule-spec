@@ -430,7 +430,7 @@
                 {
                     "property": "censusTract",
                     "condition": "matches_regex",
-                    "value": "[0-9]{5}\\.[0-9]{2}|NA"
+                    "value": "[0-9]{4}\\.[0-9]{2}|NA"
                 },
                 {
                     "property": "censusTract",
@@ -1105,7 +1105,7 @@
         "rule": {
             "property": "purchaserType",
             "condition": "in",
-            "values": ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+            "values": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
         }
     },
     {

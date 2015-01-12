@@ -837,7 +837,7 @@
                     "property": "metroArea",
                     "condition": "call",
                     "function": "isMetroAreaOnRespondentPanel",
-                    "args": ["metroArea", "RespondentID"]
+                    "args": ["metroArea", "respondentID"]
                 }
             }
         }

@@ -24,8 +24,11 @@
                     "condition": "equal",
                     "value": "3"
                 },
-                "less_than",
-                "200"
+                {
+                    "property": "result",
+                    "condition": "less_than",
+                    "value": "200"
+                }
             ]
         }
     },
@@ -54,8 +57,11 @@
                             }
                         ]
                     },
-                    "greater_than",
-                    "25"
+                    {
+                        "property": "result",
+                        "condition": "greater_than",
+                        "value": "25"
+                    }
                 ]
             },
             "then": {
@@ -83,8 +89,11 @@
                         "condition": "equal",
                         "value": "1"
                     },
-                    "less_than_or_equal",
-                    ".95"
+                    {
+                        "property": "result",
+                        "condition": "less_than_or_equal",
+                        "value": ".95"
+                    }
                 ]
             }
         }
@@ -118,8 +127,11 @@
                     "condition": "equal",
                     "value": "2"
                 },
-                "less_than_or_equal",
-                ".1"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".1"
+                }
             ]
         }
     },

@@ -24,8 +24,11 @@
                     "condition": "equal",
                     "value": "3"
                 },
-                "less_than",
-                "200"
+                {
+                    "property": "result",
+                    "condition": "less_than",
+                    "value": "200"
+                }
             ]
         }
     },
@@ -54,8 +57,11 @@
                             }
                         ]
                     },
-                    "greater_than",
-                    "25"
+                    {
+                        "property": "result",
+                        "condition": "greater_than",
+                        "value": "25"
+                    }
                 ]
             },
             "then": {
@@ -83,8 +89,11 @@
                         "condition": "equal",
                         "value": "1"
                     },
-                    "less_than_or_equal",
-                    ".95"
+                    {
+                        "property": "result",
+                        "condition": "less_than_or_equal",
+                        "value": ".95"
+                    }
                 ]
             }
         }
@@ -118,8 +127,11 @@
                     "condition": "equal",
                     "value": "2"
                 },
-                "less_than_or_equal",
-                ".1"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".1"
+                }
             ]
         }
     },
@@ -152,8 +164,11 @@
                     "condition": "equal",
                     "value": "2"
                 },
-                "less_than_or_equal",
-                ".05"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".05"
+                }
             ]
         }
     },
@@ -177,8 +192,11 @@
                     "condition": "equal",
                     "value": "2"
                 },
-                "less_than_or_equal",
-                ".15"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".15"
+                }
             ]
         }
     },
@@ -202,8 +220,11 @@
                     "condition": "equal",
                     "value": "2"
                 },
-                "less_than_or_equal",
-                ".30"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".30"
+                }
             ]
         }
     },
@@ -227,8 +248,11 @@
                     "condition": "equal",
                     "value": "2"
                 },
-                "less_than_or_equal",
-                ".15"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".15"
+                }
             ]
         }
     },
@@ -252,8 +276,11 @@
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5", "6"]
                 },
-                "greater_than_or_equal",
-                ".20"
+                {
+                    "property": "result",
+                    "condition": "greater_than_or_equal",
+                    "value": ".20"
+                }
             ]
         }
     },
@@ -277,8 +304,11 @@
                     "condition": "equal",
                     "value": "2"
                 },
-                "less_than_or_equal",
-                ".30"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".30"
+                }
             ]
         }
     },
@@ -312,8 +342,11 @@
                     "condition": "equal",
                     "value": "2"
                 },
-                "less_than_or_equal",
-                ".20"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".20"
+                }
             ]
         }
     },
@@ -351,8 +384,11 @@
                     "condition": "equal",
                     "value": "1"
                 },
-                "less_than_or_equal",
-                ".01"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".01"
+                }
             ]
         }
     },
@@ -390,8 +426,11 @@
                     "condition": "equal",
                     "value": "6"
                 },
-                "less_than_or_equal",
-                ".01"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".01"
+                }
             ]
         }
     },
@@ -434,8 +473,11 @@
                     "condition": "equal",
                     "value": "1"
                 },
-                "less_than_or_equal",
-               ".01"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".01"
+                }
             ]
         }
     },
@@ -478,8 +520,11 @@
                     "condition": "equal",
                     "value": "1"
                 },
-                "less_than_or_equal",
-                ".01"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".01"
+                }
             ]
         }
     },
@@ -498,8 +543,11 @@
                     "condition": "equal",
                     "value": "1"
                 },
-                "less_than",
-                "200"
+                {
+                    "property": "result",
+                    "condition": "less_than",
+                    "value": "200"
+                }
             ]
         }
     },
@@ -546,8 +594,11 @@
                     "condition": "equal",
                     "value": "1"
                 },
-                "less_than_or_equal",
-                ".05"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".05"
+                }
             ]
         }
     },
@@ -599,8 +650,11 @@
                     "condition": "equal",
                     "value": "1"
                 },
-                "less_than_or_equal",
-                ".01"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".01"
+                }
             ]
         }
     },
@@ -629,8 +683,11 @@
                             }
                         ]
                     },
-                    "greater_than_or_equal",
-                    "50"
+                    {
+                        "property": "result",
+                        "condition": "greater_than_or_equal",
+                        "value": "50"
+                    }
                 ]
             },
             "then": {
@@ -672,8 +729,11 @@
                             }
                         ]
                     },
-                    "less_than_or_equal",
-                    ".70"
+                    {
+                        "property": "result",
+                        "condition": "less_than_or_equal",
+                        "value": ".70"
+                    }
                 ]
             }
         }
@@ -694,8 +754,11 @@
                         "condition": "equal",
                         "value": "2"
                     },
-                    "greater_than_or_equal",
-                    "50"
+                    {
+                        "property": "result",
+                        "condition": "greater_than_or_equal",
+                        "value": "50"
+                    }
                 ]
             },
             "then": {
@@ -709,8 +772,11 @@
                         "condition": "equal",
                         "value": "3"
                     },
-                    "greater_than",
-                    "0"
+                    {
+                        "property": "result",
+                        "condition": "greater_than",
+                        "value": "0"
+                    }
                 ]
             }
         }
@@ -731,8 +797,11 @@
                         "condition": "equal",
                         "value": "1"
                     },
-                    "greater_than_or_equal",
-                    "1000"
+                    {
+                        "property": "result",
+                        "condition": "greater_than_or_equal",
+                        "value": "1000"
+                    }
                 ]
             },
             "then": {
@@ -746,8 +815,11 @@
                         "condition": "equal",
                         "value": "7"
                     },
-                    "greater_than",
-                    "0"
+                    {
+                        "property": "result",
+                        "condition": "greater_than",
+                        "value": "0"
+                    }
                 ]
             }
         }
@@ -817,8 +889,11 @@
                             }
                         ]
                     },
-                    "greater_than_or_equal",
-                    "250"
+                    {
+                        "property": "result",
+                        "condition": "greater_than_or_equal",
+                        "value": "250"
+                    }
                 ]
             },
             "then": {
@@ -875,8 +950,11 @@
                             }
                         ]
                     },
-                    "greater_than",
-                    ".20"
+                    {
+                        "property": "result",
+                        "condition": "greater_than",
+                        "value": ".20"
+                    }
                 ]
             }
         }
@@ -916,8 +994,11 @@
                             }
                         ]
                     },
-                    "greater_than_or_equal",
-                    "250"
+                    {
+                        "property": "result",
+                        "condition": "greater_than_or_equal",
+                        "value": "250"
+                    }
                 ]
             },
             "then": {
@@ -974,8 +1055,11 @@
                             }
                         ]
                     },
-                    "greater_than",
-                    ".20"
+                    {
+                        "property": "result",
+                        "condition": "greater_than",
+                        "value": ".20"
+                    }
                 ]
             }
         }
@@ -1010,8 +1094,11 @@
                             }
                         ]
                     },
-                    "greater_than_or_equal",
-                    "750"
+                    {
+                        "property": "result",
+                        "condition": "greater_than_or_equal",
+                        "value": "750"
+                    }
                 ]
             },
             "then": {
@@ -1051,8 +1138,11 @@
                             }
                         ]
                     },
-                    "greater_than_or_equal",
-                    "750"
+                    {
+                        "property": "result",
+                        "condition": "greater_than_or_equal",
+                        "value": "750"
+                    }
                 ]
             },
             "then": {
@@ -1096,8 +1186,11 @@
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
-                "less_than_or_equal",
-                ".50"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".50"
+                }
             ]
         }
     },
@@ -1135,8 +1228,11 @@
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
-                "less_than_or_equal",
-                ".50"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".50"
+                }
             ]
         }
     },
@@ -1174,8 +1270,11 @@
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
-                "less_than_or_equal",
-                ".50"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".50"
+                }
             ]
         }
     },
@@ -1223,8 +1322,11 @@
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
-                "less_than_or_equal",
-                ".20"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".20"
+                }
             ]
         }
     },

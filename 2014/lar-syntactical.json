@@ -17,7 +17,7 @@
             "property": "actionDate",
             "condition": "call",
             "function": "isActionDateInActivityYear",
-            "args": ["actionDate", "transmittalSheet.activityYear"]
+            "args": ["actionDate", "hmdaFile.transmittalSheet.activityYear"]
         }
     }
 ]

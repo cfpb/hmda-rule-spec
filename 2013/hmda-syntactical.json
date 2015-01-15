@@ -36,7 +36,7 @@
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
-            "function": "isValidControlNumber",
+            "function": "isValidControlNumber"
         }
     },
     {

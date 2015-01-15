@@ -23,7 +23,7 @@ var SpecAPI = function() {
         try {
             return require('./' + year + '/data_file_specification.json');
         } catch (e) {
-            return {};
+            return null;
         }
     };
 
@@ -31,7 +31,7 @@ var SpecAPI = function() {
         try {
             return require('./' + year + '/' + objectType + '-' + editType + '.json');
         } catch (e) {
-            return [];
+            return null;
         }
     };
 

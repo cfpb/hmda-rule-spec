@@ -6,6 +6,7 @@ var VALID_EDIT_TYPES = ['validity', 'syntactical', 'quality', 'macro'];
 // 2013 Spec and Edits
 var filespec2013 = require('./2013/data_file_specification.json'),
     hmdaMacro2013 = require('./2013/hmda-macro.json'),
+    hmdaQuality2013 = require('./2013/hmda-quality.json'),
     hmdaSyntactical2013 = require('./2013/hmda-syntactical.json'),
     larQuality2013 = require('./2013/lar-quality.json'),
     larSyntactical2013 = require('./2013/lar-syntactical.json'),
@@ -17,6 +18,7 @@ var filespec2013 = require('./2013/data_file_specification.json'),
 // 2014 Spec and Edits
 var filespec2014 = require('./2014/data_file_specification.json'),
     hmdaMacro2014 = require('./2014/hmda-macro.json'),
+    hmdaQuality2014 = require('./2014/hmda-quality.json'),
     hmdaSyntactical2014 = require('./2014/hmda-syntactical.json'),
     larQuality2014 = require('./2014/lar-quality.json'),
     larSyntactical2014 = require('./2014/lar-syntactical.json'),
@@ -30,6 +32,7 @@ var specs = {
         'filespec': filespec2013,
         'hmda': {
             'macro': hmdaMacro2013,
+            'quality': hmdaQuality2013,
             'syntactical': hmdaSyntactical2013
         },
         'lar': {
@@ -47,6 +50,7 @@ var specs = {
         'filespec': filespec2014,
         'hmda': {
             'macro': hmdaMacro2014,
+            'quality': hmdaQuality2014,
             'syntactical': hmdaSyntactical2014
         },
         'lar': {

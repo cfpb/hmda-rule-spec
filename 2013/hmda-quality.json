@@ -6,8 +6,7 @@
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
-            "function": "checkTotalLARCount",
-            "args": ["hmdaFile.transmittalSheet.totalLineEntries", "hmdaFile.loanApplicationRegisters"]
+            "function": "checkTotalLARCount"
         }
     }
 ]

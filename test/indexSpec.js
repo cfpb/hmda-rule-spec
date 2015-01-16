@@ -1,3 +1,9 @@
+/*global describe:false*/
+/*global it:false*/
+/*global expect:false*/
+/*global beforeEach:false*/
+/*global rewire:false*/
+/*global _:false*/
 'use strict';
 
 describe('getValidYears', function() {

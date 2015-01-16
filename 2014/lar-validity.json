@@ -1077,7 +1077,7 @@
                     {
                         "property": "coapplicantRace1",
                         "condition": "equal",
-                        "value": "8",
+                        "value": "8"
                     },
                     {
                         "property": "coapplicantSex",

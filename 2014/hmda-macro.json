@@ -19,14 +19,17 @@
                 "condition": "call",
                 "function": "compareNumEntriesSingle",
                 "args": [
-                    "loanApplicationRegisters",
+                    "hmdaFile.loanApplicationRegisters",
                     {
                         "property": "recordID",
                         "condition": "equal",
                         "value": "2"
                     },
-                    "less_than",
-                    "2000"
+                    {
+                        "property": "result",
+                        "condition": "less_than",
+                        "value": "2000"
+                    }
                 ]
             },
             "then": {
@@ -34,14 +37,17 @@
                 "condition": "call",
                 "function": "compareNumEntriesSingle",
                 "args": [
-                    "loanApplicationRegisters",
+                    "hmdaFile.loanApplicationRegisters",
                     {
                         "property": "propertyType",
                         "condition": "equal",
                         "value": "3"
                     },
-                    "less_than",
-                    "200"
+                    {
+                        "property": "result",
+                        "condition": "less_than",
+                        "value": "200"
+                    }
                 ]
             }
         }
@@ -56,7 +62,7 @@
                 "condition": "call",
                 "function": "compareNumEntriesSingle",
                 "args": [
-                    "loanApplicationRegisters",
+                    "hmdaFile.loanApplicationRegisters",
                     {
                         "and": [
                             {
@@ -71,8 +77,11 @@
                             }
                         ]
                     },
-                    "greater_than",
-                    "25"
+                    {
+                        "property": "result",
+                        "condition": "greater_than",
+                        "value": "25"
+                    }
                 ]
             },
             "then": {
@@ -80,7 +89,7 @@
                 "condition": "call",
                 "function": "compareNumEntries",
                 "args": [
-                    "loanApplicationRegisters",
+                    "hmdaFile.loanApplicationRegisters",
                     {
                         "and": [
                             {
@@ -100,8 +109,11 @@
                         "condition": "equal",
                         "value": "1"
                     },
-                    "less_than_or_equal",
-                    ".95"
+                    {
+                        "property": "result",
+                        "condition": "less_than_or_equal",
+                        "value": ".95"
+                    }
                 ]
             }
         }
@@ -115,7 +127,7 @@
             "condition": "call",
             "function": "compareNumEntries",
             "args": [
-                "loanApplicationRegisters",
+                "hmdaFile.loanApplicationRegisters",
                 {
                     "and": [
                         {
@@ -135,8 +147,11 @@
                     "condition": "equal",
                     "value": "2"
                 },
-                "less_than_or_equal",
-                ".1"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".1"
+                }
             ]
         }
     },
@@ -149,7 +164,7 @@
             "condition": "call",
             "function": "compareNumEntries",
             "args": [
-                "loanApplicationRegisters",
+                "hmdaFile.loanApplicationRegisters",
                 {
                     "and": [
                         {
@@ -169,8 +184,11 @@
                     "condition": "equal",
                     "value": "2"
                 },
-                "less_than_or_equal",
-                ".05"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".05"
+                }
             ]
         }
     },
@@ -183,7 +201,7 @@
             "condition": "call",
             "function": "compareNumEntries",
             "args": [
-                "loanApplicationRegisters",
+                "hmdaFile.loanApplicationRegisters",
                 {
                     "property": "actionTaken",
                     "condition": "equal",
@@ -194,8 +212,11 @@
                     "condition": "equal",
                     "value": "2"
                 },
-                "less_than_or_equal",
-                ".15"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".15"
+                }
             ]
         }
     },
@@ -208,7 +229,7 @@
             "condition": "call",
             "function": "compareNumEntries",
             "args": [
-                "loanApplicationRegisters",
+                "hmdaFile.loanApplicationRegisters",
                 {
                     "property": "actionTaken",
                     "condition": "equal",
@@ -219,8 +240,11 @@
                     "condition": "equal",
                     "value": "2"
                 },
-                "less_than_or_equal",
-                ".30"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".30"
+                }
             ]
         }
     },
@@ -233,7 +257,7 @@
             "condition": "call",
             "function": "compareNumEntries",
             "args": [
-                "loanApplicationRegisters",
+                "hmdaFile.loanApplicationRegisters",
                 {
                     "property": "actionTaken",
                     "condition": "equal",
@@ -244,8 +268,11 @@
                     "condition": "equal",
                     "value": "2"
                 },
-                "less_than_or_equal",
-                ".15"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".15"
+                }
             ]
         }
     },
@@ -258,7 +285,7 @@
             "condition": "call",
             "function": "compareNumEntries",
             "args": [
-                "loanApplicationRegisters",
+                "hmdaFile.loanApplicationRegisters",
                 {
                     "property": "actionTaken",
                     "condition": "equal",
@@ -269,8 +296,11 @@
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5", "6"]
                 },
-                "greater_than_or_equal",
-                ".20"
+                {
+                    "property": "result",
+                    "condition": "greater_than_or_equal",
+                    "value": ".20"
+                }
             ]
         }
     },
@@ -283,7 +313,7 @@
             "condition": "call",
             "function": "compareNumEntries",
             "args": [
-                "loanApplicationRegisters",
+                "hmdaFile.loanApplicationRegisters",
                 {
                     "property": "metroArea",
                     "condition": "equal",
@@ -294,8 +324,11 @@
                     "condition": "equal",
                     "value": "2"
                 },
-                "less_than_or_equal",
-                ".30"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".30"
+                }
             ]
         }
     },
@@ -318,7 +351,7 @@
             "condition": "call",
             "function": "compareNumEntries",
             "args": [
-                "loanApplicationRegisters",
+                "hmdaFile.loanApplicationRegisters",
                 {
                     "property": "applicantIncome",
                     "condition": "less_than",
@@ -329,8 +362,11 @@
                     "condition": "equal",
                     "value": "2"
                 },
-                "less_than_or_equal",
-                ".20"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".20"
+                }
             ]
         }
     },
@@ -343,7 +379,7 @@
             "condition": "call",
             "function": "compareNumEntries",
             "args": [
-                "loanApplicationRegisters",
+                "hmdaFile.loanApplicationRegisters",
                 {
                     "and": [
                         {
@@ -368,8 +404,11 @@
                     "condition": "equal",
                     "value": "1"
                 },
-                "less_than_or_equal",
-                ".01"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".01"
+                }
             ]
         }
     },
@@ -382,7 +421,7 @@
             "condition": "call",
             "function": "compareNumEntries",
             "args": [
-                "loanApplicationRegisters",
+                "hmdaFile.loanApplicationRegisters",
                 {
                     "and": [
                         {
@@ -407,8 +446,11 @@
                     "condition": "equal",
                     "value": "6"
                 },
-                "less_than_or_equal",
-                ".01"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".01"
+                }
             ]
         }
     },
@@ -421,7 +463,7 @@
             "condition": "call",
             "function": "compareNumEntries",
             "args": [
-                "loanApplicationRegisters",
+                "hmdaFile.loanApplicationRegisters",
                 {
                     "and": [
                         {
@@ -451,8 +493,11 @@
                     "condition": "equal",
                     "value": "1"
                 },
-                "less_than_or_equal",
-               ".01"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".01"
+                }
             ]
         }
     },
@@ -465,7 +510,7 @@
             "condition": "call",
             "function": "compareNumEntries",
             "args": [
-                "loanApplicationRegisters",
+                "hmdaFile.loanApplicationRegisters",
                 {
                     "and": [
                         {
@@ -495,8 +540,11 @@
                     "condition": "equal",
                     "value": "1"
                 },
-                "less_than_or_equal",
-                ".01"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".01"
+                }
             ]
         }
     },
@@ -509,14 +557,17 @@
             "condition": "call",
             "function": "compareNumEntriesSingle",
             "args": [
-                "loanApplicationRegisters",
+                "hmdaFile.loanApplicationRegisters",
                 {
                     "property": "hoepaStatus",
                     "condition": "equal",
                     "value": "1"
                 },
-                "less_than",
-                "200"
+                {
+                    "property": "result",
+                    "condition": "less_than",
+                    "value": "200"
+                }
             ]
         }
     },
@@ -529,7 +580,7 @@
             "condition": "call",
             "function": "compareNumEntries",
             "args": [
-                "loanApplicationRegisters",
+                "hmdaFile.loanApplicationRegisters",
                 {
                     "and": [
                         {
@@ -563,8 +614,11 @@
                     "condition": "equal",
                     "value": "1"
                 },
-                "less_than_or_equal",
-                ".05"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".05"
+                }
             ]
         }
     },
@@ -577,7 +631,7 @@
             "condition": "call",
             "function": "compareNumEntries",
             "args": [
-                "loanApplicationRegisters",
+                "hmdaFile.loanApplicationRegisters",
                 {
                     "and": [
                         {
@@ -616,8 +670,11 @@
                     "condition": "equal",
                     "value": "1"
                 },
-                "less_than_or_equal",
-                ".01"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".01"
+                }
             ]
         }
     },
@@ -631,7 +688,7 @@
                 "condition": "call",
                 "function": "compareNumEntriesSingle",
                 "args": [
-                    "loanApplicationRegisters",
+                    "hmdaFile.loanApplicationRegisters",
                     {
                         "and": [
                             {
@@ -646,8 +703,11 @@
                             }
                         ]
                     },
-                    "greater_than_or_equal",
-                    "50"
+                    {
+                        "property": "result",
+                        "condition": "greater_than_or_equal",
+                        "value": "50"
+                    }
                 ]
             },
             "then": {
@@ -655,7 +715,7 @@
                 "condition": "call",
                 "function": "compareNumEntries",
                 "args": [
-                    "loanApplicationRegisters",
+                    "hmdaFile.loanApplicationRegisters",
                     {
                         "and": [
                             {
@@ -689,8 +749,11 @@
                             }
                         ]
                     },
-                    "less_than_or_equal",
-                    ".70"
+                    {
+                        "property": "result",
+                        "condition": "less_than_or_equal",
+                        "value": ".70"
+                    }
                 ]
             }
         }
@@ -705,14 +768,17 @@
                 "condition": "call",
                 "function": "compareNumEntriesSingle",
                 "args": [
-                    "loanApplicationRegisters",
+                    "hmdaFile.loanApplicationRegisters",
                     {
                         "property": "recordID",
                         "condition": "equal",
                         "value": "2"
                     },
-                    "greater_than_or_equal",
-                    "50"
+                    {
+                        "property": "result",
+                        "condition": "greater_than_or_equal",
+                        "value": "50"
+                    }
                 ]
             },
             "then": {
@@ -720,14 +786,17 @@
                 "condition": "call",
                 "function": "compareNumEntriesSingle",
                 "args": [
-                    "loanApplicationRegisters",
+                    "hmdaFile.loanApplicationRegisters",
                     {
                         "property": "actionTaken",
                         "condition": "equal",
                         "value": "3"
                     },
-                    "greater_than",
-                    "0"
+                    {
+                        "property": "result",
+                        "condition": "greater_than",
+                        "value": "0"
+                    }
                 ]
             }
         }
@@ -742,14 +811,17 @@
                 "condition": "call",
                 "function": "compareNumEntriesSingle",
                 "args": [
-                    "loanApplicationRegisters",
+                    "hmdaFile.loanApplicationRegisters",
                     {
                         "property": "preapprovals",
                         "condition": "equal",
                         "value": "1"
                     },
-                    "greater_than_or_equal",
-                    "1000"
+                    {
+                        "property": "result",
+                        "condition": "greater_than_or_equal",
+                        "value": "1000"
+                    }
                 ]
             },
             "then": {
@@ -757,14 +829,17 @@
                 "condition": "call",
                 "function": "compareNumEntriesSingle",
                 "args": [
-                    "loanApplicationRegisters",
+                    "hmdaFile.loanApplicationRegisters",
                     {
                         "property": "actionTaken",
                         "condition": "equal",
                         "value": "7"
                     },
-                    "greater_than",
-                    "0"
+                    {
+                        "property": "result",
+                        "condition": "greater_than",
+                        "value": "0"
+                    }
                 ]
             }
         }
@@ -809,7 +884,7 @@
                 "condition": "call",
                 "function": "compareNumEntriesSingle",
                 "args": [
-                    "loanApplicationRegisters",
+                    "hmdaFile.loanApplicationRegisters",
                     {
                         "and": [
                             {
@@ -834,8 +909,11 @@
                             }
                         ]
                     },
-                    "greater_than_or_equal",
-                    "250"
+                    {
+                        "property": "result",
+                        "condition": "greater_than_or_equal",
+                        "value": "250"
+                    }
                 ]
             },
             "then": {
@@ -843,7 +921,7 @@
                 "condition": "call",
                 "function": "compareNumEntries",
                 "args": [
-                    "loanApplicationRegisters",
+                    "hmdaFile.loanApplicationRegisters",
                     {
                         "and": [
                             {
@@ -892,8 +970,11 @@
                             }
                         ]
                     },
-                    "greater_than",
-                    ".20"
+                    {
+                        "property": "result",
+                        "condition": "greater_than",
+                        "value": ".20"
+                    }
                 ]
             }
         }
@@ -908,7 +989,7 @@
                 "condition": "call",
                 "function": "compareNumEntriesSingle",
                 "args": [
-                    "loanApplicationRegisters",
+                    "hmdaFile.loanApplicationRegisters",
                     {
                         "and": [
                             {
@@ -933,8 +1014,11 @@
                             }
                         ]
                     },
-                    "greater_than_or_equal",
-                    "250"
+                    {
+                        "property": "result",
+                        "condition": "greater_than_or_equal",
+                        "value": "250"
+                    }
                 ]
             },
             "then": {
@@ -942,7 +1026,7 @@
                 "condition": "call",
                 "function": "compareNumEntries",
                 "args": [
-                    "loanApplicationRegisters",
+                    "hmdaFile.loanApplicationRegisters",
                     {
                         "and": [
                             {
@@ -991,8 +1075,11 @@
                             }
                         ]
                     },
-                    "greater_than",
-                    ".20"
+                    {
+                        "property": "result",
+                        "condition": "greater_than",
+                        "value": ".20"
+                    }
                 ]
             }
         }
@@ -1007,7 +1094,7 @@
                 "condition": "call",
                 "function": "compareNumEntriesSingle",
                 "args": [
-                    "loanApplicationRegisters",
+                    "hmdaFile.loanApplicationRegisters",
                     {
                         "and": [
                             {
@@ -1027,8 +1114,11 @@
                             }
                         ]
                     },
-                    "greater_than_or_equal",
-                    "750"
+                    {
+                        "property": "result",
+                        "condition": "greater_than_or_equal",
+                        "value": "750"
+                    }
                 ]
             },
             "then": {
@@ -1048,7 +1138,7 @@
                 "condition": "call",
                 "function": "compareNumEntriesSingle",
                 "args": [
-                    "loanApplicationRegisters",
+                    "hmdaFile.loanApplicationRegisters",
                     {
                         "and": [
                             {
@@ -1068,8 +1158,11 @@
                             }
                         ]
                     },
-                    "greater_than_or_equal",
-                    "750"
+                    {
+                        "property": "result",
+                        "condition": "greater_than_or_equal",
+                        "value": "750"
+                    }
                 ]
             },
             "then": {
@@ -1088,7 +1181,7 @@
             "condition": "call",
             "function": "compareNumEntries",
             "args": [
-                "loanApplicationRegisters",
+                "hmdaFile.loanApplicationRegisters",
                 {
                     "and": [
                         {
@@ -1113,8 +1206,11 @@
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
-                "less_than_or_equal",
-                ".50"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".50"
+                }
             ]
         }
     },
@@ -1127,7 +1223,7 @@
             "condition": "call",
             "function": "compareNumEntries",
             "args": [
-                "loanApplicationRegisters",
+                "hmdaFile.loanApplicationRegisters",
                 {
                     "and": [
                         {
@@ -1152,8 +1248,11 @@
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
-                "less_than_or_equal",
-                ".50"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".50"
+                }
             ]
         }
     },
@@ -1166,7 +1265,7 @@
             "condition": "call",
             "function": "compareNumEntries",
             "args": [
-                "loanApplicationRegisters",
+                "hmdaFile.loanApplicationRegisters",
                 {
                     "and": [
                         {
@@ -1191,8 +1290,11 @@
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
-                "less_than_or_equal",
-                ".50"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".50"
+                }
             ]
         }
     },
@@ -1205,7 +1307,7 @@
             "condition": "call",
             "function": "compareNumEntries",
             "args": [
-                "loanApplicationRegisters",
+                "hmdaFile.loanApplicationRegisters",
                 {
                     "and": [
                         {
@@ -1240,8 +1342,11 @@
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
-                "less_than_or_equal",
-                ".20"
+                {
+                    "property": "result",
+                    "condition": "less_than_or_equal",
+                    "value": ".20"
+                }
             ]
         }
     },

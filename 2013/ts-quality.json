@@ -49,7 +49,7 @@
                 "condition": "not_equal_property",
                 "value": "parentAddress"
             }
-        },
+        }
     },
     {
         "id": "Q012",
@@ -60,16 +60,6 @@
             "condition": "call",
             "function": "isTaxIDTheSameAsLastYear",
             "args": ["respondentID", "taxID"]
-        }
-    },
-    {
-        "id": "Q130",
-        "description": "The number of loan/application records received in this transmission file per respondent does not = the total number of loan/application records reported in this respondent’s transmission or the total number of loan/application records in this submission is missing from the transmittal sheet.",
-        "explanation": "Loan/application records received in this transmission are missing or not = to the total number of loan/application records reported in this transmission.",
-        "rule": {
-            "property": "totalLineEntries",
-            "condition": "call",
-            "function": "checkTotalLARCount"
         }
     }
 ]

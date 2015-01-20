@@ -1,3 +1,9 @@
+/*global describe:false*/
+/*global it:false*/
+/*global expect:false*/
+/*global beforeEach:false*/
+/*global rewire:false*/
+/*global _:false*/
 'use strict';
 
 describe('getValidYears', function() {
@@ -34,7 +40,7 @@ describe('getFileSpec', function() {
 
     it('should return an empty object for an invalid year', function(done) {
         var spec = specAPI.getFileSpec('2000');
-        expect(spec).to.be.empty();
+        expect(spec).to.be.null();
         done();
     });
 });
@@ -48,7 +54,7 @@ describe('getEdits', function() {
 
     it('should return an empty list for an invalid year, editType, objectType combo', function(done) {
         var edits = specAPI.getEdits('2013', 'hmda', 'validity');
-        expect(edits).to.be.empty();
+        expect(edits).to.be.null();
         done();
     });
 });

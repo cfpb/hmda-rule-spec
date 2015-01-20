@@ -75,7 +75,11 @@ module.exports = function (grunt) {
                 jshintrc: '.jshintrc'
             }
         },
-
+        jsonlint: {
+            specs: {
+                src: [ '2013/*.json', '2014/*.json' ]
+            }
+        }
     });
 
 
@@ -86,10 +90,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-release');
+    grunt.loadNpmTasks('grunt-jsonlint');
 
     // Register group tasks
     grunt.registerTask('clean_all', [ 'clean:node_modules', 'clean:coverage', 'npm_install' ]);
-    grunt.registerTask('test', ['env:test', 'clean:coverage', 'jshint', 'mocha_istanbul']);
+    grunt.registerTask('test', ['env:test', 'clean:coverage', 'jshint', 'jsonlint:specs', 'mocha_istanbul']);
     grunt.registerTask('coverage', ['env:test', 'clean:coverage', 'jshint', 'mocha_istanbul', 'open_coverage' ]);
 
 };

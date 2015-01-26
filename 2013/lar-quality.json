@@ -822,7 +822,7 @@
             "property": "fipsState",
             "condition": "call",
             "function": "isValidStateCountyCensusTractCombo",
-            "args": ["fipsState", "fipsCounty", "censusTract", "metroArea"]
+            "args": ["metroArea", "fipsState", "fipsCounty", "censusTract"]
         }
     },
     {

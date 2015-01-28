@@ -341,16 +341,18 @@
         "rule": {
             "or": [
                 {
-                    "if": {
-                        "property": "metroArea",
-                        "condition": "equal",
-                        "value": "NA"
-                    },
-                    "then": {
-                        "property": "fipsState",
-                        "condition": "equal",
-                        "value": "NA"
-                    }
+                    "and": [
+                        {
+                            "property": "metroArea",
+                            "condition": "equal",
+                            "value": "NA"
+                        },
+                        {
+                            "property": "fipsState",
+                            "condition": "equal",
+                            "value": "NA"
+                        }
+                    ]
                 },
                 {
                     "property": "fipsState",

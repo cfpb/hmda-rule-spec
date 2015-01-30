@@ -9,14 +9,15 @@
             "value": "2014"
         }
     },
-    {
+   {
         "id": "S013",
         "description": "Timestamp must be later than timestamp on database.",
         "explanation": "Record timestamp is earlier than, or equal to, timestamp on database (format = ccyymmddhhmm).",
         "rule": {
             "property": "timestamp",
             "condition": "call",
-            "function": "isTimestampLaterThanDatabase"
+            "function": "isTimestampLaterThanDatabase",
+            "args": ["respondentID", "timestamp"]
         }
     },
     {

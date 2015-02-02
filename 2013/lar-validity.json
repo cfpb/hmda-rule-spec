@@ -403,16 +403,18 @@
         "rule": {
             "or": [
                 {
-                    "if": {
-                        "property": "metroArea",
-                        "condition": "equal",
-                        "value": "NA"
-                    },
-                    "then": {
-                        "property": "fipsCounty",
-                        "condition": "equal",
-                        "value": "NA"
-                    }
+                    "and": [
+                        {
+                            "property": "metroArea",
+                            "condition": "equal",
+                            "value": "NA"
+                        },
+                        {
+                            "property": "fipsCounty",
+                            "condition": "equal",
+                            "value": "NA"
+                        }
+                    ]
                 },
                 {
                     "property": "fipsState",

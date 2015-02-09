@@ -1349,15 +1349,5 @@
                 }
             ]
         }
-    },
-    {
-        "id": "Q030",
-        "description": "If action taken type = 1, 2, 3, 4, 5, or 6; and if the HMDA respondent is a nondepository institution (a for-profit entity), or is a bank or savings institution who reports CRA data, then MSA/MD, state, county, census tract should equal a valid combination and not NA.",
-        "explanation": "MSA/MD, state, county, census tract should not = NA.",
-        "rule": {
-            "property": "hmdaFile",
-            "condition": "call",
-            "function": "isValidMsaMdCountyCensusForNonDepository"
-        }
     }
 ]

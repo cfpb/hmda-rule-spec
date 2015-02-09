@@ -16,8 +16,7 @@
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
-            "function": "isValidMsaMdCountyCensusForNonDepository",
-            "args": ["hmdaFile"]
+            "function": "isValidMsaMdCountyCensusForNonDepository"
         }
     }
 ]

@@ -129,6 +129,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where preapproval = 1 and action taken = 4",
                     "and": [
                         {
                             "property": "preapprovals",
@@ -143,11 +144,13 @@
                     ]
                 },
                 {
+                    "label": "Total Loan Applications",
                     "property": "recordID",
                     "condition": "equal",
                     "value": "2"
                 },
                 {
+                    "label": "% of Total Loan Applications",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".1"
@@ -166,6 +169,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where preapproval = 1 and action taken = 5",
                     "and": [
                         {
                             "property": "preapprovals",
@@ -180,11 +184,13 @@
                     ]
                 },
                 {
+                    "label": "Total Loan Applications",
                     "property": "recordID",
                     "condition": "equal",
                     "value": "2"
                 },
                 {
+                    "label": "% of Total Loan Applications",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".05"
@@ -203,16 +209,19 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where action taken = 2",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "2"
                 },
                 {
+                    "label": "Total Loan Applications",
                     "property": "recordID",
                     "condition": "equal",
                     "value": "2"
                 },
                 {
+                    "label": "% of Total Loan Applications",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".15"
@@ -231,16 +240,19 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where action taken = 4",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "4"
                 },
                 {
+                    "label": "Total Loan Applications",
                     "property": "recordID",
                     "condition": "equal",
                     "value": "2"
                 },
                 {
+                    "label": "% of Total Loan Applications",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".30"
@@ -259,16 +271,19 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where action taken = 5",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "5"
                 },
                 {
+                    "label": "Total Loan Applications",
                     "property": "recordID",
                     "condition": "equal",
                     "value": "2"
                 },
                 {
+                    "label": "% of Total Loan Applications",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".15"
@@ -287,16 +302,19 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where action taken = 1",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "1"
                 },
                 {
+                    "label": "Loans where action taken is 1-6",
                     "property": "actionTaken",
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5", "6"]
                 },
                 {
+                    "label": "% of Loans where action taken is 1-6",
                     "property": "result",
                     "condition": "greater_than_or_equal",
                     "value": ".20"
@@ -315,16 +333,19 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans that report MDA/MD = NA",
                     "property": "metroArea",
                     "condition": "equal",
                     "value": "NA"
                 },
                 {
+                    "label": "Total Loan Applications",
                     "property": "recordID",
                     "condition": "equal",
                     "value": "2"
                 },
                 {
+                    "label": "% of Total Loan Applications",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".30"
@@ -353,16 +374,19 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where income < $10,000",
                     "property": "applicantIncome",
                     "condition": "less_than",
                     "value": "10"
                 },
                 {
+                    "label": "Total Loan Applications",
                     "property": "recordID",
                     "condition": "equal",
                     "value": "2"
                 },
                 {
+                    "label": "% of Total Loan Applications",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".20"
@@ -381,6 +405,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Originated Loans where Agency = 5 and HOEPA status = 1",
                     "and": [
                         {
                             "property": "agencyCode",
@@ -400,11 +425,13 @@
                     ]
                 },
                 {
+                    "label": "Total Originated Loans",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "1"
                 },
                 {
+                    "label": "% of Total Originated Loans",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".01"
@@ -423,6 +450,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Purchased Loans where Agency = 5 and HOEPA status = 1",
                     "and": [
                         {
                             "property": "agencyCode",
@@ -442,11 +470,13 @@
                     ]
                 },
                 {
+                    "label": "Total Purchased Loans",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "6"
                 },
                 {
+                    "label": "% of Total Purchased Loans",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".01"
@@ -465,6 +495,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Originated Loans where HOEPA status = 1, lien status = 1, and purchaser = 1",
                     "and": [
                         {
                             "property": "actionTaken",
@@ -489,11 +520,13 @@
                     ]
                 },
                 {
+                    "label": "Total Originated Loans",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "1"
                 },
                 {
+                    "label": "% of Total Originated Loans",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".01"
@@ -512,6 +545,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Originated Loans where HOEPA status = 1, lien status = 1, and purchaser = 3",
                     "and": [
                         {
                             "property": "actionTaken",
@@ -536,11 +570,13 @@
                     ]
                 },
                 {
+                    "label": "Total Originated Loans",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "1"
                 },
                 {
+                    "label": "% Total Originated Loans",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".01"
@@ -559,6 +595,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Total HOEPA Loans",
                     "property": "hoepaStatus",
                     "condition": "equal",
                     "value": "1"
@@ -582,6 +619,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Originated Loans where HOEPA status = 1, and rate spread >= 5% and not = NA",
                     "and": [
                         {
                             "property": "hoepaStatus",
@@ -610,11 +648,13 @@
                     ]
                 },
                 {
+                    "label": "Total Originated Loans",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "1"
                 },
                 {
+                    "label": "% of Total Originated Loans",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".05"
@@ -633,6 +673,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Originated Loans where property type = 1, lien status = 1, and rate spread >= 5% and not = NA",
                     "and": [
                         {
                             "property": "propertyType",
@@ -666,11 +707,13 @@
                     ]
                 },
                 {
+                    "label": "Total Originated Loans",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "1"
                 },
                 {
+                    "label": "% of Total Originated Loans",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".01"
@@ -1183,6 +1226,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where action take = 1, 2, or 3, property type = 1 or 2, and applicant ethnicity = 3 or 4",
                     "and": [
                         {
                             "property": "actionTaken",
@@ -1202,11 +1246,13 @@
                     ]
                 },
                 {
+                    "label": "Total Loans where action taken = 1-5",
                     "property": "actionTaken",
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
                 {
+                    "label": "% of Total Loans where action take = 1-5",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".50"
@@ -1225,6 +1271,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where action take = 1, 2, or 3, property type = 1 or 2, and first applicant race = 6 or 7",
                     "and": [
                         {
                             "property": "actionTaken",
@@ -1244,11 +1291,13 @@
                     ]
                 },
                 {
+                    "label": "Total Loans where action taken = 1-5",
                     "property": "actionTaken",
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
                 {
+                    "label": "% of Total Loans where action taken = 1-5",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".50"
@@ -1267,6 +1316,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where action take = 1, 2, or 3, property type = 1 or 2, and applicant sex = 3 or 4",
                     "and": [
                         {
                             "property": "actionTaken",
@@ -1286,11 +1336,13 @@
                     ]
                 },
                 {
+                    "label": "Total Loans where action taken = 1-5",
                     "property": "actionTaken",
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
                 {
+                    "label": "% of Total Loans where action taken = 1-5",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".50"
@@ -1309,6 +1361,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where action take = 1, 2, or 3, property type = 1 or 2, and applicant ethnicity = 3 or 4, and first applicant race = 6 or 7",
                     "and": [
                         {
                             "property": "actionTaken",
@@ -1338,11 +1391,13 @@
                     ]
                 },
                 {
+                    "label": "Total Loans where action taken = 1-5",
                     "property": "actionTaken",
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
                 {
+                    "label": "% Total Loans where action taken = 1-5",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".20"

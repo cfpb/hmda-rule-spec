@@ -14,42 +14,49 @@
         "description": "If property type = 3, and total number of all loan applications < 2,000, then the total number of multifamily applications should be < 200.",
         "explanation": "Number of reported multifamily applications is ≥ 200; Verify.",
         "rule": {
-            "if": {
-                "property": "hmdaFile",
-                "condition": "call",
-                "function": "compareNumEntriesSingle",
-                "args": [
-                    "hmdaFile.loanApplicationRegisters",
-                    {
-                        "property": "recordID",
-                        "condition": "equal",
-                        "value": "2"
-                    },
-                    {
-                        "property": "result",
-                        "condition": "less_than",
-                        "value": "2000"
-                    }
-                ]
-            },
-            "then": {
-                "property": "hmdaFile",
-                "condition": "call",
-                "function": "compareNumEntriesSingle",
-                "args": [
-                    "hmdaFile.loanApplicationRegisters",
-                    {
-                        "property": "propertyType",
-                        "condition": "equal",
-                        "value": "3"
-                    },
-                    {
-                        "property": "result",
-                        "condition": "less_than",
-                        "value": "200"
-                    }
-                ]
-            }
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "accumulatedIf",
+            "args": [
+                {
+                    "property": "hmdaFile",
+                    "condition": "call",
+                    "function": "compareNumEntriesSingle",
+                    "args": [
+                        "hmdaFile.loanApplicationRegisters",
+                        {
+                            "label": "Total Loan Applications",
+                            "property": "recordID",
+                            "condition": "equal",
+                            "value": "2"
+                        },
+                        {
+                            "property": "result",
+                            "condition": "less_than",
+                            "value": "2000"
+                        }
+                    ]
+                },
+                {
+                    "property": "hmdaFile",
+                    "condition": "call",
+                    "function": "compareNumEntriesSingle",
+                    "args": [
+                        "hmdaFile.loanApplicationRegisters",
+                        {
+                            "label": "Total multifamily loans",
+                            "property": "propertyType",
+                            "condition": "equal",
+                            "value": "3"
+                        },
+                        {
+                            "property": "result",
+                            "condition": "less_than",
+                            "value": "200"
+                        }
+                    ]
+                }
+            ]
         }
     },
     {
@@ -57,65 +64,75 @@
         "description": "If the total number of loan applications with loan purpose = 1 and action taken type = 1 is > 25, then the total number of these loan applications should be ≤ 95% of the total number of home purchase loan applications.",
         "explanation": "Total number of home purchase loan applications with an action code of 1 is > 95% of the total number of home purchase loan applications.",
         "rule": {
-            "if": {
-                "property": "hmdaFile",
-                "condition": "call",
-                "function": "compareNumEntriesSingle",
-                "args": [
-                    "hmdaFile.loanApplicationRegisters",
-                    {
-                        "and": [
-                            {
-                                "property": "loanPurpose",
-                                "condition": "equal",
-                                "value": "1"
-                            },
-                            {
-                                "property": "actionTaken",
-                                "condition": "equal",
-                                "value": "1"
-                            }
-                        ]
-                    },
-                    {
-                        "property": "result",
-                        "condition": "greater_than",
-                        "value": "25"
-                    }
-                ]
-            },
-            "then": {
-                "property": "hmdaFile",
-                "condition": "call",
-                "function": "compareNumEntries",
-                "args": [
-                    "hmdaFile.loanApplicationRegisters",
-                    {
-                        "and": [
-                            {
-                                "property": "loanPurpose",
-                                "condition": "equal",
-                                "value": "1"
-                            },
-                            {
-                                "property": "actionTaken",
-                                "condition": "equal",
-                                "value": "1"
-                            }
-                        ]
-                    },
-                    {
-                        "property": "loanPurpose",
-                        "condition": "equal",
-                        "value": "1"
-                    },
-                    {
-                        "property": "result",
-                        "condition": "less_than_or_equal",
-                        "value": ".95"
-                    }
-                ]
-            }
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "accumulatedIf",
+            "args": [
+                "hmdaFile",
+                {
+                    "property": "hmdaFile",
+                    "condition": "call",
+                    "function": "compareNumEntriesSingle",
+                    "args": [
+                        "hmdaFile.loanApplicationRegisters",
+                        {
+                            "label": "Loans where loan purpose = 1 and action taken = 1",
+                            "and": [
+                                {
+                                    "property": "loanPurpose",
+                                    "condition": "equal",
+                                    "value": "1"
+                                },
+                                {
+                                    "property": "actionTaken",
+                                    "condition": "equal",
+                                    "value": "1"
+                                }
+                            ]
+                        },
+                        {
+                            "property": "result",
+                            "condition": "greater_than",
+                            "value": "25"
+                        }
+                    ]
+                },
+                {
+                    "property": "hmdaFile",
+                    "condition": "call",
+                    "function": "compareNumEntries",
+                    "args": [
+                        "hmdaFile.loanApplicationRegisters",
+                        {
+                            "label": "Loans where loan purpose = 1 and action taken = 1",
+                            "and": [
+                                {
+                                    "property": "loanPurpose",
+                                    "condition": "equal",
+                                    "value": "1"
+                                },
+                                {
+                                    "property": "actionTaken",
+                                    "condition": "equal",
+                                    "value": "1"
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Total home purchase applications",
+                            "property": "loanPurpose",
+                            "condition": "equal",
+                            "value": "1"
+                        },
+                        {
+                            "label": "% of Total home purchase loans",
+                            "property": "result",
+                            "condition": "less_than_or_equal",
+                            "value": ".95"
+                        }
+                    ]
+                }
+            ]
         }
     },
     {
@@ -129,6 +146,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where preapproval = 1 and action taken = 4",
                     "and": [
                         {
                             "property": "preapprovals",
@@ -143,11 +161,13 @@
                     ]
                 },
                 {
+                    "label": "Total Loan Applications",
                     "property": "recordID",
                     "condition": "equal",
                     "value": "2"
                 },
                 {
+                    "label": "% of Total Loan Applications",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".1"
@@ -166,6 +186,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where preapproval = 1 and action taken = 5",
                     "and": [
                         {
                             "property": "preapprovals",
@@ -180,11 +201,13 @@
                     ]
                 },
                 {
+                    "label": "Total Loan Applications",
                     "property": "recordID",
                     "condition": "equal",
                     "value": "2"
                 },
                 {
+                    "label": "% of Total Loan Applications",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".05"
@@ -203,16 +226,19 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where action taken = 2",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "2"
                 },
                 {
+                    "label": "Total Loan Applications",
                     "property": "recordID",
                     "condition": "equal",
                     "value": "2"
                 },
                 {
+                    "label": "% of Total Loan Applications",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".15"
@@ -231,16 +257,19 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where action taken = 4",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "4"
                 },
                 {
+                    "label": "Total Loan Applications",
                     "property": "recordID",
                     "condition": "equal",
                     "value": "2"
                 },
                 {
+                    "label": "% of Total Loan Applications",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".30"
@@ -259,16 +288,19 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where action taken = 5",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "5"
                 },
                 {
+                    "label": "Total Loan Applications",
                     "property": "recordID",
                     "condition": "equal",
                     "value": "2"
                 },
                 {
+                    "label": "% of Total Loan Applications",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".15"
@@ -287,16 +319,19 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where action taken = 1",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "1"
                 },
                 {
+                    "label": "Loans where action taken is 1-6",
                     "property": "actionTaken",
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5", "6"]
                 },
                 {
+                    "label": "% of Loans where action taken is 1-6",
                     "property": "result",
                     "condition": "greater_than_or_equal",
                     "value": ".20"
@@ -315,16 +350,19 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans that report MDA/MD = NA",
                     "property": "metroArea",
                     "condition": "equal",
                     "value": "NA"
                 },
                 {
+                    "label": "Total Loan Applications",
                     "property": "recordID",
                     "condition": "equal",
                     "value": "2"
                 },
                 {
+                    "label": "% of Total Loan Applications",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".30"
@@ -353,16 +391,19 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where income < $10,000",
                     "property": "applicantIncome",
                     "condition": "less_than",
                     "value": "10"
                 },
                 {
+                    "label": "Total Loan Applications",
                     "property": "recordID",
                     "condition": "equal",
                     "value": "2"
                 },
                 {
+                    "label": "% of Total Loan Applications",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".20"
@@ -381,6 +422,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Originated Loans where Agency = 5 and HOEPA status = 1",
                     "and": [
                         {
                             "property": "agencyCode",
@@ -400,11 +442,13 @@
                     ]
                 },
                 {
+                    "label": "Total Originated Loans",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "1"
                 },
                 {
+                    "label": "% of Total Originated Loans",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".01"
@@ -423,6 +467,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Purchased Loans where Agency = 5 and HOEPA status = 1",
                     "and": [
                         {
                             "property": "agencyCode",
@@ -442,11 +487,13 @@
                     ]
                 },
                 {
+                    "label": "Total Purchased Loans",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "6"
                 },
                 {
+                    "label": "% of Total Purchased Loans",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".01"
@@ -465,6 +512,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Originated Loans where HOEPA status = 1, lien status = 1, and purchaser = 1",
                     "and": [
                         {
                             "property": "actionTaken",
@@ -489,11 +537,13 @@
                     ]
                 },
                 {
+                    "label": "Total Originated Loans",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "1"
                 },
                 {
+                    "label": "% of Total Originated Loans",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".01"
@@ -512,6 +562,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Originated Loans where HOEPA status = 1, lien status = 1, and purchaser = 3",
                     "and": [
                         {
                             "property": "actionTaken",
@@ -536,11 +587,13 @@
                     ]
                 },
                 {
+                    "label": "Total Originated Loans",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "1"
                 },
                 {
+                    "label": "% Total Originated Loans",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".01"
@@ -559,6 +612,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Total HOEPA Loans",
                     "property": "hoepaStatus",
                     "condition": "equal",
                     "value": "1"
@@ -582,6 +636,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Originated Loans where HOEPA status = 1, and rate spread >= 5% and not = NA",
                     "and": [
                         {
                             "property": "hoepaStatus",
@@ -610,11 +665,13 @@
                     ]
                 },
                 {
+                    "label": "Total Originated Loans",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "1"
                 },
                 {
+                    "label": "% of Total Originated Loans",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".05"
@@ -633,6 +690,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Originated Loans where property type = 1, lien status = 1, and rate spread >= 5% and not = NA",
                     "and": [
                         {
                             "property": "propertyType",
@@ -666,11 +724,13 @@
                     ]
                 },
                 {
+                    "label": "Total Originated Loans",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "1"
                 },
                 {
+                    "label": "% of Total Originated Loans",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".01"
@@ -683,79 +743,89 @@
         "description": "If the total number of conventional home purchase loan applications is ≥ 50, then the total number of denied conventional home purchase loans should be ≤ 70%.",
         "explanation": "The total number of conventional home purchase loan applications is ≥ 50 and the total number of denied conventional home purchase loans is > 70%.",
         "rule": {
-            "if": {
-                "property": "hmdaFile",
-                "condition": "call",
-                "function": "compareNumEntriesSingle",
-                "args": [
-                    "hmdaFile.loanApplicationRegisters",
-                    {
-                        "and": [
-                            {
-                                "property": "loanPurpose",
-                                "condition": "equal",
-                                "value": "1"
-                            },
-                            {
-                                "property": "loanType",
-                                "condition": "equal",
-                                "value": "1"
-                            }
-                        ]
-                    },
-                    {
-                        "property": "result",
-                        "condition": "greater_than_or_equal",
-                        "value": "50"
-                    }
-                ]
-            },
-            "then": {
-                "property": "hmdaFile",
-                "condition": "call",
-                "function": "compareNumEntries",
-                "args": [
-                    "hmdaFile.loanApplicationRegisters",
-                    {
-                        "and": [
-                            {
-                                "property": "loanPurpose",
-                                "condition": "equal",
-                                "value": "1"
-                            },
-                            {
-                                "property": "loanType",
-                                "condition": "equal",
-                                "value": "1"
-                            },
-                            {
-                                "property": "actionTaken",
-                                "condition": "equal",
-                                "value": "3"
-                            }
-                        ]
-                    },
-                    {
-                        "and": [
-                            {
-                                "property": "loanPurpose",
-                                "condition": "equal",
-                                "value": "1"
-                            },
-                            {
-                                "property": "loanType",
-                                "condition": "equal",
-                                "value": "1"
-                            }
-                        ]
-                    },
-                    {
-                        "property": "result",
-                        "condition": "less_than_or_equal",
-                        "value": ".70"
-                    }
-                ]
-            }
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "accumulatedIf",
+            "args": [
+                "hmdaFile",
+                {
+                    "property": "hmdaFile",
+                    "condition": "call",
+                    "function": "compareNumEntriesSingle",
+                    "args": [
+                        "hmdaFile.loanApplicationRegisters",
+                        {
+                            "label": "Loans where loan purpose = 1 and loan type = 1",
+                            "and": [
+                                {
+                                    "property": "loanPurpose",
+                                    "condition": "equal",
+                                    "value": "1"
+                                },
+                                {
+                                    "property": "loanType",
+                                    "condition": "equal",
+                                    "value": "1"
+                                }
+                            ]
+                        },
+                        {
+                            "property": "result",
+                            "condition": "greater_than_or_equal",
+                            "value": "50"
+                        }
+                    ]
+                },
+                {
+                    "property": "hmdaFile",
+                    "condition": "call",
+                    "function": "compareNumEntries",
+                    "args": [
+                        "hmdaFile.loanApplicationRegisters",
+                        {
+                            "label": "Loans where loan purpose = 1, loan type = 1, and action taken = 6",
+                            "and": [
+                                {
+                                    "property": "loanPurpose",
+                                    "condition": "equal",
+                                    "value": "1"
+                                },
+                                {
+                                    "property": "loanType",
+                                    "condition": "equal",
+                                    "value": "1"
+                                },
+                                {
+                                    "property": "actionTaken",
+                                    "condition": "equal",
+                                    "value": "3"
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Loans where loan purpose = 1 and loan type = 1",
+                            "and": [
+                                {
+                                    "property": "loanPurpose",
+                                    "condition": "equal",
+                                    "value": "1"
+                                },
+                                {
+                                    "property": "loanType",
+                                    "condition": "equal",
+                                    "value": "1"
+                                }
+                            ]
+                        },
+                        {
+                            "label": "% of Total Loans where loan purpose = 1 and loan type = 1",
+                            "property": "result",
+                            "condition": "less_than_or_equal",
+                            "value": ".70"
+                        }
+                    ]
+                } 
+            ]
         }
     },
     {
@@ -763,42 +833,50 @@
         "description": "If the total number of loan applications is ≥ 50, then the total number of denied loan applications should be > zero.",
         "explanation": "The total number of loan applications is ≥ 50 and the total number of denied loans = zero.",
         "rule": {
-            "if": {
-                "property": "hmdaFile",
-                "condition": "call",
-                "function": "compareNumEntriesSingle",
-                "args": [
-                    "hmdaFile.loanApplicationRegisters",
-                    {
-                        "property": "recordID",
-                        "condition": "equal",
-                        "value": "2"
-                    },
-                    {
-                        "property": "result",
-                        "condition": "greater_than_or_equal",
-                        "value": "50"
-                    }
-                ]
-            },
-            "then": {
-                "property": "hmdaFile",
-                "condition": "call",
-                "function": "compareNumEntriesSingle",
-                "args": [
-                    "hmdaFile.loanApplicationRegisters",
-                    {
-                        "property": "actionTaken",
-                        "condition": "equal",
-                        "value": "3"
-                    },
-                    {
-                        "property": "result",
-                        "condition": "greater_than",
-                        "value": "0"
-                    }
-                ]
-            }
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "accumulatedIf",
+            "args": [
+                "hmdaFile",
+                {
+                    "property": "hmdaFile",
+                    "condition": "call",
+                    "function": "compareNumEntriesSingle",
+                    "args": [
+                        "hmdaFile.loanApplicationRegisters",
+                        {
+                            "label": "Total Loan Applications",
+                            "property": "recordID",
+                            "condition": "equal",
+                            "value": "2"
+                        },
+                        {
+                            "property": "result",
+                            "condition": "greater_than_or_equal",
+                            "value": "50"
+                        }
+                    ]
+                },
+                {
+                    "property": "hmdaFile",
+                    "condition": "call",
+                    "function": "compareNumEntriesSingle",
+                    "args": [
+                        "hmdaFile.loanApplicationRegisters",
+                        {
+                            "label": "Total denied loans",
+                            "property": "actionTaken",
+                            "condition": "equal",
+                            "value": "3"
+                        },
+                        {
+                            "property": "result",
+                            "condition": "greater_than",
+                            "value": "0"
+                        }
+                    ]
+                } 
+            ]
         }
     },
     {
@@ -806,42 +884,50 @@
         "description": "If the total number of loan applications where preapproval = 1 is ≥ 1000, then the total number of preapproval requests denied (action taken = 7) should be > zero.",
         "explanation": "The total number of loan applications where preapproval = 1 is ≥ 1000 and the total number of preapproval requests denied = zero.",
         "rule": {
-            "if": {
-                "property": "hmdaFile",
-                "condition": "call",
-                "function": "compareNumEntriesSingle",
-                "args": [
-                    "hmdaFile.loanApplicationRegisters",
-                    {
-                        "property": "preapprovals",
-                        "condition": "equal",
-                        "value": "1"
-                    },
-                    {
-                        "property": "result",
-                        "condition": "greater_than_or_equal",
-                        "value": "1000"
-                    }
-                ]
-            },
-            "then": {
-                "property": "hmdaFile",
-                "condition": "call",
-                "function": "compareNumEntriesSingle",
-                "args": [
-                    "hmdaFile.loanApplicationRegisters",
-                    {
-                        "property": "actionTaken",
-                        "condition": "equal",
-                        "value": "7"
-                    },
-                    {
-                        "property": "result",
-                        "condition": "greater_than",
-                        "value": "0"
-                    }
-                ]
-            }
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "accumulatedIf",
+            "args": [
+                "hmdaFile",
+                {
+                    "property": "hmdaFile",
+                    "condition": "call",
+                    "function": "compareNumEntriesSingle",
+                    "args": [
+                        "hmdaFile.loanApplicationRegisters",
+                        {
+                            "label": "Total Loans where preapproval was requested",
+                            "property": "preapprovals",
+                            "condition": "equal",
+                            "value": "1"
+                        },
+                        {
+                            "property": "result",
+                            "condition": "greater_than_or_equal",
+                            "value": "1000"
+                        }
+                    ]
+                },
+                {
+                    "property": "hmdaFile",
+                    "condition": "call",
+                    "function": "compareNumEntriesSingle",
+                    "args": [
+                        "hmdaFile.loanApplicationRegisters",
+                        {
+                            "label": "Total Loans where preapproval was denied",
+                            "property": "actionTaken",
+                            "condition": "equal",
+                            "value": "7"
+                        },
+                        {
+                            "property": "result",
+                            "condition": "greater_than",
+                            "value": "0"
+                        }
+                    ]
+                } 
+            ]
         }
     },
     {
@@ -879,104 +965,114 @@
         "description": "If 250 or greater loans are reported with purpose of loan = 1, action taken type = 1 or 6, property type = 1 or 2, and loan type = 2 or 3, then of these loans, the percentage of loans sold should be > 20%.",
         "explanation": "Action taken type = 1 or 6, loan purpose = 1, property type = 1 or 2, loan type = 2 or 3. If 250 or greater of these loans are reported in the current year, then of these loans, the percentage sold should be > 20%.",
         "rule": {
-            "if": {
-                "property": "hmdaFile",
-                "condition": "call",
-                "function": "compareNumEntriesSingle",
-                "args": [
-                    "hmdaFile.loanApplicationRegisters",
-                    {
-                        "and": [
-                            {
-                                "property": "loanPurpose",
-                                "condition": "equal",
-                                "value": "1"
-                            },
-                            {
-                                "property": "actionTaken",
-                                "condition": "in",
-                                "values": ["1", "6"]
-                            },
-                            {
-                                "property": "propertyType",
-                                "condition": "in",
-                                "values": ["1", "2"]
-                            },
-                            {
-                                "property": "loanType",
-                                "condition": "in",
-                                "values": ["2", "3"]
-                            }
-                        ]
-                    },
-                    {
-                        "property": "result",
-                        "condition": "greater_than_or_equal",
-                        "value": "250"
-                    }
-                ]
-            },
-            "then": {
-                "property": "hmdaFile",
-                "condition": "call",
-                "function": "compareNumEntries",
-                "args": [
-                    "hmdaFile.loanApplicationRegisters",
-                    {
-                        "and": [
-                            {
-                                "property": "loanPurpose",
-                                "condition": "equal",
-                                "value": "1"
-                            },
-                            {
-                                "property": "actionTaken",
-                                "condition": "equal",
-                                "value": "6"
-                            },
-                            {
-                                "property": "propertyType",
-                                "condition": "in",
-                                "values": ["1", "2"]
-                            },
-                            {
-                                "property": "loanType",
-                                "condition": "in",
-                                "values": ["2", "3"]
-                            }
-                        ]
-                    },
-                    {
-                        "and": [
-                            {
-                                "property": "loanPurpose",
-                                "condition": "equal",
-                                "value": "1"
-                            },
-                            {
-                                "property": "actionTaken",
-                                "condition": "in",
-                                "values": ["1", "6"]
-                            },
-                            {
-                                "property": "propertyType",
-                                "condition": "in",
-                                "values": ["1", "2"]
-                            },
-                            {
-                                "property": "loanType",
-                                "condition": "in",
-                                "values": ["2", "3"]
-                            }
-                        ]
-                    },
-                    {
-                        "property": "result",
-                        "condition": "greater_than",
-                        "value": ".20"
-                    }
-                ]
-            }
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "accumulatedIf",
+            "args": [
+                "hmdaFile",
+                {
+                    "property": "hmdaFile",
+                    "condition": "call",
+                    "function": "compareNumEntriesSingle",
+                    "args": [
+                        "hmdaFile.loanApplicationRegisters",
+                        {
+                            "label": "Total loans with loan purpose = 1, action taken = 1 or 6, property type = 1 or 2, and loan type = 2 or 3",
+                            "and": [
+                                {
+                                    "property": "loanPurpose",
+                                    "condition": "equal",
+                                    "value": "1"
+                                },
+                                {
+                                    "property": "actionTaken",
+                                    "condition": "in",
+                                    "values": ["1", "6"]
+                                },
+                                {
+                                    "property": "propertyType",
+                                    "condition": "in",
+                                    "values": ["1", "2"]
+                                },
+                                {
+                                    "property": "loanType",
+                                    "condition": "in",
+                                    "values": ["2", "3"]
+                                }
+                            ]
+                        },
+                        {
+                            "property": "result",
+                            "condition": "greater_than_or_equal",
+                            "value": "250"
+                        }
+                    ]
+                },
+                {
+                    "property": "hmdaFile",
+                    "condition": "call",
+                    "function": "compareNumEntries",
+                    "args": [
+                        "hmdaFile.loanApplicationRegisters",
+                        {
+                            "label": "Total loans where loan purpose = 1, action taken = 6, property type = 1 or 2, and loan type = 2 or 3",
+                            "and": [
+                                {
+                                    "property": "loanPurpose",
+                                    "condition": "equal",
+                                    "value": "1"
+                                },
+                                {
+                                    "property": "actionTaken",
+                                    "condition": "equal",
+                                    "value": "6"
+                                },
+                                {
+                                    "property": "propertyType",
+                                    "condition": "in",
+                                    "values": ["1", "2"]
+                                },
+                                {
+                                    "property": "loanType",
+                                    "condition": "in",
+                                    "values": ["2", "3"]
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Total loans where loan purpose = 1, action taken = 1 or 6, property type = 1 or 2, and loan type = 2 or 3",
+                            "and": [
+                                {
+                                    "property": "loanPurpose",
+                                    "condition": "equal",
+                                    "value": "1"
+                                },
+                                {
+                                    "property": "actionTaken",
+                                    "condition": "in",
+                                    "values": ["1", "6"]
+                                },
+                                {
+                                    "property": "propertyType",
+                                    "condition": "in",
+                                    "values": ["1", "2"]
+                                },
+                                {
+                                    "property": "loanType",
+                                    "condition": "in",
+                                    "values": ["2", "3"]
+                                }
+                            ]
+                        },
+                        {
+                            "label": "% of Loans where loan purpose = 1, action taken = 1 or 6, property type = 1 or 2, and loan type = 2 or 3",
+                            "property": "result",
+                            "condition": "greater_than",
+                            "value": ".20"
+                        }
+                    ]
+                } 
+            ]
         }
     },
     {
@@ -984,104 +1080,114 @@
         "description": "If 250 or greater loans are reported with purpose of loan = 3, action taken type = 1 or 6, property type = 1 or 2, and loan type = 2 or 3, then of these loans, the percentage of loans sold should be > 20%.",
         "explanation": "Action taken type = 1 or 6, loan purpose = 3, property type = 1 or 2, loan type = 2 or 3. If 250 or greater of these loans are reported in the current year, then of these loans, the percentage sold should be > 20%.",
         "rule": {
-            "if": {
-                "property": "hmdaFile",
-                "condition": "call",
-                "function": "compareNumEntriesSingle",
-                "args": [
-                    "hmdaFile.loanApplicationRegisters",
-                    {
-                        "and": [
-                            {
-                                "property": "loanPurpose",
-                                "condition": "equal",
-                                "value": "3"
-                            },
-                            {
-                                "property": "actionTaken",
-                                "condition": "in",
-                                "values": ["1", "6"]
-                            },
-                            {
-                                "property": "propertyType",
-                                "condition": "in",
-                                "values": ["1", "2"]
-                            },
-                            {
-                                "property": "loanType",
-                                "condition": "in",
-                                "values": ["2", "3"]
-                            }
-                        ]
-                    },
-                    {
-                        "property": "result",
-                        "condition": "greater_than_or_equal",
-                        "value": "250"
-                    }
-                ]
-            },
-            "then": {
-                "property": "hmdaFile",
-                "condition": "call",
-                "function": "compareNumEntries",
-                "args": [
-                    "hmdaFile.loanApplicationRegisters",
-                    {
-                        "and": [
-                            {
-                                "property": "loanPurpose",
-                                "condition": "equal",
-                                "value": "3"
-                            },
-                            {
-                                "property": "actionTaken",
-                                "condition": "equal",
-                                "value": "6"
-                            },
-                            {
-                                "property": "propertyType",
-                                "condition": "in",
-                                "values": ["1", "2"]
-                            },
-                            {
-                                "property": "loanType",
-                                "condition": "in",
-                                "values": ["2", "3"]
-                            }
-                        ]
-                    },
-                    {
-                        "and": [
-                            {
-                                "property": "loanPurpose",
-                                "condition": "equal",
-                                "value": "3"
-                            },
-                            {
-                                "property": "actionTaken",
-                                "condition": "in",
-                                "values": ["1", "6"]
-                            },
-                            {
-                                "property": "propertyType",
-                                "condition": "in",
-                                "values": ["1", "2"]
-                            },
-                            {
-                                "property": "loanType",
-                                "condition": "in",
-                                "values": ["2", "3"]
-                            }
-                        ]
-                    },
-                    {
-                        "property": "result",
-                        "condition": "greater_than",
-                        "value": ".20"
-                    }
-                ]
-            }
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "accumulatedIf",
+            "args": [
+                "hmdaFile",
+                {
+                    "property": "hmdaFile",
+                    "condition": "call",
+                    "function": "compareNumEntriesSingle",
+                    "args": [
+                        "hmdaFile.loanApplicationRegisters",
+                        {
+                            "label": "Total loans where loan purpose = 3, action taken = 1 or 6, property type = 1 or 2, and loan type = 2 or 3",
+                            "and": [
+                                {
+                                    "property": "loanPurpose",
+                                    "condition": "equal",
+                                    "value": "3"
+                                },
+                                {
+                                    "property": "actionTaken",
+                                    "condition": "in",
+                                    "values": ["1", "6"]
+                                },
+                                {
+                                    "property": "propertyType",
+                                    "condition": "in",
+                                    "values": ["1", "2"]
+                                },
+                                {
+                                    "property": "loanType",
+                                    "condition": "in",
+                                    "values": ["2", "3"]
+                                }
+                            ]
+                        },
+                        {
+                            "property": "result",
+                            "condition": "greater_than_or_equal",
+                            "value": "250"
+                        }
+                    ]
+                },
+                {
+                    "property": "hmdaFile",
+                    "condition": "call",
+                    "function": "compareNumEntries",
+                    "args": [
+                        "hmdaFile.loanApplicationRegisters",
+                        {
+                            "label": "Total loans where loan purpose = 1, action taken = 6, property type = 1 or 2, and loan type = 2 or 3",
+                            "and": [
+                                {
+                                    "property": "loanPurpose",
+                                    "condition": "equal",
+                                    "value": "3"
+                                },
+                                {
+                                    "property": "actionTaken",
+                                    "condition": "equal",
+                                    "value": "6"
+                                },
+                                {
+                                    "property": "propertyType",
+                                    "condition": "in",
+                                    "values": ["1", "2"]
+                                },
+                                {
+                                    "property": "loanType",
+                                    "condition": "in",
+                                    "values": ["2", "3"]
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Total loans where loan purpose = 1, action taken = 1 or 6, property type = 1 or 2, and loan type = 2 or 3",
+                            "and": [
+                                {
+                                    "property": "loanPurpose",
+                                    "condition": "equal",
+                                    "value": "3"
+                                },
+                                {
+                                    "property": "actionTaken",
+                                    "condition": "in",
+                                    "values": ["1", "6"]
+                                },
+                                {
+                                    "property": "propertyType",
+                                    "condition": "in",
+                                    "values": ["1", "2"]
+                                },
+                                {
+                                    "property": "loanType",
+                                    "condition": "in",
+                                    "values": ["2", "3"]
+                                }
+                            ]
+                        },
+                        {
+                            "label": "% of Loans where loan purpose = 1, action taken = 1 or 6, property type = 1 or 2, and loan type = 2 or 3",
+                            "property": "result",
+                            "condition": "greater_than",
+                            "value": ".20"
+                        }
+                    ]
+                } 
+            ]
         }
     },
     {
@@ -1089,43 +1195,50 @@
         "description": "If 750 or greater loans are reported with purpose of loan = 1, action taken type = 1 or 6, property type = 1 or 2, then of these loans, the difference between the percentage of loans that are sold in the current year and the percentage of the same type of loans sold in the prior year should be less than (+ or -) 20%.",
         "explanation": "Action taken type = 1 or 6, loan purpose = 1, property type = 1 or 2. If 750 or greater loans of these loans are reported in the current year, then of these loans, the difference in the percentage of loans that are sold in the current year and the percentage of loans sold in the prior year should be less than (+ or -) 20%. Percent of government backed home purchases = # home purchase loans where loan type = 2 or 3 / # home purchase loans for the current year or previous year.",
         "rule": {
-            "if": {
-                "property": "hmdaFile",
-                "condition": "call",
-                "function": "compareNumEntriesSingle",
-                "args": [
-                    "hmdaFile.loanApplicationRegisters",
-                    {
-                        "and": [
-                            {
-                                "property": "loanPurpose",
-                                "condition": "equal",
-                                "value": "1"
-                            },
-                            {
-                                "property": "actionTaken",
-                                "condition": "in",
-                                "values": ["1", "6"]
-                            },
-                            {
-                                "property": "propertyType",
-                                "condition": "in",
-                                "values": ["1", "2"]
-                            }
-                        ]
-                    },
-                    {
-                        "property": "result",
-                        "condition": "greater_than_or_equal",
-                        "value": "750"
-                    }
-                ]
-            },
-            "then": {
-                "property": "hmdaFile",
-                "condition": "call",
-                "function": "isValidNumHomePurchaseLoans"
-            }
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "accumulatedIf",
+            "args": [
+                "hmdaFile",
+                {
+                    "property": "hmdaFile",
+                    "condition": "call",
+                    "function": "compareNumEntriesSingle",
+                    "args": [
+                        "hmdaFile.loanApplicationRegisters",
+                        {
+                            "label": "Total loans where loan purpose = 1, action taken = 1 or 6, and property type = 1 or 2",
+                            "and": [
+                                {
+                                    "property": "loanPurpose",
+                                    "condition": "equal",
+                                    "value": "1"
+                                },
+                                {
+                                    "property": "actionTaken",
+                                    "condition": "in",
+                                    "values": ["1", "6"]
+                                },
+                                {
+                                    "property": "propertyType",
+                                    "condition": "in",
+                                    "values": ["1", "2"]
+                                }
+                            ]
+                        },
+                        {
+                            "property": "result",
+                            "condition": "greater_than_or_equal",
+                            "value": "750"
+                        }
+                    ]
+                },
+                {
+                    "property": "hmdaFile",
+                    "condition": "call",
+                    "function": "isValidNumHomePurchaseLoans"
+                } 
+            ]
         }
     },
     {
@@ -1133,43 +1246,50 @@
         "description": "If 750 or greater loans are reported with purpose of loan = 3, action taken type = 1 or 6, property type = 1 or 2, then of these loans, the difference between the percentage of loans that are sold in the current year and the percentage of the same type of loans sold in the prior year should be less than (+ or -) 20%.",
         "explanation": "Action taken type = 1 or 6, loan purpose = 3, property type = 1 or 2. If 750 or greater loans of these loans are reported in the current year, then of these loans, the difference in the percentage of loans that are sold in the current year and the percentage of loans sold in the prior year should be less than (+ or -) 20%. Percent of government backed home refinancings = # refinancing loans where loan type = 2 or 3 / # refinancing loans for the current year or previous year.",
         "rule": {
-            "if": {
-                "property": "hmdaFile",
-                "condition": "call",
-                "function": "compareNumEntriesSingle",
-                "args": [
-                    "hmdaFile.loanApplicationRegisters",
-                    {
-                        "and": [
-                            {
-                                "property": "loanPurpose",
-                                "condition": "equal",
-                                "value": "3"
-                            },
-                            {
-                                "property": "actionTaken",
-                                "condition": "in",
-                                "values": ["1", "6"]
-                            },
-                            {
-                                "property": "propertyType",
-                                "condition": "in",
-                                "values": ["1", "2"]
-                            }
-                        ]
-                    },
-                    {
-                        "property": "result",
-                        "condition": "greater_than_or_equal",
-                        "value": "750"
-                    }
-                ]
-            },
-            "then": {
-                "property": "hmdaFile",
-                "condition": "call",
-                "function": "isValidNumRefinanceLoans"
-            }
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "accumulatedIf",
+            "args": [
+                "hmdaFile",
+                {
+                    "property": "hmdaFile",
+                    "condition": "call",
+                    "function": "compareNumEntriesSingle",
+                    "args": [
+                        "hmdaFile.loanApplicationRegisters",
+                        {
+                            "label": "Total loans where loan purpose = 3, action taken = 1 or 6, and property type = 1 or 2",
+                            "and": [
+                                {
+                                    "property": "loanPurpose",
+                                    "condition": "equal",
+                                    "value": "3"
+                                },
+                                {
+                                    "property": "actionTaken",
+                                    "condition": "in",
+                                    "values": ["1", "6"]
+                                },
+                                {
+                                    "property": "propertyType",
+                                    "condition": "in",
+                                    "values": ["1", "2"]
+                                }
+                            ]
+                        },
+                        {
+                            "property": "result",
+                            "condition": "greater_than_or_equal",
+                            "value": "750"
+                        }
+                    ]
+                },
+                {
+                    "property": "hmdaFile",
+                    "condition": "call",
+                    "function": "isValidNumRefinanceLoans"
+                }
+            ]
         }
     },
     {
@@ -1183,6 +1303,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where action take = 1, 2, or 3, property type = 1 or 2, and applicant ethnicity = 3 or 4",
                     "and": [
                         {
                             "property": "actionTaken",
@@ -1202,11 +1323,13 @@
                     ]
                 },
                 {
+                    "label": "Total Loans where action taken = 1-5",
                     "property": "actionTaken",
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
                 {
+                    "label": "% of Total Loans where action take = 1-5",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".50"
@@ -1225,6 +1348,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where action take = 1, 2, or 3, property type = 1 or 2, and first applicant race = 6 or 7",
                     "and": [
                         {
                             "property": "actionTaken",
@@ -1244,11 +1368,13 @@
                     ]
                 },
                 {
+                    "label": "Total Loans where action taken = 1-5",
                     "property": "actionTaken",
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
                 {
+                    "label": "% of Total Loans where action taken = 1-5",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".50"
@@ -1267,6 +1393,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where action take = 1, 2, or 3, property type = 1 or 2, and applicant sex = 3 or 4",
                     "and": [
                         {
                             "property": "actionTaken",
@@ -1286,11 +1413,13 @@
                     ]
                 },
                 {
+                    "label": "Total Loans where action taken = 1-5",
                     "property": "actionTaken",
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
                 {
+                    "label": "% of Total Loans where action taken = 1-5",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".50"
@@ -1309,6 +1438,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
+                    "label": "Loans where action take = 1, 2, or 3, property type = 1 or 2, and applicant ethnicity = 3 or 4, and first applicant race = 6 or 7",
                     "and": [
                         {
                             "property": "actionTaken",
@@ -1338,26 +1468,18 @@
                     ]
                 },
                 {
+                    "label": "Total Loans where action taken = 1-5",
                     "property": "actionTaken",
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
                 {
+                    "label": "% Total Loans where action taken = 1-5",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".20"
                 }
             ]
-        }
-    },
-    {
-        "id": "Q030",
-        "description": "If action taken type = 1, 2, 3, 4, 5, or 6; and if the HMDA respondent is a nondepository institution (a for-profit entity), or is a bank or savings institution who reports CRA data, then MSA/MD, state, county, census tract should equal a valid combination and not NA.",
-        "explanation": "MSA/MD, state, county, census tract should not = NA.",
-        "rule": {
-            "property": "hmdaFile",
-            "condition": "call",
-            "function": "isValidMsaMdCountyCensusForNonDepository"
         }
     }
 ]

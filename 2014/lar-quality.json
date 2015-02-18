@@ -825,7 +825,8 @@
             "if": {
                 "property": "respondentID",
                 "condition": "call",
-                "function": "isNotIndependentMortgageCoOrMBS"
+                "function": "isNotIndependentMortgageCoOrMBS",
+                "args": ["respondentID", "agencyCode"]
             },
             "then": {
                 "if": {
@@ -837,7 +838,7 @@
                     "property": "metroArea",
                     "condition": "call",
                     "function": "isMetroAreaOnRespondentPanel",
-                    "args": ["metroArea", "respondentID"]
+                    "args": ["metroArea", "respondentID", "agencyCode"]
                 }
             }
         }

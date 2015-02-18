@@ -17,7 +17,7 @@
             "property": "timestamp",
             "condition": "call",
             "function": "isTimestampLaterThanDatabase",
-            "args": ["respondentID", "timestamp"]
+            "args": ["respondentID", "agencyCode", "timestamp"]
         }
     },
     {

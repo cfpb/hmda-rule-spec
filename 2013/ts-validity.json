@@ -96,7 +96,8 @@
             "if": {
                 "property": "respondentID",
                 "condition": "call",
-                "function": "isRespondentMBS"
+                "function": "isRespondentMBS",
+                "args": ["respondentID", "agencyCode"]
             },
             "then": {
                 "and": [

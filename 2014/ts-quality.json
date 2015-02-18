@@ -7,7 +7,8 @@
             "if": {
                 "property": "respondentID",
                 "condition": "call",
-                "function": "isChildFI"
+                "function": "isChildFI",
+                "args": ["respondentID", "agencyCode"]
             },
             "then": {
                 "and": [
@@ -59,7 +60,7 @@
             "property": "taxID",
             "condition": "call",
             "function": "isTaxIDTheSameAsLastYear",
-            "args": ["respondentID", "taxID"]
+            "args": ["respondentID", "agencyCode", "taxID"]
         }
     }
 ]

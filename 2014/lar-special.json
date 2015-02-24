@@ -7,7 +7,7 @@
             "property": "fipsState",
             "condition": "call",
             "function": "isValidStateCountyCensusTractCombo",
-            "args": ["metroArea", "fipsState", "fipsCounty", "censusTract"]
+            "args": ["loanNumber", "metroArea", "fipsState", "fipsCounty", "censusTract"]
         }
     },
     {

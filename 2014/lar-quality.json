@@ -771,17 +771,6 @@
         }
     },
     {
-        "id": "Q029",
-        "description": "If the reported state/county combination (when county is small and reported tract equals NA), or state/county/census tract combination is valid then the MSA/MD should not = NA.",
-        "explanation": "MSA/MD = NA and state/county (when county is small and tract equals NA), or state/county/census tract is a valid combination and is located completely in an MSA/MD.",
-        "rule": {
-            "property": "fipsState",
-            "condition": "call",
-            "function": "isValidStateCountyCensusTractCombo",
-            "args": ["recordID", "metroArea", "fipsState", "fipsCounty", "censusTract"]
-        }
-    },
-    {
         "id": "Q049",
         "description": "If action taken type = 7 or 8, then MSA/MD, state, county, census tract should equal NA.",
         "explanation": "Action taken type = 7 or 8; therefore, MSA/MD, state, county, census tract should = NA; Verify.",
@@ -814,31 +803,6 @@
                         "value": "NA"
                     }
                 ]
-            }
-        }
-    },
-    {
-        "id": "Q595",
-        "description": "If action taken type = 1-5, 7, or 8, then MSA/MD must = a corresponding respondent, MSA/MD combination on respondent panel, or NA.",
-        "explanation": "MSA/MD not on respondent panel.",
-        "rule": {
-            "if": {
-                "property": "respondentID",
-                "condition": "call",
-                "function": "isNotIndependentMortgageCoOrMBS"
-            },
-            "then": {
-                "if": {
-                    "property": "actionTaken",
-                    "condition": "in",
-                    "values": ["1", "2", "3", "4", "5", "7", "8"]
-                },
-                "then": {
-                    "property": "metroArea",
-                    "condition": "call",
-                    "function": "isMetroAreaOnRespondentPanel",
-                    "args": ["metroArea", "respondentID"]
-                }
             }
         }
     }

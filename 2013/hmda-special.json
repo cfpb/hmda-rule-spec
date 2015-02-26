@@ -1,0 +1,22 @@
+[
+    {
+        "id": "Q029",
+        "description": "If the reported state/county combination (when county is small and reported tract equals NA), or state/county/census tract combination is valid then the MSA/MD should not = NA.",
+        "explanation": "MSA/MD = NA and state/county (when county is small and tract equals NA), or state/county/census tract is a valid combination and is located completely in an MSA/MD.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "isValidStateCountyCensusTractCombo"
+        }
+    },
+    {
+        "id": "Q595",
+        "description": "If action taken type = 1-5, 7, or 8, then MSA/MD must = a corresponding respondent, MSA/MD combination on respondent panel, or NA.",
+        "explanation": "MSA/MD not on respondent panel.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "isMetroAreaOnRespondentPanel"
+        }
+    }
+]

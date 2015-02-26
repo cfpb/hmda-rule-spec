@@ -7,9 +7,9 @@ var VALID_EDIT_TYPES = ['validity', 'syntactical', 'quality', 'macro'];
 var filespec2013 = require('./2013/data_file_specification.json'),
     hmdaMacro2013 = require('./2013/hmda-macro.json'),
     hmdaQuality2013 = require('./2013/hmda-quality.json'),
+    hmdaSpecial2013 = require('./2013/hmda-special.json'),
     hmdaSyntactical2013 = require('./2013/hmda-syntactical.json'),
     larQuality2013 = require('./2013/lar-quality.json'),
-    larSpecial2013 = require('./2013/lar-special.json'),
     larSyntactical2013 = require('./2013/lar-syntactical.json'),
     larValidity2013 = require('./2013/lar-validity.json'),
     tsQuality2013 = require('./2013/ts-quality.json'),
@@ -20,9 +20,9 @@ var filespec2013 = require('./2013/data_file_specification.json'),
 var filespec2014 = require('./2014/data_file_specification.json'),
     hmdaMacro2014 = require('./2014/hmda-macro.json'),
     hmdaQuality2014 = require('./2014/hmda-quality.json'),
+    hmdaSpecial2014 = require('./2014/hmda-special.json'),
     hmdaSyntactical2014 = require('./2014/hmda-syntactical.json'),
     larQuality2014 = require('./2014/lar-quality.json'),
-    larSpecial2014 = require('./2014/lar-special.json'),
     larSyntactical2014 = require('./2014/lar-syntactical.json'),
     larValidity2014 = require('./2014/lar-validity.json'),
     tsQuality2014 = require('./2014/ts-quality.json'),
@@ -35,11 +35,11 @@ var specs = {
         'hmda': {
             'macro': hmdaMacro2013,
             'quality': hmdaQuality2013,
+            'special': hmdaSpecial2013,
             'syntactical': hmdaSyntactical2013
         },
         'lar': {
             'quality': larQuality2013,
-            'special': larSpecial2013,
             'syntactical': larSyntactical2013,
             'validity': larValidity2013
         },
@@ -54,11 +54,11 @@ var specs = {
         'hmda': {
             'macro': hmdaMacro2014,
             'quality': hmdaQuality2014,
+            'special': larSpecial2014,
             'syntactical': hmdaSyntactical2014
         },
         'lar': {
             'quality': larQuality2014,
-            'special': larSpecial2014,
             'syntactical': larSyntactical2014,
             'validity': larValidity2014
         },

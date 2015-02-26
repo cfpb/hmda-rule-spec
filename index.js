@@ -54,7 +54,7 @@ var specs = {
         'hmda': {
             'macro': hmdaMacro2014,
             'quality': hmdaQuality2014,
-            'special': larSpecial2014,
+            'special': hmdaSpecial2014,
             'syntactical': hmdaSyntactical2014
         },
         'lar': {

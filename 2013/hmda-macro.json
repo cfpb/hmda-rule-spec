@@ -1010,6 +1010,11 @@
                                     "property": "loanType",
                                     "condition": "in",
                                     "values": ["2", "3"]
+                                },
+                                {
+                                    "property": "purchaserType",
+                                    "condition": "not_equal",
+                                    "value": "0"
                                 }
                             ]
                         },

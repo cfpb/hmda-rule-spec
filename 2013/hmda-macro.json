@@ -989,7 +989,7 @@
                     "args": [
                         "hmdaFile.loanApplicationRegisters",
                         {
-                            "label": "Total loans where loan purpose = 1, action taken = 6, property type = 1 or 2, loan type = 2 or 3, and purchaser type != 0",
+                            "label": "Total loans where loan purpose = 1, action taken = 1 or 6, property type = 1 or 2, loan type = 2 or 3, and purchaser type != 0",
                             "and": [
                                 {
                                     "property": "loanPurpose",

@@ -989,7 +989,7 @@
                     "args": [
                         "hmdaFile.loanApplicationRegisters",
                         {
-                            "label": "Total loans where loan purpose = 1, action taken = 6, property type = 1 or 2, and loan type = 2 or 3",
+                            "label": "Total loans where loan purpose = 1, action taken = 1 or 6, property type = 1 or 2, loan type = 2 or 3, and purchaser type != 0",
                             "and": [
                                 {
                                     "property": "loanPurpose",
@@ -998,8 +998,8 @@
                                 },
                                 {
                                     "property": "actionTaken",
-                                    "condition": "equal",
-                                    "value": "6"
+                                    "condition": "in",
+                                    "values": ["1", "6"]
                                 },
                                 {
                                     "property": "propertyType",
@@ -1010,6 +1010,11 @@
                                     "property": "loanType",
                                     "condition": "in",
                                     "values": ["2", "3"]
+                                },
+                                {
+                                    "property": "purchaserType",
+                                    "condition": "not_equal",
+                                    "value": "0"
                                 }
                             ]
                         },
@@ -1104,7 +1109,7 @@
                     "args": [
                         "hmdaFile.loanApplicationRegisters",
                         {
-                            "label": "Total loans where loan purpose = 1, action taken = 6, property type = 1 or 2, and loan type = 2 or 3",
+                            "label": "Total loans where loan purpose = 1, action taken = 1 or 6, property type = 1 or 2, loan type = 2 or 3, and purchaser type != 0",
                             "and": [
                                 {
                                     "property": "loanPurpose",
@@ -1113,8 +1118,8 @@
                                 },
                                 {
                                     "property": "actionTaken",
-                                    "condition": "equal",
-                                    "value": "6"
+                                    "condition": "in",
+                                    "values": ["1", "6"]
                                 },
                                 {
                                     "property": "propertyType",
@@ -1125,6 +1130,11 @@
                                     "property": "loanType",
                                     "condition": "in",
                                     "values": ["2", "3"]
+                                },
+                                {
+                                    "property": "purchaserType",
+                                    "condition": "not_equal",
+                                    "value": "0"
                                 }
                             ]
                         },

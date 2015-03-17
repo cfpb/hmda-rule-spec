@@ -5,6 +5,9 @@ Nothing presented in the issues or in this repo is a final product unless it is 
 
 **Description**: The HMDA Rule Spec is a collection of [HMDA Edits](http://www.ffiec.gov/hmda/edits.htm) written in the [brij-spec](http://github.com/linuxbozo/brij-spec) standard. The [HMDA Rule Engine](htps://github.com/cfpb/hmda-rule-engine) interprets these rules to validate a [HMDA data file](http://www.ffiec.gov/hmda/fileformats.htm).
 
+[![Build Status](https://travis-ci.org/cfpb/hmda-rule-spec.svg)](https://travis-ci.org/cfpb/hmda-rule-spec)
+[![Coverage Status](https://coveralls.io/repos/cfpb/hmda-rule-spec/badge.svg)](https://coveralls.io/r/cfpb/hmda-rule-spec)
+
 ## How to get this running or how to use it
 
 The project requires [NodeJS](http://nodejs.org) and [brij-spec](https://github.com/linuxbozo/brij-spec) to validate the rules are written correctly.

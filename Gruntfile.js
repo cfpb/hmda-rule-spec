@@ -58,6 +58,7 @@ module.exports = function (grunt) {
                 src: 'test', // the folder name for the tests
                 options: {
                     recursive: true,
+                    coverage: true, // emit the coverage event
                     //quiet: true,
                     excludes: [],
                     mochaOptions: [
@@ -82,6 +83,15 @@ module.exports = function (grunt) {
         }
     });
 
+    // handle coverage event by sending data to coveralls
+    grunt.event.on('coverage', function(lcov, done){
+        require('coveralls').handleInput(lcov, function(err){
+            if (err) {
+                return done(err);
+            }
+            done();
+        });
+    });
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-mocha-test');

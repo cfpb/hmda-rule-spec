@@ -1,10 +1,10 @@
 'use strict';
+var exec = require('child_process').exec;
 
 module.exports = function (grunt) {
 
     //npm install
     grunt.registerTask('npm_install', 'install dependencies', function() {
-        var exec = require('child_process').exec;
         var cb = this.async();
         exec('npm install', {cwd: './'}, function(err, stdout) {
             console.log(stdout);
@@ -13,7 +13,6 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('open_coverage', 'open coverage report in default browser', function() {
-        var exec = require('child_process').exec;
         var cb = this.async();
         exec('open coverage/lcov-report/index.html', {cwd: './'}, function(err, stdout) {
             console.log(stdout);
@@ -21,6 +20,13 @@ module.exports = function (grunt) {
         });
     });
 
+    grunt.registerTask('open_docs', 'open documentation in default browser', function() {
+        var cb = this.async();
+        exec('open docs/index.html', {cwd: './'}, function(err, stdout) {
+            console.log(stdout);
+            cb();
+        });
+    });
 
     grunt.initConfig({
 
@@ -29,8 +35,9 @@ module.exports = function (grunt) {
             options:{
 //               force: true
             },
-            node_modules:["node_modules/*","!node_modules/grunt*"],
-            coverage:["coverage/*"]
+            node_modules:['node_modules/*","!node_modules/grunt*'],
+            coverage:['coverage/*'],
+            docs:['docs/*']
 
         },
 
@@ -80,6 +87,16 @@ module.exports = function (grunt) {
             specs: {
                 src: [ '2013/*.json', '2014/*.json' ]
             }
+        },
+        jsdoc : {
+            dist : {
+                src: ['index.js', 'README.md'],
+                options: {
+                    destination: 'docs',
+                    template : 'node_modules/grunt-jsdoc/node_modules/ink-docstrap/template',
+                    configure: '.jsdoc.conf.json'
+                }
+            }
         }
     });
 
@@ -101,10 +118,13 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-release');
     grunt.loadNpmTasks('grunt-jsonlint');
+    grunt.loadNpmTasks('grunt-jsdoc');
 
     // Register group tasks
     grunt.registerTask('clean_all', [ 'clean:node_modules', 'clean:coverage', 'npm_install' ]);
     grunt.registerTask('test', ['env:test', 'clean:coverage', 'jshint', 'jsonlint:specs', 'mocha_istanbul']);
     grunt.registerTask('coverage', ['env:test', 'clean:coverage', 'jshint', 'mocha_istanbul', 'open_coverage' ]);
+    grunt.registerTask('generate-docs', ['clean:docs', 'jsdoc']);
+    grunt.registerTask('view-docs', ['generate-docs', 'open_docs']);
 
 };

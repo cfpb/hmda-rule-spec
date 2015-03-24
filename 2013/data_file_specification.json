@@ -12,6 +12,8 @@
                "length": "1",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Value is 1"
           },
           "respondentID": {
@@ -21,6 +23,8 @@
                "length": "10",
                "dataType": "AN",
                "format": "string",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Assigned by your federal regulatory agency. Format is right-justified and zero filled."
           },
           "agencyCode": {
@@ -30,6 +34,8 @@
                "length": "1",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Values are 1=OCC, 2=FRS, 3=FDIC, 5=NCUA, 7=HUD, or 9=CFPB",
                "values": {
                    "1": "OCC",
@@ -47,6 +53,8 @@
                "length": "12",
                "dataType": "N",
                "format": "datetime",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Format is century, year, month, day, hour, minute (e.g., Jan. 17, 2013, at 1:30 pm would be 201301171330)"
           },
           "filler": {
@@ -55,6 +63,8 @@
                "end": "25",
                "length": "1",
                "dataType": "AN",
+               "canBeBlank": true,
+               "canBeNA": false,
                "description": "Blank"
           },
           "activityYear": {
@@ -64,6 +74,8 @@
                "length": "4",
                "dataType": "N",
                "format": "year",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Four digit year (e.g., 2013)"
           },
           "taxID": {
@@ -73,6 +85,8 @@
                "length": "10",
                "dataType": "AN",
                "format": "string",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Format is 99-9999999"
           },
           "totalLineEntries": {
@@ -82,6 +96,8 @@
                "length": "7",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "The N of line entries contained in the accompanying Loan/Application Register"
           },
           "institutionName": {
@@ -91,6 +107,8 @@
                "length": "30",
                "dataType": "AN",
                "format": "string",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Left-justified and upper case"
           },
           "respondentAddress": {
@@ -100,6 +118,8 @@
                "length": "40",
                "dataType": "AN",
                "format": "string",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Left-justified"
           },
           "respondentCity": {
@@ -109,6 +129,8 @@
                "length": "25",
                "dataType": "AN",
                "format": "string",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Left-justified"
           },
           "respondentState": {
@@ -118,6 +140,8 @@
                "length": "2",
                "dataType": "AN",
                "format": "string",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Postal Code abbreviation"
           },
           "respondentZip": {
@@ -127,6 +151,8 @@
                "length": "10",
                "dataType": "AN",
                "format": "string",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Format is 99999 left-justified or Code 99999-9999"
           },
           "parentName": {
@@ -136,6 +162,8 @@
                "length": "30",
                "dataType": "AN",
                "format": "string",
+               "canBeBlank": true,
+               "canBeNA": false,
                "description": "If applicable"
           },
           "parentAddress": {
@@ -145,6 +173,8 @@
                "length": "40",
                "dataType": "AN",
                "format": "string",
+               "canBeBlank": true,
+               "canBeNA": false,
                "description": "If applicable"
           },
           "parentCity": {
@@ -154,6 +184,8 @@
                "length": "25",
                "dataType": "AN",
                "format": "string",
+               "canBeBlank": true,
+               "canBeNA": false,
                "description": "If applicable"
           },
           "parentState": {
@@ -163,6 +195,8 @@
                "length": "2",
                "dataType": "AN",
                "format": "string",
+               "canBeBlank": true,
+               "canBeNA": false,
                "description": "If applicable"
           },
           "parentZip": {
@@ -172,6 +206,8 @@
                "length": "10",
                "dataType": "AN",
                "format": "string",
+               "canBeBlank": true,
+               "canBeNA": false,
                "description": "If applicable; format is 99999 left-justified or 99999-9999"
           },
           "contactName": {
@@ -181,6 +217,8 @@
                "length": "30",
                "dataType": "AN",
                "format": "string",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "For questionable data, reports, or other issues that may arise during an annual processing cycle."
           },
           "contactPhone": {
@@ -190,6 +228,8 @@
                "length": "12",
                "dataType": "AN",
                "format": "phoneNumber",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Format is 999-999-9999"
           },
           "contactFax": {
@@ -199,6 +239,8 @@
                "length": "12",
                "dataType": "AN",
                "format": "phoneNumber",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Format is 999-999-9999"
           },
           "respondentEmail": {
@@ -208,6 +250,8 @@
                "length": "66",
                "dataType": "AN",
                "format": "emailAddress",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Enter only one e-mail address. E-mail address must contain only one @ symbol. Format is left-justified."
           }
      },
@@ -219,6 +263,8 @@
                "length": "1",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Value is 2"
           },
           "respondentID": {
@@ -228,6 +274,8 @@
                "length": "10",
                "dataType": "AN",
                "format": "string",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Assigned by your federal regulatory agency. Format is right-justified and zero-filled."
           },
           "agencyCode": {
@@ -237,6 +285,8 @@
                "length": "1",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Values are 1=OCC, 2=FRS, 3=FDIC, 5=NCUA, 7=HUD, or 9=CFPB",
                "values": {
                    "1": "OCC",
@@ -254,6 +304,8 @@
                "length": "25",
                "dataType": "AN",
                "format": "string",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Unique identifier across the home office and branch sites"
           },
           "applicationReceivedDate": {
@@ -263,6 +315,8 @@
                "length": "8",
                "dataType": "AN",
                "format": "date",
+               "canBeBlank": false,
+               "canBeNA": true,
                "description": "Format is ccyymmdd or NA left-justified"
           },
           "loanType": {
@@ -272,6 +326,8 @@
                "length": "1",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, or 4",
                "values": {
                     "1": "Conventional (any loan other than FHA, VA, FSA, or RHS loans)",
@@ -287,6 +343,8 @@
                "length": "1",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Values are 1, 2, or 3",
                "values": {
                     "1": "One to four-family (other than manufactured housing)",
@@ -301,6 +359,8 @@
                "length": "1",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Values are 1, 2, or 3",
                "values": {
                    "1": "Home purchase",
@@ -315,6 +375,8 @@
                "length": "1",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Values are 1, 2, or 3",
                "values": {
                    "1": "Owner-occupied as a principal dwelling",
@@ -329,6 +391,8 @@
                "length": "5",
                "dataType": "N",
                "format": "currency",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Report in thousands, round to the nearest thousand with leading zeros and without commas"
           },
           "preapprovals": {
@@ -338,6 +402,8 @@
                "length": "1",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Values are 1, 2, or 3",
                "values": {
                     "1": "Preapproval was requested",
@@ -352,6 +418,8 @@
                "length": "1",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, 6, 7, OR 8",
                "values": {
                     "1": "Loan originated",
@@ -371,6 +439,8 @@
                "length": "8",
                "dataType": "N",
                "format": "date",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Format is ccyymmdd"
           },
           "metroArea": {
@@ -380,6 +450,8 @@
                "length": "5",
                "dataType": "AN",
                "format": "string",
+               "canBeBlank": true,
+               "canBeNA": true,
                "description": "Metropolitan Statistical Area or Metropolitan Division (if appropriate) code or NA left-justified"
           },
           "fipsState": {
@@ -390,6 +462,8 @@
                "dataType": "AN",
                "format": "string",
                "description": "FIPS code with leading zerosor NA left-justified"
+               "canBeBlank": false,
+               "canBeNA": true,
           },
           "fipsCounty": {
                "label": "County Code",
@@ -398,6 +472,8 @@
                "length": "3",
                "dataType": "AN",
                "format": "string",
+               "canBeBlank": false,
+               "canBeNA": true,
                "description": "FIPS code with leading zeros or NA left-justified"
           },
           "censusTract": {
@@ -407,6 +483,8 @@
                "length": "7",
                "dataType": "AN",
                "format": "string",
+               "canBeBlank": false,
+               "canBeNA": true,
                "description": "Include decimal point and any leading or trailing zeros or NA left-justified"
           },
           "applicantEthnicity": {
@@ -416,6 +494,8 @@
                "length": "1",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, or 4",
                "values": {
                     "1": "Hispanic or Latino",
@@ -431,6 +511,8 @@
                "length": "1",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, or 5",
                "values": {
                     "1": "Hispanic or Latino",
@@ -447,6 +529,8 @@
                "length": "1",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, 6, or 7",
                "values": {
                    "1": "American Indian or Alaska Native",
@@ -465,6 +549,8 @@
                "length": "1",
                "dataType": "AN",
                "format": "number",
+               "canBeBlank": true,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, or blank",
                "values": {
                    "1": "American Indian or Alaska Native",
@@ -481,6 +567,8 @@
                "length": "1",
                "dataType": "AN",
                "format": "number",
+               "canBeBlank": true,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, or blank",
                "values": {
                    "1": "American Indian or Alaska Native",
@@ -497,6 +585,8 @@
                "length": "1",
                "dataType": "AN",
                "format": "number",
+               "canBeBlank": true,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, or blank",
                "values": {
                    "1": "American Indian or Alaska Native",
@@ -513,6 +603,8 @@
                "length": "1",
                "dataType": "AN",
                "format": "number",
+               "canBeBlank": true,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, or blank",
                "values": {
                    "1": "American Indian or Alaska Native",
@@ -529,6 +621,8 @@
                "length": "1",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, 6, 7, or 8",
                "values": {
                    "1": "American Indian or Alaska Native",
@@ -548,6 +642,8 @@
                "length": "1",
                "dataType": "AN",
                "format": "number",
+               "canBeBlank": true,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, or blank",
                "values": {
                    "1": "American Indian or Alaska Native",
@@ -564,6 +660,8 @@
                "length": "1",
                "dataType": "AN",
                "format": "number",
+               "canBeBlank": true,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, or blank",
                "values": {
                    "1": "American Indian or Alaska Native",
@@ -580,6 +678,8 @@
                "length": "1",
                "dataType": "AN",
                "format": "number",
+               "canBeBlank": true,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, or blank",
                "values": {
                    "1": "American Indian or Alaska Native",
@@ -596,6 +696,8 @@
                "length": "1",
                "dataType": "AN",
                "format": "number",
+               "canBeBlank": true,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, or blank",
                "values": {
                    "1": "American Indian or Alaska Native",
@@ -612,6 +714,8 @@
                "length": "1",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, or 4",
                "values": {
                    "1": "Male",
@@ -627,6 +731,8 @@
                "length": "1",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, or 5",
                "values": {
                    "1": "Male",
@@ -643,6 +749,8 @@
                "length": "4",
                "dataType": "AN",
                "format": "currency",
+               "canBeBlank": false,
+               "canBeNA": true,
                "description": "Report in thousands, round to the nearest thousand with leading zeros and without commas or NA left-justified"
           },
           "purchaserType": {
@@ -652,6 +760,8 @@
                "length": "1",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Values are 0, 1, 2, 3, 4, 5, 6, 7, 8, or 9",
                "values": {
                     "0": "Loan was not originated or was not sold in calendar year covered by register",
@@ -673,6 +783,8 @@
                "length": "1",
                "dataType": "AN",
                "format": "number",
+               "canBeBlank": true,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, 6, 7, 8, 9, or blank",
                "values": {
                    "1": "Debt-to-income ratio",
@@ -693,6 +805,8 @@
                "length": "1",
                "dataType": "AN",
                "format": "number",
+               "canBeBlank": true,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, 6, 7, 8, 9, or blank",
                "values": {
                    "1": "Debt-to-income ratio",
@@ -713,6 +827,8 @@
                "length": "1",
                "dataType": "AN",
                "format": "number",
+               "canBeBlank": true,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, 6, 7, 8, 9, or blank",
                "values": {
                    "1": "Debt-to-income ratio",
@@ -733,6 +849,8 @@
                "length": "5",
                "dataType": "AN",
                "format": "percent",
+               "canBeBlank": false,
+               "canBeNA": true,
                "description": "Enter the rate spread to two decimal places. Include the decimal point and any leading or trailing zeros or NA left-justified"
           },
           "hoepaStatus": {
@@ -742,6 +860,8 @@
                "length": "1",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Values are 1 or 2",
                "values": {
                     "1": "HOEPA loan",
@@ -755,6 +875,8 @@
                "length": "1",
                "dataType": "N",
                "format": "number",
+               "canBeBlank": false,
+               "canBeNA": false,
                "description": "Values are 1, 2, 3, or 4",
                "values": {
                     "1": "Secured by a first lien",
@@ -769,6 +891,8 @@
                "end": "380",
                "length": "270",
                "dataType": "AN",
+               "canBeBlank": true,
+               "canBeNA": false,
                "description": "Blank"
           }
      }

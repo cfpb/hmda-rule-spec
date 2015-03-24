@@ -461,9 +461,9 @@
                "length": "2",
                "dataType": "AN",
                "format": "string",
-               "description": "FIPS code with leading zerosor NA left-justified"
                "canBeBlank": false,
                "canBeNA": true,
+               "description": "FIPS code with leading zeros or NA left-justified"
           },
           "fipsCounty": {
                "label": "County Code",

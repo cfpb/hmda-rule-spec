@@ -390,7 +390,7 @@
                "end": "54",
                "length": "5",
                "dataType": "N",
-               "format": "currency",
+               "format": "currency,thousands",
                "canBeBlank": false,
                "canBeNA": false,
                "description": "Report in thousands, round to the nearest thousand with leading zeros and without commas"
@@ -748,7 +748,7 @@
                "end": "99",
                "length": "4",
                "dataType": "AN",
-               "format": "currency",
+               "format": "currency,thousands",
                "canBeBlank": false,
                "canBeNA": true,
                "description": "Report in thousands, round to the nearest thousand with leading zeros and without commas or NA left-justified"

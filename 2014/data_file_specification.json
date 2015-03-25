@@ -11,10 +11,12 @@
                "end": "1",
                "length": "1",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "Value is 1"
+               "description": "Value is 1",
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           },
           "respondentID": {
                "label": "Respondent-ID",
@@ -22,10 +24,12 @@
                "end": "11",
                "length": "10",
                "dataType": "AN",
-               "format": "string",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "Assigned by your federal regulatory agency. Format is right-justified and zero filled."
+               "description": "Assigned by your federal regulatory agency. Format is right-justified and zero filled.",
+               "validation": {
+                   "type": "string",
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           },
           "agencyCode": {
                "label": "Agency Code",
@@ -33,17 +37,19 @@
                "end": "12",
                "length": "1",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
                "description": "Values are 1=OCC, 2=FRS, 3=FDIC, 5=NCUA, 7=HUD, or 9=CFPB",
-               "values": {
-                   "1": "OCC",
-                   "2": "FRS",
-                   "3": "FDIC",
-                   "5": "NCUA",
-                   "7": "HUD",
-                   "9": "CFPB"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false,
+                   "values": {
+                       "1": "OCC",
+                       "2": "FRS",
+                       "3": "FDIC",
+                       "5": "NCUA",
+                       "7": "HUD",
+                       "9": "CFPB"
+                   }
                }
           },
           "timestamp": {
@@ -52,10 +58,13 @@
                "end": "24",
                "length": "12",
                "dataType": "N",
-               "format": "datetime",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "Format is century, year, month, day, hour, minute (e.g., Jan. 17, 2013, at 1:30 pm would be 201301171330)"
+               "description": "Format is century, year, month, day, hour, minute (e.g., Jan. 17, 2013, at 1:30 pm would be 201301171330)",
+               "validation": {
+                   "type": "datetime",
+                   "match": "yyyyMMddHHmm",
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           },
           "filler": {
                "label": "Filler",
@@ -63,9 +72,11 @@
                "end": "25",
                "length": "1",
                "dataType": "AN",
-               "canBeBlank": true,
-               "canBeNA": false,
-               "description": "Blank"
+               "description": "Blank",
+               "validation": {
+                   "canBeBlank": true,
+                   "canBeNA": false
+               }
           },
           "activityYear": {
                "label": "Activity Year",
@@ -73,10 +84,12 @@
                "end": "29",
                "length": "4",
                "dataType": "N",
-               "format": "year",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "Four digit year (e.g., 2013)"
+               "description": "Four digit year (e.g., 2013)",
+               "validation": {
+                   "type": "year",
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           },
           "taxID": {
                "label": "Tax ID",
@@ -84,10 +97,12 @@
                "end": "39",
                "length": "10",
                "dataType": "AN",
-               "format": "string",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "Format is 99-9999999"
+               "description": "Format is 99-9999999",
+               "validation": {
+                   "type": "string",
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           },
           "totalLineEntries": {
                "label": "Total Line Entries",
@@ -95,10 +110,12 @@
                "end": "46",
                "length": "7",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "The N of line entries contained in the accompanying Loan/Application Register"
+               "description": "The N of line entries contained in the accompanying Loan/Application Register",
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           },
           "institutionName": {
                "label": "Respondent Name",
@@ -106,10 +123,12 @@
                "end": "76",
                "length": "30",
                "dataType": "AN",
-               "format": "string",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "Left-justified and upper case"
+               "description": "Left-justified and upper case",
+               "validation": {
+                   "type": "string",
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           },
           "respondentAddress": {
                "label": "Respondent Address",
@@ -117,10 +136,12 @@
                "end": "116",
                "length": "40",
                "dataType": "AN",
-               "format": "string",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "Left-justified"
+               "description": "Left-justified",
+               "validation": {
+                   "type": "string",
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           },
           "respondentCity": {
                "label": "Respondent City",
@@ -128,10 +149,12 @@
                "end": "141",
                "length": "25",
                "dataType": "AN",
-               "format": "string",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "Left-justified"
+               "description": "Left-justified",
+               "validation": {
+                   "type": "string",
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           },
           "respondentState": {
                "label": "Respondent State",
@@ -139,10 +162,12 @@
                "end": "143",
                "length": "2",
                "dataType": "AN",
-               "format": "string",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "Postal Code abbreviation"
+               "description": "Postal Code abbreviation",
+               "validation": {
+                   "type": "string",
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           },
           "respondentZip": {
                "label": "Respondent Zip",
@@ -150,10 +175,12 @@
                "end": "153",
                "length": "10",
                "dataType": "AN",
-               "format": "string",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "Format is 99999 left-justified or Code 99999-9999"
+               "description": "Format is 99999 left-justified or Code 99999-9999",
+               "validation": {
+                   "type": "string",
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           },
           "parentName": {
                "label": "Parent Name",
@@ -161,10 +188,12 @@
                "end": "183",
                "length": "30",
                "dataType": "AN",
-               "format": "string",
-               "canBeBlank": true,
-               "canBeNA": false,
-               "description": "If applicable"
+               "description": "If applicable",
+               "validation": {
+                   "type": "string",
+                   "canBeBlank": true,
+                   "canBeNA": false
+               }
           },
           "parentAddress": {
                "label": "Parent Address",
@@ -172,10 +201,12 @@
                "end": "223",
                "length": "40",
                "dataType": "AN",
-               "format": "string",
-               "canBeBlank": true,
-               "canBeNA": false,
-               "description": "If applicable"
+               "description": "If applicable",
+               "validation": {
+                   "type": "string",
+                   "canBeBlank": true,
+                   "canBeNA": false
+               }
           },
           "parentCity": {
                "label": "Parent City",
@@ -183,10 +214,12 @@
                "end": "248",
                "length": "25",
                "dataType": "AN",
-               "format": "string",
-               "canBeBlank": true,
-               "canBeNA": false,
-               "description": "If applicable"
+               "description": "If applicable",
+               "validation": {
+                   "type": "string",
+                   "canBeBlank": true,
+                   "canBeNA": false
+               }
           },
           "parentState": {
                "label": "Parent State",
@@ -194,10 +227,12 @@
                "end": "250",
                "length": "2",
                "dataType": "AN",
-               "format": "string",
-               "canBeBlank": true,
-               "canBeNA": false,
-               "description": "If applicable"
+               "description": "If applicable",
+               "validation": {
+                   "type": "string",
+                   "canBeBlank": true,
+                   "canBeNA": false
+               }
           },
           "parentZip": {
                "label": "Parent Zip Code",
@@ -205,10 +240,12 @@
                "end": "260",
                "length": "10",
                "dataType": "AN",
-               "format": "string",
-               "canBeBlank": true,
-               "canBeNA": false,
-               "description": "If applicable; format is 99999 left-justified or 99999-9999"
+               "description": "If applicable; format is 99999 left-justified or 99999-9999",
+               "validation": {
+                   "type": "string",
+                   "canBeBlank": true,
+                   "canBeNA": false
+               }
           },
           "contactName": {
                "label": "Contact Person's Name",
@@ -216,10 +253,12 @@
                "end": "290",
                "length": "30",
                "dataType": "AN",
-               "format": "string",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "For questionable data, reports, or other issues that may arise during an annual processing cycle."
+               "description": "For questionable data, reports, or other issues that may arise during an annual processing cycle.",
+               "validation": {
+                   "type": "string",
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           },
           "contactPhone": {
                "label": "Contact Person's Phone Number",
@@ -227,10 +266,12 @@
                "end": "302",
                "length": "12",
                "dataType": "AN",
-               "format": "phoneNumber",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "Format is 999-999-9999"
+               "description": "Format is 999-999-9999",
+               "validation": {
+                   "type": "phoneNumber",
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           },
           "contactFax": {
                "label": "Contact Person's Facsimile Number",
@@ -238,10 +279,12 @@
                "end": "314",
                "length": "12",
                "dataType": "AN",
-               "format": "phoneNumber",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "Format is 999-999-9999"
+               "description": "Format is 999-999-9999",
+               "validation": {
+                   "type": "phoneNumber",
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           },
           "respondentEmail": {
                "label": "Contact Person's E-mail Address",
@@ -249,10 +292,12 @@
                "end": "380",
                "length": "66",
                "dataType": "AN",
-               "format": "emailAddress",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "Enter only one e-mail address. E-mail address must contain only one @ symbol. Format is left-justified."
+               "description": "Enter only one e-mail address. E-mail address must contain only one @ symbol. Format is left-justified.",
+               "validation": {
+                   "type": "emailAddress",
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           }
      },
      "loanApplicationRegister": {
@@ -262,10 +307,12 @@
                "end": "1",
                "length": "1",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "Value is 2"
+               "description": "Value is 2",
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           },
           "respondentID": {
                "label": "Respondent-ID",
@@ -273,10 +320,12 @@
                "end": "11",
                "length": "10",
                "dataType": "AN",
-               "format": "string",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "Assigned by your federal regulatory agency. Format is right-justified and zero-filled."
+               "description": "Assigned by your federal regulatory agency. Format is right-justified and zero-filled.",
+               "validation": {
+                   "type": "string",
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           },
           "agencyCode": {
                "label": "Agency Code",
@@ -284,17 +333,19 @@
                "end": "12",
                "length": "1",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
                "description": "Values are 1=OCC, 2=FRS, 3=FDIC, 5=NCUA, 7=HUD, or 9=CFPB",
-               "values": {
-                   "1": "OCC",
-                   "2": "FRS",
-                   "3": "FDIC",
-                   "5": "NCUA",
-                   "7": "HUD",
-                   "9": "CFPB"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false,
+                   "values": {
+                       "1": "OCC",
+                       "2": "FRS",
+                       "3": "FDIC",
+                       "5": "NCUA",
+                       "7": "HUD",
+                       "9": "CFPB"
+                   }
                }
           },
           "loanNumber": {
@@ -303,10 +354,12 @@
                "end": "37",
                "length": "25",
                "dataType": "AN",
-               "format": "string",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "Unique identifier across the home office and branch sites"
+               "description": "Unique identifier across the home office and branch sites",
+               "validation": {
+                   "type": "string",
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           },
           "applicationReceivedDate": {
                "label": "Date Application Received",
@@ -314,10 +367,13 @@
                "end": "45",
                "length": "8",
                "dataType": "AN",
-               "format": "date",
-               "canBeBlank": false,
-               "canBeNA": true,
-               "description": "Format is ccyymmdd or NA left-justified"
+               "description": "Format is ccyymmdd or NA left-justified",
+               "validation": {
+                   "type": "date",
+                   "match": "yyyyMMdd",
+                   "canBeBlank": false,
+                   "canBeNA": true
+               }
           },
           "loanType": {
                "label": "Loan Type",
@@ -325,15 +381,17 @@
                "end": "46",
                "length": "1",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, or 4",
-               "values": {
-                    "1": "Conventional (any loan other than FHA, VA, FSA, or RHS loans)",
-                    "2": "FHA-insured (Federal Housing Administration)",
-                    "3": "VA-guaranteed (Veterans Administration)",
-                    "4": "FSA/RHS (Farm Service Agency or Rural Housing Service)"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false,
+                   "values": {
+                        "1": "Conventional (any loan other than FHA, VA, FSA, or RHS loans)",
+                        "2": "FHA-insured (Federal Housing Administration)",
+                        "3": "VA-guaranteed (Veterans Administration)",
+                        "4": "FSA/RHS (Farm Service Agency or Rural Housing Service)"
+                   }
                }
           },
           "propertyType": {
@@ -342,14 +400,16 @@
                "end": "47",
                "length": "1",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
                "description": "Values are 1, 2, or 3",
-               "values": {
-                    "1": "One to four-family (other than manufactured housing)",
-                    "2": "Manufactured housing",
-                    "3": "Multifamily"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false,
+                   "values": {
+                        "1": "One to four-family (other than manufactured housing)",
+                        "2": "Manufactured housing",
+                        "3": "Multifamily"
+                   }
                }
           },
           "loanPurpose": {
@@ -358,14 +418,16 @@
                "end": "48",
                "length": "1",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
                "description": "Values are 1, 2, or 3",
-               "values": {
-                   "1": "Home purchase",
-                   "2": "Home improvement",
-                   "3": "Refinancing"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false,
+                   "values": {
+                       "1": "Home purchase",
+                       "2": "Home improvement",
+                       "3": "Refinancing"
+                   }
                }
           },
           "ownerOccupancy": {
@@ -374,14 +436,16 @@
                "end": "49",
                "length": "1",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
                "description": "Values are 1, 2, or 3",
-               "values": {
-                   "1": "Owner-occupied as a principal dwelling",
-                   "2": "Not owner-occupied",
-                   "3": "Not applicable"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false,
+                   "values": {
+                       "1": "Owner-occupied as a principal dwelling",
+                       "2": "Not owner-occupied",
+                       "3": "Not applicable"
+                   }
                }
           },
           "loanAmount": {
@@ -390,10 +454,13 @@
                "end": "54",
                "length": "5",
                "dataType": "N",
-               "format": "currency,thousands",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "Report in thousands, round to the nearest thousand with leading zeros and without commas"
+               "description": "Report in thousands, round to the nearest thousand with leading zeros and without commas",
+               "validation": {
+                   "type": "currency",
+                   "multiplier": 1000,
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           },
           "preapprovals": {
                "label": "Preapprovals",
@@ -401,14 +468,16 @@
                "end": "55",
                "length": "1",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
                "description": "Values are 1, 2, or 3",
-               "values": {
-                    "1": "Preapproval was requested",
-                    "2": "Preapproval was not requested",
-                    "3": "Not applicable"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false,
+                   "values": {
+                        "1": "Preapproval was requested",
+                        "2": "Preapproval was not requested",
+                        "3": "Not applicable"
+                   }
                }
           },
           "actionTaken": {
@@ -417,19 +486,21 @@
                "end": "56",
                "length": "1",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, 6, 7, OR 8",
-               "values": {
-                    "1": "Loan originated",
-                    "2": "Application approved but not accepted",
-                    "3": "Application denied by financial institution",
-                    "4": "Application withdrawn by applicant",
-                    "5": "File closed for incompleteness",
-                    "6": "Loan purchased by the institution",
-                    "7": "Preapproval request denied by financial institution",
-                    "8": "Preapproval request approved but not accepted (optional reporting)"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false,
+                   "values": {
+                        "1": "Loan originated",
+                        "2": "Application approved but not accepted",
+                        "3": "Application denied by financial institution",
+                        "4": "Application withdrawn by applicant",
+                        "5": "File closed for incompleteness",
+                        "6": "Loan purchased by the institution",
+                        "7": "Preapproval request denied by financial institution",
+                        "8": "Preapproval request approved but not accepted (optional reporting)"
+                   }
                }
           },
           "actionDate": {
@@ -438,10 +509,13 @@
                "end": "64",
                "length": "8",
                "dataType": "N",
-               "format": "date",
-               "canBeBlank": false,
-               "canBeNA": false,
-               "description": "Format is ccyymmdd"
+               "description": "Format is ccyymmdd",
+               "validation": {
+                   "type": "date",
+                   "match": "yyyyMMdd",
+                   "canBeBlank": false,
+                   "canBeNA": false
+               }
           },
           "metroArea": {
                "label": "Metropolitan Statistical Area/Metropolitan Division",
@@ -449,10 +523,12 @@
                "end": "69",
                "length": "5",
                "dataType": "AN",
-               "format": "string",
-               "canBeBlank": true,
-               "canBeNA": true,
-               "description": "Metropolitan Statistical Area or Metropolitan Division (if appropriate) code or NA left-justified"
+               "description": "Metropolitan Statistical Area or Metropolitan Division (if appropriate) code or NA left-justified",
+               "validation": {
+                   "type": "string",
+                   "canBeBlank": true,
+                   "canBeNA": true
+               }
           },
           "fipsState": {
                "label": "State Code",
@@ -460,10 +536,12 @@
                "end": "71",
                "length": "2",
                "dataType": "AN",
-               "format": "string",
-               "canBeBlank": false,
-               "canBeNA": true,
-               "description": "FIPS code with leading zeros or NA left-justified"
+               "description": "FIPS code with leading zeros or NA left-justified",
+               "validation": {
+                   "type": "string",
+                   "canBeBlank": false,
+                   "canBeNA": true
+               }
           },
           "fipsCounty": {
                "label": "County Code",
@@ -471,10 +549,12 @@
                "end": "74",
                "length": "3",
                "dataType": "AN",
-               "format": "string",
-               "canBeBlank": false,
-               "canBeNA": true,
-               "description": "FIPS code with leading zeros or NA left-justified"
+               "description": "FIPS code with leading zeros or NA left-justified",
+               "validation": {
+                   "type": "string",
+                   "canBeBlank": false,
+                   "canBeNA": true
+               }
           },
           "censusTract": {
                "label": "Census Tract",
@@ -482,10 +562,12 @@
                "end": "81",
                "length": "7",
                "dataType": "AN",
-               "format": "string",
-               "canBeBlank": false,
-               "canBeNA": true,
-               "description": "Include decimal point and any leading or trailing zeros or NA left-justified"
+               "description": "Include decimal point and any leading or trailing zeros or NA left-justified",
+               "validation": {
+                   "type": "string",
+                   "canBeBlank": false,
+                   "canBeNA": true
+               }
           },
           "applicantEthnicity": {
                "label": "Applicant Ethnicity",
@@ -493,15 +575,17 @@
                "end": "82",
                "length": "1",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, or 4",
-               "values": {
-                    "1": "Hispanic or Latino",
-                    "2": "Not Hispanic or Latino",
-                    "3": "Information not provided by applicant in mail, Internet, or telephone application",
-                    "4": "Not applicable"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false,
+                   "values": {
+                        "1": "Hispanic or Latino",
+                        "2": "Not Hispanic or Latino",
+                        "3": "Information not provided by applicant in mail, Internet, or telephone application",
+                        "4": "Not applicable"
+                   }
                }
           },
           "coapplicantEthnicity": {
@@ -510,16 +594,18 @@
                "end": "83",
                "length": "1",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, or 5",
-               "values": {
-                    "1": "Hispanic or Latino",
-                    "2": "Not Hispanic or Latino",
-                    "3": "Information not provided by applicant in mail, Internet, or telephone application",
-                    "4": "Not applicable",
-                    "5": "No co-applicant"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false,
+                   "values": {
+                        "1": "Hispanic or Latino",
+                        "2": "Not Hispanic or Latino",
+                        "3": "Information not provided by applicant in mail, Internet, or telephone application",
+                        "4": "Not applicable",
+                        "5": "No co-applicant"
+                   }
                }
           },
           "applicantRace1": {
@@ -528,18 +614,20 @@
                "end": "84",
                "length": "1",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, 6, or 7",
-               "values": {
-                   "1": "American Indian or Alaska Native",
-                   "2": "Asian",
-                   "3": "Black or African American",
-                   "4": "Native Hawaiian or Other Pacific Islander",
-                   "5": "White",
-                   "6": "Information not provided by applicant in mail, Internet, or telephone application",
-                   "7": "Not applicable"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false,
+                   "values": {
+                       "1": "American Indian or Alaska Native",
+                       "2": "Asian",
+                       "3": "Black or African American",
+                       "4": "Native Hawaiian or Other Pacific Islander",
+                       "5": "White",
+                       "6": "Information not provided by applicant in mail, Internet, or telephone application",
+                       "7": "Not applicable"
+                   }
                }
           },
           "applicantRace2": {
@@ -548,16 +636,18 @@
                "end": "85",
                "length": "1",
                "dataType": "AN",
-               "format": "number",
-               "canBeBlank": true,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, or blank",
-               "values": {
-                   "1": "American Indian or Alaska Native",
-                   "2": "Asian",
-                   "3": "Black or African American",
-                   "4": "Native Hawaiian or Other Pacific Islander",
-                   "5": "White"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": true,
+                   "canBeNA": false,
+                   "values": {
+                       "1": "American Indian or Alaska Native",
+                       "2": "Asian",
+                       "3": "Black or African American",
+                       "4": "Native Hawaiian or Other Pacific Islander",
+                       "5": "White"
+                   }
                }
           },
           "applicantRace3": {
@@ -566,16 +656,18 @@
                "end": "86",
                "length": "1",
                "dataType": "AN",
-               "format": "number",
-               "canBeBlank": true,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, or blank",
-               "values": {
-                   "1": "American Indian or Alaska Native",
-                   "2": "Asian",
-                   "3": "Black or African American",
-                   "4": "Native Hawaiian or Other Pacific Islander",
-                   "5": "White"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": true,
+                   "canBeNA": false,
+                   "values": {
+                       "1": "American Indian or Alaska Native",
+                       "2": "Asian",
+                       "3": "Black or African American",
+                       "4": "Native Hawaiian or Other Pacific Islander",
+                       "5": "White"
+                   }
                }
           },
           "applicantRace4": {
@@ -584,16 +676,18 @@
                "end": "87",
                "length": "1",
                "dataType": "AN",
-               "format": "number",
-               "canBeBlank": true,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, or blank",
-               "values": {
-                   "1": "American Indian or Alaska Native",
-                   "2": "Asian",
-                   "3": "Black or African American",
-                   "4": "Native Hawaiian or Other Pacific Islander",
-                   "5": "White"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": true,
+                   "canBeNA": false,
+                   "values": {
+                       "1": "American Indian or Alaska Native",
+                       "2": "Asian",
+                       "3": "Black or African American",
+                       "4": "Native Hawaiian or Other Pacific Islander",
+                       "5": "White"
+                   }
                }
           },
           "applicantRace5": {
@@ -602,16 +696,18 @@
                "end": "88",
                "length": "1",
                "dataType": "AN",
-               "format": "number",
-               "canBeBlank": true,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, or blank",
-               "values": {
-                   "1": "American Indian or Alaska Native",
-                   "2": "Asian",
-                   "3": "Black or African American",
-                   "4": "Native Hawaiian or Other Pacific Islander",
-                   "5": "White"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": true,
+                   "canBeNA": false,
+                   "values": {
+                       "1": "American Indian or Alaska Native",
+                       "2": "Asian",
+                       "3": "Black or African American",
+                       "4": "Native Hawaiian or Other Pacific Islander",
+                       "5": "White"
+                   }
                }
           },
           "coapplicantRace1": {
@@ -620,19 +716,21 @@
                "end": "89",
                "length": "1",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, 6, 7, or 8",
-               "values": {
-                   "1": "American Indian or Alaska Native",
-                   "2": "Asian",
-                   "3": "Black or African American",
-                   "4": "Native Hawaiian or Other Pacific Islander",
-                   "5": "White",
-                   "6": "Information not provided by applicant in mail, Internet, or telephone application",
-                   "7": "Not applicable",
-                   "8": "No co-applicant"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false,
+                   "values": {
+                       "1": "American Indian or Alaska Native",
+                       "2": "Asian",
+                       "3": "Black or African American",
+                       "4": "Native Hawaiian or Other Pacific Islander",
+                       "5": "White",
+                       "6": "Information not provided by applicant in mail, Internet, or telephone application",
+                       "7": "Not applicable",
+                       "8": "No co-applicant"
+                   }
                }
           },
           "coapplicantRace2": {
@@ -641,16 +739,18 @@
                "end": "90",
                "length": "1",
                "dataType": "AN",
-               "format": "number",
-               "canBeBlank": true,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, or blank",
-               "values": {
-                   "1": "American Indian or Alaska Native",
-                   "2": "Asian",
-                   "3": "Black or African American",
-                   "4": "Native Hawaiian or Other Pacific Islander",
-                   "5": "White"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": true,
+                   "canBeNA": false,
+                   "values": {
+                       "1": "American Indian or Alaska Native",
+                       "2": "Asian",
+                       "3": "Black or African American",
+                       "4": "Native Hawaiian or Other Pacific Islander",
+                       "5": "White"
+                   }
                }
           },
           "coapplicantRace3": {
@@ -659,16 +759,18 @@
                "end": "91",
                "length": "1",
                "dataType": "AN",
-               "format": "number",
-               "canBeBlank": true,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, or blank",
-               "values": {
-                   "1": "American Indian or Alaska Native",
-                   "2": "Asian",
-                   "3": "Black or African American",
-                   "4": "Native Hawaiian or Other Pacific Islander",
-                   "5": "White"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": true,
+                   "canBeNA": false,
+                   "values": {
+                       "1": "American Indian or Alaska Native",
+                       "2": "Asian",
+                       "3": "Black or African American",
+                       "4": "Native Hawaiian or Other Pacific Islander",
+                       "5": "White"
+                   }
                }
           },
           "coapplicantRace4": {
@@ -677,16 +779,18 @@
                "end": "92",
                "length": "1",
                "dataType": "AN",
-               "format": "number",
-               "canBeBlank": true,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, or blank",
-               "values": {
-                   "1": "American Indian or Alaska Native",
-                   "2": "Asian",
-                   "3": "Black or African American",
-                   "4": "Native Hawaiian or Other Pacific Islander",
-                   "5": "White"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": true,
+                   "canBeNA": false,
+                   "values": {
+                       "1": "American Indian or Alaska Native",
+                       "2": "Asian",
+                       "3": "Black or African American",
+                       "4": "Native Hawaiian or Other Pacific Islander",
+                       "5": "White"
+                   }
                }
           },
           "coapplicantRace5": {
@@ -695,16 +799,18 @@
                "end": "93",
                "length": "1",
                "dataType": "AN",
-               "format": "number",
-               "canBeBlank": true,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, or blank",
-               "values": {
-                   "1": "American Indian or Alaska Native",
-                   "2": "Asian",
-                   "3": "Black or African American",
-                   "4": "Native Hawaiian or Other Pacific Islander",
-                   "5": "White"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": true,
+                   "canBeNA": false,
+                   "values": {
+                       "1": "American Indian or Alaska Native",
+                       "2": "Asian",
+                       "3": "Black or African American",
+                       "4": "Native Hawaiian or Other Pacific Islander",
+                       "5": "White"
+                   }
                }
           },
           "applicantSex": {
@@ -713,15 +819,17 @@
                "end": "94",
                "length": "1",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, or 4",
-               "values": {
-                   "1": "Male",
-                   "2": "Female",
-                   "3": "Information not provided by applicant in mail, Internet, or telephone application",
-                   "4": "Not applicable"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false,
+                   "values": {
+                       "1": "Male",
+                       "2": "Female",
+                       "3": "Information not provided by applicant in mail, Internet, or telephone application",
+                       "4": "Not applicable"
+                   }
                }
           },
           "coapplicantSex": {
@@ -730,16 +838,18 @@
                "end": "95",
                "length": "1",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, or 5",
-               "values": {
-                   "1": "Male",
-                   "2": "Female",
-                   "3": "Information not provided by applicant in mail, Internet, or telephone application",
-                   "4": "Not applicable",
-                   "5": "No co-applicant"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false,
+                   "values": {
+                       "1": "Male",
+                       "2": "Female",
+                       "3": "Information not provided by applicant in mail, Internet, or telephone application",
+                       "4": "Not applicable",
+                       "5": "No co-applicant"
+                   }
                }
           },
           "applicantIncome": {
@@ -748,10 +858,13 @@
                "end": "99",
                "length": "4",
                "dataType": "AN",
-               "format": "currency,thousands",
-               "canBeBlank": false,
-               "canBeNA": true,
-               "description": "Report in thousands, round to the nearest thousand with leading zeros and without commas or NA left-justified"
+               "description": "Report in thousands, round to the nearest thousand with leading zeros and without commas or NA left-justified",
+               "validation": {
+                   "type": "currency",
+                   "multiplier": 1000,
+                   "canBeBlank": false,
+                   "canBeNA": true
+               }
           },
           "purchaserType": {
                "label": "Type of Purchaser",
@@ -759,21 +872,23 @@
                "end": "100",
                "length": "1",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
                "description": "Values are 0, 1, 2, 3, 4, 5, 6, 7, 8, or 9",
-               "values": {
-                    "0": "Loan was not originated or was not sold in calendar year covered by register",
-                    "1": "Fannie Mae (FNMA)",
-                    "2": "Ginnie Mae (GNMA)",
-                    "3": "Freddie Mac (FHLMC)",
-                    "4": "Farmer Mac (FAMC)",
-                    "5": "Private securitization",
-                    "6": "Commercial bank, savings bank or savings association",
-                    "7": "Life insurance company, credit union, mortgage bank, or finance company",
-                    "8": "Affiliate institution",
-                    "9": "Other type of purchaser"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false,
+                   "values": {
+                        "0": "Loan was not originated or was not sold in calendar year covered by register",
+                        "1": "Fannie Mae (FNMA)",
+                        "2": "Ginnie Mae (GNMA)",
+                        "3": "Freddie Mac (FHLMC)",
+                        "4": "Farmer Mac (FAMC)",
+                        "5": "Private securitization",
+                        "6": "Commercial bank, savings bank or savings association",
+                        "7": "Life insurance company, credit union, mortgage bank, or finance company",
+                        "8": "Affiliate institution",
+                        "9": "Other type of purchaser"
+                   }
                }
           },
           "denialReason1": {
@@ -782,20 +897,22 @@
                "end": "101",
                "length": "1",
                "dataType": "AN",
-               "format": "number",
-               "canBeBlank": true,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, 6, 7, 8, 9, or blank",
-               "values": {
-                   "1": "Debt-to-income ratio",
-                   "2": "Employment history",
-                   "3": "Credit history",
-                   "4": "Collateral",
-                   "5": "Insufficient cash (downpayment, closing costs)",
-                   "6": "Unverifiable information",
-                   "7": "Credit application incomplete",
-                   "8": "Mortgage insurance denied",
-                   "9": "Other"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": true,
+                   "canBeNA": false,
+                   "values": {
+                       "1": "Debt-to-income ratio",
+                       "2": "Employment history",
+                       "3": "Credit history",
+                       "4": "Collateral",
+                       "5": "Insufficient cash (downpayment, closing costs)",
+                       "6": "Unverifiable information",
+                       "7": "Credit application incomplete",
+                       "8": "Mortgage insurance denied",
+                       "9": "Other"
+                   }
                }
           },
           "denialReason2": {
@@ -804,20 +921,22 @@
                "end": "102",
                "length": "1",
                "dataType": "AN",
-               "format": "number",
-               "canBeBlank": true,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, 6, 7, 8, 9, or blank",
-               "values": {
-                   "1": "Debt-to-income ratio",
-                   "2": "Employment history",
-                   "3": "Credit history",
-                   "4": "Collateral",
-                   "5": "Insufficient cash (downpayment, closing costs)",
-                   "6": "Unverifiable information",
-                   "7": "Credit application incomplete",
-                   "8": "Mortgage insurance denied",
-                   "9": "Other"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": true,
+                   "canBeNA": false,
+                   "values": {
+                       "1": "Debt-to-income ratio",
+                       "2": "Employment history",
+                       "3": "Credit history",
+                       "4": "Collateral",
+                       "5": "Insufficient cash (downpayment, closing costs)",
+                       "6": "Unverifiable information",
+                       "7": "Credit application incomplete",
+                       "8": "Mortgage insurance denied",
+                       "9": "Other"
+                   }
                }
           },
           "denialReason3": {
@@ -826,20 +945,22 @@
                "end": "103",
                "length": "1",
                "dataType": "AN",
-               "format": "number",
-               "canBeBlank": true,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, 4, 5, 6, 7, 8, 9, or blank",
-               "values": {
-                   "1": "Debt-to-income ratio",
-                   "2": "Employment history",
-                   "3": "Credit history",
-                   "4": "Collateral",
-                   "5": "Insufficient cash (downpayment, closing costs)",
-                   "6": "Unverifiable information",
-                   "7": "Credit application incomplete",
-                   "8": "Mortgage insurance denied",
-                   "9": "Other"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": true,
+                   "canBeNA": false,
+                   "values": {
+                       "1": "Debt-to-income ratio",
+                       "2": "Employment history",
+                       "3": "Credit history",
+                       "4": "Collateral",
+                       "5": "Insufficient cash (downpayment, closing costs)",
+                       "6": "Unverifiable information",
+                       "7": "Credit application incomplete",
+                       "8": "Mortgage insurance denied",
+                       "9": "Other"
+                   }
                }
           },
           "rateSpread": {
@@ -848,10 +969,12 @@
                "end": "108",
                "length": "5",
                "dataType": "AN",
-               "format": "percent",
-               "canBeBlank": false,
-               "canBeNA": true,
-               "description": "Enter the rate spread to two decimal places. Include the decimal point and any leading or trailing zeros or NA left-justified"
+               "description": "Enter the rate spread to two decimal places. Include the decimal point and any leading or trailing zeros or NA left-justified",
+               "validation": {
+                   "type": "percent",
+                   "canBeBlank": false,
+                   "canBeNA": true
+               }
           },
           "hoepaStatus": {
                "label": "HOEPA Status",
@@ -859,13 +982,15 @@
                "end": "109",
                "length": "1",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
                "description": "Values are 1 or 2",
-               "values": {
-                    "1": "HOEPA loan",
-                    "2": "Not a HOEPA loan"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false,
+                   "values": {
+                        "1": "HOEPA loan",
+                        "2": "Not a HOEPA loan"
+                   }
                }
           },
           "lienStatus": {
@@ -874,15 +999,17 @@
                "end": "110",
                "length": "1",
                "dataType": "N",
-               "format": "number",
-               "canBeBlank": false,
-               "canBeNA": false,
                "description": "Values are 1, 2, 3, or 4",
-               "values": {
-                    "1": "Secured by a first lien",
-                    "2": "Secured by a subordinate lien",
-                    "3": "Not secured by a lien",
-                    "4": "Not applicable (purchased loans)"
+               "validation": {
+                   "type": "number",
+                   "canBeBlank": false,
+                   "canBeNA": false,
+                   "values": {
+                        "1": "Secured by a first lien",
+                        "2": "Secured by a subordinate lien",
+                        "3": "Not secured by a lien",
+                        "4": "Not applicable (purchased loans)"
+                   }
                }
           },
           "filler": {
@@ -891,9 +1018,11 @@
                "end": "380",
                "length": "270",
                "dataType": "AN",
-               "canBeBlank": true,
-               "canBeNA": false,
-               "description": "Blank"
+               "description": "Blank",
+               "validation": {
+                   "canBeBlank": true,
+                   "canBeNA": false
+               }
           }
      }
 }

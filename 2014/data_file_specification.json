@@ -60,7 +60,7 @@
                "dataType": "N",
                "description": "Format is century, year, month, day, hour, minute (e.g., Jan. 17, 2013, at 1:30 pm would be 201301171330)",
                "validation": {
-                   "type": "datetime",
+                   "type": "date",
                    "match": "yyyyMMddHHmm",
                    "canBeBlank": false,
                    "canBeNA": false
@@ -86,7 +86,8 @@
                "dataType": "N",
                "description": "Four digit year (e.g., 2013)",
                "validation": {
-                   "type": "year",
+                   "type": "date",
+                   "match": "yyyy",
                    "canBeBlank": false,
                    "canBeNA": false
                }

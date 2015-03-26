@@ -114,6 +114,25 @@ var SpecAPI = function() {
     };
 
     /**
+     * Get a property from the defined file specification for the year.
+     * @param  {string} year     The {@link SpecAPI#getValidYears|year} for the edits
+     * @param  {string} scope    The {@link SpecAPI#getValidObjectTypes|scope} for the edits
+     * @param  {string} property The property
+     * @return {object}          Object defining the property within file specification
+     */
+    this.getFileSpecProperty = function(year, scope, property) {
+        var spec = this.getFileSpec(year);
+
+        if (scope === 'ts' && spec && spec.transmittalSheet[property]) {
+            return spec.transmittalSheet[property];
+        } else if (scope === 'lar' && spec && spec.loanApplicationRegister[property]) {
+            return spec.loanApplicationRegister[property];
+        }
+
+        return null;
+    };
+
+    /**
      * Gets the defined edits for the chosen year, scope, and edit type
      * @param  {string} year       The {@link SpecAPI#getValidYears|year} for the edits
      * @param  {string} scope      The {@link SpecAPI#getValidObjectTypes|scope} for the edits

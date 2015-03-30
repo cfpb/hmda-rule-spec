@@ -38,9 +38,41 @@ describe('getFileSpec', function() {
         done();
     });
 
-    it('should return an empty object for an invalid year', function(done) {
+    it('should return null for an invalid year', function(done) {
         var spec = specAPI.getFileSpec('2000');
         expect(spec).to.be.null();
+        done();
+    });
+});
+
+describe('getFileSpecProperty', function() {
+    it('should return the transmittalSheet property from the spec for a given year', function(done) {
+        var prop = specAPI.getFileSpecProperty('2013', 'ts', 'recordID');
+        expect(prop.label).to.be('Record Identifier');
+        done();
+    });
+
+    it('should return the loanApplicationRegister property from the spec for a given year', function(done) {
+        var prop = specAPI.getFileSpecProperty('2013', 'lar', 'recordID');
+        expect(prop.label).to.be('Record Identifier');
+        done();
+    });
+
+    it('should return null for an invalid year', function(done) {
+        var prop = specAPI.getFileSpecProperty('2000', 'ts', 'recordID');
+        expect(prop).to.be.null();
+        done();
+    });
+
+    it('should return null for an invalid scope', function(done) {
+        var prop = specAPI.getFileSpecProperty('2013', 'hmdaFile', 'recordID');
+        expect(prop).to.be.null();
+        done();
+    });
+
+    it('should return null for an invalid property', function(done) {
+        var prop = specAPI.getFileSpecProperty('2013', 'ts', 'recordId');
+        expect(prop).to.be.null();
         done();
     });
 });
@@ -52,7 +84,7 @@ describe('getEdits', function() {
         done();
     });
 
-    it('should return an empty list for an invalid year, editType, objectType combo', function(done) {
+    it('should return null for an invalid year, editType, objectType combo', function(done) {
         var edits = specAPI.getEdits('2013', 'hmda', 'validity');
         expect(edits).to.be.null();
         done();

@@ -20,7 +20,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Total multifamily applications",
+                    "label": "Loans where Property Type = 3",
                     "property": "propertyType",
                     "condition": "equal",
                     "value": "3"
@@ -50,7 +50,7 @@
                     "args": [
                         "hmdaFile.loanApplicationRegisters",
                         {
-                            "label": "Loans where loan purpose = 1 and action taken = 1",
+                            "label": "Loans where Loan Purpose = 1 and Action Taken = 1",
                             "and": [
                                 {
                                     "property": "loanPurpose",
@@ -78,7 +78,7 @@
                     "args": [
                         "hmdaFile.loanApplicationRegisters",
                         {
-                            "label": "Loans where loan purpose = 1 and action taken = 1",
+                            "label": "Loans where Loan Purpose = 1 and Action Taken = 1",
                             "and": [
                                 {
                                     "property": "loanPurpose",
@@ -93,13 +93,13 @@
                             ]
                         },
                         {
-                            "label": "Total home purchase applications",
+                            "label": "Loans where Loan Purpose = 1",
                             "property": "loanPurpose",
                             "condition": "equal",
                             "value": "1"
                         },
                         {
-                            "label": "% of Total home purchase loans",
+                            "label": "% of Loans where Loan Purpose = 1",
                             "property": "result",
                             "condition": "less_than_or_equal",
                             "value": ".95"
@@ -120,7 +120,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Loans where preapproval = 1 and action taken = 4",
+                    "label": "Loans where Preapprovals = 1 and Action Taken = 4",
                     "and": [
                         {
                             "property": "preapprovals",
@@ -160,7 +160,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Loans where preapproval = 1 and action taken = 5",
+                    "label": "Loans where Preapprovals = 1 and Action Taken = 5",
                     "and": [
                         {
                             "property": "preapprovals",
@@ -200,7 +200,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Loans where action taken = 2",
+                    "label": "Loans where Action Taken = 2",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "2"
@@ -231,7 +231,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Loans where action taken = 4",
+                    "label": "Loans where Action Taken = 4",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "4"
@@ -262,7 +262,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Loans where action taken = 5",
+                    "label": "Loans where Action Taken = 5",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "5"
@@ -293,19 +293,19 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Loans where action taken = 1",
+                    "label": "Loans where Action Taken = 1",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "1"
                 },
                 {
-                    "label": "Loans where action taken is 1-6",
+                    "label": "Loans where Action Taken = 1-6",
                     "property": "actionTaken",
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5", "6"]
                 },
                 {
-                    "label": "% of Loans where action taken is 1-6",
+                    "label": "% of Loans where Action Taken = 1-6",
                     "property": "result",
                     "condition": "greater_than_or_equal",
                     "value": ".20"
@@ -324,7 +324,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Loans that report MDA/MD = NA",
+                    "label": "Loans that report MSA/MD = NA",
                     "property": "metroArea",
                     "condition": "equal",
                     "value": "NA"
@@ -365,7 +365,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Loans where income < $10,000",
+                    "label": "Loans where Income < $10,000",
                     "property": "applicantIncome",
                     "condition": "less_than",
                     "value": "10"
@@ -396,7 +396,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Originated Loans where Agency = 5 and HOEPA status = 1",
+                    "label": "Loans where Agency = 5, Action Taken = 1, and HOEPA Status = 1",
                     "and": [
                         {
                             "property": "agencyCode",
@@ -416,13 +416,13 @@
                     ]
                 },
                 {
-                    "label": "Total Originated Loans",
+                    "label": "Loans where Action Taken = 1",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "1"
                 },
                 {
-                    "label": "% of Total Originated Loans",
+                    "label": "% of Loans where Action Taken = 1",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".01"
@@ -441,7 +441,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Purchased Loans where Agency = 5 and HOEPA status = 1",
+                    "label": "Loans where Agency = 5, Action Taken = 6, and HOEPA Status = 1",
                     "and": [
                         {
                             "property": "agencyCode",
@@ -461,13 +461,13 @@
                     ]
                 },
                 {
-                    "label": "Total Purchased Loans",
+                    "label": "Loans where Action Taken = 6",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "6"
                 },
                 {
-                    "label": "% of Total Purchased Loans",
+                    "label": "% of Loans where Action Taken = 6",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".01"
@@ -486,7 +486,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Originated Loans where HOEPA status = 1, lien status = 1, and purchaser = 1",
+                    "label": "Loans where Action Taken = 1, HOEPA Status = 1, Lien Status = 1, and Type of Purchaser = 1",
                     "and": [
                         {
                             "property": "actionTaken",
@@ -511,13 +511,13 @@
                     ]
                 },
                 {
-                    "label": "Total Originated Loans",
+                    "label": "Loans where Action Taken = 1",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "1"
                 },
                 {
-                    "label": "% of Total Originated Loans",
+                    "label": "% of Loans where Action Taken = 1",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".01"
@@ -536,7 +536,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Originated Loans where HOEPA status = 1, lien status = 1, and purchaser = 3",
+                    "label": "Loans where Action Taken = 1, HOEPA Status = 1, Lien Status = 1, and Type of Purchaser = 3",
                     "and": [
                         {
                             "property": "actionTaken",
@@ -561,13 +561,13 @@
                     ]
                 },
                 {
-                    "label": "Total Originated Loans",
+                    "label": "Loans where Action Taken = 1",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "1"
                 },
                 {
-                    "label": "% Total Originated Loans",
+                    "label": "% of Loans where Action Taken = 1",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".01"
@@ -586,7 +586,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Total HOEPA Loans",
+                    "label": "Loans where HOEPA Status = 1",
                     "property": "hoepaStatus",
                     "condition": "equal",
                     "value": "1"
@@ -610,7 +610,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Originated Loans where HOEPA status = 1, and rate spread >= 5% and not = NA",
+                    "label": "Loans where HOEPA Status = 1, Action Taken = 1, and Rate Spread >= 5% and not NA",
                     "and": [
                         {
                             "property": "hoepaStatus",
@@ -639,13 +639,13 @@
                     ]
                 },
                 {
-                    "label": "Total Originated Loans",
+                    "label": "Loans where Action Taken = 1",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "1"
                 },
                 {
-                    "label": "% of Total Originated Loans",
+                    "label": "% of Loans where Action Taken = 1",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".05"
@@ -664,7 +664,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Originated Loans where property type = 1, lien status = 1, and rate spread >= 5% and not = NA",
+                    "label": "Loans where Property Type = 1, Lien Status = 1, Action Taken = 1, and Rate Spread >= 5% and not NA",
                     "and": [
                         {
                             "property": "propertyType",
@@ -698,13 +698,13 @@
                     ]
                 },
                 {
-                    "label": "Total Originated Loans",
+                    "label": "Loans where Action Taken = 1",
                     "property": "actionTaken",
                     "condition": "equal",
                     "value": "1"
                 },
                 {
-                    "label": "% of Total Originated Loans",
+                    "label": "% of Loans where Action Taken = 1",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".01"
@@ -729,7 +729,7 @@
                     "args": [
                         "hmdaFile.loanApplicationRegisters",
                         {
-                            "label": "Loans where loan purpose = 1 and loan type = 1",
+                            "label": "Loans where Loan Purpose = 1 and Loan Type = 1",
                             "and": [
                                 {
                                     "property": "loanPurpose",
@@ -757,7 +757,7 @@
                     "args": [
                         "hmdaFile.loanApplicationRegisters",
                         {
-                            "label": "Loans where loan purpose = 1, loan type = 1, and action taken = 6",
+                            "label": "Loans where Loan Purpose = 1, Loan Type = 1, and Action Taken = 3",
                             "and": [
                                 {
                                     "property": "loanPurpose",
@@ -792,13 +792,13 @@
                             ]
                         },
                         {
-                            "label": "% of Total Loans where loan purpose = 1 and loan type = 1",
+                            "label": "% of Loans where Loan Purpose = 1 and Loan Type = 1",
                             "property": "result",
                             "condition": "less_than_or_equal",
                             "value": ".70"
                         }
                     ]
-                } 
+                }
             ]
         }
     },
@@ -849,7 +849,7 @@
                             "value": "0"
                         }
                     ]
-                } 
+                }
             ]
         }
     },
@@ -870,7 +870,7 @@
                     "args": [
                         "hmdaFile.loanApplicationRegisters",
                         {
-                            "label": "Total Loans where preapproval was requested",
+                            "label": "Loans where Preapprovals = 1",
                             "property": "preapprovals",
                             "condition": "equal",
                             "value": "1"
@@ -889,7 +889,7 @@
                     "args": [
                         "hmdaFile.loanApplicationRegisters",
                         {
-                            "label": "Total Loans where preapproval was denied",
+                            "label": "Loans where Action Taken = 7",
                             "property": "actionTaken",
                             "condition": "equal",
                             "value": "7"
@@ -900,7 +900,7 @@
                             "value": "0"
                         }
                     ]
-                } 
+                }
             ]
         }
     },
@@ -951,7 +951,7 @@
                     "args": [
                         "hmdaFile.loanApplicationRegisters",
                         {
-                            "label": "Total loans with loan purpose = 1, action taken = 1 or 6, property type = 1 or 2, and loan type = 2 or 3",
+                            "label": "Loans where Loan Purpose = 1, Action Taken = 1 or 6, Property Type = 1 or 2, and Loan Type = 2 or 3",
                             "and": [
                                 {
                                     "property": "loanPurpose",
@@ -989,7 +989,7 @@
                     "args": [
                         "hmdaFile.loanApplicationRegisters",
                         {
-                            "label": "Total loans where loan purpose = 1, action taken = 1 or 6, property type = 1 or 2, loan type = 2 or 3, and purchaser type != 0",
+                            "label": "Loans where Loan Purpose = 1, Action Taken = 6, Property Type = 1 or 2, Loan Type = 2 or 3 and Type of Purchaser not = 0",
                             "and": [
                                 {
                                     "property": "loanPurpose",
@@ -1019,7 +1019,7 @@
                             ]
                         },
                         {
-                            "label": "Total loans where loan purpose = 1, action taken = 1 or 6, property type = 1 or 2, and loan type = 2 or 3",
+                            "label": "Loans where Loan Purpose = 1, Action Taken = 1 or 6, Property Type = 1 or 2, and Loan Type = 2 or 3",
                             "and": [
                                 {
                                     "property": "loanPurpose",
@@ -1044,13 +1044,13 @@
                             ]
                         },
                         {
-                            "label": "% of Loans where loan purpose = 1, action taken = 1 or 6, property type = 1 or 2, and loan type = 2 or 3",
+                            "label": "% of Loans where Type of Purchaser not = 0",
                             "property": "result",
                             "condition": "greater_than",
                             "value": ".20"
                         }
                     ]
-                } 
+                }
             ]
         }
     },
@@ -1071,7 +1071,7 @@
                     "args": [
                         "hmdaFile.loanApplicationRegisters",
                         {
-                            "label": "Total loans where loan purpose = 3, action taken = 1 or 6, property type = 1 or 2, and loan type = 2 or 3",
+                            "label": "Loans where Loan Purpose = 3, Action Taken = 1 or 6, Property Type = 1 or 2, and Loan Type = 2 or 3",
                             "and": [
                                 {
                                     "property": "loanPurpose",
@@ -1109,7 +1109,7 @@
                     "args": [
                         "hmdaFile.loanApplicationRegisters",
                         {
-                            "label": "Total loans where loan purpose = 1, action taken = 1 or 6, property type = 1 or 2, loan type = 2 or 3, and purchaser type != 0",
+                            "label": "Loans where Loan Purpose = 3, Action Taken = 1 or 6, Property Type = 1 or 2, Loan Type = 2 or 3  and Type of Purchaser not = 0",
                             "and": [
                                 {
                                     "property": "loanPurpose",
@@ -1139,7 +1139,7 @@
                             ]
                         },
                         {
-                            "label": "Total loans where loan purpose = 1, action taken = 1 or 6, property type = 1 or 2, and loan type = 2 or 3",
+                            "label": "Loans where Loan Purpose = 3, Action Taken = 1 or 6, Property Type = 1 or 2, and Loan Type = 2 or 3",
                             "and": [
                                 {
                                     "property": "loanPurpose",
@@ -1164,13 +1164,13 @@
                             ]
                         },
                         {
-                            "label": "% of Loans where loan purpose = 1, action taken = 1 or 6, property type = 1 or 2, and loan type = 2 or 3",
+                            "label": "% of Loans where Loan Purpose = 3, Action Taken = 1 or 6, Property Type = 1 or 2, and Loan Type = 2 or 3",
                             "property": "result",
                             "condition": "greater_than",
                             "value": ".20"
                         }
                     ]
-                } 
+                }
             ]
         }
     },
@@ -1221,7 +1221,7 @@
                     "property": "hmdaFile",
                     "condition": "call",
                     "function": "isValidNumHomePurchaseLoans"
-                } 
+                }
             ]
         }
     },
@@ -1458,7 +1458,7 @@
                     "values": ["1", "2", "3", "4", "5"]
                 },
                 {
-                    "label": "% Total Loans where action taken = 1-5",
+                    "label": "% of Total Loans where action taken = 1-5",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".20"

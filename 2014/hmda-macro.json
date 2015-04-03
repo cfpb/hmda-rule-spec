@@ -1217,7 +1217,7 @@
                     "args": [
                         "hmdaFile.loanApplicationRegisters",
                         {
-                            "label": "Total loans where loan purpose = 1, action taken = 1 or 6, and property type = 1 or 2",
+                            "label": "Total loans where Loan Purpose = 1, Action Taken = 1 or 6, and Property Type = 1 or 2",
                             "and": [
                                 {
                                     "property": "loanPurpose",
@@ -1268,7 +1268,7 @@
                     "args": [
                         "hmdaFile.loanApplicationRegisters",
                         {
-                            "label": "Total loans where loan purpose = 3, action taken = 1 or 6, and property type = 1 or 2",
+                            "label": "Total loans where Loan Purpose = 3, Action Taken = 1 or 6, and Property Type = 1 or 2",
                             "and": [
                                 {
                                     "property": "loanPurpose",
@@ -1313,7 +1313,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Loans where action take = 1, 2, or 3, property type = 1 or 2, and applicant ethnicity = 3 or 4",
+                    "label": "Loans where Action Taken = 1, 2, or 3, Property Type = 1 or 2, and Applicant Ethnicity = 3 or 4",
                     "and": [
                         {
                             "property": "actionTaken",
@@ -1333,13 +1333,13 @@
                     ]
                 },
                 {
-                    "label": "Total Loans where action taken = 1-5",
+                    "label": "Total Loans where Action Taken = 1-5",
                     "property": "actionTaken",
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
                 {
-                    "label": "% of Total Loans where action take = 1-5",
+                    "label": "% of Total Loans where Action Taken = 1-5",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".50"
@@ -1358,7 +1358,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Loans where action take = 1, 2, or 3, property type = 1 or 2, and first applicant race = 6 or 7",
+                    "label": "Loans where Action Taken = 1, 2, or 3, Property Type = 1 or 2, and first Applicant Race = 6 or 7",
                     "and": [
                         {
                             "property": "actionTaken",
@@ -1378,13 +1378,13 @@
                     ]
                 },
                 {
-                    "label": "Total Loans where action taken = 1-5",
+                    "label": "Total Loans where action Taken = 1-5",
                     "property": "actionTaken",
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
                 {
-                    "label": "% of Total Loans where action taken = 1-5",
+                    "label": "% of Total Loans where Action Taken = 1-5",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".50"
@@ -1403,7 +1403,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Loans where action take = 1, 2, or 3, property type = 1 or 2, and applicant sex = 3 or 4",
+                    "label": "Loans where action Taken = 1, 2, or 3, Property Type = 1 or 2, and Applicant Sex = 3 or 4",
                     "and": [
                         {
                             "property": "actionTaken",
@@ -1423,13 +1423,13 @@
                     ]
                 },
                 {
-                    "label": "Total Loans where action taken = 1-5",
+                    "label": "Total Loans where Action Taken = 1-5",
                     "property": "actionTaken",
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
                 {
-                    "label": "% of Total Loans where action taken = 1-5",
+                    "label": "% of Total Loans where Action Taken = 1-5",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".50"
@@ -1448,7 +1448,7 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Loans where action take = 1, 2, or 3, property type = 1 or 2, and applicant ethnicity = 3 or 4, and first applicant race = 6 or 7",
+                    "label": "Loans where Action Taken = 1, 2, or 3, Property Type = 1 or 2, and Applicant Ethnicity = 3 or 4, and first Applicant Race = 6 or 7",
                     "and": [
                         {
                             "property": "actionTaken",
@@ -1478,13 +1478,13 @@
                     ]
                 },
                 {
-                    "label": "Total Loans where action taken = 1-5",
+                    "label": "Total Loans where Action Taken = 1-5",
                     "property": "actionTaken",
                     "condition": "in",
                     "values": ["1", "2", "3", "4", "5"]
                 },
                 {
-                    "label": "% of Total Loans where action taken = 1-5",
+                    "label": "% of Total Loans where Action Taken = 1-5",
                     "property": "result",
                     "condition": "less_than_or_equal",
                     "value": ".20"

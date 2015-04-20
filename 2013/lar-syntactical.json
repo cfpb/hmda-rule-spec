@@ -8,16 +8,5 @@
             "condition": "matches_regex",
             "value": "^(?!0{25}$).{25}$"
         }
-    },
-    {
-        "id": "S270",
-        "description": "Century (CC) and Year (YY) of action taken date must = activity century/year (CCYY) for period being processed.",
-        "explanation": "Century and/or year for action taken date does not match activity century/year.",
-        "rule": {
-            "property": "actionDate",
-            "condition": "call",
-            "function": "isActionDateInActivityYear",
-            "args": ["actionDate", "hmdaFile.transmittalSheet.activityYear"]
-        }
     }
 ]

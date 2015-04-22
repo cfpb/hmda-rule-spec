@@ -10,6 +10,16 @@
         }
     },
     {
+        "id": "S270",
+        "description": "Century (CC) and Year (YY) of action taken date must = activity century/year (CCYY) for period being processed.",
+        "explanation": "Century and/or year for action taken date does not match activity century/year.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "isActionDateInActivityYear"
+        }
+    },
+    {
         "id": "S011",
         "description": "The HMDA file must contain at least one loan/application record (record identifier = 2).",
         "explanation": "File does not contain at least one loan/application record (record identifier = 2).",

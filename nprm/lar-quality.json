@@ -1,0 +1,809 @@
+[
+    {
+        "id": "Q022",
+        "description": "Date application received should = activity year or (activity year minus 1 or activity year minus 2).",
+        "explanation": "Date application received is not in activity year or (activity year minus 2); Verify.",
+        "rule": {
+            "property": "applicationReceivedDate",
+            "condition": "between",
+            "start": "20119999",
+            "end": "20150000"
+        }
+    },
+    {
+        "id": "Q035",
+        "description": "If purchaser type = 1 or 3, then loan type should = 1.",
+        "explanation": "Purchaser type = 1 or 3; therefore loan type should = 1; Verify.",
+        "rule": {
+            "if": {
+                "property": "purchaserType",
+                "condition": "in",
+                "values": ["1", "3"]
+            },
+            "then": {
+                "property": "loanType",
+                "condition": "equal",
+                "value": "1"
+            }
+        }
+    },
+    {
+        "id": "Q001",
+        "description": "If loan amount and income are numeric and > 0 and the loan amount is ≥ $1,000 ($1 million), then loan amount should be < 5 times the income.",
+        "explanation": "Loan amount reported is ≥ five times the income; Verify.",
+        "rule": {
+            "property": "loanAmount",
+            "condition": "call",
+            "function": "isValidLoanAmount",
+            "args": ["loanAmount", "applicantIncome"]
+        }
+    },
+    {
+        "id": "Q002",
+        "description": "If property type = 1 and income ≤ $200 thousand, then loan amount should be < $2 million.",
+        "explanation": "Income is < $200 thousand and loan amount reported is ≥ $2 million; Verify.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "propertyType",
+                        "condition": "equal",
+                        "value": "1"
+                    },
+                    {
+                        "property": "applicantIncome",
+                        "condition": "less_than_or_equal",
+                        "value": "200"
+                    }
+                ]
+            },
+            "then": {
+                "property": "loanAmount",
+                "condition": "less_than",
+                "value": "2000"
+            }
+        }
+    },
+    {
+        "id": "Q003",
+        "description": "If loan type = 2 and property type = 1 or 2, then loan amount should be ≤ $729 ($729 thousand).",
+        "explanation": "Loan type = 2 and loan amount > $729 ($729 thousand); Verify.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "loanType",
+                        "condition": "equal",
+                        "value": "2"
+                    },
+                    {
+                        "property": "propertyType",
+                        "condition": "in",
+                        "values": ["1", "2"]
+                    }
+                ]
+            },
+            "then": {
+                "property": "loanAmount",
+                "condition": "less_than_or_equal",
+                "value": "729"
+            }
+        }
+    },
+    {
+        "id": "Q004",
+        "description": "If loan type = 3 and property type = 1 or 2, then loan amount should be ≤ $1,094 ($1,094 thousands).",
+        "explanation": "Loan type = 3 and loan amount > $1,094 ($1,094 thousand); Verify.",
+        "rule":{
+            "if": {
+                "and": [
+                    {
+                        "property": "loanType",
+                        "condition": "equal",
+                        "value": "3"
+                    },
+                    {
+                        "property": "propertyType",
+                        "condition": "in",
+                        "values": ["1", "2"]
+                    }
+                ]
+            },
+            "then": {
+                "property": "loanAmount",
+                "condition": "less_than_or_equal",
+                "value": "1094"
+            }
+        }
+    },
+    {
+        "id": "Q005",
+        "description": "If type of purchaser = 1-4, and property type = 1 or 2, then loan amount should be ≤ $729 ($729 thousand).",
+        "explanation": "Type of purchaser = 1-4, and property type = 1 or 2 and loan amount > $729 ($729 thousand); Verify.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "purchaserType",
+                        "condition": "in",
+                        "values": ["1", "2", "3", "4"]
+                    },
+                    {
+                        "property": "propertyType",
+                        "condition": "in",
+                        "values": ["1", "2"]
+                    }
+                ]
+            },
+            "then": {
+                "property": "loanAmount",
+                "condition": "less_than_or_equal",
+                "value": "729"
+            }
+        }
+    },
+    {
+        "id": "Q013",
+        "description": "If property type = 3, then loan amount should be in the range of $100 thousand and $10 million.",
+        "explanation": "Loan amount is not within the expected range of $100 thousand and $10 million; Verify.",
+        "rule": {
+            "if": {
+                "property": "propertyType",
+                "condition": "equal",
+                "value": "3"
+            },
+            "then": {
+                "property": "loanAmount",
+                "condition": "between",
+                "start": "99",
+                "end": "10001"
+            }
+        }
+    },
+    {
+        "id": "Q036",
+        "description": "If property type = 2, then loan amount should be ≤ $150 ($150 thousand).",
+        "explanation": "Property type = 2 and loan amount reported is > $150 ($150 thousand); Verify.",
+        "rule": {
+            "if": {
+                "property": "propertyType",
+                "condition": "equal",
+                "value": "2"
+            },
+            "then": {
+                "property": "loanAmount",
+                "condition": "less_than_or_equal",
+                "value": "150"
+            }
+        }
+    },
+    {
+        "id": "Q037",
+        "description": "If lien status = 2, then loan amount should be ≤ $250 ($250 thousand).",
+        "explanation": "Lien status = 2 and loan amount reported is > $250 ($250 thousand); Verify.",
+        "rule": {
+            "if": {
+                "property": "lienStatus",
+                "condition": "equal",
+                "value": "2"
+            },
+            "then": {
+                "property": "loanAmount",
+                "condition": "less_than_or_equal",
+                "value": "250"
+            }
+        }
+    },
+    {
+        "id": "Q038",
+        "description": "If lien status = 3, then loan amount should be ≤ $100 ($100 thousand).",
+        "explanation": "Lien status = 3 and loan amount reported is > $100 ($100 thousand); Verify.",
+        "rule": {
+            "if": {
+                "property": "lienStatus",
+                "condition": "equal",
+                "value": "3"
+            },
+            "then": {
+                "property": "loanAmount",
+                "condition": "less_than_or_equal",
+                "value": "100"
+            }
+        }
+    },
+    {
+        "id": "Q025",
+        "description": "If loan purpose = 1 and property type = 1, then loan amount should be > $10 thousand.",
+        "explanation": "Loan amount is numeric and ≤ $10 thousand; Verify.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "loanPurpose",
+                        "condition": "equal",
+                        "value": "1"
+                    },
+                    {
+                        "property": "propertyType",
+                        "condition": "equal",
+                        "value": "1"
+                    }
+                ]
+            },
+            "then": {
+                "property": "loanAmount",
+                "condition": "greater_than",
+                "value": "10"
+            }
+        }
+    },
+    {
+        "id": "Q032",
+        "description": "If action taken type = 1, then action taken date should not equal the date application received.",
+        "explanation": "Loan is originated and action taken date = date application received; Verify.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "equal",
+                "value": "1"
+            },
+            "then": {
+                "property": "actionDate",
+                "condition": "not_equal_property",
+                "value": "applicationReceivedDate"
+            }
+        }
+    },
+    {
+        "id": "Q026",
+        "description": "If action taken type = 1-5, 7, or 8, then applicant ethnicity, race and/or sex should not = 4, 7, or 4, respectively.",
+        "explanation": "Applicant ethnicity, race and/or sex = 4, 7, or 4, respectively; Verify.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "in",
+                "values": ["1", "2", "3", "4", "5", "7", "8"]
+            },
+            "then": {
+                "and": [
+                    {
+                        "property": "applicantEthnicity",
+                        "condition": "not_equal",
+                        "value": "4"
+                    },
+                    {
+                        "property": "applicantRace1",
+                        "condition": "not_equal",
+                        "value": "7"
+                    },
+                    {
+                        "property": "applicantSex",
+                        "condition": "not_equal",
+                        "value": "4"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "id": "Q068",
+        "description": "If action taken type = 1-5, 7 or 8, and applicant ethnicity, race and sex = 4,7,4, respectively, and co-applicant ethnicity, race and sex = 4,7,4, respectively, and there is no co-applicant, then co-applicant ethnicity, race, and sex should = 5,8,5, respectively.",
+        "explanation": "Applicant ethnicity, race and/or sex = 4, 7, 4, respectively, and co-applicant ethnicity, race and sex = 4, 7, 4, respectively; Verify.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "actionTaken",
+                        "condition": "in",
+                        "values": ["1", "2", "3", "4", "5", "7", "8"]
+                    },
+                    {
+                        "property": "applicantEthnicity",
+                        "condition": "equal",
+                        "value": "4"
+                    },
+                    {
+                        "property": "applicantRace1",
+                        "condition": "equal",
+                        "value": "7"
+                    },
+                    {
+                        "property": "applicantSex",
+                        "condition": "equal",
+                        "value": "4"
+                    }
+                ]
+            },
+            "then": {
+                "and": [
+                    {
+                        "property": "coapplicantEthnicity",
+                        "condition": "equal",
+                        "value": "5"
+                    },
+                    {
+                        "property": "coapplicantRace1",
+                        "condition": "equal",
+                        "value": "8"
+                    },
+                    {
+                        "property": "coapplicantSex",
+                        "condition": "equal",
+                        "value": "5"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "id": "Q014",
+        "description": "If income is numeric, then income should be < $3 million.",
+        "explanation": "Income is numeric and ≥ to $3 million; Verify.",
+        "rule": {
+            "if": {
+                "property": "applicantIncome",
+                "condition": "is_integer"
+            },
+            "then": {
+                "property": "applicantIncome",
+                "condition": "less_than",
+                "value": "3000"
+            }
+        }
+    },
+    {
+        "id": "Q024",
+        "description": "If action taken type = 1, and income and loan amount are numeric, and loan amount is ≥ 5 times income, then income should be > $ 9 thousand.",
+        "explanation": "Action taken type = 1, loan amount is > 5 times income, and income is numeric and < $9 thousand; Verify.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "actionTaken",
+                        "condition": "equal",
+                        "value": "1"
+                    },
+                    {
+                        "property": "applicantIncome",
+                        "condition": "is_integer"
+                    },
+                    {
+                        "property": "loanAmount",
+                        "condition": "is_integer"
+                    },
+                    {
+                        "property": "loanAmount",
+                        "condition": "call",
+                        "function": "isLoanAmountFiveTimesIncome",
+                        "args": ["loanAmount", "applicantIncome"]
+                    }
+                ]
+            },
+            "then": {
+                "property": "applicantIncome",
+                "condition": "greater_than",
+                "value": "9"
+            }
+        }
+    },
+    {
+        "id": "Q027",
+        "description": "If action taken type = 1-5, 7 or 8, and property type = 1 or 2, then applicant income should not = NA.",
+        "explanation": "Income = NA; Verify.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "actionTaken",
+                        "condition": "in",
+                        "values": ["1", "2", "3", "4", "5", "7", "8"]
+                    },
+                    {
+                        "property": "propertyType",
+                        "condition": "in",
+                        "values": ["1", "2"]
+                    }
+                ]
+            },
+            "then": {
+                "property": "applicantIncome",
+                "condition": "not_equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "Q067",
+        "description": "If applicant ethnicity, race, and sex = 4, 7, and 4, respectively, and co-applicant ethnicity, race, and sex = 4, 7, and 4, respectively, then applicant income should = NA.",
+        "explanation": "Income is numeric; Verify.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "applicantEthnicity",
+                        "condition": "equal",
+                        "value": "4"
+                    },
+                    {
+                        "property": "applicantRace1",
+                        "condition": "equal",
+                        "value": "7"
+                    },
+                    {
+                        "property": "applicantSex",
+                        "condition": "equal",
+                        "value": "4"
+                    },
+                    {
+                        "property": "coapplicantEthnicity",
+                        "condition": "equal",
+                        "value": "4"
+                    },
+                    {
+                        "property": "coapplicantRace1",
+                        "condition": "equal",
+                        "value": "7"
+                    },
+                    {
+                        "property": "coapplicantSex",
+                        "condition": "equal",
+                        "value": "4"
+                    }
+                ]
+            },
+            "then": {
+                "property": "applicantIncome",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "Q039",
+        "description": "If HOEPA status = 1 and action taken type = 1, then rate spread should not = NA.",
+        "explanation": "HOEPA status = 1 and action taken type = 1, therefore rate spread should not = NA; Verify.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "hoepaStatus",
+                        "condition": "equal",
+                        "value": "1"
+                    },
+                    {
+                        "property": "actionTaken",
+                        "condition": "equal",
+                        "value": "1"
+                    }
+                ]
+            },
+            "then": {
+                "property": "rateSpread",
+                "condition": "not_equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "Q040",
+        "description": "If purchaser type = 1-4 and lien status = 1 or 2, then rate spread should be ≤ 10% or NA.",
+        "explanation": "Purchaser type = 1-4 and lien status = 1 or 2; therefore rate spread should be ≤ 10% or NA; Verify.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "purchaserType",
+                        "condition": "in",
+                        "values": ["1", "2", "3", "4"]
+                    },
+                    {
+                        "property": "lienStatus",
+                        "condition": "in",
+                        "values": ["1", "2"]
+                    }
+                ]
+            },
+            "then": {
+                "or": [
+                    {
+                        "property": "rateSpread",
+                        "condition": "equal",
+                        "value": "NA"
+                    },
+                    {
+                        "property": "rateSpread",
+                        "condition": "less_than_or_equal",
+                        "value": "10.0"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "id": "Q061",
+        "description": "If agency = 5, property type = 1, lien status = 1 and action taken type = 1, rate spread should be ≤ 5% or NA.",
+        "explanation": "Agency = 5, property type = 1, lien status = 1 and action taken type = 1; therefore, rate spread should be ≤ 5% or NA; Verify.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "agencyCode",
+                        "condition": "equal",
+                        "value": "5"
+                    },
+                    {
+                        "property": "propertyType",
+                        "condition": "equal",
+                        "value": "1"
+                    },
+                    {
+                        "property": "lienStatus",
+                        "condition": "equal",
+                        "value": "1"
+                    },
+                    {
+                        "property": "actionTaken",
+                        "condition": "equal",
+                        "value": "1"
+                    }
+                ]
+            },
+            "then": {
+                "or": [
+                    {
+                        "property": "rateSpread",
+                        "condition": "equal",
+                        "value": "NA"
+                    },
+                    {
+                        "property": "rateSpread",
+                        "condition": "less_than_or_equal",
+                        "value": "5.0"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "id": "Q066",
+        "description": "If rate spread does not = NA, then rate spread should be < 13%.",
+        "explanation": "Rate spread does not = NA; therefore rate spread should be < 13%; Verify.",
+        "rule": {
+            "if": {
+                "property": "rateSpread",
+                "condition": "not_equal",
+                "value": "NA"
+            },
+            "then": {
+                "property": "rateSpread",
+                "condition": "less_than",
+                "value": "13.0"
+            }
+        }
+    },
+    {
+        "id": "Q044",
+        "description": "If agency = 1, 2, 3, 7 or 9, action taken type = 1, lien status = 1, and rate spread > 6.5%, then HOEPA status should = 1.",
+        "explanation": "Agency = 1-3, 7 or 9, action taken type = 1, lien status = 1, and rate spread > 6.5%; therefore HOEPA status should = 1; Verify.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "agencyCode",
+                        "condition": "in",
+                        "values": ["1", "2", "3", "7", "9"]
+                    },
+                    {
+                        "property": "actionTaken",
+                        "condition": "equal",
+                        "value": "1"
+                    },
+                    {
+                        "property": "lienStatus",
+                        "condition": "equal",
+                        "value": "1"
+                    },
+                    {
+                        "property": "rateSpread",
+                        "condition": "greater_than",
+                        "value": "6.5"
+                    }
+                ]
+            },
+            "then": {
+                "property": "hoepaStatus",
+                "condition": "equal",
+                "value": "1"
+            }
+        }
+
+    },
+    {
+        "id": "Q045",
+        "description": "If agency = 1, 2, 3, 7 or 9, action taken type = 1, lien status = 2, and rate spread > 8.5%, then HOEPA status should = 1.",
+        "explanation": "Agency = 1-3, 7 or 9, action taken type = 1, lien status = 2, and rate spread > 8.5%; therefore HOEPA status should = 1; Verify.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "agencyCode",
+                        "condition": "in",
+                        "values": ["1", "2", "3", "7", "9"]
+                    },
+                    {
+                        "property": "actionTaken",
+                        "condition": "equal",
+                        "value": "1"
+                    },
+                    {
+                        "property": "lienStatus",
+                        "condition": "equal",
+                        "value": "2"
+                    },
+                    {
+                        "property": "rateSpread",
+                        "condition": "greater_than",
+                        "value": "8.5"
+                    }
+                ]
+            },
+            "then": {
+                "property": "hoepaStatus",
+                "condition": "equal",
+                "value": "1"
+            }
+        }
+    },
+    {
+        "id": "Q046",
+        "description": "If loan purpose = 1, HOEPA Status should not = 1.",
+        "explanation": "Loan purpose = 1 and HOEPA status = 1; Verify.",
+        "rule": {
+            "if": {
+                "property": "loanPurpose",
+                "condition": "equal",
+                "value": "1"
+            },
+            "then": {
+                "property": "hoepaStatus",
+                "condition": "not_equal",
+                "value": "1"
+            }
+        }
+    },
+    {
+        "id": "Q050",
+        "description": "If agency = 5, HOEPA status should not = 1.",
+        "explanation": "Agency = 5 and HOEPA status = 1; Verify.",
+        "rule": {
+            "if": {
+                "property": "agencyCode",
+                "condition": "equal",
+                "value": "5"
+            },
+            "then": {
+                "property": "hoepaStatus",
+                "condition": "not_equal",
+                "value": "1"
+            }
+        }
+    },
+    {
+        "id": "Q051",
+        "description": "If applicant ethnicity, race and sex = 4, 7, and 4, respectively, HOEPA status should not = 1.",
+        "explanation": "Applicant ethnicity, race and sex = 4, 7, and 4, respectively and HOEPA status = 1; Verify.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "applicantEthnicity",
+                        "condition": "equal",
+                        "value": "4"
+                    },
+                    {
+                        "property": "applicantRace1",
+                        "condition": "equal",
+                        "value": "7"
+                    },
+                    {
+                        "property": "applicantSex",
+                        "condition": "equal",
+                        "value": "4"
+                    }
+                ]
+            },
+            "then": {
+                "property": "hoepaStatus",
+                "condition": "not_equal",
+                "value": "1"
+            }
+        }
+    },
+    {
+        "id": "Q052",
+        "description": "If property type = 3, HOEPA status should not = 1.",
+        "explanation": "Property type = 3 and HOEPA status = 1; Verify.",
+        "rule": {
+            "if": {
+                "property": "propertyType",
+                "condition": "equal",
+                "value": "3"
+            },
+            "then": {
+                "property": "hoepaStatus",
+                "condition": "not_equal",
+                "value": "1"
+            }
+        }
+    },
+    {
+        "id": "Q064",
+        "description": "If purchaser type = 1 or 3, HOEPA status should not = 1.",
+        "explanation": "Purchaser type = 1 or 3 and HOEPA status = 1; Verify.",
+        "rule": {
+            "if": {
+                "property": "purchaserType",
+                "condition": "in",
+                "values": ["1", "3"]
+            },
+            "then": {
+                "property": "hoepaStatus",
+                "condition": "not_equal",
+                "value": "1"
+            }
+        }
+    },
+    {
+        "id": "Q059",
+        "description": "If loan type = 3 or 4, then property type should not = 3.",
+        "explanation": "Loan type = 3 or 4 and property type = 3; Verify.",
+        "rule": {
+            "if": {
+                "property": "loanType",
+                "condition": "in",
+                "values": ["3", "4"]
+            },
+            "then": {
+                "property": "propertyType",
+                "condition": "not_equal",
+                "value": "3"
+            }
+        }
+    },
+    {
+        "id": "Q049",
+        "description": "If action taken type = 7 or 8, then MSA/MD, state, county, census tract should equal NA.",
+        "explanation": "Action taken type = 7 or 8; therefore, MSA/MD, state, county, census tract should = NA; Verify.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "in",
+                "values": ["7", "8"]
+            },
+            "then": {
+                "and": [
+                    {
+                        "property": "metroArea",
+                        "condition": "equal",
+                        "value": "NA"
+                    },
+                    {
+                        "property": "fipsState",
+                        "condition": "equal",
+                        "value": "NA"
+                    },
+                    {
+                        "property": "fipsCounty",
+                        "condition": "equal",
+                        "value": "NA"
+                    },
+                    {
+                        "property": "censusTract",
+                        "condition": "equal",
+                        "value": "NA"
+                    }
+                ]
+            }
+        }
+    }
+]

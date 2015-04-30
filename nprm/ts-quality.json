@@ -1,0 +1,66 @@
+[
+    {
+        "id": "Q033",
+        "description": "If respondent is a bank, savings association, or independent mortgage company, and if any parent company exists, then parent name, address, city, state and zip code should not = blank.",
+        "explanation": "Parent name, address, city, state, or zip code is missing.",
+        "rule": {
+            "if": {
+                "property": "respondentID",
+                "condition": "call",
+                "function": "isChildFI",
+                "args": ["respondentID", "agencyCode"]
+            },
+            "then": {
+                "and": [
+                    {
+                        "property": "parentName",
+                        "condition": "not_empty"
+                    },
+                    {
+                        "property": "parentAddress",
+                        "condition": "not_empty"
+                    },
+                    {
+                        "property": "parentCity",
+                        "condition": "not_empty"
+                    },
+                    {
+                        "property": "parentState",
+                        "condition": "not_empty"
+                    },
+                    {
+                        "property": "parentZip",
+                        "condition": "not_empty"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "id": "Q020",
+        "description": "Institution address should not = parent address.",
+        "explanation": "Institution address equals parent address.",
+        "rule": {
+            "if": {
+                "property": "parentAddress",
+                "condition": "not_empty"
+            },
+            "then": {
+                "property": "respondentAddress",
+                "condition": "not_equal_property",
+                "value": "parentAddress"
+            }
+        }
+    },
+    {
+        "id": "Q012",
+        "description": "The reported Tax ID number on the transmittal sheet of your HMDA data file does not match the Tax ID number reported in the previous calendar year submission.",
+        "explanation": "Tax ID number on TS does not match the Tax ID number reported in the previous calendar year submission.",
+        "rule": {
+            "property": "taxID",
+            "condition": "call",
+            "function": "isTaxIDTheSameAsLastYear",
+            "args": ["respondentID", "agencyCode", "taxID"]
+        }
+    }
+]

@@ -94,10 +94,10 @@
         "explanation": "Parent name, address, city, state, or zip code is missing.",
         "rule": {
             "if": {
-                "property": "respondentID",
+                "property": "legalEntityID",
                 "condition": "call",
                 "function": "isRespondentMBS",
-                "args": ["respondentID", "agencyCode"]
+                "args": ["legalEntityID", "agencyCode"]
             },
             "then": {
                 "and": [

@@ -4,9 +4,9 @@
         "description": "Application/Loan number must not = blank or all zeros.",
         "explanation": "Application/Loan number not in valid format or is missing.",
         "rule": {
-            "property": "loanNumber",
+            "property": "universalLoanID",
             "condition": "matches_regex",
-            "value": "^(?!0{25}$).{25}$"
+            "value": "^(?!0{45}$).{45}$"
         }
     }
 ]

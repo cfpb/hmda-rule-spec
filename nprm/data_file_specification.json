@@ -1166,12 +1166,12 @@
             "start": "238",
             "end": "239",
             "length": "2",
-            "dataType": "AN",
+            "dataType": "N",
             "description": "Credit score model used to calculate the co-applicant's credit score or NA left-justified",
             "validation": {
                 "type": "number",
                 "canBeBlank": false,
-                "canBeNA": true,
+                "canBeNA": false,
                 "values": {
                     "1": "Equifax Beacon 5.0",
                     "2": "Experian Fair Isaac",
@@ -1313,11 +1313,7 @@
             "validation": {
                 "type": "number",
                 "canBeBlank": false,
-                "canBeNA": true,
-                "values": {
-                    "1": "True",
-                    "2": "False"
-                }
+                "canBeNA": true
             }
         },
         "balloonPayment": {

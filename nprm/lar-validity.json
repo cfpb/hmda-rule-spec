@@ -63,39 +63,39 @@
     },
     {
         "id": "V225",
-        "description": "Loan purpose must = 1, 2, or 3.",
-        "explanation": "Loan purpose is missing or is not in range 1-3.",
+        "description": "Loan purpose must = 1, 2, 3 or 4.",
+        "explanation": "Loan purpose is missing or is not in range 1-4.",
         "rule": {
             "property": "loanPurpose",
             "condition": "in",
-            "values": ["1", "2", "3"]
+            "values": ["1", "2", "3", "4"]
         }
     },
-    {
-        "id": "V410",
-        "description": "If lien status = 3, then loan purpose must = 2.",
-        "explanation": "Lien status = 3; therefore loan purpose must = 2.",
-        "rule": {
-            "if": {
-                "property": "lienStatus",
-                "condition": "equal",
-                "value": "3"
-            },
-            "then": {
-                "property": "loanPurpose",
-                "condition": "equal",
-                "value": "2"
-            }
-        }
-    },
+    // {
+    //     "id": "V410",
+    //     "description": "If lien status = 5, then loan purpose must = 2.",
+    //     "explanation": "Lien status = 5; therefore loan purpose must = 2.",
+    //     "rule": {
+    //         "if": {
+    //             "property": "lienStatus",
+    //             "condition": "equal",
+    //             "value": "3"
+    //         },
+    //         "then": {
+    //             "property": "loanPurpose",
+    //             "condition": "equal",
+    //             "value": "2"
+    //         }
+    //     }
+    // },
     {
         "id": "V230",
-        "description": "Occupancy must = 1, 2, or 3.",
-        "explanation": "Occupancy is missing or does not equal 1, 2, or 3.",
+        "description": "Occupancy must = 1, 2, 3, or 4.",
+        "explanation": "Occupancy is missing or does not equal 1, 2, 3, or 4.",
         "rule": {
             "property": "ownerOccupancy",
             "condition": "in",
-            "values": ["1", "2", "3"]
+            "values": ["1", "2", "3", "4"]
         }
     },
     {
@@ -300,7 +300,7 @@
     },
     {
         "id": "V265",
-        "description": "Action taken date must be in CCYYMMDD format; month and day must be in the range 01-12 and 01-31, respectively. CCYY must be numeric.",
+        "description": "Action taken date must be in YYYYMMDD format; month and day must be in the range 01-12 and 01-31, respectively. CCYY must be numeric.",
         "explanation": "Action taken date is invalid format and/or date.",
         "rule": {
             "property": "actionDate",
@@ -1148,8 +1148,8 @@
     },
     {
         "id": "V355",
-        "description": "If (agency code = 2, 3, 5, 7, or 9) or (agency code = 1 and action taken not = 3 or 7), then reasons for denial must = 1, 2, 3, 4, 5, 6, 7, 8, 9, or blank.",
-        "explanation": "Reasons for denial are not blank or in range 1-9.",
+        "description": "If (agency code = 2, 3, 5, 7, or 9) or (agency code = 1 and action taken not = 3 or 7), then reasons for denial must = 1, 2, 3, 4, 5, 6, 7, 8, 9, or 10.",
+        "explanation": "Reasons for denial are not blank or in range 1-10.",
         "rule": {
             "if": {
                 "or": [
@@ -1179,17 +1179,17 @@
                     {
                         "property": "denialReason1",
                         "condition": "in",
-                        "values": ["", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+                        "values": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"]
                     },
                     {
                         "property": "denialReason2",
                         "condition": "in",
-                        "values": ["", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+                        "values": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"]
                     },
                     {
                         "property": "denialReason3",
                         "condition": "in",
-                        "values": ["", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+                        "values": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"]
                     }
                 ]
             }
@@ -1197,7 +1197,7 @@
     },
     {
         "id": "V360",
-        "description": "Responses for reasons for denial must not be the same (i.e. 1,1; 1,1,2; 1,2,2;...........).",
+        "description": "Responses for reasons for denial must not be the same (i.e. 1,1; 1,1,2; 1,2,2;...........), except for denial reasons 9 or 10.",
         "explanation": "Reasons for denial are the same.",
         "rule": {
             "and": [
@@ -1207,9 +1207,16 @@
                         "condition": "not_empty"
                     },
                     "then": {
-                        "property": "denialReason2",
-                        "condition": "not_equal_property",
-                        "value": "denialReason1"
+                        "if": {
+                            "property": "denialReason2",
+                            "condition": "not_in",
+                            "values": ["09", "10"]
+                        },
+                        "then": {
+                            "property": "denialReason2",
+                            "condition": "not_equal_property",
+                            "value": "denialReason1"
+                        }
                     }
                 },
                 {
@@ -1218,18 +1225,25 @@
                         "condition": "not_empty"
                     },
                     "then": {
-                        "and": [
-                            {
-                                "property": "denialReason3",
-                                "condition": "not_equal_property",
-                                "value": "denialReason1"
-                            },
-                            {
-                                "property": "denialReason3",
-                                "condition": "not_equal_property",
-                                "value": "denialReason2"
-                            }
-                        ]
+                        "if": {
+                            "property": "denialReason3",
+                            "condition": "not_in",
+                            "values": ["09", "10"]
+                        },
+                        "then": {
+                            "and": [
+                                {
+                                    "property": "denialReason3",
+                                    "condition": "not_equal_property",
+                                    "value": "denialReason1"
+                                },
+                                {
+                                    "property": "denialReason3",
+                                    "condition": "not_equal_property",
+                                    "value": "denialReason2"
+                                }
+                            ]
+                        }
                     }
                 }
             ]
@@ -1237,8 +1251,8 @@
     },
     {
         "id": "V385",
-        "description": "If agency code = 1 and action taken = 3 or 7, then at least one reason for denial must be provided and must = 1, 2, 3, 4, 5, 6, 7, 8, or 9. Other reasons for denial must = 1, 2, 3, 4, 5, 6, 7, 8, 9 or blank.",
-        "explanation": "For action taken = 3 or 7, at least one reason for denial not given, or reason for denial given not in range 1-9.",
+        "description": "If agency code = 1 and action taken = 3 or 7, then at least one reason for denial must be provided and must = 1, 2, 3, 4, 5, 6, 7, 8, 9, or 10. Other reasons for denial must = 1, 2, 3, 4, 5, 6, 7, 8, 9, or 10.",
+        "explanation": "For action taken = 3 or 7, at least one reason for denial not given, or reason for denial given not in range 1-10.",
         "rule": {
             "if": {
                 "and": [
@@ -1259,17 +1273,17 @@
                     {
                         "property": "denialReason1",
                         "condition": "in",
-                        "values": ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+                        "values": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"]
                     },
                     {
                         "property": "denialReason2",
                         "condition": "in",
-                        "values": ["", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+                        "values": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"]
                     },
                     {
                         "property": "denialReason3",
                         "condition": "in",
-                        "values": ["", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+                        "values": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"]
                     }
                 ]
             }
@@ -1277,16 +1291,12 @@
     },
     {
         "id": "V500",
-        "description": "Rate spread must be in the NN.NN format, must not = blank, and if NA, left justified.",
+        "description": "Rate spread must be in the NN.NNN format, must not = blank, and if NA, left justified.",
         "explanation": "Rate spread is not in valid format or is missing.",
         "rule": {
-            "and": [
-                {
-                    "property": "rateSpread",
-                    "condition": "matches_regex",
-                    "value": "[0-9]{2}\\.[0-9]{2}|NA"
-                }
-            ]
+            "property": "rateSpread",
+            "condition": "matches_regex",
+            "value": "[0-9]{2}\\.[0-9]{3}|NA"
         }
     },
     {
@@ -1361,27 +1371,27 @@
             }
         }
     },
-    {
-        "id": "V520",
-        "description": "If lien status = 3, then rate spread must = NA.",
-        "explanation": "Lien status = 3; therefore rate spread must = NA.",
-        "rule": {
-            "if": {
-                "property": "lienStatus",
-                "condition": "equal",
-                "value": "3"
-            },
-            "then": {
-                "property": "rateSpread",
-                "condition": "equal",
-                "value": "NA"
-            }
-        }
-    },
+    // {
+    //     "id": "V520",
+    //     "description": "If lien status = 3, then rate spread must = NA.",
+    //     "explanation": "Lien status = 3; therefore rate spread must = NA.",
+    //     "rule": {
+    //         "if": {
+    //             "property": "lienStatus",
+    //             "condition": "equal",
+    //             "value": "3"
+    //         },
+    //         "then": {
+    //             "property": "rateSpread",
+    //             "condition": "equal",
+    //             "value": "NA"
+    //         }
+    //     }
+    // },
     {
         "id": "V540",
-        "description": "If action taken type = 2-5, 7, or 8, HOEPA status must = 2.",
-        "explanation": "Action taken type = 2-5, 7, or 8; therefore HOEPA status must = 2.",
+        "description": "If action taken type = 2-5, 7, or 8, HOEPA status must = 4.",
+        "explanation": "Action taken type = 2-5, 7, or 8; therefore HOEPA status must = 4.",
         "rule": {
             "if": {
                 "property": "actionTaken",
@@ -1391,85 +1401,85 @@
             "then": {
                 "property": "hoepaStatus",
                 "condition": "equal",
-                "value": "2"
+                "value": "4"
             }
         }
     },
     {
         "id": "V525",
-        "description": "HOEPA status must = 1 or 2.",
-        "explanation": "HOEPA status is missing or does not = 1 or 2.",
+        "description": "HOEPA status must = 1, 2, 3, or 4.",
+        "explanation": "HOEPA status is missing or does not = 1, 2, 3, or 4.",
         "rule": {
             "property": "hoepaStatus",
-            "condition": "in",
-            "values": ["1", "2"]
-        }
-    },
-    {
-        "id": "V545",
-        "description": "If lien status = 3, then HOEPA status must = 2.",
-        "explanation": "Lien status = 3; therefore HOEPA status must = 2.",
-        "rule": {
-            "if": {
-                "property": "lienStatus",
-                "condition": "equal",
-                "value": "3"
-            },
-            "then": {
-                "property": "hoepaStatus",
-                "condition": "equal",
-                "value": "2"
-            }
-        }
-    },
-    {
-        "id": "V550",
-        "description": "Lien status must = 1, 2, 3, or 4.",
-        "explanation": "Lien status is missing or not in range 1-4.",
-        "rule": {
-            "property": "lienStatus",
             "condition": "in",
             "values": ["1", "2", "3", "4"]
         }
     },
+    // {
+    //     "id": "V545",
+    //     "description": "If lien status = 3, then HOEPA status must = 4.",
+    //     "explanation": "Lien status = 3; therefore HOEPA status must = 2.",
+    //     "rule": {
+    //         "if": {
+    //             "property": "lienStatus",
+    //             "condition": "equal",
+    //             "value": "3"
+    //         },
+    //         "then": {
+    //             "property": "hoepaStatus",
+    //             "condition": "equal",
+    //             "value": "2"
+    //         }
+    //     }
+    // },
     {
-        "id": "V555",
-        "description": "If loan purpose = 1 or 3, then lien status must = 1, 2, or 4.",
-        "explanation": "Loan purpose = 1 or 3; therefore lien status must = 1, 2, or 4.",
+        "id": "V550",
+        "description": "Lien status must = 1, 2, 3, 4, or 5.",
+        "explanation": "Lien status is missing or not in range 1-5.",
         "rule": {
-            "if": {
-                "property": "loanPurpose",
-                "condition": "in",
-                "values": ["1", "3"]
-            },
-            "then": {
-                "property": "lienStatus",
-                "condition": "in",
-                "values": ["1", "2", "4"]
-            }
+            "property": "lienStatus",
+            "condition": "in",
+            "values": ["1", "2", "3", "4", "5"]
         }
     },
-    {
-        "id": "V560",
-        "description": "If action taken type = 1-5, 7 or 8, then lien status must = 1, 2, or 3.",
-        "explanation": "Action taken type = 1-5, 7 or 8; therefore lien status must = 1, 2, or 3.",
-        "rule": {
-            "if": {
-                "property": "actionTaken",
-                "condition": "in",
-                "values": ["1", "2", "3", "4", "5", "7", "8"]
-            },
-            "then": {
-                "property": "lienStatus",
-                "condition": "in",
-                "values": ["1", "2", "3"]
-            }
-        }
-    },
+    // {
+    //     "id": "V555",
+    //     "description": "If loan purpose = 1 or 3, then lien status must = 1, 2, or 4.",
+    //     "explanation": "Loan purpose = 1 or 3; therefore lien status must = 1, 2, or 4.",
+    //     "rule": {
+    //         "if": {
+    //             "property": "loanPurpose",
+    //             "condition": "in",
+    //             "values": ["1", "3"]
+    //         },
+    //         "then": {
+    //             "property": "lienStatus",
+    //             "condition": "in",
+    //             "values": ["1", "2", "4"]
+    //         }
+    //     }
+    // },
+    // {
+    //     "id": "V560",
+    //     "description": "If action taken type = 1-5, 7 or 8, then lien status must = 1, 2, or 3.",
+    //     "explanation": "Action taken type = 1-5, 7 or 8; therefore lien status must = 1, 2, or 3.",
+    //     "rule": {
+    //         "if": {
+    //             "property": "actionTaken",
+    //             "condition": "in",
+    //             "values": ["1", "2", "3", "4", "5", "7", "8"]
+    //         },
+    //         "then": {
+    //             "property": "lienStatus",
+    //             "condition": "in",
+    //             "values": ["1", "2", "3"]
+    //         }
+    //     }
+    // },
     {
         "id": "V565",
-        "description": "If action taken type = 6, then lien status must = 4.",
-        "explanation": "Action taken type = 6; therefore lien status must = 4.",
+        "description": "If action taken type = 6, then lien status must = 5.",
+        "explanation": "Action taken type = 6; therefore lien status must = 5.",
         "rule": {
             "if": {
                 "property": "actionTaken",
@@ -1479,8 +1489,572 @@
             "then": {
                 "property": "lienStatus",
                 "condition": "equal",
-                "value": "4"
+                "value": "5"
             }
+        }
+    },
+    {
+        "id": "NPRM001",
+        "description": "Construction Method must be 1, 2, or 3.",
+        "explanation": "Construction Method not in the range 1-3.",
+        "rule": {
+            "property": "constructionMethod",
+            "condition": "in",
+            "values": ["1", "2", "3"]
+        }
+    },
+    {
+        "id": "NPRM002",
+        "description": "Property address, city, and zip code must not = blank.",
+        "explanation": "Property address, city, or zip code is missing.",
+        "rule": {
+            "and": [
+                {
+                    "property": "propertyAddress",
+                    "condition": "not_empty"
+                },
+                {
+                    "property": "propertyCity",
+                    "condition": "not_empty"
+                },
+                {
+                    "property" :"propertyZip",
+                    "condition": "not_empty"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM003",
+        "description": "Property zip code must be a property formatted zip code or NA left-justified.",
+        "explanation": "Property zip code is an invalid format.",
+        "rule": {
+            "or": [
+                {
+                    "property": "propertyZip",
+                    "condition": "zipcode"       
+                },
+                {
+                    "property": "propertyZip",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM004",
+        "description": "Applicant age must be numeric and > 0.",
+        "explanation": "Applicant age is zero, missing, negative or otherwise non-numeric.",
+        "rule": {
+            "and": [
+                {
+                    "property": "applicantAge",
+                    "condition": "is_integer"
+                },
+                {
+                    "property": "applicantAge",
+                    "condition": "greater_than",
+                    "value": "0"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM005",
+        "description": "Coapplicant age must be numeric and > 0.",
+        "explanation": "Coapplicant age is zero, missing, negative or otherwise non-numeric.",
+        "rule": {
+            "and": [
+                {
+                    "property": "coapplicantAge",
+                    "condition": "is_integer"
+                },
+                {
+                    "property": "coapplicantAge",
+                    "condition": "greater_than",
+                    "value": "0"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM006",
+        "description": "Applicant credit score must be numeric and > 0.",
+        "explanation": "Applicant credit score is zero, missing, negative or otherwise non-numeric.",
+        "rule": {
+            "and": [
+                {
+                    "property": "applicantCreditScore",
+                    "condition": "is_integer"
+                },
+                {
+                    "property": "applicantCreditScore",
+                    "condition": "greater_than",
+                    "value": "0"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM007",
+        "description": "Coapplicant credit score must be numeric and > 0 or NA left-justified.",
+        "explanation": "Coapplicant credit score is zero, missing, negative or otherwise non-numeric and not NA.",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "coapplicantCreditScore",
+                            "condition": "is_integer"
+                        },
+                        {
+                            "property": "coapplicantCreditScore",
+                            "condition": "greater_than",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "property": "coapplicantCreditScore",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM008",
+        "description": "Applicant credit model must be 1, 2, 3, 4, 5, 6, 7, 8, 9, or 10.",
+        "explanation": "Applicant credit model not in range 1-10.",
+        "rule": {
+            "property": "applicantCreditModel",
+            "condition": "in",
+            "values": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"]
+        }
+    },
+    {
+        "id": "NPRM009",
+        "description": "Coapplicant credit model must be 1, 2, 3, 4, 5, 6, 7, 8, 9, or 10.",
+        "explanation": "Coapplicant credit model not in range 1-10.",
+        "rule": {
+            "property": "coapplicantCreditModel",
+            "condition": "in",
+            "values": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"]
+        }
+    },
+    {
+        "id": "NPRM010",
+        "description": "Total fees must be numeric and >= 0 or NA left-justified",
+        "explanation": "Total fees is missing, negative, or otherwise non-numeric and not NA.",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "totalFees",
+                            "condition": "is_integer"
+                        },
+                        {
+                            "property": "totalFees",
+                            "condition": "greater_than_or_equal",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "property": "totalFees",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM011",
+        "description": "Total origination charges must be numeric and >= 0 or NA left-justified",
+        "explanation": "Total origination charges is missing, negative, or otherwise non-numeric and not NA.",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "totalOriginationCharges",
+                            "condition": "is_integer"
+                        },
+                        {
+                            "property": "totalOriginationCharges",
+                            "condition": "greater_than_or_equal",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "property": "totalOriginationCharges",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM012",
+        "description": "Total discount points must be numeric and >= 0 or NA left-justified",
+        "explanation": "Total discount points is missing, negative, or otherwise non-numeric and not NA.",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "totalDiscountPoints",
+                            "condition": "is_integer"
+                        },
+                        {
+                            "property": "totalDiscountPoints",
+                            "condition": "greater_than_or_equal",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "property": "totalDiscountPoints",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM013",
+        "description": "Risk adjusted interest rate must be in the NN.NNN format, must not = blank, and if NA, left justified.",
+        "explanation": "Risk adjusted interest rate is not in valid format or is missing.",
+        "rule": {
+            "property": "riskAdjustedInterestRate",
+            "condition": "matches_regex",
+            "value": "[0-9]{2}\\.[0-9]{3}|NA"
+        }
+    },
+    {
+        "id": "NPRM014",
+        "description": "Interest rate must be in the NN.NNN format, must not = blank, and if NA, left justified.",
+        "explanation": "Interest rate is not in valid format or is missing.",
+        "rule": {
+            "property": "interestRate",
+            "condition": "matches_regex",
+            "value": "[0-9]{2}\\.[0-9]{3}|NA"
+        }
+    },
+    {
+        "id": "NPRM015",
+        "description": "Prepayment penalty term must be numeric and > 0 or NA left-justified.",
+        "explanation": "Prepayment penalty term is missing, negative, or otherwise non-numeric and not NA.",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "prepaymentPenaltyTerm",
+                            "condition": "is_integer"
+                        },
+                        {
+                            "property": "prepaymentPenaltyTerm",
+                            "condition": "greater_than",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "property": "prepaymentPenaltyTerm",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM016",
+        "description": "Debt to income ratio must be in the NN.NN format, must not = blank, and if NA, left justified.",
+        "explanation": "Debt to income ratio is not in valid format or is missing.",
+        "rule": {
+            "property": "dtiRatio",
+            "condition": "matches_regex",
+            "value": "[0-9]{2}\\.[0-9]{2}|NA"
+        }
+    },
+    {
+        "id": "NPRM017",
+        "description": "Combined loan-to-value ratio must be in the NN.NN format, must not = blank, and if NA, left justified.",
+        "explanation": "Combined loan-to-value ratio is not in valid format or is missing.",
+        "rule": {
+            "property": "cltvRatio",
+            "condition": "matches_regex",
+            "value": "[0-9]{2}\\.[0-9]{2}|NA"
+        }
+    },
+    {
+        "id": "NPRM018",
+        "description": "Loan term must be numeric and > 0 or NA left-justified.",
+        "explanation": "Loan term is missing, negative, or otherwise non-numeric and not NA.",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "loanTerm",
+                            "condition": "is_integer"
+                        },
+                        {
+                            "property": "loanTerm",
+                            "condition": "greater_than",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "property": "loanTerm",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM019",
+        "description": "Introductory rate period must be numeric and > 0 or NA left-justified.",
+        "explanation": "Introductory rate period is missing, negative, or otherwise non-numeric and not NA.",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "introductoryRatePeriod",
+                            "condition": "is_integer"
+                        },
+                        {
+                            "property": "introductoryRatePeriod",
+                            "condition": "greater_than",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "property": "introductoryRatePeriod",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM020",
+        "description": "Balloon payment must = 1 or 2.",
+        "explanation": "Balloon not in range 1-2.",
+        "rule": {
+            "property": "balloonPayment",
+            "condition": "in",
+            "values": ["1", "2"]
+        }
+    },
+    {
+        "id": "NPRM021",
+        "description": "Interest only payments must = 1 or 2.",
+        "explanation": "Interest only payments not in range 1-2.",
+        "rule": {
+            "property": "interestOnlyPayments",
+            "condition": "in",
+            "values": ["1", "2"]
+        }
+    },
+    {
+        "id": "NPRM022",
+        "description": "Negative amortization must = 1 or 2.",
+        "explanation": "Negative amortization not in range 1-2.",
+        "rule": {
+            "property": "negativeAmortization",
+            "condition": "in",
+            "values": ["1", "2"]
+        }
+    },
+    {
+        "id": "NPRM023",
+        "description": "Other non-amortizing features must = 1 or 2.",
+        "explanation": "Other non-amortizing features not in range 1-2.",
+        "rule": {
+            "property": "otherNonAmortizingFeatures",
+            "condition": "in",
+            "values": ["1", "2"]
+        }
+    },
+    {
+        "id": "NPRM024",
+        "description": "Property value must be numeric and > 0 or NA left-justified.",
+        "explanation": "Property value is missing, negative, or otherwise non-numeric and not NA.",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "propertyValue",
+                            "condition": "is_integer"
+                        },
+                        {
+                            "property": "propertyValue",
+                            "condition": "greater_than",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "property": "propertyValue",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM025",
+        "description": "Manufactured home legal classification must = 1, 2, or 3.",
+        "explanation": "Manufactured home legal classification not in range 1-3.",
+        "rule": {
+            "property": "mhLegalClassification",
+            "condition": "in",
+            "values": ["1", "2", "3"]
+        }
+    },
+    {
+        "id": "NPRM026",
+        "description": "Manufactured home land property interest must = 1, 2, 3, 4, or 5.",
+        "explanation": "Manufactured home land property interest not in range 1-5.",
+        "rule": {
+            "property": "mhLandPropertyInterest",
+            "condition": "in",
+            "values": ["1", "2", "3", "4", "5"]
+        }
+    },
+    {
+        "id": "NPRM027",
+        "description": "Total units must be numeric and > 0.",
+        "explanation": "Total units is missing, negative, or otherwise non-numeric.",
+        "rule": {
+            "and": [
+                {
+                    "property": "totalUnits",
+                    "condition": "is_integer"
+                },
+                {
+                    "property": "totalUnits",
+                    "condition": "greater_than",
+                    "value": "0"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM028",
+        "description": "Total multifamily units must be numeric and > 0 or NA left-justified.",
+        "explanation": "Total multifamily units is missing, negative, or otherwise non-numeric and not NA.",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "multifamilyUnits",
+                            "condition": "is_integer"
+                        },
+                        {
+                            "property": "multifamilyUnits",
+                            "condition": "greater_than",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "property": "multifamilyUnits",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM029",
+        "description": "Application channel must = 1, 2, or 3.",
+        "explanation": "Application channel not in range 1-3.",
+        "rule": {
+            "property": "applicationChannel",
+            "condition": "in",
+            "values": ["1", "2", "3"]
+        }
+    },
+    {
+        "id": "NPRM030",
+        "description": "Initially payable must = 1, 2, or 3.",
+        "explanation": "Initially payable not in range 1-3.",
+        "rule": {
+            "property": "initiallyPayable",
+            "condition": "in",
+            "values": ["1", "2", "3"]
+        }
+    },
+    {
+        "id": "NPRM031",
+        "description": "Nationwide mortgage licensing system and registry identifier must be 12 alpha-numeric characters or NA left-justified",
+        "explanation": "Nationwide mortgage licensing system and registry identifier is an invalid format",
+        "rule": {
+            "property": "nmlsrID",
+            "condition": "matches_regex",
+            "value": "^.{12}$|NA"
+        }
+    },
+    {
+        "id": "NPRM032",
+        "description": "Automated underwriting system must = 1, 2, 3, 4, 5, 6, or 7.",
+        "explanation": "Automated underwriting system not in range 1-7.",
+        "rule": {
+            "property": "aus",
+            "condition": "in",
+            "values": ["1", "2", "3", "4", "5", "6", "7"]
+        }
+    },
+    {
+        "id": "NPRM033",
+        "description": "Automated underwriting system recommendation must = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, or 11.",
+        "explanation": "Automated underwriting system recommendation not in range 1-11.",
+        "rule": {
+            "property": "ausRecommendation",
+            "condition": "in",
+            "values": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11"]
+        }
+    },
+    {
+        "id": "NPRM034",
+        "description": "Reverse mortgage flag must = 1, 2, or 3.",
+        "explanation": "Reverse mortgage flag not in range 1-3.",
+        "rule": {
+            "property": "reverseMortgage",
+            "condition": "in",
+            "values": ["1", "2", "3"]
+        }
+    },
+    {
+        "id": "NPRM035",
+        "description": "HELOC flag must = 1, 2, or 3.",
+        "explanation": "HELOC flag not in range 1-3.",
+        "rule": {
+            "property": "heloc",
+            "condition": "in",
+            "values": ["1", "2", "3"]
+        }
+    },
+    {
+        "id": "NPRM036",
+        "description": "Qualified mortgage identifier must = 1, 2, 3, 4, 5, or 6",
+        "explanation": "Qualified mortgage identifier not in range 1-6.",
+        "rule": {
+            "property": "qualifiedMortgageID",
+            "condition": "in",
+            "values": ["1", "2", "3", "4", "5", "6"]
         }
     }
 ]

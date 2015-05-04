@@ -41,22 +41,22 @@
     },
     {
         "id": "S025",
-        "description": "Control number must = a valid respondent identifier/agency code combination for date processed.",
-        "explanation": "Invalid respondent identifier/agency code combination or ID not on panel.",
+        "description": "Control number must = a valid universal loan identifier/agency code combination for date processed.",
+        "explanation": "Invalid universal loan identifier/agency code combination or ID not on panel.",
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
-            "function": "isValidControlNumber"
+            "function": "isValidLEI"
         }
     },
     {
         "id": "S040",
-        "description": "Application/loan number must be unique.",
-        "explanation": "Duplicate loan numbers reported; data already in file.",
+        "description": "Universal loan identifier must be unique.",
+        "explanation": "Duplicate universal loan identifiers reported; data already in file.",
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
-            "function": "hasUniqueLoanNumbers"
+            "function": "hasUniqueUniversalLoanIDs"
         }
     }
 ]

@@ -539,8 +539,8 @@
         },
         "propertyAddress": {
             "label": "Property Address",
-            "start": "98",
-            "end": "137",
+            "start": "99",
+            "end": "138",
             "length": "40",
             "dataType": "AN",
             "description": "Left-justified",
@@ -552,8 +552,8 @@
         },
         "propertyCity": {
             "label": "Property City",
-            "start": "138",
-            "end": "162",
+            "start": "139",
+            "end": "163",
             "length": "25",
             "dataType": "AN",
             "description": "Left-justified",
@@ -565,8 +565,8 @@
         },
         "propertyZip": {
             "label": "Property Zip Code",
-            "start": "163",
-            "end": "172",
+            "start": "164",
+            "end": "173",
             "length": "10",
             "dataType": "AN",
             "description": "Format is 99999 or NA left-justified or Code 99999-9999",
@@ -578,8 +578,8 @@
         },
         "metroArea": {
             "label": "Metropolitan Statistical Area/Metropolitan Division",
-            "start": "176",
-            "end": "180",
+            "start": "174",
+            "end": "178",
             "length": "5",
             "dataType": "AN",
             "description": "Metropolitan Statistical Area or Metropolitan Division (if appropriate) code or NA left-justified",
@@ -591,8 +591,8 @@
         },
         "fipsState": {
             "label": "State Code",
-            "start": "181",
-            "end": "182",
+            "start": "179",
+            "end": "180",
             "length": "2",
             "dataType": "AN",
             "description": "FIPS code with leading zeros or NA left-justified",
@@ -604,8 +604,8 @@
         },
         "fipsCounty": {
             "label": "County Code",
-            "start": "183",
-            "end": "185",
+            "start": "181",
+            "end": "183",
             "length": "3",
             "dataType": "AN",
             "description": "FIPS code with leading zeros or NA left-justified",
@@ -617,8 +617,8 @@
         },
         "censusTract": {
             "label": "Census Tract",
-            "start": "186",
-            "end": "192",
+            "start": "184",
+            "end": "190",
             "length": "7",
             "dataType": "AN",
             "description": "Include decimal point and any leading or trailing zeros or NA left-justified",
@@ -630,8 +630,8 @@
         },
         "applicantEthnicity": {
             "label": "Applicant Ethnicity",
-            "start": "193",
-            "end": "193",
+            "start": "191",
+            "end": "191",
             "length": "1",
             "dataType": "N",
             "description": "Values are 1, 2, 3, or 4",
@@ -649,8 +649,8 @@
         },
         "coapplicantEthnicity": {
             "label": "Co-applicant Ethnicity",
-            "start": "194",
-            "end": "194",
+            "start": "192",
+            "end": "192",
             "length": "1",
             "dataType": "N",
             "description": "Values are 1, 2, 3, 4, or 5",
@@ -669,8 +669,8 @@
         },
         "applicantRace1": {
             "label": "Applicant Race: 1",
-            "start": "195",
-            "end": "195",
+            "start": "193",
+            "end": "193",
             "length": "1",
             "dataType": "N",
             "description": "Values are 1, 2, 3, 4, 5, 6, or 7",
@@ -691,8 +691,8 @@
         },
         "applicantRace2": {
             "label": "Applicant Race: 2",
-            "start": "196",
-            "end": "196",
+            "start": "194",
+            "end": "194",
             "length": "1",
             "dataType": "AN",
             "description": "Values are 1, 2, 3, 4, 5, or blank",
@@ -711,8 +711,8 @@
         },
         "applicantRace3": {
             "label": "Applicant Race: 3",
-            "start": "197",
-            "end": "197",
+            "start": "195",
+            "end": "195",
             "length": "1",
             "dataType": "AN",
             "description": "Values are 1, 2, 3, 4, 5, or blank",
@@ -731,8 +731,8 @@
         },
         "applicantRace4": {
             "label": "Applicant Race: 4",
-            "start": "198",
-            "end": "198",
+            "start": "196",
+            "end": "196",
             "length": "1",
             "dataType": "AN",
             "description": "Values are 1, 2, 3, 4, 5, or blank",
@@ -751,8 +751,8 @@
         },
         "applicantRace5": {
             "label": "Applicant Race: 5",
-            "start": "199",
-            "end": "199",
+            "start": "197",
+            "end": "197",
             "length": "1",
             "dataType": "AN",
             "description": "Values are 1, 2, 3, 4, 5, or blank",
@@ -771,8 +771,8 @@
         },
         "coapplicantRace1": {
             "label": "Co-applicant Race: 1",
-            "start": "200",
-            "end": "200",
+            "start": "198",
+            "end": "198",
             "length": "1",
             "dataType": "N",
             "description": "Values are 1, 2, 3, 4, 5, 6, 7, or 8",
@@ -794,8 +794,8 @@
         },
         "coapplicantRace2": {
             "label": "Co-applicant Race: 2",
-            "start": "201",
-            "end": "201",
+            "start": "199",
+            "end": "199",
             "length": "1",
             "dataType": "AN",
             "description": "Values are 1, 2, 3, 4, 5, or blank",
@@ -814,8 +814,8 @@
         },
         "coapplicantRace3": {
             "label": "Co-applicant Race: 3",
-            "start": "202",
-            "end": "202",
+            "start": "200",
+            "end": "200",
             "length": "1",
             "dataType": "AN",
             "description": "Values are 1, 2, 3, 4, 5, or blank",
@@ -834,8 +834,8 @@
         },
         "coapplicantRace4": {
             "label": "Co-applicant Race: 4",
-            "start": "203",
-            "end": "203",
+            "start": "201",
+            "end": "201",
             "length": "1",
             "dataType": "AN",
             "description": "Values are 1, 2, 3, 4, 5, or blank",
@@ -854,8 +854,8 @@
         },
         "coapplicantRace5": {
             "label": "Co-applicant Race: 5",
-            "start": "204",
-            "end": "204",
+            "start": "202",
+            "end": "202",
             "length": "1",
             "dataType": "AN",
             "description": "Values are 1, 2, 3, 4, 5, or blank",
@@ -874,8 +874,8 @@
         },
         "applicantSex": {
             "label": "Applicant Sex",
-            "start": "205",
-            "end": "205",
+            "start": "203",
+            "end": "203",
             "length": "1",
             "dataType": "N",
             "description": "Values are 1, 2, 3, or 4",
@@ -893,8 +893,8 @@
         },
         "coapplicantSex": {
             "label": "Co-applicant Sex",
-            "start": "206",
-            "end": "206",
+            "start": "204",
+            "end": "204",
             "length": "1",
             "dataType": "N",
             "description": "Values are 1, 2, 3, 4, or 5",
@@ -913,8 +913,8 @@
         },
         "applicantAge": {
             "label": "Applicant Age",
-            "start": "207",
-            "end": "209",
+            "start": "205",
+            "end": "207",
             "length": "3",
             "dataType": "N",
             "description": "Age of applicant in years",
@@ -929,8 +929,8 @@
         },
         "coapplicantAge": {
             "label": "Co-applicant Age",
-            "start": "210",
-            "end": "212",
+            "start": "208",
+            "end": "210",
             "length": "3",
             "dataType": "N",
             "description": "Age of co-applicant in years",
@@ -943,11 +943,11 @@
                     "2": "No co-applicant"
                 }
             }
-        }
+        },
         "applicantIncome": {
             "label": "Applicant Income",
-            "start": "213",
-            "end": "216",
+            "start": "211",
+            "end": "214",
             "length": "4",
             "dataType": "AN",
             "description": "Report in thousands, round to the nearest thousand with leading zeros and without commas or NA left-justified",
@@ -960,8 +960,8 @@
         },
         "purchaserType": {
             "label": "Type of Purchaser",
-            "start": "217",
-            "end": "217",
+            "start": "215",
+            "end": "215",
             "length": "1",
             "dataType": "N",
             "description": "Values are 0, 1, 2, 3, 4, 5, 6, 7, 8, or 9",
@@ -985,8 +985,8 @@
         },
         "denialReason1": {
             "label": "Denial Reason: 1",
-            "start": "218",
-            "end": "219",
+            "start": "216",
+            "end": "217",
             "length": "2",
             "dataType": "AN",
             "description": "Values are 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, or blank",
@@ -1010,8 +1010,8 @@
         },
         "denialReason2": {
             "label": "Denial Reason: 2",
-            "start": "220",
-            "end": "221",
+            "start": "218",
+            "end": "219",
             "length": "2",
             "dataType": "AN",
             "description": "Values are 1, 2, 3, 4, 5, 6, 7, 8, 9, or blank",
@@ -1035,8 +1035,8 @@
         },
         "denialReason3": {
             "label": "Denial Reason: 3",
-            "start": "222",
-            "end": "223",
+            "start": "220",
+            "end": "221",
             "length": "2",
             "dataType": "AN",
             "description": "Values are 1, 2, 3, 4, 5, 6, 7, 8, 9, or blank",
@@ -1060,8 +1060,8 @@
         },
         "rateSpread": {
             "label": "Rate Spread",
-            "start": "224",
-            "end": "229",
+            "start": "222",
+            "end": "227",
             "length": "6",
             "dataType": "AN",
             "description": "Enter the rate spread to three decimal places. Include the decimal point and any leading or trailing zeros or NA left-justified",
@@ -1073,8 +1073,8 @@
         },
         "hoepaStatus": {
             "label": "HOEPA Status",
-            "start": "230",
-            "end": "230",
+            "start": "228",
+            "end": "228",
             "length": "1",
             "dataType": "N",
             "description": "Values are 1, 2, 3, or 4",
@@ -1092,8 +1092,8 @@
         },
         "lienStatus": {
             "label": "Lien Status",
-            "start": "231",
-            "end": "231",
+            "start": "229",
+            "end": "229",
             "length": "1",
             "dataType": "N",
             "description": "Values are 1, 2, 3, 4, or 5",
@@ -1112,8 +1112,8 @@
         },
         "applicantCreditScore": {
             "label": "Applicant Credit Score",
-            "start": "232",
-            "end": "234",
+            "start": "230",
+            "end": "232",
             "length": "3",
             "dataType": "N",
             "description": "Three digit credit score",
@@ -1125,10 +1125,10 @@
         },
         "coapplicantCreditScore": {
             "label": "Co-applicant Credit Score",
-            "start": "235",
-            "end": "237",
+            "start": "233",
+            "end": "235",
             "length": "3",
-            "dataType": "N",
+            "dataType": "AN",
             "description": "Three digit credit score or NA left-justified",
             "validation": {
                 "type": "number",
@@ -1138,15 +1138,27 @@
         },
         "applicantCreditModel": {
             "label": "Applicant Credit Model",
-            "start": "238",
-            "end": "239",
+            "start": "236",
+            "end": "237",
             "length": "2",
             "dataType": "N",
             "description": "Credit score model used to calculate the applicant's credit score",
             "validation": {
                 "type": "number",
                 "canBeBlank": false,
-                "canBeNA": false
+                "canBeNA": false,
+                "values": {
+                    "1": "Equifax Beacon 5.0",
+                    "2": "Experian Fair Isaac",
+                    "3": "FICO Risk Score Classic 04",
+                    "4": "FICO Risk Score Classic 98",
+                    "5": "VantageScore 2.0",
+                    "6": "VantageScore 3.0",
+                    "7": "More than one credit scoring model",
+                    "8": "Other credit scoring model",
+                    "9": "Not applicable",
+                    "10": "Purchased loan"
+                }
             }
         },
         "coapplicantCreditModel": {
@@ -1154,12 +1166,24 @@
             "start": "238",
             "end": "239",
             "length": "2",
-            "dataType": "N",
+            "dataType": "AN",
             "description": "Credit score model used to calculate the co-applicant's credit score or NA left-justified",
             "validation": {
                 "type": "number",
                 "canBeBlank": false,
-                "canBeNA": true
+                "canBeNA": true,
+                "values": {
+                    "1": "Equifax Beacon 5.0",
+                    "2": "Experian Fair Isaac",
+                    "3": "FICO Risk Score Classic 04",
+                    "4": "FICO Risk Score Classic 98",
+                    "5": "VantageScore 2.0",
+                    "6": "VantageScore 3.0",
+                    "7": "More than one credit scoring model",
+                    "8": "Other credit scoring model",
+                    "9": "Not applicable",
+                    "10": "Purchased loan"
+                }
             }
         },
         "totalFees": {
@@ -1167,7 +1191,7 @@
             "start": "240",
             "end": "244",
             "length": "5",
-            "dataType": "N",
+            "dataType": "AN",
             "description": "Total sum of all points and fees in dollars rounded to the nearest whole dollar amount or NA left-justified",
             "validation": {
                 "type": "number",
@@ -1180,7 +1204,7 @@
             "start": "245",
             "end": "249",
             "length": "5",
-            "dataType": "N",
+            "dataType": "AN",
             "description": "Total sum of all origination charges in dollars rounded to the nearest whole dollar amount or NA left-justified",
             "validation": {
                 "type": "number",
@@ -1193,7 +1217,7 @@
             "start": "250",
             "end": "254",
             "length": "5",
-            "dataType": "N",
+            "dataType": "AN",
             "description": "Total sum of all discount points in dollars rounded to the nearest whole dollar amount or NA left-justified",
             "validation": {
                 "type": "number",
@@ -1232,7 +1256,7 @@
             "start": "267",
             "end": "268",
             "length": "2",
-            "dataType": "N",
+            "dataType": "AN",
             "description": "Term in months of any prepayment penalty applicable to the covered loan or application or NA left-justified",
             "validation": {
                 "type": "number",
@@ -1249,7 +1273,7 @@
             "description": "Enter the applicant's debt-to-income ratio to two decimal places. Include the decimal point and any leading or trailing zeros or NA left-justified",
             "validation": {
                 "type": "percent",
-                "canBeBlank" false,
+                "canBeBlank": false,
                 "canBeNA": true
             }
         },
@@ -1271,7 +1295,7 @@
             "start": "279",
             "end": "281",
             "length": "3",
-            "dataType": "N",
+            "dataType": "AN",
             "description": "Loan term in months or NA left-justified",
             "validation": {
                 "type": "number",
@@ -1284,7 +1308,7 @@
             "start": "282",
             "end": "284",
             "length": "3",
-            "dataType": "N",
+            "dataType": "AN",
             "description": "Number of months from loan origination until interest rate may change",
             "validation": {
                 "type": "number",
@@ -1350,7 +1374,7 @@
         "otherNonAmortizingFeatures": {
             "label": "Other Non-Amortizing Features",
             "start": "288",
-            "end": "289",
+            "end": "288",
             "length": "1",
             "dataType": "N",
             "description": "Indicate if the loan includes terms that would allow for payments other than fully amortizing payments",
@@ -1366,10 +1390,10 @@
         },
         "propertyValue": {
             "label": "Property Value",
-            "start": "290",
-            "end": "297",
+            "start": "289",
+            "end": "296",
             "length": "8",
-            "dataType": "N",
+            "dataType": "AN",
             "description": "Property value in dollars or NA left-justified",
             "validation": {
                 "type": "number",
@@ -1379,8 +1403,8 @@
         },
         "mhLegalClassification": {
             "label": "Manufactured Home Legal Classification",
-            "start": "298",
-            "end": "298",
+            "start": "297",
+            "end": "297",
             "length": "1",
             "dataType": "N",
             "description": "Indicate whether the manufactured home related to loan is legally classified as real property or as personal property",
@@ -1397,8 +1421,8 @@
         },
         "mhLandPropertyInterest": {
             "label": "Manufactured Home Land Property Interest",
-            "start": "299",
-            "end": "299",
+            "start": "298",
+            "end": "298",
             "length": "1",
             "dataType": "N",
             "description": "Indicate whether the borrower owns the land on which a manufactured home is located through a direct or indirect ownership interest or leases the land through a paid or unpaid leasehold",
@@ -1417,8 +1441,8 @@
         },
         "totalUnits": {
             "label": "Total Units",
-            "start": "300",
-            "end": "302",
+            "start": "299",
+            "end": "301",
             "length": "3",
             "dataType": "N",
             "description": "Total number of units on the property",
@@ -1430,10 +1454,10 @@
         },
         "multifamilyUnits": {
             "label": "Multifamily Affordable Units",
-            "start": "303",
-            "end": "305",
+            "start": "302",
+            "end": "304",
             "length": "3",
-            "dataType": "N",
+            "dataType": "AN",
             "description": "Total number of multifamily units on the property or NA left-justified",
             "validation": {
                 "type": "number",
@@ -1443,8 +1467,8 @@
         },
         "applicationChannel": {
             "label": "Application Channel",
-            "start": "306",
-            "end": "306",
+            "start": "305",
+            "end": "305",
             "length": "1",
             "dataType": "N",
             "description": "Indicate whether the applicant submitted the application directly to your institution",
@@ -1461,8 +1485,8 @@
         },
         "initiallyPayable": {
             "label": "Initially Payable",
-            "start": "307",
-            "end": "307",
+            "start": "306",
+            "end": "306",
             "length": "1",
             "dataType": "N",
             "description": "Indicate whether the covered loan was or would have been initially payable to your institution",
@@ -1479,8 +1503,8 @@
         },
         "nmlsrID": {
             "label": "Nationwide Mortgage Licensing System and Registry Identifier",
-            "start": "308",
-            "end": "319",
+            "start": "307",
+            "end": "318",
             "length": "12",
             "dataType": "AN",
             "description": "Mortgage loan originator identifier or NA left-justified",
@@ -1492,8 +1516,8 @@
         },
         "aus": {
             "label": "Automated Underwriting System",
-            "start": "320",
-            "end": "320",
+            "start": "319",
+            "end": "319",
             "length": "1",
             "dataType": "N",
             "description": "Name of the automated underwriting system used by your institution",
@@ -1514,8 +1538,8 @@
         },
         "ausRecommendation": {
             "label": "Automated Underwriting System Recommendation",
-            "start": "321",
-            "end": "322",
+            "start": "320",
+            "end": "321",
             "length": "2",
             "dataType": "N",
             "description": "Recommendation generated by your institution's AUS",
@@ -1540,8 +1564,8 @@
         },
         "reverseMortgage": {
             "label": "Reverse Mortgage Flag",
-            "start": "323",
-            "end": "323",
+            "start": "322",
+            "end": "322",
             "length": "1",
             "dataType": "N",
             "description": "Indicate whether the loan is a reverse mortgage",
@@ -1558,8 +1582,8 @@
         },
         "heloc": {
             "label": "HELOC Flag",
-            "start": "324",
-            "end": "324",
+            "start": "323",
+            "end": "323",
             "length": "1",
             "dataType": "N",
             "description": "Indicate whether the loan is a home equity line of credit",
@@ -1576,8 +1600,8 @@
         },
         "qualifiedMortgageID": {
             "label": "Qualified Mortgage Indentifier",
-            "start": "325",
-            "end": "325",
+            "start": "324",
+            "end": "324",
             "length": "1",
             "dataType": "N",
             "description": "Indicate whether the loan is a qualified mortgage",
@@ -1597,8 +1621,8 @@
         },
         "filler": {
             "label": "Filler",
-            "start": "326",
-            "end": "585",
+            "start": "325",
+            "end": "584",
             "length": "270",
             "dataType": "AN",
             "description": "Blank",

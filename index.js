@@ -29,6 +29,19 @@ var filespec2014 = require('./2014/data_file_specification.json'),
     tsSyntactical2014 = require('./2014/ts-syntactical.json'),
     tsValidity2014 = require('./2014/ts-validity.json');
 
+// NPRM Spec and Edits
+var filespecnprm = require('./nprm/data_file_specification.json'),
+    hmdaMacronprm = require('./nprm/hmda-macro.json'),
+    hmdaQualitynprm = require('./nprm/hmda-quality.json'),
+    hmdaSpecialnprm = require('./nprm/hmda-special.json'),
+    hmdaSyntacticalnprm = require('./nprm/hmda-syntactical.json'),
+    larQualitynprm = require('./nprm/lar-quality.json'),
+    larSyntacticalnprm = require('./nprm/lar-syntactical.json'),
+    larValiditynprm = require('./nprm/lar-validity.json'),
+    tsQualitynprm = require('./nprm/ts-quality.json'),
+    tsSyntacticalnprm = require('./nprm/ts-syntactical.json'),
+    tsValiditynprm = require('./nprm/ts-validity.json');
+
 var specs = {
     '2013': {
         'filespec': filespec2013,
@@ -66,6 +79,25 @@ var specs = {
             'quality': tsQuality2014,
             'syntactical': tsSyntactical2014,
             'validity': tsValidity2014
+        }
+    },
+    'nprm': {
+        'filespec': filespecnprm,
+        'hmda': {
+            'macro': hmdaMacronprm,
+            'quality': hmdaQualitynprm,
+            'special': hmdaSpecialnprm,
+            'syntactical': hmdaSyntacticalnprm
+        },
+        'lar': {
+            'quality': larQualitynprm,
+            'syntactical': larSyntacticalnprm,
+            'validity': larValiditynprm
+        },
+        'ts': {
+            'quality': tsQualitynprm,
+            'syntactical': tsSyntacticalnprm,
+            'validity': tsValiditynprm
         }
     }
 };

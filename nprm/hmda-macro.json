@@ -413,8 +413,8 @@
     },
     {
         "id": "Q053",
-        "description": "If agency = 5, action taken type = 1 and HOEPA status = 1, then the total number of these loans should be ≤ 1% of the total number of originated loans.",
-        "explanation": "The number of loans where agency = 5, action taken type = 1 and HOEPA status = 1 is > 1% of the total number of originated loans.",
+        "description": "action taken type = 1 and HOEPA status = 1, then the total number of these loans should be ≤ 1% of the total number of originated loans.",
+        "explanation": "The number of loans where action taken type = 1 and HOEPA status = 1 is > 1% of the total number of originated loans.",
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
@@ -422,13 +422,8 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Loans where Agency = 5, Action Taken = 1, and HOEPA Status = 1",
+                    "label": "Loans where Action Taken = 1, and HOEPA Status = 1",
                     "and": [
-                        {
-                            "property": "agencyCode",
-                            "condition": "equal",
-                            "value": "5"
-                        },
                         {
                             "property": "actionTaken",
                             "condition": "equal",
@@ -458,8 +453,8 @@
     },
     {
         "id": "Q054",
-        "description": "If agency = 5, action taken type = 6 and HOEPA status = 1, then the total number of these loans should be ≤ 1% of the total number of purchased loans.",
-        "explanation": "The number of loans where agency = 5, action taken type = 6 and HOEPA status = 1 is > 1% of the total number of purchased loans.",
+        "description": "If action taken type = 6 and HOEPA status = 1, then the total number of these loans should be ≤ 1% of the total number of purchased loans.",
+        "explanation": "The number of loans where action taken type = 6 and HOEPA status = 1 is > 1% of the total number of purchased loans.",
         "rule": {
             "property": "hmdaFile",
             "condition": "call",
@@ -467,13 +462,8 @@
             "args": [
                 "hmdaFile.loanApplicationRegisters",
                 {
-                    "label": "Loans where Agency = 5, Action Taken = 6, and HOEPA Status = 1",
+                    "label": "Loans where Action Taken = 6, and HOEPA Status = 1",
                     "and": [
-                        {
-                            "property": "agencyCode",
-                            "condition": "equal",
-                            "value": "5"
-                        },
                         {
                             "property": "actionTaken",
                             "condition": "equal",

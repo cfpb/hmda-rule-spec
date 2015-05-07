@@ -521,16 +521,11 @@
     },
     {
         "id": "Q061",
-        "description": "If agency = 5, property type = 1, lien status = 1 and action taken type = 1, rate spread should be ≤ 5% or NA.",
-        "explanation": "Agency = 5, property type = 1, lien status = 1 and action taken type = 1; therefore, rate spread should be ≤ 5% or NA; Verify.",
+        "description": "If property type = 1, lien status = 1 and action taken type = 1, rate spread should be ≤ 5% or NA.",
+        "explanation": "Property type = 1, lien status = 1 and action taken type = 1; therefore, rate spread should be ≤ 5% or NA; Verify.",
         "rule": {
             "if": {
                 "and": [
-                    {
-                        "property": "agencyCode",
-                        "condition": "equal",
-                        "value": "5"
-                    },
                     {
                         "property": "propertyType",
                         "condition": "equal",
@@ -583,16 +578,11 @@
     },
     {
         "id": "Q044",
-        "description": "If agency = 1, 2, 3, 7 or 9, action taken type = 1, lien status = 1, and rate spread > 6.5%, then HOEPA status should = 1.",
-        "explanation": "Agency = 1-3, 7 or 9, action taken type = 1, lien status = 1, and rate spread > 6.5%; therefore HOEPA status should = 1; Verify.",
+        "description": "If action taken type = 1, lien status = 1, and rate spread > 6.5%, then HOEPA status should = 1.",
+        "explanation": "Action taken type = 1, lien status = 1, and rate spread > 6.5%; therefore HOEPA status should = 1; Verify.",
         "rule": {
             "if": {
                 "and": [
-                    {
-                        "property": "agencyCode",
-                        "condition": "in",
-                        "values": ["1", "2", "3", "7", "9"]
-                    },
                     {
                         "property": "actionTaken",
                         "condition": "equal",
@@ -620,16 +610,11 @@
     },
     {
         "id": "Q045",
-        "description": "If agency = 1, 2, 3, 7 or 9, action taken type = 1, lien status = 2, and rate spread > 8.5%, then HOEPA status should = 1.",
-        "explanation": "Agency = 1-3, 7 or 9, action taken type = 1, lien status = 2, and rate spread > 8.5%; therefore HOEPA status should = 1; Verify.",
+        "description": "If action taken type = 1, lien status = 2, and rate spread > 8.5%, then HOEPA status should = 1.",
+        "explanation": "Action taken type = 1, lien status = 2, and rate spread > 8.5%; therefore HOEPA status should = 1; Verify.",
         "rule": {
             "if": {
                 "and": [
-                    {
-                        "property": "agencyCode",
-                        "condition": "in",
-                        "values": ["1", "2", "3", "7", "9"]
-                    },
                     {
                         "property": "actionTaken",
                         "condition": "equal",
@@ -663,23 +648,6 @@
                 "property": "loanPurpose",
                 "condition": "equal",
                 "value": "1"
-            },
-            "then": {
-                "property": "hoepaStatus",
-                "condition": "not_equal",
-                "value": "1"
-            }
-        }
-    },
-    {
-        "id": "Q050",
-        "description": "If agency = 5, HOEPA status should not = 1.",
-        "explanation": "Agency = 5 and HOEPA status = 1; Verify.",
-        "rule": {
-            "if": {
-                "property": "agencyCode",
-                "condition": "equal",
-                "value": "5"
             },
             "then": {
                 "property": "hoepaStatus",

@@ -8,7 +8,7 @@
                 "property": "legalEntityID",
                 "condition": "call",
                 "function": "isChildFI",
-                "args": ["legalEntityID", "agencyCode"]
+                "args": ["legalEntityID"]
             },
             "then": {
                 "and": [
@@ -60,7 +60,7 @@
             "property": "taxID",
             "condition": "call",
             "function": "isTaxIDTheSameAsLastYear",
-            "args": ["legalEntityID", "agencyCode", "taxID"]
+            "args": ["legalEntityID", "taxID"]
         }
     }
 ]

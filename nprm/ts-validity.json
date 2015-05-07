@@ -97,7 +97,7 @@
                 "property": "legalEntityID",
                 "condition": "call",
                 "function": "isRespondentMBS",
-                "args": ["legalEntityID", "agencyCode"]
+                "args": ["legalEntityID"]
             },
             "then": {
                 "and": [

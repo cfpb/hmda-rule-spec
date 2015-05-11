@@ -2,7 +2,6 @@
     "hmdaFile": {
         "transmittalSheet": {
             "recordID": "1",
-            "agencyCode": "9",
             "legalEntityID": "00010000520001000052",
             "timestamp": "201301171330",
             "filler": "",
@@ -28,7 +27,6 @@
         "loanApplicationRegisters": [
             {
                 "recordID": "2",
-                "agencyCode": "9",
                 "legalEntityID": "00010000520001000052",
                 "universalLoanID": "ABCDE12345ABCDE12345ABCDE",
                 "applicationReceivedDate": "20130117",
@@ -43,7 +41,7 @@
                 "actionDate": "20131019",
                 "propertyAddress": "1234 NOWHERE ST.",
                 "propertyCity": "NOWHERE",
-                "propertyZip": "99999-9999",
+                "propertyZip": "999999999",
                 "metroArea": "01305",
                 "fipsState": "14",
                 "fipsCounty": "095",
@@ -67,8 +65,11 @@
                 "applicantIncome": "0100",
                 "purchaserType": "8",
                 "denialReason1": "01",
-                "denialReason2": "10",
+                "denialReasonText1": "",
+                "denialReason2": "09",
+                "denialReasonText2": "BLAH BLAH BLAH",
                 "denialReason3": "10",
+                "denialReasonText3": "",
                 "rateSpread": "NA",
                 "hoepaStatus": "1",
                 "lienStatus": "3",
@@ -99,10 +100,13 @@
                 "initiallyPayable": "1",
                 "nmlsrID": "BLAHBLAHBLAH",
                 "aus": "1",
+                "ausText": "",
                 "ausRecommendation": "05",
+                "ausRecommendationText": "",
                 "reverseMortgage": "3",
                 "heloc": "6",
                 "qualifiedMortgageID": "4",
+                "firstDraw": "00038190",
                 "filler": "00000",
                 "lineNumber": "2"
             }

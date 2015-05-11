@@ -2,7 +2,7 @@
 
 var fs = require('fs');
 
-var spec = require('./index');
+var spec = require('../index');
 
 var generateWhiteSpace = function(size) {
     var out = '';
@@ -42,7 +42,7 @@ var createOutputLine = function(line, lineNum, lineSpec) {
 
 var fileSpec;
 if (process.argv.length === 5) {
-    fileSpec = spec.getFileSpec(process.argv[2]);       
+    fileSpec = spec.getFileSpec(process.argv[2]);
 }
 
 var inputFile = JSON.parse(fs.readFileSync(process.argv[3]));

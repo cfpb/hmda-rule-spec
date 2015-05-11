@@ -1,6 +1,6 @@
 'use strict';
 
-var spec = require('./index');
+var spec = require('../index');
 
 var fileSpec;
 if (process.argv.length === 3) {

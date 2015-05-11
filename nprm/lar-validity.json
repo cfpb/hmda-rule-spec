@@ -52,16 +52,6 @@
         }
     },
     {
-        "id": "V400",
-        "description": "Property type must = 1, 2, or 3.",
-        "explanation": "Property type is missing or is not in range 1-3.",
-        "rule": {
-            "property": "propertyType",
-            "condition": "in",
-            "values": ["1", "2", "3"]
-        }
-    },
-    {
         "id": "V225",
         "description": "Loan purpose must = 1, 2, 3 or 4.",
         "explanation": "Loan purpose is missing or is not in range 1-4.",
@@ -1018,23 +1008,6 @@
         }
     },
     {
-        "id": "V335",
-        "description": "If property type = 3, then income must = NA.",
-        "explanation": "Property type = 3; therefore income must = NA.",
-        "rule": {
-            "if": {
-                "property": "propertyType",
-                "condition": "equal",
-                "value": "3"
-            },
-            "then": {
-                "property": "applicantIncome",
-                "condition": "equal",
-                "value": "NA"
-            }
-        }
-    },
-    {
         "id": "V338",
         "description": "If applicant ethnicity, race, and sex = 4, 7, and 4, respectively, and co-applicant ethnicity, race, and sex = 5, 8, and 5, respectively, and action taken = 1-5 or 7-8 then applicant income must = NA.",
         "explanation": "Applicant ethnicity, race, and sex = 4, 7, and 4, and co-applicant ethnicity, race, and sex = 5, 8, and 5, and action taken = 1-5, or 7-8, therefore income must = NA.",
@@ -1307,8 +1280,8 @@
         "rule": {
             "if": {
                 "property": "lienStatus",
-                "condition": "equal",
-                "value": "2"
+                "condition": "in",
+                "values": ["2", "3", "4"]
             },
             "then": {
                 "or": [
@@ -1362,23 +1335,6 @@
             "property": "lienStatus",
             "condition": "in",
             "values": ["1", "2", "3", "4", "5"]
-        }
-    },
-    {
-        "id": "V565",
-        "description": "If action taken type = 6, then lien status must = 5.",
-        "explanation": "Action taken type = 6; therefore lien status must = 5.",
-        "rule": {
-            "if": {
-                "property": "actionTaken",
-                "condition": "equal",
-                "value": "6"
-            },
-            "then": {
-                "property": "lienStatus",
-                "condition": "equal",
-                "value": "5"
-            }
         }
     },
     {
@@ -1937,12 +1893,72 @@
     },
     {
         "id": "NPRM036",
-        "description": "Qualified mortgage identifier must = 1, 2, 3, 4, 5, or 6",
+        "description": "Qualified mortgage identifier must = 1, 2, 3, 4, 5, or 6.",
         "explanation": "Qualified mortgage identifier not in range 1-6.",
         "rule": {
             "property": "qualifiedMortgageID",
             "condition": "in",
             "values": ["1", "2", "3", "4", "5", "6"]
+        }
+    },
+    {
+        "id": "NPRM037",
+        "description": "First draw must be numeric and >= 0.",
+        "explanation": "First draw is missing, negative, or otherwise non-numeric.",
+        "rule": {
+            "and": [
+                {
+                    "property": "firstDraw",
+                    "condition": "is_integer"
+                },
+                {
+                    "property": "firstDraw",
+                    "condition": "greater_than_or_equal",
+                    "value": "0"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM038",
+        "description": "If any denial reason is 9 (other) its corresponding text field should not be blank.",
+        "explanation": "A denial reason of other was given without being elaborated.",
+        "rule": {
+            "and": [
+                {
+                    "if": {
+                        "property": "denialReason1",
+                        "condition": "equal",
+                        "value": "09"
+                    },
+                    "then": {
+                        "property": "denialReasonText1",
+                        "condition": "not_empty"
+                    }
+                },
+                {
+                    "if": {
+                        "property": "denialReason2",
+                        "condition": "equal",
+                        "value": "09"
+                    },
+                    "then": {
+                        "property": "denialReasonText2",
+                        "condition": "not_empty"
+                    }
+                },
+                {
+                    "if": {
+                        "property": "denialReason3",
+                        "condition": "equal",
+                        "value": "09"
+                    },
+                    "then": {
+                        "property": "denialReasonText3",
+                        "condition": "not_empty"
+                    }
+                }
+            ]
         }
     }
 ]

@@ -39,201 +39,19 @@
         }
     },
     {
-        "id": "Q002",
-        "description": "If property type = 1 and income ≤ $200 thousand, then loan amount should be < $2 million.",
-        "explanation": "Income is < $200 thousand and loan amount reported is ≥ $2 million; Verify.",
-        "rule": {
-            "if": {
-                "and": [
-                    {
-                        "property": "propertyType",
-                        "condition": "equal",
-                        "value": "1"
-                    },
-                    {
-                        "property": "applicantIncome",
-                        "condition": "less_than_or_equal",
-                        "value": "200"
-                    }
-                ]
-            },
-            "then": {
-                "property": "loanAmount",
-                "condition": "less_than",
-                "value": "2000"
-            }
-        }
-    },
-    {
-        "id": "Q003",
-        "description": "If loan type = 2 and property type = 1 or 2, then loan amount should be ≤ $729 ($729 thousand).",
-        "explanation": "Loan type = 2 and loan amount > $729 ($729 thousand); Verify.",
-        "rule": {
-            "if": {
-                "and": [
-                    {
-                        "property": "loanType",
-                        "condition": "equal",
-                        "value": "2"
-                    },
-                    {
-                        "property": "propertyType",
-                        "condition": "in",
-                        "values": ["1", "2"]
-                    }
-                ]
-            },
-            "then": {
-                "property": "loanAmount",
-                "condition": "less_than_or_equal",
-                "value": "729"
-            }
-        }
-    },
-    {
-        "id": "Q004",
-        "description": "If loan type = 3 and property type = 1 or 2, then loan amount should be ≤ $1,094 ($1,094 thousands).",
-        "explanation": "Loan type = 3 and loan amount > $1,094 ($1,094 thousand); Verify.",
-        "rule":{
-            "if": {
-                "and": [
-                    {
-                        "property": "loanType",
-                        "condition": "equal",
-                        "value": "3"
-                    },
-                    {
-                        "property": "propertyType",
-                        "condition": "in",
-                        "values": ["1", "2"]
-                    }
-                ]
-            },
-            "then": {
-                "property": "loanAmount",
-                "condition": "less_than_or_equal",
-                "value": "1094"
-            }
-        }
-    },
-    {
-        "id": "Q005",
-        "description": "If type of purchaser = 1-4, and property type = 1 or 2, then loan amount should be ≤ $729 ($729 thousand).",
-        "explanation": "Type of purchaser = 1-4, and property type = 1 or 2 and loan amount > $729 ($729 thousand); Verify.",
-        "rule": {
-            "if": {
-                "and": [
-                    {
-                        "property": "purchaserType",
-                        "condition": "in",
-                        "values": ["1", "2", "3", "4"]
-                    },
-                    {
-                        "property": "propertyType",
-                        "condition": "in",
-                        "values": ["1", "2"]
-                    }
-                ]
-            },
-            "then": {
-                "property": "loanAmount",
-                "condition": "less_than_or_equal",
-                "value": "729"
-            }
-        }
-    },
-    {
-        "id": "Q013",
-        "description": "If property type = 3, then loan amount should be in the range of $100 thousand and $10 million.",
-        "explanation": "Loan amount is not within the expected range of $100 thousand and $10 million; Verify.",
-        "rule": {
-            "if": {
-                "property": "propertyType",
-                "condition": "equal",
-                "value": "3"
-            },
-            "then": {
-                "property": "loanAmount",
-                "condition": "between",
-                "start": "99",
-                "end": "10001"
-            }
-        }
-    },
-    {
-        "id": "Q036",
-        "description": "If property type = 2, then loan amount should be ≤ $150 ($150 thousand).",
-        "explanation": "Property type = 2 and loan amount reported is > $150 ($150 thousand); Verify.",
-        "rule": {
-            "if": {
-                "property": "propertyType",
-                "condition": "equal",
-                "value": "2"
-            },
-            "then": {
-                "property": "loanAmount",
-                "condition": "less_than_or_equal",
-                "value": "150"
-            }
-        }
-    },
-    {
         "id": "Q037",
         "description": "If lien status = 2, then loan amount should be ≤ $250 ($250 thousand).",
         "explanation": "Lien status = 2 and loan amount reported is > $250 ($250 thousand); Verify.",
         "rule": {
             "if": {
                 "property": "lienStatus",
-                "condition": "equal",
-                "value": "2"
+                "condition": "in",
+                "values": ["2", "3", "4"]
             },
             "then": {
                 "property": "loanAmount",
                 "condition": "less_than_or_equal",
                 "value": "250"
-            }
-        }
-    },
-    {
-        "id": "Q038",
-        "description": "If lien status = 3, then loan amount should be ≤ $100 ($100 thousand).",
-        "explanation": "Lien status = 3 and loan amount reported is > $100 ($100 thousand); Verify.",
-        "rule": {
-            "if": {
-                "property": "lienStatus",
-                "condition": "equal",
-                "value": "3"
-            },
-            "then": {
-                "property": "loanAmount",
-                "condition": "less_than_or_equal",
-                "value": "100"
-            }
-        }
-    },
-    {
-        "id": "Q025",
-        "description": "If loan purpose = 1 and property type = 1, then loan amount should be > $10 thousand.",
-        "explanation": "Loan amount is numeric and ≤ $10 thousand; Verify.",
-        "rule": {
-            "if": {
-                "and": [
-                    {
-                        "property": "loanPurpose",
-                        "condition": "equal",
-                        "value": "1"
-                    },
-                    {
-                        "property": "propertyType",
-                        "condition": "equal",
-                        "value": "1"
-                    }
-                ]
-            },
-            "then": {
-                "property": "loanAmount",
-                "condition": "greater_than",
-                "value": "10"
             }
         }
     },
@@ -387,32 +205,6 @@
         }
     },
     {
-        "id": "Q027",
-        "description": "If action taken type = 1-5, 7 or 8, and property type = 1 or 2, then applicant income should not = NA.",
-        "explanation": "Income = NA; Verify.",
-        "rule": {
-            "if": {
-                "and": [
-                    {
-                        "property": "actionTaken",
-                        "condition": "in",
-                        "values": ["1", "2", "3", "4", "5", "7", "8"]
-                    },
-                    {
-                        "property": "propertyType",
-                        "condition": "in",
-                        "values": ["1", "2"]
-                    }
-                ]
-            },
-            "then": {
-                "property": "applicantIncome",
-                "condition": "not_equal",
-                "value": "NA"
-            }
-        }
-    },
-    {
         "id": "Q067",
         "description": "If applicant ethnicity, race, and sex = 4, 7, and 4, respectively, and co-applicant ethnicity, race, and sex = 4, 7, and 4, respectively, then applicant income should = NA.",
         "explanation": "Income is numeric; Verify.",
@@ -467,8 +259,8 @@
                 "and": [
                     {
                         "property": "hoepaStatus",
-                        "condition": "equal",
-                        "value": "1"
+                        "condition": "in",
+                        "values": ["1", "2", "3"]
                     },
                     {
                         "property": "actionTaken",
@@ -499,7 +291,7 @@
                     {
                         "property": "lienStatus",
                         "condition": "in",
-                        "values": ["1", "2"]
+                        "values": ["1", "2", "3", "4"]
                     }
                 ]
             },
@@ -514,46 +306,6 @@
                         "property": "rateSpread",
                         "condition": "less_than_or_equal",
                         "value": "10.0"
-                    }
-                ]
-            }
-        }
-    },
-    {
-        "id": "Q061",
-        "description": "If property type = 1, lien status = 1 and action taken type = 1, rate spread should be ≤ 5% or NA.",
-        "explanation": "Property type = 1, lien status = 1 and action taken type = 1; therefore, rate spread should be ≤ 5% or NA; Verify.",
-        "rule": {
-            "if": {
-                "and": [
-                    {
-                        "property": "propertyType",
-                        "condition": "equal",
-                        "value": "1"
-                    },
-                    {
-                        "property": "lienStatus",
-                        "condition": "equal",
-                        "value": "1"
-                    },
-                    {
-                        "property": "actionTaken",
-                        "condition": "equal",
-                        "value": "1"
-                    }
-                ]
-            },
-            "then": {
-                "or": [
-                    {
-                        "property": "rateSpread",
-                        "condition": "equal",
-                        "value": "NA"
-                    },
-                    {
-                        "property": "rateSpread",
-                        "condition": "less_than_or_equal",
-                        "value": "5.0"
                     }
                 ]
             }
@@ -602,8 +354,8 @@
             },
             "then": {
                 "property": "hoepaStatus",
-                "condition": "equal",
-                "value": "1"
+                "condition": "in",
+                "values": ["1", "2", "3"]
             }
         }
 
@@ -622,8 +374,8 @@
                     },
                     {
                         "property": "lienStatus",
-                        "condition": "equal",
-                        "value": "2"
+                        "condition": "in",
+                        "values": ["2", "3", "4"]
                     },
                     {
                         "property": "rateSpread",
@@ -634,8 +386,8 @@
             },
             "then": {
                 "property": "hoepaStatus",
-                "condition": "equal",
-                "value": "1"
+                "condition": "in",
+                "values": ["1", "2", "3"]
             }
         }
     },
@@ -651,8 +403,8 @@
             },
             "then": {
                 "property": "hoepaStatus",
-                "condition": "not_equal",
-                "value": "1"
+                "condition": "not_in",
+                "values": ["1", "2", "3"]
             }
         }
     },
@@ -682,25 +434,8 @@
             },
             "then": {
                 "property": "hoepaStatus",
-                "condition": "not_equal",
-                "value": "1"
-            }
-        }
-    },
-    {
-        "id": "Q052",
-        "description": "If property type = 3, HOEPA status should not = 1.",
-        "explanation": "Property type = 3 and HOEPA status = 1; Verify.",
-        "rule": {
-            "if": {
-                "property": "propertyType",
-                "condition": "equal",
-                "value": "3"
-            },
-            "then": {
-                "property": "hoepaStatus",
-                "condition": "not_equal",
-                "value": "1"
+                "condition": "not_in",
+                "values": ["1", "2", "3"]
             }
         }
     },
@@ -716,25 +451,8 @@
             },
             "then": {
                 "property": "hoepaStatus",
-                "condition": "not_equal",
-                "value": "1"
-            }
-        }
-    },
-    {
-        "id": "Q059",
-        "description": "If loan type = 3 or 4, then property type should not = 3.",
-        "explanation": "Loan type = 3 or 4 and property type = 3; Verify.",
-        "rule": {
-            "if": {
-                "property": "loanType",
-                "condition": "in",
-                "values": ["3", "4"]
-            },
-            "then": {
-                "property": "propertyType",
-                "condition": "not_equal",
-                "value": "3"
+                "condition": "not_in",
+                "values": ["1", "2", "3"]
             }
         }
     },

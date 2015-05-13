@@ -2140,5 +2140,352 @@
                 ]
             }
         }
+    },
+    {
+        "id": "NPRM051",
+        "description": "Total points and fees should be NA when action taken is 6.",
+        "explanation": "Loan was purchased; therefore total points and fees should be NA.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "equal",
+                "value": "6"
+            },
+            "then": {
+                "property": "totalFees",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "NPRM052",
+        "description": "Total origination charges should be NA when reverse mortgage is 1 or 2 or heloc flag is 2.",
+        "explanation": "Loan is a reverse mortgage or open-end line of credit; therefore total origination charges should be NA.",
+        "rule": {
+            "if": {
+                "or": [
+                    {
+                        "property": "reverseMortgage",
+                        "condition": "in",
+                        "values": ["1", "2"]
+                    },
+                    {
+                        "property": "heloc",
+                        "condition": "equal",
+                        "value": "2"
+                    }
+                ]
+            },
+            "then": {
+                "property": "totalOriginationCharges",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "NPRM053",
+        "description": "Total discount points should be NA when reverse mortgage is 1 or 2 or heloc flag is 2.",
+        "explanation": "Loan is a reverse mortgage or open-end line of credit; therefore total discount points should be NA.",
+        "rule": {
+            "if": {
+                "or": [
+                    {
+                        "property": "reverseMortgage",
+                        "condition": "in",
+                        "values": ["1", "2"]
+                    },
+                    {
+                        "property": "heloc",
+                        "condition": "equal",
+                        "value": "2"
+                    }
+                ]
+            },
+            "then": {
+                "property": "totalDiscountPoints",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "NPRM054",
+        "description": "Risk adjusted interest rate should be NA when reverse mortgage is 1 or 2 or heloc flag is 2.",
+        "explanation": "Loan is a reverse mortgage or open-end line of credit; therefore risk adjusted interest rate should be NA.",
+        "rule": {
+            "if": {
+                "or": [
+                    {
+                        "property": "reverseMortgage",
+                        "condition": "in",
+                        "values": ["1", "2"]
+                    },
+                    {
+                        "property": "heloc",
+                        "condition": "equal",
+                        "value": "2"
+                    }
+                ]
+            },
+            "then": {
+                "property": "riskAdjustedInterestRate",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "NPRM055",
+        "description": "Interest rate should be NA when action taken is 5.",
+        "explanation": "Application closed due to incompleteness; therefore interest rate should be NA.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "equal",
+                "value": "5"
+            },
+            "then": {
+                "property": "interestRate",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "NPRM056",
+        "description": "Prepayment penalty term should be NA when action taken is 5.",
+        "explanation": "Application closed due to incompleteness; therefore prepayment penalty term should be NA.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "equal",
+                "value": "5"
+            },
+            "then": {
+                "property": "prepaymentPenaltyTerm",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "NPRM057",
+        "description": "Debt to income ratio should be NA when action taken is 4 or 5 or reverse mortgage is 1 or 2.",
+        "explanation": "Application closed due to incompleteness or withdrawn by applicant or is a reverse mortgage; therefore debt to income ratio should be NA.",
+        "rule": {
+            "if": {
+                "or": [
+                    {
+                        "property": "actionTaken",
+                        "condition": "in",
+                        "values": ["4", "5"]
+                    },
+                    {
+                        "property": "reverseMortgage",
+                        "condition": "in",
+                        "values": ["1", "2"]
+                    }
+                ]
+            },
+            "then": {
+                "property": "dtiRatio",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "NPRM058",
+        "description": "Loan term should be NA when heloc flag is 1 or reverse mortgage is 1 or 2.",
+        "explanation": "Loan is a home-equity line of credit or a reverse mortgage; therefore loan term should be NA.",
+        "rule": {
+            "if": {
+                "or": [
+                    {
+                        "property": "heloc",
+                        "condition": "equal",
+                        "value": "1"
+                    },
+                    {
+                        "property": "reverseMortgage",
+                        "condition": "in",
+                        "values": ["1", "2"]
+                    }
+                ]
+            },
+            "then": {
+                "property": "loanTerm",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "NPRM059",
+        "description": "Application channel flag should be 3 (NA) when action taken is 6.",
+        "explanation": "Loan was purchased; therefore application channel flag should be 3 (NA).",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "equal",
+                "value": "6"
+            },
+            "then": {
+                "property": "applicationChannel",
+                "condition": "equal",
+                "value": "3"
+            }
+        }
+    },
+    {
+        "id": "NPRM060",
+        "description": "Initially payable flag should be 3 (NA) when action taken is 6.",
+        "explanation": "Loan was purchased; therefore initially payable flag should be 3 (NA).",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "equal",
+                "value": "6"
+            },
+            "then": {
+                "property": "initiallyPayable",
+                "condition": "equal",
+                "value": "3"
+            }
+        }
+    },
+    {
+        "id": "NPRM061",
+        "description": "Automated underwriting system should be 7 (purchased loan) when action taken is 6.",
+        "explanation": "Loan was purchased; therefore automated underwriting system should be 7.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "equal",
+                "value": "6"
+            },
+            "then": {
+                "property": "aus",
+                "condition": "equal",
+                "value": "7"
+            }
+        }
+    },
+    {
+        "id": "NPRM062",
+        "description": "If automated underwriting system is 5 (other) its corresponding text field should not be blank.",
+        "explanation": "Automated underwriting system is other, but no explanation text is provided.",
+        "rule": {
+            "if": {
+                "property": "aus",
+                "condition": "equal",
+                "value": "5"
+            },
+            "then": {
+                "property": "ausText",
+                "condition": "not_empty"
+            }
+        }
+    },
+    {
+        "id": "NPRM063",
+        "description": "If automated underwriting system text is not empty automated underwriting system should be 5 (other).",
+        "explanation": "Automated underwriting system explanation text is provided but automated underwriting system is not 5 (other).",
+        "rule": {
+            "if": {
+                "property": "ausText",
+                "condition": "not_empty"
+            },
+            "then": {
+                "property": "aus",
+                "condition": "equal",
+                "value": "5"
+            }
+        }
+    },
+    {
+        "id": "NPRM064",
+        "description": "Automated underwriting system recommendation should be 10 (NA) when action taken is 4 or 5.",
+        "explanation": "Application closed due to incompleteness or withdrawn by applicant; therefore automated underwriting system recommendation should be 10 (NA).",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "in",
+                "values": ["4", "5"]
+            },
+            "then": {
+                "property": "ausRecommendation",
+                "condition": "equal",
+                "value": "10"
+            }
+        }
+    },
+    {
+        "id": "NPRM065",
+        "description": "If Action taken type = 6, then automated underwriting system recommendation must be 11.",
+        "explanation": "Loan was purchased; therefore automated underwriting system recommendation should be 11.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "equal",
+                "value": "6"
+            },
+            "then": {
+                "property": "ausRecommendation",
+                "condition": "equal",
+                "value": "11"
+            }
+        }
+    },
+    {
+        "id": "NPRM066",
+        "description": "If automated underwriting system recommendation is 9 (Other) its corresponding text field should not be blank.",
+        "explanation": "Automated underwriting system recommendation is other, but no explanation text is provided.",
+        "rule": {
+            "if": {
+                "property": "ausRecommendation",
+                "condition": "in",
+                "values": ["09", "9"]
+            },
+            "then": {
+                "property": "ausRecommendationText",
+                "condition": "not_empty"
+            }
+        }
+    },
+    {
+        "id": "NPRM067",
+        "description": "If automated underwriting system recommndation text is not empty automated underwriting system recommendation should be 9 (other).",
+        "explanation": "Automated underwriting system recommendation explanation text is provided but automated underwriting system recommendation is not 9 (other).",
+        "rule": {
+            "if": {
+                "property": "ausRecommendationText",
+                "condition": "not_empty"
+            },
+            "then": {
+                "property": "ausRecommendation",
+                "condition": "in",
+                "values": ["09", "9"]
+            }
+        }
+    },
+    {
+        "id": "NPRM068",
+        "description": "If reverse mortgage is 2 then heloc flag should be 3.",
+        "explanation": "Loan is an open-end reverse mortgage; therefore heloc flag should be 3 (NA).",
+        "rule": {
+            "if": {
+                "property": "reverseMortgage",
+                "condition": "equal",
+                "value": "2"
+            },
+            "then": {
+                "property": "heloc",
+                "condition": "equal",
+                "value": "3"
+            }
+        }
     }
 ]

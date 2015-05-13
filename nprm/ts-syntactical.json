@@ -1,12 +1,12 @@
 [
     {
         "id": "S100",
-        "description": "Activity year must = year being processed (= 2014).",
+        "description": "Activity year must = year being processed (= 2017).",
         "explanation": "Invalid activity year.",
         "rule": {
             "property": "activityYear",
             "condition": "equal",
-            "value": "2014"
+            "value": "2017"
         }
     },
    {

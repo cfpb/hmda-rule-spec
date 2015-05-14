@@ -1168,14 +1168,14 @@
     },
     {
         "id": "V505",
-        "description": "If action taken type = 3-9, then rate spread must = NA.",
-        "explanation": "Action taken type = 3-9; therefore rate spread must = NA.",
+        "description": "If action taken type = 3-8, then rate spread must = NA.",
+        "explanation": "Action taken type = 3-8; therefore rate spread must = NA.",
         "rule": {
             "if": {
                 "property": "actionTaken",
                 "condition": "between",
                 "start": 2,
-                "end": 10
+                "end": 9
             },
             "then": {
                 "property": "rateSpread",
@@ -1977,13 +1977,22 @@
     },
     {
         "id": "NPRM042",
-        "description": "Rate spread must be NA when the loan is a reverse mortgage.",
-        "explanation": "Loan is a reverse mortgage and rate spread is not NA.",
+        "description": "Rate spread must be NA when the loan is a reverse mortgage and action taken is 1 or 2.",
+        "explanation": "Loan is a reverse mortgage, loan was originated or approved but not accepted by the applicant, and rate spread is not NA.",
         "rule": {
             "if": {
-                "property": "reverseMortgage",
-                "condition": "in",
-                "values": ["1", "2"]
+                "and": [
+                    {
+                        "property": "actionTaken",
+                        "condition": "in",
+                        "values": ["1", "2"]
+                    },
+                    {
+                        "property": "reverseMortgage",
+                        "condition": "in",
+                        "values": ["1", "2"]
+                    }
+                ]
             },
             "then": {
                 "property": "rateSpread",
@@ -1994,16 +2003,16 @@
     },
     {
         "id": "NPRM043",
-        "description": "HOEPA Status must be 4 when reverse mortgage is 1-2 or action taken is 3-9.",
-        "explanation": "Reverse mortgage is 1-2 or action taken is 3-9 and HOEPA Status is not 4.",
+        "description": "HOEPA Status must be 4 when reverse mortgage is 1-2 or action taken is 2-8.",
+        "explanation": "Reverse mortgage is 1-2 or action taken is 2-8 and HOEPA Status is not 4.",
         "rule": {
             "if": {
                 "or": [
                     {
                         "property": "actionTaken",
                         "condition": "between",
-                        "start": 2,
-                        "end": 10
+                        "start": 1,
+                        "end": 9
                     },
                     {
                         "property": "reverseMortgage",
@@ -2272,20 +2281,29 @@
     },
     {
         "id": "NPRM057",
-        "description": "Debt to income ratio should be NA when action taken is 4 or 5 or reverse mortgage is 1 or 2.",
-        "explanation": "Application closed due to incompleteness or withdrawn by applicant or is a reverse mortgage; therefore debt to income ratio should be NA.",
+        "description": "Debt to income ratio should be NA when action taken is 5 or action taken is 4 and reverse mortgage is 1 or 2.",
+        "explanation": "Application closed due to incompleteness or withdrawn by applicant and is a reverse mortgage; therefore debt to income ratio should be NA.",
         "rule": {
             "if": {
                 "or": [
                     {
                         "property": "actionTaken",
-                        "condition": "in",
-                        "values": ["4", "5"]
+                        "condition": "equal",
+                        "value": "5"
                     },
                     {
-                        "property": "reverseMortgage",
-                        "condition": "in",
-                        "values": ["1", "2"]
+                        "and": [
+                            {
+                                "property": "actionTaken",
+                                "condition": "equal",
+                                "value": "4"
+                            },
+                            {
+                                "property": "reverseMortgage",
+                                "condition": "in",
+                                "values": ["1", "2"]
+                            }
+                        ]
                     }
                 ]
             },
@@ -2484,6 +2502,32 @@
             "then": {
                 "property": "heloc",
                 "condition": "equal",
+                "value": "3"
+            }
+        }
+    },
+    {
+        "id": "NPRM069",
+        "description": "If loan purpose is 2 or 3 and action taken is 1, 2, 3, 4, or 6, then preapproval should be 3.",
+        "explanation": "Loan purpose is 2 or 3 and action taken is 1, 2, 3, 4, or 6 but preapproval is not 3.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "loanPurpose",
+                        "condition": "in",
+                        "values": ["2", "3"]
+                    },
+                    {
+                        "property": "actionTaken",
+                        "condition": "in",
+                        "values": ["1", "2", "3", "4", "6"]
+                    }
+                ]
+            },
+            "then": {
+                "property": "preapprovals",
+                "condition": "not_equal",
                 "value": "3"
             }
         }

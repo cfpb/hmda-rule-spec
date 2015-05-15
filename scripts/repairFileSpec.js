@@ -1,11 +1,16 @@
 'use strict';
 
+var fs = require('fs');
 var spec = require('../index');
+var pretty = require('js-object-pretty-print').pretty;
 
-var fileSpec;
-if (process.argv.length === 3) {
-    fileSpec = spec.getFileSpec(process.argv[2]);
-}
+var printUsage = function(err) {
+    if (err) {
+        console.log(err.message);
+    }
+    console.log('Usage: node repairFileSpec.js [year]');
+    console.log('Example: node repairFileSpec.js nprm');
+};
 
 var repairSection = function(keys, currSpec) {
     var currField = '';
@@ -25,14 +30,29 @@ var repairSection = function(keys, currSpec) {
     }
 };
 
-try {
+var repairFileSpec = function(year) {
+    var fileSpec = spec.getFileSpec(year);
+
     // Repair transmittal sheet
     repairSection(Object.keys(fileSpec.transmittalSheet), fileSpec.transmittalSheet);
 
     // Repair loan application register
     repairSection(Object.keys(fileSpec.loanApplicationRegister), fileSpec.loanApplicationRegister);
 
-    console.log(JSON.stringify(fileSpec));
-} catch (err) {
-    console.log(err.message);
+    var specFile = fs.openSync('../' + process.argv[2] + '/data_file_specification.json', 'w');
+    fs.writeSync(specFile, pretty(fileSpec, 4, 'JSON'));
+    fs.closeSync(specFile);
+}
+
+var size = 'repairFileSpec.js'.length;
+if (process.argv[1].slice(process.argv[1].length - size) === 'repairFileSpec.js') {
+    if (process.argv.length === 3) {
+        try {
+            repairFileSpec(process.argv[2]);
+        } catch (err) {
+            printUsage(err);
+        }
+    } else {
+        printUsage();
+    }
 }

@@ -2,6 +2,7 @@
     "hmdaFile": {
         "transmittalSheet": {
             "recordID": "1",
+            "agencyCode": "9",
             "legalEntityID": "00010000520001000052",
             "timestamp": "201301171330",
             "filler": "",

@@ -1,8 +1,15 @@
 'use strict';
 
 var fs = require('fs');
-
 var spec = require('../index');
+
+var printUsage = function(err) {
+    if (err) {
+        console.log(err.message);
+    }
+    console.log('Usage: node generateDat.js [year] [input file (json)] [output file path]');
+    console.log('Example: node generateDat.js nprm ./nprm.json ./nprm.dat');
+};
 
 var generateWhiteSpace = function(size) {
     var out = '';
@@ -40,22 +47,35 @@ var createOutputLine = function(line, lineNum, lineSpec) {
     return outputLine + '\n';
 };
 
-var fileSpec;
-if (process.argv.length === 5) {
-    fileSpec = spec.getFileSpec(process.argv[2]);
+var generateDat = function(year, inputPath, outputPath) {
+    var fileSpec = spec.getFileSpec(year);
+    var inputFile = JSON.parse(fs.readFileSync(inputPath));
+    var outputFile = fs.openSync(outputPath, 'w');
+
+    // Parse the input and write the output file
+    var ts = createOutputLine(inputFile.hmdaFile.transmittalSheet, 1, fileSpec.transmittalSheet);
+    fs.writeSync(outputFile, ts);
+
+    for (var i = 0; i < inputFile.hmdaFile.loanApplicationRegisters.length; i++) {
+        var currLar = inputFile.hmdaFile.loanApplicationRegisters[i];
+        fs.writeSync(outputFile, createOutputLine(currLar, i+2, fileSpec.loanApplicationRegister));
+    }
+
+    // Close the file once finished
+    fs.closeSync(outputFile); 
 }
 
-var inputFile = JSON.parse(fs.readFileSync(process.argv[3]));
-var outputFile = fs.openSync(process.argv[4], 'w');
-
-// Parse the input and write the output file
-var ts = createOutputLine(inputFile.hmdaFile.transmittalSheet, 1, fileSpec.transmittalSheet);
-fs.writeSync(outputFile, ts);
-
-for (var i = 0; i < inputFile.hmdaFile.loanApplicationRegisters.length; i++) {
-    var currLar = inputFile.hmdaFile.loanApplicationRegisters[i];
-    fs.writeSync(outputFile, createOutputLine(currLar, i+2, fileSpec.loanApplicationRegister));
+var size = 'generateDat.js'.length;
+if (process.argv[1].slice(process.argv[1].length - size) === 'generateDat.js') {
+    if (process.argv.length === 5) {
+        try {
+            generateDat(process.argv[2], process.argv[3], process.argv[4]);
+        } catch (err) {
+            printUsage(err);
+        }
+    } else {
+        printUsage();
+    }
 }
 
-// Close the file once finished
-fs.closeSync(outputFile);
+module.exports = generateDat;

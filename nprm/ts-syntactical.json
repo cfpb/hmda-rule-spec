@@ -36,15 +36,5 @@
                 }
             ]
         }
-    },
-    {
-        "id": "NPRM070",
-        "description": "Agency code must = 1, 2, 3, 5, 7, 9.",
-        "explanation": "Agency code not valid.",
-        "rule": {
-            "property": "agencyCode",
-            "condition": "in",
-            "values": ["1", "2", "3", "5", "7", "9"]
-        }
     }
 ]

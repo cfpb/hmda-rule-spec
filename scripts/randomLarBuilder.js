@@ -34,7 +34,7 @@ var zeroPad = function(field, size) {
     if (field.length < size) {
         for (var i = 0; i < size - field.length; i++) {
             pad += '0';
-        }    
+        }
     }
 
     return pad + field;
@@ -50,7 +50,7 @@ var larBuilder = function(year, lar) {
         var currField = fileSpec.loanApplicationRegister[fileKeys[i]];
 
         if (currField.dataType === 'N') {
-            var max = Math.pow(10, currField.length) - 1;
+            var max = Math.pow(10, currField.length);
             var min = 0;
 
             if (currField.validation.values) {

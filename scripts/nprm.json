@@ -28,6 +28,7 @@
         "loanApplicationRegisters": [
             {
                 "recordID": "2",
+                "agencyCode": "9",
                 "legalEntityID": "00010000520001000052",
                 "universalLoanID": "ABCDE12345ABCDE12345ABCDE",
                 "applicationReceivedDate": "20130117",

@@ -1,7 +1,7 @@
 'use strict';
 
 var _ = require('lodash');
-var spec = require('../index');
+var spec = require('../../index');
 
 var getRandomInt = function(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;

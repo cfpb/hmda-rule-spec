@@ -62,5 +62,79 @@
             "function": "isTaxIDTheSameAsLastYear",
             "args": ["legalEntityID", "taxID"]
         }
+    },
+    {
+        "id": "NPRM070",
+        "description": "If Ethnicity of Borrower or Applicant = 4 and Sex of Borrower or Applicant = 4 and Race of Borrower or Applicant 1 = 7 and Age of Borrower or Applicant = 1 or if Ethnicity of Co-Borrower or Co-Applicant = 5 and Sex of Co-Borrower or Co-Applicant = 5 and Race of Co-Borrower or Co-Applicant 1 = 8 and Age of Co-Borrower or Co-Applicant = 2 and Applicant Income = NA and Action Taken is not equal to 6, Rate Spread should = NA.",
+        "explanation": "If the applicant or co-applicant is not a natural person, rate spread should = NA.",
+        "rule": {
+            "if": {
+                "or": [
+                    {
+                        "and": [
+                            {
+                                "property": "applicantEthnicity",
+                                "condition": "equal",
+                                "value": "4"
+                            },
+                            {
+                                "property": "applicantSex",
+                                "condition": "equal",
+                                "value": "4"
+                            },
+                            {
+                                "property": "applicantRace1",
+                                "condition": "equal",
+                                "value": "7"
+                            },
+                            {
+                                "property": "applicantAge",
+                                "condition": "equal",
+                                "value": "1"
+                            },
+                            {
+                                "property": "applicantIncome",
+                                "condition": "equal",
+                                "value": "NA"
+                            }
+                        ]
+                    },
+                    {
+                        "and": [
+                            {
+                                "property": "coapplicantEthnicity",
+                                "condition": "equal",
+                                "value": "5"
+                            },
+                            {
+                                "property": "coapplicantSex",
+                                "condition": "equal",
+                                "value": "5"
+                            },
+                            {
+                                "property": "coapplicantRace1",
+                                "condition": "equal",
+                                "value": "8"
+                            },
+                            {
+                                "property": "coapplicantAge",
+                                "condition": "equal",
+                                "value": "2"
+                            },
+                            {
+                                "property": "applicantIncome",
+                                "condition": "equal",
+                                "value": "NA"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "then": {
+                "property": "rateSpread",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
     }
 ]

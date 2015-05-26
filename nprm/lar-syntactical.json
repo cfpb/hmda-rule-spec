@@ -1,0 +1,12 @@
+[
+    {
+        "id": "S205",
+        "description": "Application/Loan number must not = blank or all zeros.",
+        "explanation": "Application/Loan number not in valid format or is missing.",
+        "rule": {
+            "property": "universalLoanID",
+            "condition": "matches_regex",
+            "value": "^(?!0{25}$).{25}$"
+        }
+    }
+]

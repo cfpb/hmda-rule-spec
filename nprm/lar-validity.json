@@ -1,0 +1,2535 @@
+[
+    {
+        "id": "V210",
+        "description": "Date application received must be in CCYYMMDD format; month and day must be in the range 01-12 and 01-31, respectively or equal NA. CCYY must be numeric and CC (century) must equal 20.",
+        "explanation": "Application Month, day, year and/or century not valid.",
+        "rule": {
+            "if": {
+                "property": "applicationReceivedDate",
+                "condition": "not_equal",
+                "value": "NA"
+            },
+            "then": {
+                "and": [
+                    {
+                        "property": "applicationReceivedDate",
+                        "condition": "yyyy_mm_dd"
+                    },
+                    {
+                        "property": "applicationReceivedDate",
+                        "condition": "matches_regex",
+                        "value": "^20"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "id": "V215",
+        "description": "If Action taken type = 6, then date application received must = NA.",
+        "explanation": "Loan was purchased; therefore application date must equal NA.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "equal",
+                "value": "6"
+            },
+            "then": {
+                "property": "applicationReceivedDate",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "V220",
+        "description": "Loan type must = 1, 2, 3, or 4.",
+        "explanation": "Loan type is missing or is not in range 1-4.",
+        "rule": {
+            "property": "loanType",
+            "condition": "in",
+            "values": ["1", "2", "3", "4"]
+        }
+    },
+    {
+        "id": "V225",
+        "description": "Loan purpose must = 1, 2, 3 or 4.",
+        "explanation": "Loan purpose is missing or is not in range 1-4.",
+        "rule": {
+            "property": "loanPurpose",
+            "condition": "in",
+            "values": ["1", "2", "3", "4"]
+        }
+    },
+    {
+        "id": "V230",
+        "description": "Occupancy must = 1, 2, 3, or 4.",
+        "explanation": "Occupancy is missing or does not equal 1, 2, 3, or 4.",
+        "rule": {
+            "property": "ownerOccupancy",
+            "condition": "in",
+            "values": ["1", "2", "3", "4"]
+        }
+    },
+    {
+        "id": "V250",
+        "description": "Loan amount must be numeric and > zero.",
+        "explanation": "Loan amount is not numeric or not > 0.",
+        "rule": {
+            "and": [
+                {
+                    "property": "loanAmount",
+                    "condition": "is_integer"
+                },
+                {
+                    "property": "loanAmount",
+                    "condition": "greater_than",
+                    "value": "0"
+                }
+            ]
+        }
+    },
+    {
+        "id": "V415",
+        "description": "Preapproval must = 1, 2, or 3.",
+        "explanation": "Preapproval is missing or is not in range 1-3.",
+        "rule": {
+            "property": "preapprovals",
+            "condition": "in",
+            "values": ["1", "2", "3"]
+        }
+    },
+    {
+        "id": "V425",
+        "description": "If loan purpose = 1 and action taken type = 6, then preapproval must = 3.",
+        "explanation": "Loan purpose = 1 and action taken type = 6; therefore preapproval must = 3.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "loanPurpose",
+                        "condition": "equal",
+                        "value": "1"
+                    },
+                    {
+                        "property": "actionTaken",
+                        "condition": "equal",
+                        "value": "6"
+                    }
+                ]
+            },
+            "then": {
+                "property": "preapprovals",
+                "condition": "equal",
+                "value": "3"
+            }
+        }
+    },
+    {
+        "id": "V430",
+        "description": "If loan purpose = 2 or 3, then preapproval must = 3.",
+        "explanation": "Loan purpose = 2 or 3 and preapproval is missing or does not = 3.",
+        "rule": {
+            "if": {
+                "property": "loanPurpose",
+                "condition": "in",
+                "values": ["2", "3"]
+            },
+            "then": {
+                "property": "preapprovals",
+                "condition": "equal",
+                "value": "3"
+            }
+        }
+    },
+    {
+        "id": "V435",
+        "description": "If action taken type = 7 or 8, then preapproval must = 1.",
+        "explanation": "Action taken type = 7 or 8 and preapproval is missing or does not = 1.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "in",
+                "values": ["7", "8"]
+            },
+            "then": {
+                "property": "preapprovals",
+                "condition": "equal",
+                "value": "1"
+            }
+        }
+    },
+    {
+        "id": "V255",
+        "description": "Action taken type must = 1, 2, 3, 4, 5, 6, 7, or 8.",
+        "explanation": "Action taken type is missing or not in range 1-8.",
+        "rule": {
+            "property": "actionTaken",
+            "condition": "in",
+            "values": ["1", "2", "3", "4", "5", "6", "7", "8"]
+        }
+    },
+    {
+        "id": "V260",
+        "description": "If reasons for denial are in the range 1-9, then action taken type must = 3 or 7.",
+        "explanation": "Application or preapproval not denied, but denial reasons given.",
+        "rule": {
+            "if": {
+                "or": [
+                    {
+                        "property": "denialReason1",
+                        "condition": "between",
+                        "start": 0,
+                        "end": 10
+                    },
+                    {
+                        "property": "denialReason2",
+                        "condition": "between",
+                        "start": 0,
+                        "end": 10
+                    },
+                    {
+                        "property": "denialReason3",
+                        "condition": "between",
+                        "start": 0,
+                        "end": 10
+                    }
+                ]
+            },
+            "then": {
+                "property": "actionTaken",
+                "condition": "in",
+                "values": ["3", "7"]
+            }
+        }
+    },
+    {
+        "id": "V262",
+        "description": "If date application received = NA, then action taken type must = 6.",
+        "explanation": "Date application received = NA; therefore action taken type must = 6.",
+        "rule": {
+            "if": {
+                "property": "applicationReceivedDate",
+                "condition": "equal",
+                "value": "NA"
+            },
+            "then": {
+                "property": "actionTaken",
+                "condition": "equal",
+                "value": "6"
+            }
+        }
+    },
+    {
+        "id": "V440",
+        "description": "If preapproval = 1, then action taken type must = 1-5, 7 or 8.",
+        "explanation": "Preapproval = 1 and action taken type is missing or does not = 1-5, 7 or 8.",
+        "rule": {
+            "if": {
+                "property": "preapprovals",
+                "condition": "equal",
+                "value": "1"
+            },
+            "then": {
+                "property": "actionTaken",
+                "condition": "in",
+                "values": ["1", "2", "3", "4", "5", "7", "8"]
+            }
+        }
+    },
+    {
+        "id": "V445",
+        "description": "If preapproval = 2, then action taken type must = 1-5.",
+        "explanation": "Preapproval = 2 and action taken type is missing or does not = 1-5.",
+        "rule": {
+            "if": {
+                "property": "preapprovals",
+                "condition": "equal",
+                "value": "2"
+            },
+            "then": {
+                "property": "actionTaken",
+                "condition": "in",
+                "values": ["1", "2", "3", "4", "5"]
+            }
+        }
+    },
+    {
+        "id": "V447",
+        "description": "If preapproval = 3, then action taken type must = 1-6.",
+        "explanation": "Preapproval = 3 and action taken type is missing or does not = 1-6.",
+        "rule": {
+            "if": {
+                "property": "preapprovals",
+                "condition": "equal",
+                "value": "3"
+            },
+            "then": {
+                "property": "actionTaken",
+                "condition": "in",
+                "values": ["1", "2", "3", "4", "5", "6"]
+            }
+        }
+    },
+    {
+        "id": "V265",
+        "description": "Action taken date must be in YYYYMMDD format; month and day must be in the range 01-12 and 01-31, respectively. CCYY must be numeric.",
+        "explanation": "Action taken date is invalid format and/or date.",
+        "rule": {
+            "property": "actionDate",
+            "condition": "yyyy_mm_dd"
+        }
+    },
+    {
+        "id": "V275",
+        "description": "If date application received does not = NA, then action taken date must be ≥ date application received.",
+        "explanation": "Action taken date is earlier than application date.",
+        "rule": {
+            "if": {
+                "property": "applicationReceivedDate",
+                "condition": "not_equal",
+                "value": "NA"
+            },
+            "then": {
+                "property": "actionDate",
+                "condition": "greater_than_or_equal_property",
+                "value": "applicationReceivedDate"
+            }
+        }
+    },
+    {
+        "id": "V280",
+        "description": "MSA/MD must = a valid Metropolitan Statistical Area or Metropolitan Division (if appropriate) code for period being processed or NA.",
+        "explanation": "MSA/MD number does not = a valid Metropolitan Statistical Area/Metropolitan Division code or NA, or is missing.",
+        "rule": {
+            "property": "metroArea",
+            "condition": "call",
+            "function": "isValidMetroArea"
+        }
+    },
+    {
+        "id": "V285",
+        "description": "State must = a valid state code or (NA where MSA/MD = NA).",
+        "explanation": "State does not = a valid state code or (state equals NA and MSA/MD not NA).",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "metroArea",
+                            "condition": "equal",
+                            "value": "NA"
+                        },
+                        {
+                            "property": "stateCode",
+                            "condition": "equal",
+                            "value": "NA"
+                        }
+                    ]
+                },
+                {
+                    "property": "stateCode",
+                    "condition": "in",
+                    "values": [
+                        "AL", "AK", "AZ", "AR",
+                        "CA", "CO", "CT", "DE",
+                        "FL", "GA", "HI", "ID",
+                        "IL", "IN", "IA", "KS",
+                        "KY", "LA", "ME", "MD",
+                        "MA", "MI", "MN", "MS",
+                        "MO", "MT", "NE", "NV",
+                        "NH", "NJ", "NM", "NY",
+                        "NC", "ND", "OH", "OK",
+                        "OR", "PA", "RI", "SC",
+                        "SD", "TN", "TX", "UT",
+                        "VT", "VA", "WA", "WV",
+                        "WI", "WY", "AS", "DC",
+                        "FM", "GU", "MH", "MP",
+                        "PW", "PR", "UM", "VI"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": "V290",
+        "description": "If MSA/MD does not = NA, then MSA/MD, state, and county codes must = a valid combination.",
+        "explanation": "MSA/MD, state, and county codes do not = a valid combination.",
+        "rule": {
+            "if": {
+                "property": "metroArea",
+                "condition": "not_equal",
+                "value": "NA"
+            },
+            "then": {
+                "property": "metroArea",
+                "condition": "call",
+                "function": "isValidMsaMdStateAndCountyCombo",
+                "args": ["metroArea", "stateCode", "fipsCounty"]
+            }
+        }
+    },
+    {
+        "id": "V295",
+        "description": "State and county must = a valid combination or (county = NA where MSA/MD = NA).",
+        "explanation": "State/county does not equal a valid combination or (county equals NA and MSA/MD not NA).",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "metroArea",
+                            "condition": "equal",
+                            "value": "NA"
+                        },
+                        {
+                            "property": "fipsCounty",
+                            "condition": "equal",
+                            "value": "NA"
+                        }
+                    ]
+                },
+                {
+                    "property": "stateCode",
+                    "condition": "call",
+                    "function": "isValidStateAndCounty",
+                    "args": ["stateCode", "fipsCounty"]
+                }
+            ]
+        }
+    },
+    {
+        "id": "V300",
+        "description": "Census tract must = a valid census tract number for the MSA/MD, state, county combination or (NA if county is classified as small) or (where MSA/MD = NA the census tract must = a valid census tract for the state/county combination or NA). Valid census tract format must be NNNN.NN or NA, left justified.",
+        "explanation": "Census tract not in valid format or is missing, does not equal NA, or does not equal a valid census tract number.",
+        "rule": {
+            "and": [
+                {
+                    "property": "censusTract",
+                    "condition": "matches_regex",
+                    "value": "[0-9]{4}\\.[0-9]{2}|NA"
+                },
+                {
+                    "property": "censusTract",
+                    "condition": "call",
+                    "function": "isValidCensusTractCombo",
+                    "args": ["censusTract", "metroArea", "stateCode", "fipsCounty"]
+                }
+            ]
+        }
+    },
+    {
+        "id": "V450",
+        "description": "Applicant ethnicity must = 1, 2, 3, or 4.",
+        "explanation": "Applicant ethnicity is missing or not in range 1-4.",
+        "rule": {
+            "property": "applicantEthnicity",
+            "condition": "in",
+            "values": ["1", "2", "3", "4"]
+        }
+    },
+    {
+        "id": "V460",
+        "description": "Co-Applicant ethnicity must = 1, 2, 3, 4, or 5.",
+        "explanation": "Co-Applicant ethnicity is missing or not in range 1-5.",
+        "rule": {
+            "property": "coapplicantEthnicity",
+            "condition": "in",
+            "values": ["1", "2", "3", "4", "5"]
+        }
+    },
+    {
+        "id": "V463",
+        "description": "Co-Applicant ethnicity does not = 5; however, co-applicant race field 1 = 8 and/or co-applicant sex = 5.",
+        "explanation": "If no co-applicant, co-applicant ethnicity/race/sex combination invalid.",
+        "rule": {
+            "if": {
+                "or": [
+                    {
+                        "property": "coapplicantRace1",
+                        "condition": "equal",
+                        "value": "8"
+                    },
+                    {
+                        "property": "coapplicantSex",
+                        "condition": "equal",
+                        "value": "5"
+                    }
+                ]
+            },
+            "then": {
+                "property": "coapplicantEthnicity",
+                "condition": "equal",
+                "value": "5"
+            }
+        }
+    },
+    {
+        "id": "V455",
+        "description": "If applicant ethnicity = 1, 2 or 3 then the first applicant race field must not = 7.",
+        "explanation": "Applicant ethnicity = 1, 2 or 3; therefore first applicant race invalid.",
+        "rule": {
+            "if": {
+                "property": "applicantEthnicity",
+                "condition": "in",
+                "values": ["1", "2", "3"]
+            },
+            "then": {
+                "property": "applicantRace1",
+                "condition": "not_equal",
+                "value": "7"
+            }
+        }
+    },
+    {
+        "id": "V465",
+        "description": "If co-applicant ethnicity = 1, 2 or 3 then the first co-applicant race field must not = 7 or 8.",
+        "explanation": "Applicant ethnicity = 1, 2 or 3; therefore first applicant race invalid.",
+        "rule": {
+            "if": {
+                "property": "coapplicantEthnicity",
+                "condition": "in",
+                "values": ["1", "2", "3"]
+            },
+            "then": {
+                "property": "coapplicantRace1",
+                "condition": "not_in",
+                "values": ["7", "8"]
+            }
+        }
+    },
+    {
+        "id": "V310",
+        "description": "Applicant race field 1 must = 1, 2, 3, 4, 5, 6, or 7.",
+        "explanation": "Applicant race field 1 is missing or is not in range 1-7.",
+        "rule": {
+            "property": "applicantRace1",
+            "condition": "in",
+            "values": ["1", "2", "3", "4", "5", "6", "7"]
+        }
+    },
+    {
+        "id": "V470",
+        "description": "If applicant race = 1-5 in applicant race field 1, then all other applicant race fields must = blank or 1-5.",
+        "explanation": "Applicant race fields 2 - 5 are not blank or in range 1-5.",
+        "rule": {
+            "if": {
+                "property": "applicantRace1",
+                "condition": "in",
+                "values": ["1", "2", "3", "4", "5"]
+            },
+            "then": {
+                "and": [
+                    {
+                        "or": [
+                            {
+                                "property": "applicantRace2",
+                                "condition": "is_empty"
+                            },
+                            {
+                                "property": "applicantRace2",
+                                "condition": "in",
+                                "values": ["1", "2", "3", "4", "5"]
+                            }
+                        ]
+                    },
+                    {
+                        "or": [
+                            {
+                                "property": "applicantRace3",
+                                "condition": "is_empty"
+                            },
+                            {
+                                "property": "applicantRace3",
+                                "condition": "in",
+                                "values": ["1", "2", "3", "4", "5"]
+                            }
+                        ]
+                    },
+                    {
+                        "or": [
+                            {
+                                "property": "applicantRace4",
+                                "condition": "is_empty"
+                            },
+                            {
+                                "property": "applicantRace4",
+                                "condition": "in",
+                                "values": ["1", "2", "3", "4", "5"]
+                            }
+                        ]
+                    },
+                    {
+                        "or": [
+                            {
+                                "property": "applicantRace5",
+                                "condition": "is_empty"
+                            },
+                            {
+                                "property": "applicantRace5",
+                                "condition": "in",
+                                "values": ["1", "2", "3", "4", "5"]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "id": "V475",
+        "description": "If applicant race = 6 or 7 in applicant race field 1, then all other applicant race fields must = blank.",
+        "explanation": "Applicant race field 1= 6 or 7; therefore all other applicant race fields must = blank.",
+        "rule": {
+            "if": {
+                "property": "applicantRace1",
+                "condition": "in",
+                "values": ["6", "7"]
+            },
+            "then": {
+                "and": [
+                    {
+                        "property": "applicantRace2",
+                        "condition": "is_empty"
+                    },
+                    {
+                        "property": "applicantRace3",
+                        "condition": "is_empty"
+                    },
+                    {
+                        "property": "applicantRace4",
+                        "condition": "is_empty"
+                    },
+                    {
+                        "property": "applicantRace5",
+                        "condition": "is_empty"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "id": "V480",
+        "description": "Applicant race must not be the same (i.e. 1,1; 1,1,2; 1,2,3,4,1), when more than one applicant race is designated.",
+        "explanation": "Applicant race is the same.",
+        "rule": {
+            "and": [
+                {
+                    "if": {
+                        "property": "applicantRace2",
+                        "condition": "not_empty"
+                    },
+                    "then": {
+                        "property": "applicantRace2",
+                        "condition": "not_equal_property",
+                        "value": "applicantRace1"
+                    }
+                },
+                {
+                    "if": {
+                        "property": "applicantRace3",
+                        "condition": "not_empty"
+                    },
+                    "then": {
+                        "and": [
+                            {
+                                "property": "applicantRace3",
+                                "condition": "not_equal_property",
+                                "value": "applicantRace1"
+                            },
+                            {
+                                "property": "applicantRace3",
+                                "condition": "not_equal_property",
+                                "value": "applicantRace2"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "property": "applicantRace4",
+                        "condition": "not_empty"
+                    },
+                    "then": {
+                        "and": [
+                            {
+                                "property": "applicantRace4",
+                                "condition": "not_equal_property",
+                                "value": "applicantRace1"
+                            },
+                            {
+                                "property": "applicantRace4",
+                                "condition": "not_equal_property",
+                                "value": "applicantRace2"
+                            },
+                            {
+                                "property": "applicantRace4",
+                                "condition": "not_equal_property",
+                                "value": "applicantRace3"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "property": "applicantRace5",
+                        "condition": "not_empty"
+                    },
+                    "then": {
+                        "and": [
+                            {
+                                "property": "applicantRace5",
+                                "condition": "not_equal_property",
+                                "value": "applicantRace1"
+                            },
+                            {
+                                "property": "applicantRace5",
+                                "condition": "not_equal_property",
+                                "value": "applicantRace2"
+                            },
+                            {
+                                "property": "applicantRace5",
+                                "condition": "not_equal_property",
+                                "value": "applicantRace3"
+                            },
+                            {
+                                "property": "applicantRace5",
+                                "condition": "not_equal_property",
+                                "value": "applicantRace4"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "id": "V315",
+        "description": "Co-Applicant race field 1 must = 1, 2, 3, 4, 5, 6, 7, or 8.",
+        "explanation": "Co-Applicant race field 1 is missing or is not in range 1-8.",
+        "rule": {
+            "property": "coapplicantRace1",
+            "condition": "in",
+            "values": ["1", "2", "3", "4", "5", "6", "7", "8"]
+        }
+    },
+    {
+        "id": "V317",
+        "description": "Co-Applicant race field 1 does not = 8; however, co-applicant ethnicity and/or co-applicant sex = 5.",
+        "explanation": "If no co-applicant, co-applicant race/sex/ethnicity combination invalid.",
+        "rule": {
+            "if": {
+                "or": [
+                    {
+                        "property": "coapplicantEthnicity",
+                        "condition": "equal",
+                        "value": "5"
+                    },
+                    {
+                        "property": "coapplicantSex",
+                        "condition": "equal",
+                        "value": "5"
+                    }
+                ]
+            },
+            "then": {
+                "property": "coapplicantRace1",
+                "condition": "equal",
+                "value": "8"
+            }
+        }
+    },
+    {
+        "id": "V485",
+        "description": "If co-applicant race = 1-5 in co-applicant race field 1, then all other co-applicant race fields must = blank or 1-5.",
+        "explanation": "Co-Applicant race fields 2-5 are not blank or in range 1-5.",
+        "rule": {
+            "if": {
+                "property": "coapplicantRace1",
+                "condition": "in",
+                "values": ["1", "2", "3", "4", "5"]
+            },
+            "then": {
+                "and": [
+                    {
+                        "or": [
+                            {
+                                "property": "coapplicantRace2",
+                                "condition": "is_empty"
+                            },
+                            {
+                                "property": "coapplicantRace2",
+                                "condition": "in",
+                                "values": ["1", "2", "3", "4", "5"]
+                            }
+                        ]
+                    },
+                    {
+                        "or": [
+                            {
+                                "property": "coapplicantRace3",
+                                "condition": "is_empty"
+                            },
+                            {
+                                "property": "coapplicantRace3",
+                                "condition": "in",
+                                "values": ["1", "2", "3", "4", "5"]
+                            }
+                        ]
+                    },
+                    {
+                        "or": [
+                            {
+                                "property": "coapplicantRace4",
+                                "condition": "is_empty"
+                            },
+                            {
+                                "property": "coapplicantRace4",
+                                "condition": "in",
+                                "values": ["1", "2", "3", "4", "5"]
+                            }
+                        ]
+                    },
+                    {
+                        "or": [
+                            {
+                                "property": "coapplicantRace5",
+                                "condition": "is_empty"
+                            },
+                            {
+                                "property": "coapplicantRace5",
+                                "condition": "in",
+                                "values": ["1", "2", "3", "4", "5"]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "id": "V490",
+        "description": "If co-applicant race = 6, 7, or 8 in co-applicant race field 1, then all other co-applicant race fields must = blank.",
+        "explanation": "Co-Applicant race field 1 = 6, 7, or 8; therefore all other co-applicant race fields must = blank.",
+        "rule": {
+            "if": {
+                "property": "coapplicantRace1",
+                "condition": "in",
+                "values": ["6", "7", "8"]
+            },
+            "then": {
+                "and": [
+                    {
+                        "property": "coapplicantRace2",
+                        "condition": "is_empty"
+                    },
+                    {
+                        "property": "coapplicantRace3",
+                        "condition": "is_empty"
+                    },
+                    {
+                        "property": "coapplicantRace4",
+                        "condition": "is_empty"
+                    },
+                    {
+                        "property": "coapplicantRace5",
+                        "condition": "is_empty"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "id": "V495",
+        "description": "Co-Applicant race must not be the same (i.e. 1,1; 1,1,2; 1,2,3,4,1), when more than one co-applicant race is designated.",
+        "explanation": "Co-Applicant race is the same.",
+        "rule": {
+            "and": [
+                {
+                    "if": {
+                        "property": "coapplicantRace2",
+                        "condition": "not_empty"
+                    },
+                    "then": {
+                        "property": "coapplicantRace2",
+                        "condition": "not_equal_property",
+                        "value": "coapplicantRace1"
+                    }
+                },
+                {
+                    "if": {
+                        "property": "coapplicantRace3",
+                        "condition": "not_empty"
+                    },
+                    "then": {
+                        "and": [
+                            {
+                                "property": "coapplicantRace3",
+                                "condition": "not_equal_property",
+                                "value": "coapplicantRace1"
+                            },
+                            {
+                                "property": "coapplicantRace3",
+                                "condition": "not_equal_property",
+                                "value": "coapplicantRace2"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "property": "coapplicantRace4",
+                        "condition": "not_empty"
+                    },
+                    "then": {
+                        "and": [
+                            {
+                                "property": "coapplicantRace4",
+                                "condition": "not_equal_property",
+                                "value": "coapplicantRace1"
+                            },
+                            {
+                                "property": "coapplicantRace4",
+                                "condition": "not_equal_property",
+                                "value": "coapplicantRace2"
+                            },
+                            {
+                                "property": "coapplicantRace4",
+                                "condition": "not_equal_property",
+                                "value": "coapplicantRace3"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "property": "coapplicantRace5",
+                        "condition": "not_empty"
+                    },
+                    "then": {
+                        "and": [
+                            {
+                                "property": "coapplicantRace5",
+                                "condition": "not_equal_property",
+                                "value": "coapplicantRace1"
+                            },
+                            {
+                                "property": "coapplicantRace5",
+                                "condition": "not_equal_property",
+                                "value": "coapplicantRace2"
+                            },
+                            {
+                                "property": "coapplicantRace5",
+                                "condition": "not_equal_property",
+                                "value": "coapplicantRace3"
+                            },
+                            {
+                                "property": "coapplicantRace5",
+                                "condition": "not_equal_property",
+                                "value": "coapplicantRace4"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "id": "V320",
+        "description": "Applicant sex must = 1, 2, 3, or 4.",
+        "explanation": "Applicant sex is missing or is not in range 1-4.",
+        "rule": {
+            "property": "applicantSex",
+            "condition": "in",
+            "values": ["1", "2", "3", "4"]
+        }
+    },
+    {
+        "id": "V325",
+        "description": "Co-Applicant sex must = 1, 2, 3, 4, or 5.",
+        "explanation": "Co-Applicant sex is missing or not in range 1-5.",
+        "rule": {
+            "property": "coapplicantSex",
+            "condition": "in",
+            "values": ["1", "2", "3", "4", "5"]
+        }
+    },
+    {
+        "id": "V326",
+        "description": "Co-Applicant sex does not = 5; however, co-applicant ethnicity = 5 and/or co-applicant race field 1 = 8.",
+        "explanation": "If no co-applicant, co-applicant sex/ethnicity/race combination invalid.",
+        "rule": {
+            "if": {
+                "or": [
+                    {
+                        "property": "coapplicantEthnicity",
+                        "condition": "equal",
+                        "value": "5"
+                    },
+                    {
+                        "property": "coapplicantRace1",
+                        "condition": "equal",
+                        "value": "8"
+                    }
+                ]
+            },
+            "then": {
+                "property": "coapplicantSex",
+                "condition": "equal",
+                "value": "5"
+            }
+        }
+    },
+    {
+        "id": "V330",
+        "description": "Income must be numeric and > 0, or equal NA.",
+        "explanation": "Income is zero, missing, negative or, if non-numeric, does not equal NA.",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "applicantIncome",
+                            "condition": "is_integer"
+                        },
+                        {
+                            "property": "applicantIncome",
+                            "condition": "greater_than",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "property": "applicantIncome",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "V338",
+        "description": "If applicant ethnicity, race, and sex = 4, 7, and 4, respectively, and co-applicant ethnicity, race, and sex = 5, 8, and 5, respectively, and action taken = 1-5 or 7-8 then applicant income must = NA.",
+        "explanation": "Applicant ethnicity, race, and sex = 4, 7, and 4, and co-applicant ethnicity, race, and sex = 5, 8, and 5, and action taken = 1-5, or 7-8, therefore income must = NA.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "applicantEthnicity",
+                        "condition": "equal",
+                        "value": "4"
+                    },
+                    {
+                        "property": "applicantRace1",
+                        "condition": "equal",
+                        "value": "7"
+                    },
+                    {
+                        "property": "applicantSex",
+                        "condition": "equal",
+                        "value": "4"
+                    },
+                    {
+                        "property": "coapplicantEthnicity",
+                        "condition": "equal",
+                        "value": "5"
+                    },
+                    {
+                        "property": "coapplicantRace1",
+                        "condition": "equal",
+                        "value": "8"
+                    },
+                    {
+                        "property": "coapplicantSex",
+                        "condition": "equal",
+                        "value": "5"
+                    },
+                    {
+                        "property": "actionTaken",
+                        "condition": "in",
+                        "values": ["1", "2", "3", "4", "5", "7", "8"]
+                    }
+                ]
+            },
+            "then": {
+                "property": "applicantIncome",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "V340",
+        "description": "Type of purchaser must = 0, 1, 2, 3, 4, 5, 6, 7, 8, or 9.",
+        "explanation": "Type of purchaser must be in range 0-9.",
+        "rule": {
+            "property": "purchaserType",
+            "condition": "in",
+            "values": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        }
+    },
+    {
+        "id": "V347",
+        "description": "If type of purchaser = 1, 2, 3, 4, 5, 6, 7, 8, or 9, then action taken type must be 1 or 6.",
+        "explanation": "Type of purchaser in range 1-9; therefore action taken should equal 1 or 6.",
+        "rule": {
+            "if": {
+                "property": "purchaserType",
+                "condition": "in",
+                "values": ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+            },
+            "then": {
+                "property": "actionTaken",
+                "condition": "in",
+                "values": ["1", "6"]
+            }
+        }
+    },
+    {
+        "id": "V375",
+        "description": "If type of purchaser = 2, then loan type must = 2, 3, or 4.",
+        "explanation": "Purchaser type = 2 and loan type does not equal 2, 3, or 4.",
+        "rule": {
+            "if": {
+                "property": "purchaserType",
+                "condition": "equal",
+                "value": "2"
+            },
+            "then": {
+                "property": "loanType",
+                "condition": "in",
+                "values": ["2", "3", "4"]
+            }
+        }
+    },
+    {
+        "id": "V360",
+        "description": "Responses for reasons for denial must not be the same (i.e. 1,1; 1,1,2; 1,2,2;...........), except for denial reasons 9 or 10.",
+        "explanation": "Reasons for denial are the same.",
+        "rule": {
+            "and": [
+                {
+                    "if": {
+                        "property": "denialReason2",
+                        "condition": "not_empty"
+                    },
+                    "then": {
+                        "if": {
+                            "property": "denialReason2",
+                            "condition": "not_in",
+                            "values": ["09", "10", "9"]
+                        },
+                        "then": {
+                            "property": "denialReason2",
+                            "condition": "not_equal_property",
+                            "value": "denialReason1"
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "property": "denialReason3",
+                        "condition": "not_empty"
+                    },
+                    "then": {
+                        "if": {
+                            "property": "denialReason3",
+                            "condition": "not_in",
+                            "values": ["09", "10", "9"]
+                        },
+                        "then": {
+                            "and": [
+                                {
+                                    "property": "denialReason3",
+                                    "condition": "not_equal_property",
+                                    "value": "denialReason1"
+                                },
+                                {
+                                    "property": "denialReason3",
+                                    "condition": "not_equal_property",
+                                    "value": "denialReason2"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "id": "V500",
+        "description": "Rate spread must be in the NN.NNN format, must not = blank, and if NA, left justified.",
+        "explanation": "Rate spread is not in valid format or is missing.",
+        "rule": {
+            "property": "rateSpread",
+            "condition": "matches_regex",
+            "value": "[0-9]{2}\\.[0-9]{3}|NA"
+        }
+    },
+    {
+        "id": "V505",
+        "description": "If action taken type = 3-8, then rate spread must = NA.",
+        "explanation": "Action taken type = 3-8; therefore rate spread must = NA.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "between",
+                "start": 2,
+                "end": 9
+            },
+            "then": {
+                "property": "rateSpread",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "V570",
+        "description": "If lien status = 1, then rate spread must be ≥ 1.5% and ≤ 99.99% or NA.",
+        "explanation": "Lien status = 1; therefore rate spread must be in range ≥ 1.5% and ≤ 99.99% or NA.",
+        "rule": {
+            "if": {
+                "property": "lienStatus",
+                "condition": "equal",
+                "value": "1"
+            },
+            "then": {
+                "or": [
+                    {
+                        "property": "rateSpread",
+                        "condition": "equal",
+                        "value": "NA"
+                    },
+                    {
+                        "property": "rateSpread",
+                        "condition": "between",
+                        "start": 1.49,
+                        "end": 100.0
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "id": "V575",
+        "description": "If lien status = 2, 3, or 4, then rate spread must be ≥ 3.5% and ≤ 99.99% or NA.",
+        "explanation": "Lien status = 2, 3, or 4; therefore rate spread must be in range ≥ 3.5% and ≤ 99.99% or NA.",
+        "rule": {
+            "if": {
+                "property": "lienStatus",
+                "condition": "in",
+                "values": ["2", "3", "4"]
+            },
+            "then": {
+                "or": [
+                    {
+                        "property": "rateSpread",
+                        "condition": "equal",
+                        "value": "NA"
+                    },
+                    {
+                        "property": "rateSpread",
+                        "condition": "between",
+                        "start": 3.49,
+                        "end": 100.0
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "id": "V540",
+        "description": "If action taken type = 2-5, 7, or 8, HOEPA status must = 4.",
+        "explanation": "Action taken type = 2-5, 7, or 8; therefore HOEPA status must = 4.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "in",
+                "values": ["2", "3", "4", "5", "7", "8"]
+            },
+            "then": {
+                "property": "hoepaStatus",
+                "condition": "equal",
+                "value": "4"
+            }
+        }
+    },
+    {
+        "id": "V525",
+        "description": "HOEPA status must = 1, 2, 3, or 4.",
+        "explanation": "HOEPA status is missing or does not = 1, 2, 3, or 4.",
+        "rule": {
+            "property": "hoepaStatus",
+            "condition": "in",
+            "values": ["1", "2", "3", "4"]
+        }
+    },
+    {
+        "id": "V550",
+        "description": "Lien status must = 1, 2, 3, 4, or 5.",
+        "explanation": "Lien status is missing or not in range 1-5.",
+        "rule": {
+            "property": "lienStatus",
+            "condition": "in",
+            "values": ["1", "2", "3", "4", "5"]
+        }
+    },
+    {
+        "id": "NPRM001",
+        "description": "Construction Method must be 1, 2, or 3.",
+        "explanation": "Construction Method not in the range 1-3.",
+        "rule": {
+            "property": "constructionMethod",
+            "condition": "in",
+            "values": ["1", "2", "3"]
+        }
+    },
+    {
+        "id": "NPRM002",
+        "description": "Property address, city, and zip code must not = blank.",
+        "explanation": "Property address, city, or zip code is missing.",
+        "rule": {
+            "and": [
+                {
+                    "property": "propertyAddress",
+                    "condition": "not_empty"
+                },
+                {
+                    "property": "propertyCity",
+                    "condition": "not_empty"
+                },
+                {
+                    "property" :"propertyZip",
+                    "condition": "not_empty"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM003",
+        "description": "Property zip code must be a property formatted zip code or NA left-justified.",
+        "explanation": "Property zip code is an invalid format.",
+        "rule": {
+            "or": [
+                {
+                    "property": "propertyZip",
+                    "condition": "zipcode"
+                },
+                {
+                    "property": "propertyZip",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM004",
+        "description": "Applicant age must be numeric and > 0.",
+        "explanation": "Applicant age is zero, missing, negative or otherwise non-numeric.",
+        "rule": {
+            "and": [
+                {
+                    "property": "applicantAge",
+                    "condition": "is_integer"
+                },
+                {
+                    "property": "applicantAge",
+                    "condition": "greater_than",
+                    "value": "0"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM005",
+        "description": "Coapplicant age must be numeric and > 0.",
+        "explanation": "Coapplicant age is zero, missing, negative or otherwise non-numeric.",
+        "rule": {
+            "and": [
+                {
+                    "property": "coapplicantAge",
+                    "condition": "is_integer"
+                },
+                {
+                    "property": "coapplicantAge",
+                    "condition": "greater_than",
+                    "value": "0"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM006",
+        "description": "Applicant credit score must be numeric and > 0.",
+        "explanation": "Applicant credit score is zero, missing, negative or otherwise non-numeric.",
+        "rule": {
+            "and": [
+                {
+                    "property": "applicantCreditScore",
+                    "condition": "is_integer"
+                },
+                {
+                    "property": "applicantCreditScore",
+                    "condition": "greater_than",
+                    "value": "0"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM007",
+        "description": "Coapplicant credit score must be numeric and > 0 or NA left-justified.",
+        "explanation": "Coapplicant credit score is zero, missing, negative or otherwise non-numeric and not NA.",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "coapplicantCreditScore",
+                            "condition": "is_integer"
+                        },
+                        {
+                            "property": "coapplicantCreditScore",
+                            "condition": "greater_than",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "property": "coapplicantCreditScore",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM008",
+        "description": "Applicant credit model must be 1, 2, 3, 4, 5, 6, 7, 8, 9, or 10.",
+        "explanation": "Applicant credit model not in range 1-10.",
+        "rule": {
+            "property": "applicantCreditModel",
+            "condition": "in",
+            "values": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        }
+    },
+    {
+        "id": "NPRM009",
+        "description": "Coapplicant credit model must be 1, 2, 3, 4, 5, 6, 7, 8, 9, or 10.",
+        "explanation": "Coapplicant credit model not in range 1-10.",
+        "rule": {
+            "property": "coapplicantCreditModel",
+            "condition": "in",
+            "values": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        }
+    },
+    {
+        "id": "NPRM010",
+        "description": "Total fees must be numeric and >= 0 or NA left-justified",
+        "explanation": "Total fees is missing, negative, or otherwise non-numeric and not NA.",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "totalFees",
+                            "condition": "is_integer"
+                        },
+                        {
+                            "property": "totalFees",
+                            "condition": "greater_than_or_equal",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "property": "totalFees",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM011",
+        "description": "Total origination charges must be numeric and >= 0 or NA left-justified",
+        "explanation": "Total origination charges is missing, negative, or otherwise non-numeric and not NA.",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "totalOriginationCharges",
+                            "condition": "is_integer"
+                        },
+                        {
+                            "property": "totalOriginationCharges",
+                            "condition": "greater_than_or_equal",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "property": "totalOriginationCharges",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM012",
+        "description": "Total discount points must be numeric and >= 0 or NA left-justified",
+        "explanation": "Total discount points is missing, negative, or otherwise non-numeric and not NA.",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "totalDiscountPoints",
+                            "condition": "is_integer"
+                        },
+                        {
+                            "property": "totalDiscountPoints",
+                            "condition": "greater_than_or_equal",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "property": "totalDiscountPoints",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM013",
+        "description": "Risk adjusted interest rate must be in the NN.NNN format, must not = blank, and if NA, left justified.",
+        "explanation": "Risk adjusted interest rate is not in valid format or is missing.",
+        "rule": {
+            "property": "riskAdjustedInterestRate",
+            "condition": "matches_regex",
+            "value": "[0-9]{2}\\.[0-9]{3}|NA"
+        }
+    },
+    {
+        "id": "NPRM014",
+        "description": "Interest rate must be in the NN.NNN format, must not = blank, and if NA, left justified.",
+        "explanation": "Interest rate is not in valid format or is missing.",
+        "rule": {
+            "property": "interestRate",
+            "condition": "matches_regex",
+            "value": "[0-9]{2}\\.[0-9]{3}|NA"
+        }
+    },
+    {
+        "id": "NPRM015",
+        "description": "Prepayment penalty term must be numeric and > 0 or NA left-justified.",
+        "explanation": "Prepayment penalty term is missing, negative, or otherwise non-numeric and not NA.",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "prepaymentPenaltyTerm",
+                            "condition": "is_integer"
+                        },
+                        {
+                            "property": "prepaymentPenaltyTerm",
+                            "condition": "greater_than",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "property": "prepaymentPenaltyTerm",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM016",
+        "description": "Debt to income ratio must be in the NN.NN format, must not = blank, and if NA, left justified.",
+        "explanation": "Debt to income ratio is not in valid format or is missing.",
+        "rule": {
+            "property": "dtiRatio",
+            "condition": "matches_regex",
+            "value": "[0-9]{2}\\.[0-9]{2}|NA"
+        }
+    },
+    {
+        "id": "NPRM017",
+        "description": "Combined loan-to-value ratio must be in the NN.NN format, must not = blank, and if NA, left justified.",
+        "explanation": "Combined loan-to-value ratio is not in valid format or is missing.",
+        "rule": {
+            "property": "cltvRatio",
+            "condition": "matches_regex",
+            "value": "[0-9]{2}\\.[0-9]{2}|NA"
+        }
+    },
+    {
+        "id": "NPRM018",
+        "description": "Loan term must be numeric and > 0 or NA left-justified.",
+        "explanation": "Loan term is missing, negative, or otherwise non-numeric and not NA.",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "loanTerm",
+                            "condition": "is_integer"
+                        },
+                        {
+                            "property": "loanTerm",
+                            "condition": "greater_than",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "property": "loanTerm",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM019",
+        "description": "Introductory rate period must be numeric and > 0 or NA left-justified.",
+        "explanation": "Introductory rate period is missing, negative, or otherwise non-numeric and not NA.",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "introductoryRatePeriod",
+                            "condition": "is_integer"
+                        },
+                        {
+                            "property": "introductoryRatePeriod",
+                            "condition": "greater_than",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "property": "introductoryRatePeriod",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM020",
+        "description": "Balloon payment must = 1 or 2.",
+        "explanation": "Balloon payment not in range 1-2.",
+        "rule": {
+            "property": "balloonPayment",
+            "condition": "in",
+            "values": ["1", "2"]
+        }
+    },
+    {
+        "id": "NPRM021",
+        "description": "Interest only payments must = 1 or 2.",
+        "explanation": "Interest only payments not in range 1-2.",
+        "rule": {
+            "property": "interestOnlyPayments",
+            "condition": "in",
+            "values": ["1", "2"]
+        }
+    },
+    {
+        "id": "NPRM022",
+        "description": "Negative amortization must = 1 or 2.",
+        "explanation": "Negative amortization not in range 1-2.",
+        "rule": {
+            "property": "negativeAmortization",
+            "condition": "in",
+            "values": ["1", "2"]
+        }
+    },
+    {
+        "id": "NPRM023",
+        "description": "Other non-amortizing features must = 1 or 2.",
+        "explanation": "Other non-amortizing features not in range 1-2.",
+        "rule": {
+            "property": "otherNonAmortizingFeatures",
+            "condition": "in",
+            "values": ["1", "2"]
+        }
+    },
+    {
+        "id": "NPRM024",
+        "description": "Property value must be numeric and > 0 or NA left-justified.",
+        "explanation": "Property value is missing, negative, or otherwise non-numeric and not NA.",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "propertyValue",
+                            "condition": "is_integer"
+                        },
+                        {
+                            "property": "propertyValue",
+                            "condition": "greater_than",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "property": "propertyValue",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM025",
+        "description": "Manufactured home legal classification must = 1, 2, or 3.",
+        "explanation": "Manufactured home legal classification not in range 1-3.",
+        "rule": {
+            "property": "mhLegalClassification",
+            "condition": "in",
+            "values": ["1", "2", "3"]
+        }
+    },
+    {
+        "id": "NPRM026",
+        "description": "Manufactured home land property interest must = 1, 2, 3, 4, or 5.",
+        "explanation": "Manufactured home land property interest not in range 1-5.",
+        "rule": {
+            "property": "mhLandPropertyInterest",
+            "condition": "in",
+            "values": ["1", "2", "3", "4", "5"]
+        }
+    },
+    {
+        "id": "NPRM027",
+        "description": "Total units must be numeric and > 0.",
+        "explanation": "Total units is missing, negative, or otherwise non-numeric.",
+        "rule": {
+            "and": [
+                {
+                    "property": "totalUnits",
+                    "condition": "is_integer"
+                },
+                {
+                    "property": "totalUnits",
+                    "condition": "greater_than",
+                    "value": "0"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM028",
+        "description": "Total multifamily units must be numeric and > 0 or NA left-justified.",
+        "explanation": "Total multifamily units is missing, negative, or otherwise non-numeric and not NA.",
+        "rule": {
+            "or": [
+                {
+                    "and": [
+                        {
+                            "property": "multifamilyUnits",
+                            "condition": "is_integer"
+                        },
+                        {
+                            "property": "multifamilyUnits",
+                            "condition": "greater_than_or_equal",
+                            "value": "0"
+                        }
+                    ]
+                },
+                {
+                    "property": "multifamilyUnits",
+                    "condition": "equal",
+                    "value": "NA"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM029",
+        "description": "Application channel must = 1, 2, or 3.",
+        "explanation": "Application channel not in range 1-3.",
+        "rule": {
+            "property": "applicationChannel",
+            "condition": "in",
+            "values": ["1", "2", "3"]
+        }
+    },
+    {
+        "id": "NPRM030",
+        "description": "Initially payable must = 1, 2, or 3.",
+        "explanation": "Initially payable not in range 1-3.",
+        "rule": {
+            "property": "initiallyPayable",
+            "condition": "in",
+            "values": ["1", "2", "3"]
+        }
+    },
+    {
+        "id": "NPRM031",
+        "description": "Nationwide mortgage licensing system and registry identifier must be 12 alpha-numeric characters or NA left-justified",
+        "explanation": "Nationwide mortgage licensing system and registry identifier is an invalid format",
+        "rule": {
+            "property": "nmlsrID",
+            "condition": "matches_regex",
+            "value": "^.{12}$|NA"
+        }
+    },
+    {
+        "id": "NPRM032",
+        "description": "Automated underwriting system must = 1, 2, 3, 4, 5, 6, or 7.",
+        "explanation": "Automated underwriting system not in range 1-7.",
+        "rule": {
+            "property": "aus",
+            "condition": "in",
+            "values": ["1", "2", "3", "4", "5", "6", "7"]
+        }
+    },
+    {
+        "id": "NPRM033",
+        "description": "Automated underwriting system recommendation must = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, or 11.",
+        "explanation": "Automated underwriting system recommendation not in range 1-11.",
+        "rule": {
+            "property": "ausRecommendation",
+            "condition": "in",
+            "values": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        }
+    },
+    {
+        "id": "NPRM034",
+        "description": "Reverse mortgage flag must = 1, 2, or 3.",
+        "explanation": "Reverse mortgage flag not in range 1-3.",
+        "rule": {
+            "property": "reverseMortgage",
+            "condition": "in",
+            "values": ["1", "2", "3"]
+        }
+    },
+    {
+        "id": "NPRM035",
+        "description": "HELOC flag must = 1, 2, or 3.",
+        "explanation": "HELOC flag not in range 1-3.",
+        "rule": {
+            "property": "heloc",
+            "condition": "in",
+            "values": ["1", "2", "3"]
+        }
+    },
+    {
+        "id": "NPRM036",
+        "description": "Qualified mortgage identifier must = 1, 2, 3, 4, 5, or 6.",
+        "explanation": "Qualified mortgage identifier not in range 1-6.",
+        "rule": {
+            "property": "qualifiedMortgageID",
+            "condition": "in",
+            "values": ["1", "2", "3", "4", "5", "6"]
+        }
+    },
+    {
+        "id": "NPRM037",
+        "description": "First draw must be numeric and >= 0.",
+        "explanation": "First draw is missing, negative, or otherwise non-numeric.",
+        "rule": {
+            "and": [
+                {
+                    "property": "firstDraw",
+                    "condition": "is_integer"
+                },
+                {
+                    "property": "firstDraw",
+                    "condition": "greater_than_or_equal",
+                    "value": "0"
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM038",
+        "description": "Reasons for denial must be 1-10 and not blank.",
+        "explanation": "One or more reasons for denial are blank or not 1-10.",
+        "rule": {
+            "and": [
+                {
+                    "property": "denialReason1",
+                    "condition": "in",
+                    "values": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+                },
+                {
+                    "property": "denialReason2",
+                    "condition": "in",
+                    "values": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+                },
+                {
+                    "property": "denialReason3",
+                    "condition": "in",
+                    "values": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM039",
+        "description": "If any denial reason is 9 (other) its corresponding text field should not be blank.",
+        "explanation": "A denial reason of other was given without being elaborated.",
+        "rule": {
+            "and": [
+                {
+                    "if": {
+                        "property": "denialReason1",
+                        "condition": "in",
+                        "values": ["09", "9"]
+                    },
+                    "then": {
+                        "property": "denialReasonText1",
+                        "condition": "not_empty"
+                    }
+                },
+                {
+                    "if": {
+                        "property": "denialReason2",
+                        "condition": "in",
+                        "values": ["09", "9"]
+                    },
+                    "then": {
+                        "property": "denialReasonText2",
+                        "condition": "not_empty"
+                    }
+                },
+                {
+                    "if": {
+                        "property": "denialReason3",
+                        "condition": "in",
+                        "values": ["09", "9"]
+                    },
+                    "then": {
+                        "property": "denialReasonText3",
+                        "condition": "not_empty"
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM040",
+        "description": "If any denial text is provided then its corresponding denial reason should be 9.",
+        "explanation": "Denial reason text was provided when denial reason was not 9 (Other).",
+        "rule": {
+            "and": [
+                {
+                    "if": {
+                        "property": "denialReasonText1",
+                        "condition": "not_empty"
+                    },
+                    "then": {
+                        "property": "denialReason1",
+                        "condition": "in",
+                        "values": ["09", "9"]
+                    }
+                },
+                {
+                    "if": {
+                        "property": "denialReasonText2",
+                        "condition": "not_empty"
+                    },
+                    "then": {
+                        "property": "denialReason2",
+                        "condition": "in",
+                        "values": ["09", "9"]
+                    }
+                },
+                {
+                    "if": {
+                        "property": "denialReasonText3",
+                        "condition": "not_empty"
+                    },
+                    "then": {
+                        "property": "denialReason3",
+                        "condition": "in",
+                        "values": ["09", "9"]
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "id": "NPRM041",
+        "description": "Property address must not be a PO Box.",
+        "explanation": "Property address is a PO Box.",
+        "rule": {
+            "property": "propertyAddress",
+            "condition": "matches_regex",
+            "value": "^((?!PO Box).)*$"
+        }
+    },
+    {
+        "id": "NPRM042",
+        "description": "Rate spread must be NA when the loan is a reverse mortgage and action taken is 1 or 2.",
+        "explanation": "Loan is a reverse mortgage, loan was originated or approved but not accepted by the applicant, and rate spread is not NA.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "actionTaken",
+                        "condition": "in",
+                        "values": ["1", "2"]
+                    },
+                    {
+                        "property": "reverseMortgage",
+                        "condition": "in",
+                        "values": ["1", "2"]
+                    }
+                ]
+            },
+            "then": {
+                "property": "rateSpread",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "NPRM043",
+        "description": "HOEPA Status must be 4 when reverse mortgage is 1-2 or action taken is 2-8.",
+        "explanation": "Reverse mortgage is 1-2 or action taken is 2-8 and HOEPA Status is not 4.",
+        "rule": {
+            "if": {
+                "or": [
+                    {
+                        "property": "actionTaken",
+                        "condition": "between",
+                        "start": 1,
+                        "end": 9
+                    },
+                    {
+                        "property": "reverseMortgage",
+                        "condition": "in",
+                        "values": ["1", "2"]
+                    }
+                ]
+            },
+            "then": {
+                "property": "hoepaStatus",
+                "condition": "equal",
+                "value": "4"
+            }
+        }
+    },
+    {
+        "id": "NPRM044",
+        "description": "Applicant credit model must be 9 when action taken is 4 or 5.",
+        "explanation": "Applicant credit model is not 9 but action taken is 4 or 5.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "in",
+                "values": ["4", "5"]
+            },
+            "then": {
+                "property": "applicantCreditModel",
+                "condition": "in",
+                "values": ["09", "9"]
+            }
+        }
+    },
+    {
+        "id": "NPRM045",
+        "description": "Applicant credit model text must not be empty when applicant credit model is 9 (Other).",
+        "explanation": "Applicant credit model text is empty when applicant credit model is 9 (Other).",
+        "rule": {
+            "if": {
+                "property": "applicantCreditModel",
+                "condition": "in",
+                "values": ["09", "9"]
+            },
+            "then": {
+                "property": "applicantCreditModelText",
+                "condition": "not_empty"
+            }
+        }
+    },
+    {
+        "id": "NPRM046",
+        "description": "When applicant credit model text is not empty, applicant credit score must be 9 (Other).",
+        "explanation": "Applicant credit model text is not empty when applicant credit model is not 9 (Other).",
+        "rule": {
+            "if": {
+                "property": "applicantCreditModelText",
+                "condition": "not_empty"
+            },
+            "then": {
+                "property": "applicantCreditModel",
+                "condition": "in",
+                "values": ["09", "9"]
+            }
+        }
+    },
+    {
+        "id": "NPRM047",
+        "description": "Coapplicant credit model text must not be empty when coapplicant credit model is 9 (Other).",
+        "explanation": "Coapplicant credit model text is empty when coapplicant credit model is 9 (Other).",
+        "rule": {
+            "if": {
+                "property": "coapplicantCreditModel",
+                "condition": "in",
+                "values": ["09", "9"]
+            },
+            "then": {
+                "property": "coapplicantCreditModelText",
+                "condition": "not_empty"
+            }
+        }
+    },
+    {
+        "id": "NPRM048",
+        "description": "When coapplicant credit model text is not empty, coapplicant credit score must be 9 (Other).",
+        "explanation": "Coapplicant credit model text is not empty when coapplicant credit model is not 9 (Other).",
+        "rule": {
+            "if": {
+                "property": "coapplicantCreditModelText",
+                "condition": "not_empty"
+            },
+            "then": {
+                "property": "coapplicantCreditModel",
+                "condition": "in",
+                "values": ["09", "9"]
+            }
+        }
+    },
+    {
+        "id": "NPRM049",
+        "description": "Universal loan identifier can not contain social security numbers.",
+        "explanation": "Universal loan identifier contains one or more social security numbers.",
+        "rule": {
+            "property": "universalLoanID",
+            "condition": "matches_regex",
+            "value": "^((?!\\d{3}-\\d{2}-\\d{4}).)*$"
+        }
+    },
+    {
+        "id": "NPRM050",
+        "description": "Denial reason 1, 2, and 3 must be 10 (NA) when action taken is 4 or 5.",
+        "explanation": "Action taken is 4 or 5 and one or more denial reasons are not 10 (NA).",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "in",
+                "values": ["4", "5"]
+            },
+            "then": {
+                "and": [
+                    {
+                        "property": "denialReason1",
+                        "condition": "equal",
+                        "value": "10"
+                    },
+                    {
+                        "property": "denialReason2",
+                        "condition": "equal",
+                        "value": "10"
+                    },
+                    {
+                        "property": "denialReason3",
+                        "condition": "equal",
+                        "value": "10"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "id": "NPRM051",
+        "description": "Total points and fees should be NA when action taken is 6.",
+        "explanation": "Loan was purchased; therefore total points and fees should be NA.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "equal",
+                "value": "6"
+            },
+            "then": {
+                "property": "totalFees",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "NPRM052",
+        "description": "Total origination charges should be NA when reverse mortgage is 1 or 2 or heloc flag is 2.",
+        "explanation": "Loan is a reverse mortgage or open-end line of credit; therefore total origination charges should be NA.",
+        "rule": {
+            "if": {
+                "or": [
+                    {
+                        "property": "reverseMortgage",
+                        "condition": "in",
+                        "values": ["1", "2"]
+                    },
+                    {
+                        "property": "heloc",
+                        "condition": "equal",
+                        "value": "2"
+                    }
+                ]
+            },
+            "then": {
+                "property": "totalOriginationCharges",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "NPRM053",
+        "description": "Total discount points should be NA when reverse mortgage is 1 or 2 or heloc flag is 2.",
+        "explanation": "Loan is a reverse mortgage or open-end line of credit; therefore total discount points should be NA.",
+        "rule": {
+            "if": {
+                "or": [
+                    {
+                        "property": "reverseMortgage",
+                        "condition": "in",
+                        "values": ["1", "2"]
+                    },
+                    {
+                        "property": "heloc",
+                        "condition": "equal",
+                        "value": "2"
+                    }
+                ]
+            },
+            "then": {
+                "property": "totalDiscountPoints",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "NPRM054",
+        "description": "Risk adjusted interest rate should be NA when reverse mortgage is 1 or 2 or heloc flag is 2.",
+        "explanation": "Loan is a reverse mortgage or open-end line of credit; therefore risk adjusted interest rate should be NA.",
+        "rule": {
+            "if": {
+                "or": [
+                    {
+                        "property": "reverseMortgage",
+                        "condition": "in",
+                        "values": ["1", "2"]
+                    },
+                    {
+                        "property": "heloc",
+                        "condition": "equal",
+                        "value": "2"
+                    }
+                ]
+            },
+            "then": {
+                "property": "riskAdjustedInterestRate",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "NPRM055",
+        "description": "Interest rate should be NA when action taken is 5.",
+        "explanation": "Application closed due to incompleteness; therefore interest rate should be NA.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "equal",
+                "value": "5"
+            },
+            "then": {
+                "property": "interestRate",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "NPRM056",
+        "description": "Prepayment penalty term should be NA when action taken is 5.",
+        "explanation": "Application closed due to incompleteness; therefore prepayment penalty term should be NA.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "equal",
+                "value": "5"
+            },
+            "then": {
+                "property": "prepaymentPenaltyTerm",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "NPRM057",
+        "description": "Debt to income ratio should be NA when action taken is 5 or action taken is 4 and reverse mortgage is 1 or 2.",
+        "explanation": "Application closed due to incompleteness or withdrawn by applicant and is a reverse mortgage; therefore debt to income ratio should be NA.",
+        "rule": {
+            "if": {
+                "or": [
+                    {
+                        "property": "actionTaken",
+                        "condition": "equal",
+                        "value": "5"
+                    },
+                    {
+                        "and": [
+                            {
+                                "property": "actionTaken",
+                                "condition": "equal",
+                                "value": "4"
+                            },
+                            {
+                                "property": "reverseMortgage",
+                                "condition": "in",
+                                "values": ["1", "2"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "then": {
+                "property": "dtiRatio",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "NPRM058",
+        "description": "Loan term should be NA when heloc flag is 1 or reverse mortgage is 1 or 2.",
+        "explanation": "Loan is a home-equity line of credit or a reverse mortgage; therefore loan term should be NA.",
+        "rule": {
+            "if": {
+                "or": [
+                    {
+                        "property": "heloc",
+                        "condition": "equal",
+                        "value": "1"
+                    },
+                    {
+                        "property": "reverseMortgage",
+                        "condition": "in",
+                        "values": ["1", "2"]
+                    }
+                ]
+            },
+            "then": {
+                "property": "loanTerm",
+                "condition": "equal",
+                "value": "NA"
+            }
+        }
+    },
+    {
+        "id": "NPRM059",
+        "description": "Application channel flag should be 3 (NA) when action taken is 6.",
+        "explanation": "Loan was purchased; therefore application channel flag should be 3 (NA).",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "equal",
+                "value": "6"
+            },
+            "then": {
+                "property": "applicationChannel",
+                "condition": "equal",
+                "value": "3"
+            }
+        }
+    },
+    {
+        "id": "NPRM060",
+        "description": "Initially payable flag should be 3 (NA) when action taken is 6.",
+        "explanation": "Loan was purchased; therefore initially payable flag should be 3 (NA).",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "equal",
+                "value": "6"
+            },
+            "then": {
+                "property": "initiallyPayable",
+                "condition": "equal",
+                "value": "3"
+            }
+        }
+    },
+    {
+        "id": "NPRM061",
+        "description": "Automated underwriting system should be 7 (purchased loan) when action taken is 6.",
+        "explanation": "Loan was purchased; therefore automated underwriting system should be 7.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "equal",
+                "value": "6"
+            },
+            "then": {
+                "property": "aus",
+                "condition": "equal",
+                "value": "7"
+            }
+        }
+    },
+    {
+        "id": "NPRM062",
+        "description": "If automated underwriting system is 5 (other) its corresponding text field should not be blank.",
+        "explanation": "Automated underwriting system is other, but no explanation text is provided.",
+        "rule": {
+            "if": {
+                "property": "aus",
+                "condition": "equal",
+                "value": "5"
+            },
+            "then": {
+                "property": "ausText",
+                "condition": "not_empty"
+            }
+        }
+    },
+    {
+        "id": "NPRM063",
+        "description": "If automated underwriting system text is not empty automated underwriting system should be 5 (other).",
+        "explanation": "Automated underwriting system explanation text is provided but automated underwriting system is not 5 (other).",
+        "rule": {
+            "if": {
+                "property": "ausText",
+                "condition": "not_empty"
+            },
+            "then": {
+                "property": "aus",
+                "condition": "equal",
+                "value": "5"
+            }
+        }
+    },
+    {
+        "id": "NPRM064",
+        "description": "Automated underwriting system recommendation should be 10 (NA) when action taken is 4 or 5.",
+        "explanation": "Application closed due to incompleteness or withdrawn by applicant; therefore automated underwriting system recommendation should be 10 (NA).",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "in",
+                "values": ["4", "5"]
+            },
+            "then": {
+                "property": "ausRecommendation",
+                "condition": "equal",
+                "value": "10"
+            }
+        }
+    },
+    {
+        "id": "NPRM065",
+        "description": "If Action taken type = 6, then automated underwriting system recommendation must be 11.",
+        "explanation": "Loan was purchased; therefore automated underwriting system recommendation should be 11.",
+        "rule": {
+            "if": {
+                "property": "actionTaken",
+                "condition": "equal",
+                "value": "6"
+            },
+            "then": {
+                "property": "ausRecommendation",
+                "condition": "equal",
+                "value": "11"
+            }
+        }
+    },
+    {
+        "id": "NPRM066",
+        "description": "If automated underwriting system recommendation is 9 (Other) its corresponding text field should not be blank.",
+        "explanation": "Automated underwriting system recommendation is other, but no explanation text is provided.",
+        "rule": {
+            "if": {
+                "property": "ausRecommendation",
+                "condition": "in",
+                "values": ["09", "9"]
+            },
+            "then": {
+                "property": "ausRecommendationText",
+                "condition": "not_empty"
+            }
+        }
+    },
+    {
+        "id": "NPRM067",
+        "description": "If automated underwriting system recommndation text is not empty automated underwriting system recommendation should be 9 (other).",
+        "explanation": "Automated underwriting system recommendation explanation text is provided but automated underwriting system recommendation is not 9 (other).",
+        "rule": {
+            "if": {
+                "property": "ausRecommendationText",
+                "condition": "not_empty"
+            },
+            "then": {
+                "property": "ausRecommendation",
+                "condition": "in",
+                "values": ["09", "9"]
+            }
+        }
+    },
+    {
+        "id": "NPRM068",
+        "description": "If reverse mortgage is 2 then heloc flag should be 3.",
+        "explanation": "Loan is an open-end reverse mortgage; therefore heloc flag should be 3 (NA).",
+        "rule": {
+            "if": {
+                "property": "reverseMortgage",
+                "condition": "equal",
+                "value": "2"
+            },
+            "then": {
+                "property": "heloc",
+                "condition": "equal",
+                "value": "3"
+            }
+        }
+    },
+    {
+        "id": "NPRM069",
+        "description": "If loan purpose is 2 or 3 and action taken is 1, 2, 3, 4, or 6, then preapproval should be 3.",
+        "explanation": "Loan purpose is 2 or 3 and action taken is 1, 2, 3, 4, or 6 but preapproval is not 3.",
+        "rule": {
+            "if": {
+                "and": [
+                    {
+                        "property": "loanPurpose",
+                        "condition": "in",
+                        "values": ["2", "3"]
+                    },
+                    {
+                        "property": "actionTaken",
+                        "condition": "in",
+                        "values": ["1", "2", "3", "4", "6"]
+                    }
+                ]
+            },
+            "then": {
+                "property": "preapprovals",
+                "condition": "not_equal",
+                "value": "3"
+            }
+        }
+    }
+]

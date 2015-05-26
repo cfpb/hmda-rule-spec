@@ -1,0 +1,22 @@
+[
+    {
+        "id": "Q130",
+        "description": "The number of loan/application records received in this transmission file per respondent does not = the total number of loan/application records reported in this respondent’s transmission or the total number of loan/application records in this submission is missing from the transmittal sheet.",
+        "explanation": "Loan/application records received in this transmission are missing or not = to the total number of loan/application records reported in this transmission.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "checkTotalLARCount"
+        }
+    },
+    {
+        "id": "Q030",
+        "description": "If action taken type = 1, 2, 3, 4, 5, or 6; and if the HMDA respondent is a nondepository institution (a for-profit entity), or is a bank or savings institution who reports CRA data, then MSA/MD, state, county, census tract should equal a valid combination and not NA.",
+        "explanation": "MSA/MD, state, county, census tract should not = NA.",
+        "rule": {
+            "property": "hmdaFile",
+            "condition": "call",
+            "function": "isValidMsaMdCountyCensusForNonDepository"
+        }
+    }
+]

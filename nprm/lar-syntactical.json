@@ -6,7 +6,7 @@
         "rule": {
             "property": "universalLoanID",
             "condition": "matches_regex",
-            "value": "^(?!0{25}$).{25}$"
+            "value": "^(?!0{1,}$).{1,}$"
         }
     }
 ]

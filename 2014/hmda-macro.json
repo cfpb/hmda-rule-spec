@@ -18,6 +18,7 @@
             "condition": "call",
             "function": "accumulatedIf",
             "args": [
+                "hmdaFile",
                 {
                     "property": "hmdaFile",
                     "condition": "call",
